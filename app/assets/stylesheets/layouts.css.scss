@@ -3,13 +3,18 @@
 body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  margin-top: $header-height + $header-gap;
+  margin-top: $header-height;
 }
 
-#site-header {
+.navbar {
   position: fixed;
-  height: $header-height;
-  width: 100%;
   top: 0px;
   left: 0px;
+  z-index: 10;
+  width: 100%;
+  height: $header-height;
+}
+
+#welcome {
+  margin-top: -60px;
 }

@@ -1,3 +1,42 @@
-#site-header {
-  background: rgba(80, 80, 80, 0.8);
+.navbar {
+  background: rgba(80, 80, 80, 0.2);
+  box-shadow: 0 0 6px -3px rgba(60, 60, 60, 0.7);
+
+  .nav-brand {
+    position: relative;
+    top: 0px;
+    display: inline-block;
+    padding: 5px 15px;
+    height: $header-height;
+    color: $white;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 3em;
+    &:hover {
+      background: rgba(80, 80, 80, 0.2);
+    }
+  }
+
+  .nav-menu {
+    display: inline-block;
+    height: $header-height;
+    padding: 5px 15px;
+    float: right;
+    li {
+      display: inline-block;
+    }
+    .btn {
+      @include btn($black, 0.75);
+      top: -5px;
+      height: $header-height;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 20px;
+      padding-bottom: -20px;
+      background: rgba(60, 60, 60, 0.2);
+    }
+  }
+
+
+
 }

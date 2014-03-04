@@ -11,5 +11,5 @@ Mondiale::Application.routes.draw do
   get 'signout'         =>      'sessions#destroy',         as: :signout
   resources :sessions, only: [:create]
 
-  root 'trips#index'
+  root 'welcome#index'
 end

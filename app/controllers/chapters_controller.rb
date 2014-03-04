@@ -1,6 +1,5 @@
 class ChaptersController < ApplicationController
 
-
 	def new
 		@trip = Trip.find(params[:trip_id])
 		@chapter = Chapter.new

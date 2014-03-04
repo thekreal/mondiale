@@ -7,3 +7,17 @@
   box-shadow: $x $y $blur $spread $color;
 }
 
+@mixin btn($color: $black, $opacity: 1) {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: lighten($color, 75%);
+  position: relative;
+  background: $color;
+  opacity: $opacity;
+  font-weight: 600;
+  &:hover {
+    color: $color;
+    background: lighten($color, 75%)
+  }
+}
