@@ -1,9 +1,10 @@
 <h1><%= @trip.title %></h1>
 
-<%= link_to "Edit This Trip", edit_trip_path %>
-<%= link_to "Remove This Trip", @trip, method: :delete %>
-<%= link_to "Create a new Chapter", new_trip_chapter_path(@trip) %>
-
+<ul>
+<li><%= link_to "Edit This Trip", edit_trip_path %></li>
+<li><%= link_to "Remove This Trip", @trip, method: :delete %></li>
+<li><%= link_to "Create a new Chapter", new_trip_chapter_path(@trip) %></li>
+</ul>
 <h2>Chapters</h2>
 
 <%= render @chapters %>

@@ -17,6 +17,9 @@ class ChaptersController < ApplicationController
 	end
 
 	def show
+		@chapter = Chapter.find(params[:id])
+		@post = @chapter.posts
+		@trip = @chapter.trip
 	end
 
 private
