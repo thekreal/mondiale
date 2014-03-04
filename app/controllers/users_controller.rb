@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @trips = @user.trips
   end
 
   def new
