@@ -40,7 +40,7 @@ class TripsController < ApplicationController
   def destroy
     @trip.destroy
     flash[:success] = "Your trip has been removed successfully"
-    redirect to trips_path
+    redirect_to trips_path
   end
 
 private
