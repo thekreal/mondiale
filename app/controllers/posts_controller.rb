@@ -29,6 +29,10 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
+		if @post.destroy
+			flash[:success] = "Your post has been deleted successfully"
+			redirect_to trip_chapter_path(@post.trip, @post.chapter)
+		end
 	end
 
 private
