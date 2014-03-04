@@ -7,7 +7,7 @@
 <p><%= trip.user.name %></p>
 
 <h2>Dates</h2>
-<p>From <%= trip.chapters.first.posts.first.date.to_date.to_formatted_s(:long) %> to <%= trip.chapters.last.posts.last.date.to_date.to_formatted_s(:long) %></p>
+<p>From <%= trip.start_date %> to <%= trip.end_date %></p>
 
 <p>picture?</p>
 
