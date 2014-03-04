@@ -1,6 +1,8 @@
 Mondiale::Application.routes.draw do
 
-  resources :trips
+  resources :trips do
+  	resources :chapters
+  end
 
   get 'signup'          =>      'users#new',                as: :signup
   resources :users
