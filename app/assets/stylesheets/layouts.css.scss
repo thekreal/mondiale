@@ -1,0 +1,16 @@
+// SITE LAYOUT
+
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: $header-height + $header-gap;
+}
+
+#site-header {
+  position: fixed;
+  height: $header-height;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  border: 1px solid;
+}
