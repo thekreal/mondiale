@@ -1,14 +1,14 @@
 class ChaptersController < ApplicationController
+  before_action :set_chapter, only: [:show, :edit, :update, :destroy]
 
   def show
-    @chapter = Chapter.find(params[:id])
     @posts = @chapter.posts
     @trip = @chapter.trip
   end
 
 	def new
 		@trip = Trip.find(params[:trip_id])
-		@chapter = Chapter.new
+		@chapter = @trip.chapters.new
 	end
 
 	def create
@@ -16,7 +16,7 @@ class ChaptersController < ApplicationController
 		@chapter = @trip.chapters.new(chapter_params)
 		if @trip.save
       flash[:success] = "Your chapter has been created successfully"
-      redirect_to @trip
+      redirect_to [@chapter.trip, @chapter]
     else
       render :new
     end
@@ -26,15 +26,29 @@ class ChaptersController < ApplicationController
   end
 
   def update
+    if @chapter.update(chapter_params)
+      flash[:success] = "Your chapter has been updated successfully"
+      redirect_to [@chapter.trip, @chapter]
+    else
+      render :edit
+    end
   end
 
   def destroy
+    if @chapter.destroy
+      flash[:success] = "Your chapter has been deleted successfully"
+      redirect_to @chapter.trip
+    end
   end
 
 private
 
-def chapter_params
-	params.require(:chapter).permit(:title, :location, :longitude, :latitude, :start_date, :end_date )
-end
+  def set_chapter
+    @chapter = Chapter.find(params[:id])
+  end
+
+  def chapter_params
+  	params.require(:chapter).permit(:title, :location, :longitude, :latitude)
+  end
 
 end
