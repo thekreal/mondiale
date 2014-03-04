@@ -1,55 +1,55 @@
 class TripsController < ApplicationController
 
-  before_filter :ensure_logged_in, :only => [:edit, :destroy, :new]
+  before_action :ensure_logged_in, only: [:new, :edit, :destroy]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
     @trips = Trip.all
   end
 
+  def show
+  end
 
   def new
-    @trip = Trip.new
+    @trip = current_user.trips.new
   end
 
   def create
-    @trip = Trip.new(trip_params)
-    #change this when login screen works
-    @trip.user_id = 1
-
-
+    @trip = current_user.trips.new(trip_params)
     if @trip.save
-      redirect_to trip_path(@trip)
+      flash[:success] = "Your trip has been created successfully"
+      redirect_to @trip
     else
       render :new
     end
   end
 
   def edit
-    @trip = Trip.find(params[:id])
   end
 
   def update
-    @trip = Trip.find(params[:id])
-    if @trip.update_attributes(trip_params)
-      redirect_to trip_path(@trip)
+    if @trip.update(trip_params)
+      flash[:success] = "Your trip has been updated successfully"
+      redirect_to @trip
     else
       render :edit
     end
   end
 
-  def show
-    @trip = Trip.find(params[:id])
-
-  end
-
   def destroy
-    @trip = Trip.find(params[:id])
     @trip.destroy
+    flash[:success] = "Your trip has been removed successfully"
     redirect to trips_path
   end
 
-  private
+private
+
+  def set_trip
+    @trip = Trip.find(params[:id])
+  end
+
   def trip_params
     params.require(:trip).permit(:title, :description, :location_text, :longitude, :latitude)
   end
+
 end
