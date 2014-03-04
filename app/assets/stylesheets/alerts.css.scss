@@ -2,13 +2,14 @@
   position: relative;
   left: -1px;
   display: block;
-  margin-bottom: $header-gap;
-  padding: 10px 15px;
+  padding: 15px 15px;
   width: calc(100% + 2px);
   font-size: 1em;
-  color: $color + 100;
+  color: lighten($color, 50%);
   background: $color;
-  button.close {
+
+  .close {
+    @include animation;
     position: relative;
     top: -3px;
     display: block;
@@ -18,9 +19,23 @@
     background: $color + 200;
     color: $color;
     padding-bottom: 4px;
+
+    &:hover {
+      background: darken($color, 50%);
+      color: $color;
+      box-shadow: none;
+    }
+  }
+  &:last-of-type {
+
   }
 }
 
-.alert-info {
-  @include alert($blue);
+[class*='alert']:last-of-type {
+  margin-bottom: 20px;
 }
+
+.alert-info { @include alert($blue); }
+.alert-success { @include alert($green); }
+.alert-warning { @include alert($yellow); }
+.alert-danger { @include alert($red); }
