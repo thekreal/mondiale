@@ -1,5 +1,9 @@
 <h1><%= @trip.title %></h1>
 
+<%= link_to "Edit This Trip", edit_trip_path %>
+<%= link_to "Remove This Trip", @trip, method: :delete %>
+<%= link_to "Create a new Chapter", new_trip_chapter_path(@trip) %>
+
 <h2>Chapters</h2>
 
 <%= render @chapters %>
