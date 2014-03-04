@@ -18,6 +18,8 @@ class ChaptersController < ApplicationController
 	end
 
 	def show
+		@chapter = Chapter.find(params[:id])
+		@trip = @chapter.trip
 	end
 
 private
