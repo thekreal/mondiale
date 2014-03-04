@@ -1,7 +1,7 @@
 class Trip < ActiveRecord::Base
 
 	belongs_to :user
-	has_many :chapters
+	has_many :chapters, dependent: :delete_all
 	has_many :posts, through: :chapters
 
   validates :title, :description, presence: true
