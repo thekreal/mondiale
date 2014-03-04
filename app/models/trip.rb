@@ -4,8 +4,9 @@ class Trip < ActiveRecord::Base
 	has_many :chapters, dependent: :delete_all
 	has_many :posts, through: :chapters
 
-  validates :title, :description, presence: true
-  validates :title, uniqueness: true
+  validates :title,       presence: true,
+                          uniqueness: true
+  validates :description, presence: true
 
   def start_date
     if self.posts.any?
