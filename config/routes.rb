@@ -3,8 +3,10 @@ Mondiale::Application.routes.draw do
 	resources :posts, except: [:show, :index]
 
   resources :trips do
-  	resources :chapters
-  end
+  	resources :chapters do
+      resources :posts, except: [:show, :index]
+      end
+    end
 
   get 'signup'          =>      'users#new',                as: :signup
   resources :users
