@@ -4,7 +4,7 @@ class Trip < ActiveRecord::Base
 	has_many :chapters
 	#has_many :posts, :through => :chapters
 
-  validates :title, :description, presence: :true
-  validates :title, uniqueness: :true
+  validates :title, :description, presence: true
+  validates :title, uniqueness: true
 
 end
