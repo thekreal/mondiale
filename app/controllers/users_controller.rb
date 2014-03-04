@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_param)
+    @user = User.new(user_params)
     if @user.save
       flash[:success] = "Account has been successfully created"
       redirect_to @user
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_param)
+    if @user.update(user_params)
       flash[:success] = "Account has been successfully updated"
       redirect_to @user
     else
