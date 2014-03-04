@@ -8,6 +8,7 @@ class TripsController < ApplicationController
   end
 
   def show
+    @chapters = @trip.chapters
   end
 
   def new
