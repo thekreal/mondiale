@@ -6,6 +6,9 @@ gem 'rails', '4.0.3'
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 
+#12 factor for deployment
+gem 'rails_12factor'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 
