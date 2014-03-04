@@ -1,5 +1,4 @@
 <% @users.each do |u| %>
-  <%= u.name %>
-  <%= u.email %>
+  <%= render u %>
   <%= link_to 'edit', edit_user_path(u), class: 'btn' %>
 <% end %>
