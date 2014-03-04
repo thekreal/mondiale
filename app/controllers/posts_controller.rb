@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	before_action :set_post, only: [:edit, :update, :destroy]
 
 	def new
 		@chapter = Chapter.find(params[:chapter_id])
@@ -16,11 +17,9 @@ class PostsController < ApplicationController
 	end
 
 	def edit
-		@post = Post.find(params[:id])
 	end
 
 	def update
-		@post = Post.find(params[:id])
 		if @post.update(post_params)
 			flash[:success] = "Your post has been updated successfully"
 			redirect_to trip_chapter_path(@post.trip, @post.chapter)
@@ -33,6 +32,10 @@ class PostsController < ApplicationController
 	end
 
 private
+
+	def set_post
+		@post = Post.find(params[:id])
+	end
 
 	def post_params
 		params.require(:post).permit(:title, :content, :date, :chapter_id )
