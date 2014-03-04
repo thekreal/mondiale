@@ -1,6 +1,10 @@
 class TripsController < ApplicationController
 
   #before_filter :ensure_logged_in, :only => [:edit, :destroy, :new]
+  def index
+    @trips = Trip.all
+  end
+
 
   def new
     @trip = Trip.new
