@@ -1,3 +1,3 @@
 <div class="chapter">
-	<h1><%= chapter.title %></h1>
+	<h1><%= link_to "#{chapter.title}", trip_chapter_path(@trip, chapter) %></h1>
 </div>
