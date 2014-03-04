@@ -1,5 +1,11 @@
 class ChaptersController < ApplicationController
 
+  def show
+    @chapter = Chapter.find(params[:id])
+    @posts = @chapter.posts
+    @trip = @chapter.trip
+  end
+
 	def new
 		@trip = Trip.find(params[:trip_id])
 		@chapter = Chapter.new
@@ -14,12 +20,6 @@ class ChaptersController < ApplicationController
     else
       render :new
     end
-	end
-
-	def show
-		@chapter = Chapter.find(params[:id])
-		@post = @chapter.posts
-		@trip = @chapter.trip
 	end
 
 private
