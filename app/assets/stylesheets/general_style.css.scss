@@ -1,5 +1,36 @@
+@function em($px, $base: $base-font-size) {
+    @return ($px / $base) * 1em;
+}
+
+
+$base-font-size: 16px;
+
 * {
+  font-size: $base-font-size;
   -webkit-font-smoothing: antialiased;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+h1	{
+	font-family: 'Nixie One', cursive;
+	font-size: em(54px);
+}
+
+h2	{
+	font-family: 'Nixie One', cursive;
+	font-size: em(40px);
+}
+
+h3	{
+	font-family: 'Nixie One', cursive;
+	font-size: em(36px);
+}
+
+p {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+a {
+	@extend p
 }
