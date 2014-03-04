@@ -11,10 +11,14 @@
 
 
  <ul>
-  <li><%= link_to 'new trip', new_trip_path %></li>
-  <li><%= link_to 'sign up', :signup %></li>
-  <li><%= link_to 'sign in', :signin %></li>
-  <li><%= link_to 'sign out', :signout %></li>
+  <% if current_user %>
+    <li>Signed in as <%= current_user.name %></li>
+    <li><%= link_to 'new trip', new_trip_path %></li>
+    <li><%= link_to 'sign out', :signout %></li>
+  <% else %>
+    <li><%= link_to 'sign up', :signup %></li>
+    <li><%= link_to 'sign in', :signin %></li>
+  <% end %>
 </ul>
 
   <%= yield %>
