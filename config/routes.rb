@@ -1,11 +1,5 @@
 Mondiale::Application.routes.draw do
 
-  get "trips/new"
-  get "trips/create"
-  get "trips/edit"
-  get "trips/update"
-  get "trips/show"
-  get "trips/destroy"
   resources :trips
 
   get 'signup'          =>      'users#new',                as: :signup
