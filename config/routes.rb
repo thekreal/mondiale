@@ -1,5 +1,7 @@
 Mondiale::Application.routes.draw do
 
+	resources :posts, except: [:show, :index]
+
   resources :trips do
   	resources :chapters
   end
