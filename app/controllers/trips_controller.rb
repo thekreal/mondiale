@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
 
   #before_filter :ensure_logged_in, :only => [:edit, :destroy, :new]
+
   def index
     @trips = Trip.all
   end
@@ -12,7 +13,9 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trip_params)
-    @trip.user = current_user
+    #change this when login screen works
+    @trip.user_id = 1
+
 
     if @trip.save
       redirect_to trip_path(@trip)

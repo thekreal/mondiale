@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
 
+  has_many :trips
+
   #  Callbacks and Validations
   before_save { email.downcase! }
 
