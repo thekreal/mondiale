@@ -2,5 +2,7 @@
 	<ul>
 		<li><%= post.title %></li>
 		<li><%= post.content %></li>
+		<%= link_to "Edit This Post", edit_trip_chapter_post_path(post.trip, post.chapter, post) %>
+		<%= link_to "Delete This Post", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete %>
 	</ul>
 </div>
