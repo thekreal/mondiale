@@ -19,11 +19,17 @@ class User < ActiveRecord::Base
                         exclusion: {
                           in: lambda { |user| [user.email] },
                           message: "can not be the same as email"
-                        }
+                        }, unless: :updating_profile
 
   # Retrieve Gravatar from gravatar.com using user email
   def gravatar(size = 50)
     return "https://secure.gravatar.com/avatar/#{Digest::MD5::hexdigest(email)}?s=#{size}"
+  end
+
+private
+
+  def updating_profile
+    !crypted_password.blank?
   end
 
 end
