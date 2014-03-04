@@ -1,4 +1,5 @@
 class TripsController < ApplicationController
+
   before_action :ensure_logged_in, only: [:new, :edit, :destroy]
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
