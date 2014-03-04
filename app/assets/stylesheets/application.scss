@@ -15,10 +15,13 @@
 
 /* All variables and colors */
 @import 'variables';
+@import 'libraries';
 
 /* General HTML style */
 @import 'general_style';
+@import 'layouts';
 
+/* Page Style */
 @import 'header';
 @import 'trips';
 

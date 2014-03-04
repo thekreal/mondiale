@@ -1,0 +1,9 @@
+@mixin animation($property: all, $duration: 0.5s, $time-function: ease-in-out) {
+  -webkit-transition: $property $duration $time-function;
+          transition: $property $duration $time-function;
+}
+
+@mixin box-shadow($x: 0, $y: 0, $blur: 6px, $spread: -3px, $color: rgba(40, 40, 40, 0.7)) {
+  box-shadow: $x $y $blur $spread $color;
+}
+
