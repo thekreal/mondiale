@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = login(params[:session][:email], params[:session][:password])
+    if user = login(params[:session][:email], params[:session][:password], params[:session][:remember])
       flash[:success] = "You are now logged in"
       redirect_back_or_to(user)
     else
