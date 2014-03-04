@@ -17,6 +17,14 @@
   <div class="form-field">
     <div class="form-label"></div>
     <div class="container">
+      <%= f.check_box :remember, { class: "form-input" }, "true", "false" %>
+      <%= f.label "Remember Me", for: "session_remember_me" %>
+    </div>
+  </div>
+
+  <div class="form-field">
+    <div class="form-label"></div>
+    <div class="container">
       <%= f.submit "Sign In", class: "form-btn" %>
     </div>
   </div>
