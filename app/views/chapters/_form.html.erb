@@ -31,20 +31,6 @@
   </div>
 
   <div class="form-field">
-    <%= f.label :start_date, for: "start_date", class: "form-label" %>
-    <div class="form-control">
-      <%= f.date_select :start_date, class: "form-input" %>
-    </div>
-  </div>
-
-  <div class="form-field">
-    <%= f.label :end_date, for: "end_date", class: "form-label" %>
-    <div class="form-control">
-      <%= f.date_select :end_date, class: "form-input" %>
-    </div>
-  </div>
-
-  <div class="form-field">
     <div class="form-label"></div>
     <div class="form-control">
       <%= f.submit yield(:page_title), class: "form-btn" %>

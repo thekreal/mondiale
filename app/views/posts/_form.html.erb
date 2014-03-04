@@ -1,6 +1,6 @@
 <%= form_for @post do |f| %>
 
-<%= render 'alerts/error_message', object: @trip %>
+<%= render 'alerts/error_message', object: @post %>
 
 <div class="form-field">
     <%= f.label :title, class: "form-label" %>
@@ -29,5 +29,7 @@
       <%= f.submit yield(:page_title), class: "form-btn" %>
     </div>
   </div>
+
+  <%= f.hidden_field :chapter_id, value: params[:chapter_id] %>
 
   <% end %>
