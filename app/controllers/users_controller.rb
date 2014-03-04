@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    flash[:info] = "test test test"
   end
 
   def new

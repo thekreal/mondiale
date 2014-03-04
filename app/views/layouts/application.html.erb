@@ -2,6 +2,7 @@
 <html>
 <head>
   <title><%= titler(yield(:page_title)) %></title>
+  <link rel="stylesheet" href="/assets/application.scss">
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -10,6 +11,7 @@
 
   <%= render 'header/index' %>
 
+  <%= render 'alerts/flash_message' %>
 
  <ul>
   <% if current_user %>

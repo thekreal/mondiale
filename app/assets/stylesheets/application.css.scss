@@ -10,6 +10,7 @@
  *
  */
 
+
 /* Reset all css styling */
 @import 'css_reset';
 
@@ -22,6 +23,7 @@
 @import 'layouts';
 
 /* Page Style */
+@import 'alerts';
 @import 'header';
 @import 'trips';
 

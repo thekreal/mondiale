@@ -1,0 +1,26 @@
+@mixin alert($color: $black) {
+  position: relative;
+  left: -1px;
+  display: block;
+  margin-bottom: $header-gap;
+  padding: 10px 15px;
+  width: calc(100% + 2px);
+  font-size: 1em;
+  color: $color + 100;
+  background: $color;
+  button.close {
+    position: relative;
+    top: -3px;
+    display: block;
+    float: right;
+    border: none;
+    border-radius:100%;
+    background: $color + 200;
+    color: $color;
+    padding-bottom: 4px;
+  }
+}
+
+.alert-info {
+  @include alert($blue);
+}
