@@ -1,8 +1,12 @@
 <header id="site-header">
+
   <a href="/" class="site-brand">Mondiale</a>
+  <ul>
   <% if logged_in? %>
     <%= render 'header/user_menu' %>
   <% else %>
     <%= render 'header/guest_menu' %>
   <% end %>
+  </ul>
+
 </header>

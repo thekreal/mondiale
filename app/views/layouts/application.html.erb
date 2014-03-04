@@ -10,20 +10,6 @@
 
   <%= render 'header/index' %>
 
-
- <ul>
-  <% if current_user %>
-    <li>Signed in as <%= current_user.name %></li>
-    <li><%= link_to 'new trip', new_trip_path %></li>
-    <li><%= link_to 'sign out', :signout %></li>
-    <li><%= link_to 'view trips', trips_path %></li>
-  <% else %>
-    <li><%= link_to 'sign up', :signup %></li>
-    <li><%= link_to 'sign in', :signin %></li>
-    <li><%= link_to 'view trips', trips_path %></li>
-  <% end %>
-</ul>
-
   <%= yield %>
 
   <%= params %>
