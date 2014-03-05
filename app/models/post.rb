@@ -11,4 +11,6 @@ class Post < ActiveRecord::Base
   validates :content,   presence: true
   validates :date,      presence: true
 
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
 end
