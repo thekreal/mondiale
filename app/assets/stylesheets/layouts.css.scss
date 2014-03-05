@@ -1,8 +1,6 @@
 // SITE LAYOUT
 
 body {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
   margin-top: $header-height;
 }
 
@@ -16,5 +14,14 @@ body {
 }
 
 #welcome {
-  margin-top: -60px;
+  margin-top: - $header-height;
+  margin-bottom: $header-height;
+}
+
+
+.form {
+  border: 1px solid transparent;
+  .form-container {
+    margin: 60px 30px;
+  }
 }

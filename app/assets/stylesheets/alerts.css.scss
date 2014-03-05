@@ -1,41 +1,43 @@
 @mixin alert($color: $black) {
-  z-index: 5;
-  // position: relative;
-  position: fixed;
-  top: 60px;
+  position: relative;
+  // position: fixed;
   left: -1px;
-  display: block;
-  padding: 15px 15px 6px;
+  z-index: 5;
+  display: none;
+  padding: 15px;
   width: calc(100% + 2px);
-  font-size: 1em;
-  color: lighten($color, 50%);
   background: $color;
+  color: lighten($color, 70%);
+  word-wrap: break-word;
+  font-size: 1em;
+
+  li {
+    word-wrap: break-word;
+  }
 
   .close {
     @include animation;
-    position: relative;
-    top: -3px;
+    position: absolute;
+    top: 20%;
+    right: 15px;
     display: block;
     float: right;
+    padding-bottom: 4px;
     border: none;
     border-radius:100%;
     background: $color + 200;
     color: $color;
-    padding-bottom: 4px;
 
     &:hover {
       background: darken($color, 50%);
-      color: $color;
       box-shadow: none;
+      color: $color;
     }
-  }
-  &:last-of-type {
-
   }
 }
 
-[class*='alert']:last-of-type {
-
+[class*='alert'] + .content, #welcome {
+  margin-top: -106px;
 }
 
 .alert-info { @include alert($blue); }

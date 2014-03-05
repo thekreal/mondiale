@@ -1,27 +1,28 @@
-<%= form_for [@chapter.trip, @chapter] do |f| %>
+<div class="form">
+<%= form_for [@chapter.trip, @chapter], html: {class: "form-container"} do |f| %>
 
 <%= render 'alerts/error_message', object: @chapter %>
 
-<div class="form-field">
-    <%= f.label :title, for: "title", class: "form-label" %>
+  <div class="form-field">
+    <%= f.label :title, class: "form-label" %>
     <div class="form-control">
       <%= f.text_field :title, class: "form-input" %>
     </div>
   </div>
 
-<div class="form-field">
-    <%= f.label :description, for: "title", class: "form-label" %>
+  <div class="form-field">
+    <%= f.label :description, class: "form-label" %>
     <div class="form-control">
       <%= f.text_area :description, class: "form-input" %>
     </div>
   </div>
 
-
   <div class="form-field">
     <div class="form-label"></div>
     <div class="form-control">
-      <%= f.submit yield(:page_title), class: "form-btn" %>
+      <%= f.submit submit, class: "form-btn" %>
     </div>
   </div>
 
-  <% end %>
+<% end %>
+</div>
