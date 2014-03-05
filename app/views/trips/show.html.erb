@@ -1,13 +1,19 @@
 <h1><%= @trip.title %></h1>
 <p><%= @trip.description %></p>
+
+<% if @trip.user == current_user %>
 <ul>
 <li><%= link_to "Edit this trip", edit_trip_path %></li>
 <li><%= link_to "Remove this trip", @trip, method: :delete %></li>
 </ul>
+<% end %>
 
 <h2>Chapters</h2>
+
+<% if @trip.user == current_user %>
 <ul>
 	<li><%= link_to "Create a new chapter", new_trip_chapter_path(@trip) %></li>
 </ul>
+<% end %>
 
 <%= render @chapters %>

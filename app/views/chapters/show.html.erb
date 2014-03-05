@@ -1,9 +1,9 @@
 <% provide :page_title, "Chapter" %>
 
-<p>
-	<%= link_to "create a new post", new_trip_chapter_post_path(@trip, @chapter) %>
-	<%= link_to "Back to #{@chapter.trip.title}", @chapter.trip %>
-</p>
+<p> <%= link_to "Back to #{@chapter.trip.title}", @chapter.trip %> </p>
+<% if @chapter.trip.user == current_user %>
+<p> <%= link_to "create a new post", new_trip_chapter_post_path(@trip, @chapter) %> </p>
+<% end %>
 
 <h2>Chapter <%= @chapter.id %>: <%= @chapter.title %></h2>
 
