@@ -5,6 +5,14 @@ gem 'rails', '4.0.3'
 
 #carrierwave for images
 gem 'carrierwave'
+
+#rmagick for image processing
+#gem 'rmagick'
+
+#mini_magick for image processing
+gem "mini_magick", "~> 3.7.0"
+
+
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 

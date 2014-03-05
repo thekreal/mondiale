@@ -8,8 +8,9 @@
 		<% end %>
 
 		<% if post.trip.user == current_user %>
-		<li><%= link_to "Edit this post", edit_trip_chapter_post_path(post.trip, post.chapter, post) %></li>
-		<li><%= link_to "Delete This Post", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete %></li>
+			<li><%= link_to "Edit this post", edit_trip_chapter_post_path(post.trip, post.chapter, post) %></li>
+			<li><%= link_to "Delete This Post", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete %></li>
 		<% end %>
+
 	</ul>
 </div>

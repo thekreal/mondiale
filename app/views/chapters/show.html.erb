@@ -20,7 +20,7 @@
 				<li><%= p.content %></li>
 
 				<% p.post_attachments.each do |pic| %>
-		  		<%= image_tag pic.postimage_url %>
+		  		<%= image_tag pic.postimage_url(:big) %>
 				<% end %>
 
 				<% if p.trip.user == current_user %>

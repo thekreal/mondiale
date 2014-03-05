@@ -48,7 +48,7 @@ private
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :content, :date)
+		params.require(:post).permit(:title, :content, :date, :postimage)
 	end
 
 end
