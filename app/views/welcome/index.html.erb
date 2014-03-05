@@ -5,8 +5,9 @@
   	Mondiale helps you tell your travel story.</div>
 
   <div class="search-bar">
-    <%= text_field_tag 'search', '', class: "search",
-        placeholder: "Where to?"  %>
+    <%= form_tag trips_path, method: :get, id: "search" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Type In a Location" %>
+  <% end %>
     <span class="fa fa-search"></span>
   </div>
 </div>
