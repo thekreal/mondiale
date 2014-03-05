@@ -29,8 +29,18 @@ h2	{
 h3	{
 	font-family: 'Nixie One', cursive;
 	font-size: em(36px);
-	margin: .25em 0;
+	margin: .3em 0;
 }
+
+h4	{
+	font-family: 'Nixie One', cursive;
+	font-size: em(24px);
+	margin: .25em 0;
+	text-transform: uppercase;
+	font-weight: 550;
+}
+
+
 
 p {
 	font-family: 'Source Sans Pro', sans-serif;
