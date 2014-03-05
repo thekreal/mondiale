@@ -1,6 +1,6 @@
 <% provide :page_title, "Sign In" %>
 
-<div class="form">
+<div class="signin-form">
 <%= form_for :session, url: sessions_path, remote: true, html: { class: "form-container" } do |f|%>
 
   <legend class="form-title"><%= yield(:page_title) %></legend>

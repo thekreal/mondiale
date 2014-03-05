@@ -1,0 +1,39 @@
+if ($('.signin-form').length) {
+  removeAll($('.signin-form'), $('.blur-background'));
+}
+
+else {
+  var blurBackground = $('<div>')
+
+  blurBackground
+    .addClass('blur-background')
+    .appendTo('body');
+
+  var signinForm = $('<%= j render "sessions/new" %>')
+  signinForm
+    .css({
+      right: - $(this).width(),
+      top: 60
+    })
+    .insertAfter('.navbar')
+    .animate({
+      right: '15px'
+    }, 400, 'easeInOutQuad');
+
+  blurBackground.click(function(event) {
+    removeAll(signinForm, blurBackground)
+  });
+}
+
+
+function removeAll(signinForm, blurBackground) {
+  signinForm.animate({
+    right: - $(this).width()
+  }, 400, 'easeInOutQuad', function() {
+    signinForm.remove();
+  })
+  blurBackground.fadeOut(400, function() {
+    blurBackground.remove();
+  });
+}
+

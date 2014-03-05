@@ -1,8 +1,10 @@
-<%= form_for [@post.trip, @post.chapter, @post] do |f| %>
+<div class="form">
+<%= form_for [@post.trip, @post.chapter, @post], html: {class: "form-container"} do |f| %>
+  <legend class="form-title"><%= title %></legend>
 
-<%= render 'alerts/error_message', object: @post %>
+  <%= render 'alerts/error_message', object: @post %>
 
-<div class="form-field">
+  <div class="form-field">
     <%= f.label :title, class: "form-label" %>
     <div class="form-control">
       <%= f.text_field :title, class: "form-input" %>
@@ -17,27 +19,27 @@
   </div>
 
   <div class="form-field">
-    <%= f.label :location, for: "location", class: "form-label" %>
+    <%= f.label :location, class: "form-label" %>
     <div class="form-control">
       <%= f.text_field :location, class: "form-input" %>
     </div>
   </div>
 
   <div class="form-field">
-    <%= f.label :longitude, for: "longitude", class: "form-label" %>
+    <%= f.label :longitude, class: "form-label" %>
     <div class="form-control">
       <%= f.text_field :longitude, class: "form-input" %>
     </div>
   </div>
 
   <div class="form-field">
-    <%= f.label :latitude, for: "latitude", class: "form-label" %>
+    <%= f.label :latitude, class: "form-label" %>
     <div class="form-control">
       <%= f.text_field :latitude, class: "form-input" %>
     </div>
   </div>
 
-<div class="form-field">
+  <div class="form-field">
     <%= f.label :content, class: "form-label" %>
     <div class="form-control">
       <%= f.text_area :content, class: "form-input" %>
@@ -47,8 +49,9 @@
   <div class="form-field">
     <div class="form-label"></div>
     <div class="form-control">
-      <%= f.submit yield(:page_title), class: "form-btn" %>
+      <%= f.submit submit, class: "form-btn" %>
     </div>
   </div>
 
-  <% end %>
+<% end %>
+</div>
