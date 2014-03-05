@@ -1,7 +1,11 @@
 <div class="chapter">
 	<h3><%= link_to "#{chapter.title}", trip_chapter_path(@trip, chapter) %></h3>
+
+	<% if chapter.trip.user == current_user %>
 	<ul>
 		<li><%= link_to "Edit this chapter", edit_trip_chapter_path(chapter.trip, chapter) %></li>
 		<li><%= link_to "Delete this chapter", trip_chapter_path(chapter.trip, chapter), method: :delete %></li>
 	</ul>
+	<% end %>
+
 </div>
