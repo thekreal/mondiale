@@ -2,6 +2,11 @@
 	<h4><%= post.title %></h4>
 	<ul>
 		<li><%= post.content %></li>
+
+		<% @post_attachments.each do |p| %>
+  		<%= image_tag p.postimage_url %>
+		<% end %>
+
 		<% if post.trip.user == current_user %>
 		<li><%= link_to "Edit this post", edit_trip_chapter_post_path(post.trip, post.chapter, post) %></li>
 		<li><%= link_to "Delete This Post", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete %></li>
