@@ -4,7 +4,7 @@ class TripsController < ApplicationController
 
   def index
     if params[:search] &&  params[:search] != ""
-      @trips = Post.near(params[:search]).map(&:trip).uniq
+      @trips = Post.near(params[:search], 1000).order("distance").map(&:trip).uniq
     else
       @trips = Trip.all
     end
