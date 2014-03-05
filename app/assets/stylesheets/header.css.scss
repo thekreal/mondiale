@@ -53,8 +53,11 @@
   }
 
   .dropdown-menu {
+    position: fixed;
     display: none;
-    li { display: block; }
+    li {
+      display: block;
+    }
   }
 
 
