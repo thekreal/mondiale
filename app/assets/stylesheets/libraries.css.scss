@@ -7,17 +7,40 @@
   box-shadow: $x $y $blur $spread $color;
 }
 
-@mixin btn($color: $black, $opacity: 1) {
+@mixin btn($color: $black, $size: 16px, $opacity: 1) {
   display: block;
-  padding: 5px 10px;
+  padding: 7px 15px;
   text-decoration: none;
   color: lighten($color, 75%);
   position: relative;
   background: $color;
   opacity: $opacity;
   font-weight: 600;
+  border: none;
+  outline: none;
+  line-height: $size;
+  font-size: $size;
+  font-weight: 600;
   &:hover {
     color: $color;
     background: lighten($color, 75%)
   }
+}
+
+a[class*='btn'] {
+  top: -1px;
+}
+button[class*='btn'] {
+  padding-bottom: 1px;
+}
+
+.blur-background {
+  z-index: 10;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: rgba(80, 80, 80, 0.5);
 }

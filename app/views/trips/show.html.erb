@@ -1,5 +1,5 @@
 <h1><%= @trip.title %></h1>
-<p><%= @trip.description %></p>
+<p><%= markdown(@trip.description) %></p>
 
 <% if @trip.user == current_user %>
 <ul>

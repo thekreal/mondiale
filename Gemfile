@@ -12,7 +12,6 @@ gem 'carrierwave'
 #mini_magick for image processing
 gem "mini_magick", "~> 3.7.0"
 
-
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 
@@ -44,6 +43,10 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 gem 'sorcery'
+
+gem 'geocoder'
+
+gem 'redcarpet'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

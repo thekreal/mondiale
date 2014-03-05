@@ -3,7 +3,7 @@
 	<h2><%= link_to trip.title, trip_path(trip) %></h2>
 	<p>Created by: <%= trip.user.name %></p>
 	<p><%= trip.number_of_chapters %> chapters</p>
-	<p><%= trip.description %></p>
+	<p><%= markdown(trip.description) %></p>
 
 	<h2>Dates</h2>
 	<p>From <%= trip.start_date %> to <%= trip.end_date %></p>

@@ -1,5 +1,5 @@
-<ul class="nav-menu">
+<ul class="nav-menu" id="guest-menu">
   <li>
-  <li><%= link_to 'Sign in', :signin, class: "btn" %></li>
+  <li><%= link_to 'Sign in', :signin, class: "btn", remote: true %></li>
   <li><%= link_to 'Sign up!', :signup, class: "btn" %></li>
 </ul>

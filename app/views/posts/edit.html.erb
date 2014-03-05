@@ -1,2 +1,3 @@
 <% provide :page_title, "Edit Post" %>
-<%= render 'form' %>
+
+<%= render 'form', title: yield(:page_title), submit: "Update" %>
