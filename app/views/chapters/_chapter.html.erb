@@ -1,6 +1,8 @@
 <div class="chapter">
-	<%= link_to "Edit This Chapter", edit_trip_chapter_path(chapter.trip, chapter) %>
-	<%= link_to "Delete This Chapter", trip_chapter_path(chapter.trip, chapter), method: :delete %>
 	<h3><%= link_to "#{chapter.title}", trip_chapter_path(@trip, chapter) %></h3>
+	<ul>
+		<li><%= link_to "Edit this chapter", edit_trip_chapter_path(chapter.trip, chapter) %></li>
+		<li><%= link_to "Delete this chapter", trip_chapter_path(chapter.trip, chapter), method: :delete %></li>
+	</ul>
 	<p><%= chapter.location %></p>
 </div>
