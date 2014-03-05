@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 		@post = @chapter.posts.new(post_params)
 		if @post.save
        params[:post_attachments]['post_image'].each do |a|
-       	  @post_attachment = @post.post_attachments.create!(:post_image => a, :post_id => @post.id)
+       	  @post_attachment = @post.post_attachments.create!(:postimage => a, :post_id => @post.id)
        end
 			flash[:success] = "Your post has been created successfully"
 			redirect_to trip_chapter_path(@post.trip, @post.chapter)

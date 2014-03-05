@@ -1,4 +1,4 @@
 class PostAttachment < ActiveRecord::Base
-	 mount_uploader :post_image, PostImageUploader
+	 mount_uploader :postimage, PostImageUploader
    belongs_to :post
 end
