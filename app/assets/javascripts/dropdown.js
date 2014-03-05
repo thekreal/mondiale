@@ -5,7 +5,7 @@ $(document).ready(function() {
     dropDown.click(function(event) {
       toggleMenu
         .css({ width: dropDown.parent().width() })
-        .slideToggle(200, 'easeInOutQuad')
+        .slideToggle(200, 'easeInOutQuad');
     });
   }
 });
