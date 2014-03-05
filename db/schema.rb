@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140305002753) do
+ActiveRecord::Schema.define(version: 20140305201916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "authentications", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.string   "provider",   null: false
-    t.string   "uid",        null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "chapters", force: true do |t|
     t.string   "title"
@@ -31,6 +23,13 @@ ActiveRecord::Schema.define(version: 20140305002753) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+  end
+
+  create_table "post_attachments", force: true do |t|
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "postimage"
   end
 
   create_table "posts", force: true do |t|
@@ -43,6 +42,7 @@ ActiveRecord::Schema.define(version: 20140305002753) do
     t.string   "location"
     t.decimal  "longitude",  precision: 9, scale: 6
     t.decimal  "latitude",   precision: 9, scale: 6
+    t.string   "postimage"
   end
 
   create_table "trips", force: true do |t|
