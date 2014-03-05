@@ -48,7 +48,7 @@ private
   end
 
   def chapter_params
-  	params.require(:chapter).permit(:title, :location, :longitude, :latitude)
+  	params.require(:chapter).permit(:title, :description)
   end
 
 end
