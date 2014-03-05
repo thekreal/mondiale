@@ -1,9 +1,8 @@
 <div class = "trip" >
 
 	<h2><%= link_to trip.title, trip_path(trip) %></h2>
+	<p>Created by: <%= trip.user.name %></p>
 	<p><%= trip.description %></p>
-
-	<p><%= trip.user.name %></p>
 
 	<h2>Dates</h2>
 	<p>From <%= trip.start_date %> to <%= trip.end_date %></p>
