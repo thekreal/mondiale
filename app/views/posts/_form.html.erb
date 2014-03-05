@@ -1,4 +1,4 @@
-<%= form_for [@post.trip, @post.chapter, @post] do |f| %>
+<%= form_for [@post.trip, @post.chapter, @post],  :html => { :multipart => true }  do |f| %>
 
 <%= render 'alerts/error_message', object: @post %>
 
@@ -43,6 +43,15 @@
       <%= f.text_area :content, class: "form-input" %>
     </div>
   </div>
+
+<div class="form-field">
+ <%= f.fields_for :post_attachments do |p| %>
+     <div class="field">
+       <%= p.label :post_image %><br>
+       <%= p.file_field :post_image, :multiple => true, name: "post_attachments[post_image][]" %>
+     </div>
+   <% end %>
+ </div>
 
   <div class="form-field">
     <div class="form-label"></div>
