@@ -11,7 +11,6 @@ class PostsController < ApplicationController
 		@post = @chapter.posts.new(post_params)
 		if @post.save
 			flash[:success] = "Your post has been created successfully"
-			flash[:info] = "#{@post.trip}"
 			redirect_to trip_chapter_path(@post.trip, @post.chapter)
 		else
 			render :new
