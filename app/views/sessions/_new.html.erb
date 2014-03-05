@@ -1,7 +1,7 @@
 <% provide :page_title, "Sign In" %>
 
 <div class="signin-form">
-<%= form_for :session, url: sessions_path, remote: true, html: { class: "form-container" } do |f|%>
+<%= form_for :session, url: sessions_path, html: { class: "form-container" } do |f|%>
 
   <legend class="form-title"><%= yield(:page_title) %></legend>
 
@@ -31,6 +31,7 @@
     <div class="form-label"></div>
     <div class="form-control">
       <%= f.submit "Sign In", class: "form-btn" %>
+      <%= link_to "Back", '#', class: "form-btn close" %>
     </div>
   </div>
 

@@ -4,12 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = login(params[:session][:email], params[:session][:password], params[:session][:remember])
-      flash[:success] = "You are now logged in"
-      redirect_back_or_to(user)
-    else
-      flash.now[:danger] = "Invalid email / password combination"
-      render :new
+    respond_to do |format|
+      if user = login(params[:session][:email], params[:session][:password], params[:session][:remember])
+        flash[:success] = "You are now logged in"
+        format.html { redirect_back_or_to(user) }
+      else
+        flash.now[:danger] = "Invalid email / password combination"
+        format.html { render :new }
+      end
     end
   end
 

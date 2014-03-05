@@ -1,18 +1,29 @@
-$(document).ready(function() {
+function insertAlert(element) {
+  element.insertAfter('.navbar')
+}
+
+function alertToggle(alerts) {
+  alerts = alerts || $("[class*='alert']")
+  alerts.slideToggle(800, 'easeInOutQuad');
+}
+
+function alertCloseBtn(alerts) {
+  alerts.children('.close').click(function() {
+    $(this).parent().slideToggle(800, 'easeInOutQuad', function() {
+      $(this).remove();
+    })
+  })
+}
+
+function flashAlertEffect() {
   var alerts = $("[class*='alert']");
 
-  // if there is an alert
   if (alerts.length) {
-
     // slide down to show the message
-    alerts.slideToggle(800, 'easeInOutQuad');
+    alertToggle(alerts);
 
     // when clicked on close button, slide up
-    alerts.children('.close').click(function() {
-      $(this).parent().slideToggle(800, 'easeInOutQuad', function() {
-        $(this).remove();
-      })
-    })
+    alertCloseBtn(alerts)
 
   }
-});
+}

@@ -13,3 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+// Initializer
+$(document).ready(function() {
+  flashAlertEffect();
+  dropdownListBtn();
+});

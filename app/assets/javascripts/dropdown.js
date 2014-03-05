@@ -1,4 +1,4 @@
-$(document).ready(function() {
+function dropdownListBtn() {
   var dropDown = $('.dropdown');
   if (dropDown.length) {
     var toggleMenu = $('#' + dropDown.data('toggling'))
@@ -8,4 +8,4 @@ $(document).ready(function() {
         .slideToggle(200, 'easeInOutQuad');
     });
   }
-});
+}

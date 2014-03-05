@@ -29,7 +29,7 @@
       margin: 0px -2px;
     }
     .btn {
-      @include btn($black, 0.75);
+      @include btn($black, 16px, 0.75);
       top: -5px;
       padding-top: 20px;
       padding-right: 20px;

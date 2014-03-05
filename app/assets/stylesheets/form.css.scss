@@ -1,6 +1,6 @@
 $form-width: 500px;
 
-@mixin form($pos: 'relative', $width: $form-width) {
+@mixin form($color: $blue, $pos: 'relative', $width: $form-width) {
   z-index: 4;
   width: $width;
   position: $pos;
@@ -15,7 +15,7 @@ $form-width: 500px;
     margin-bottom: 10px;
     padding: 5px 15px;
     width: 100%;
-    background: darken($blue, 40%);
+    background: darken($color, 30%);
     color: $white;
     font-weight: 800;
     font-size: 3em;
@@ -42,10 +42,14 @@ $form-width: 500px;
 
     }
 
+    .form-btn {
+      @include btn(darken($blue, 30%), 14px, 1);
+      display: inline-block;
+    }
   }
 }
 
 .signin-form {
-  @include form(fixed, 400px);
+  @include form($blue, fixed, 400px);
 
 }
