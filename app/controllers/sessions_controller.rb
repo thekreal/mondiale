@@ -16,6 +16,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    cookies.delete :last_trip_viewed
+    cookies.delete :last_chapter_viewed
     logout
     flash[:success] = "You are now logged out"
     redirect_to root_path
