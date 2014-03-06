@@ -1,6 +1,7 @@
 .navbar {
-  background: rgba(80, 80, 80, 0.2);
+  @include animation;
   box-shadow: 0 0 6px -3px rgba(80, 80, 80, 0.7);
+  background-color: rgba(80, 80, 80, 0.2);
 
   .nav-brand {
     position: relative;

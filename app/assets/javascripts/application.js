@@ -32,5 +32,15 @@ $(document).ready(function() {
 
 });
 
+$(window).scroll(function() {
+
+
+    if ($(this).scrollTop() > 400) {
+        $( ".navbar" ).css('background', '#000000');
+    } else {
+        console.log('there');
+        $( ".navbar" ).animate(  { backgroundColor: "rgba( 128, 128, 128, 1 )" });
+    }
+	});
 
 });
