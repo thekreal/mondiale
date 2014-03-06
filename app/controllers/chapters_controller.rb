@@ -4,6 +4,8 @@ class ChaptersController < ApplicationController
   def show
     @posts = @chapter.posts
     @trip = @chapter.trip
+    cookies.permanent[:last_trip_viewed] = @chapter.trip.id
+    cookies.permanent[:last_chapter_viewed] = @chapter.id
   end
 
 	def new

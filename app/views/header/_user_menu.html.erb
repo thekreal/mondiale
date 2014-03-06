@@ -4,7 +4,7 @@
 <li>
 
   <% if current_user && cookies.permanent[:last_chapter_viewed] && cookies.permanent[:last_trip_viewed] %>
-    <%= link_to 'Post to current chapter', new_trip_chapter_post_path(:trip_id => cookies.permanent[:last_trip_viewed], :chapter_id => cookies.permanent[:last_chapter_viewed]), class: "btn" %></li>
+    <%= link_to 'View most recent chapter', trip_chapter_path(:trip_id => cookies.permanent[:last_trip_viewed], :id => cookies.permanent[:last_chapter_viewed]), class: "btn" %></li>
   <% end %>
   <li>
     <%= link_to "#", class: "dropdown btn", data: { toggling: "user-dropdown" } do %>
