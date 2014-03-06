@@ -21,6 +21,7 @@ $(document).ready(function() {
   dropdownListBtn();
 });
 
+
 $('.del-pic').on('click',function(e){
   e.preventDefault();
   myUrl = $(this).att('href');
