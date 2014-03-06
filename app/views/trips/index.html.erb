@@ -1,9 +1,10 @@
 <h1>Trips index</h1>
 
-<%= form_tag trips_path, method: :get, id: "search-from" do %>
+<%= form_tag trips_path, method: :get, remote: true, id: "search-from" do %>
     <%= text_field_tag :search, params[:search], placeholder: "Type In a Location" %>
   <% end %>
-
-<%= render @trips %>
+<div class="trips-index">
+	<%= render @trips %>
+</div>
 
 <%= params %>

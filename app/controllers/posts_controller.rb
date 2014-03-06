@@ -5,7 +5,6 @@ class PostsController < ApplicationController
 		@chapter = Chapter.find(params[:chapter_id])
 		@post = @chapter.posts.new()
    	@post_attachment = @post.post_attachments.build
-
 	end
 
 	def create
@@ -60,7 +59,7 @@ private
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :content, :date, :postimage, :location)
+		params.require(:post).permit(:title, :content, :date, :location, :post_attachments)
 	end
 
 end

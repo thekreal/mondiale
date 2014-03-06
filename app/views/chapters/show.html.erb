@@ -17,7 +17,7 @@
 
 			<h4><%= p.title %></h4>
 			<ul>
-				<li><%= p.content %></li>
+				<li><%= markdown(p.content) %></li>
 
 				<% p.post_attachments.each do |pic| %>
 		  		<%= image_tag pic.postimage_url(:big) %>

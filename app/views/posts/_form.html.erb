@@ -1,6 +1,6 @@
 <div class="form">
 
-<%= form_for [@post.trip, @post.chapter, @post],  :html => { :multipart => true, class: "form-container" }  do |f| %>
+<%= form_for [@post.trip, @post.chapter, @post], html: { multipart: true, class: "form-container" }  do |f| %>
 
   <legend class="form-title"><%= title %></legend>
 
@@ -37,8 +37,10 @@
 <div class="form-field">
  <%= f.fields_for :post_attachments do |p| %>
      <div class="field">
+
        <%= p.label :postimage %><br>
        <%= p.file_field :postimage, :multiple => true, name: "post_attachments[postimage][]" %>
+
      </div>
    <% end %>
  </div>

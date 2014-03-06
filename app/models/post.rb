@@ -1,16 +1,12 @@
 class Post < ActiveRecord::Base
+  mount_uploader :postimage, PostImageUploader
 
 	belongs_to :chapter
 
-	has_many :post_attachments
+	has_many :post_attachments, dependent: :delete_all
  	accepts_nested_attributes_for :post_attachments
-  mount_uploader :postimage, PostImageUploader
 
-
-  # returns trip object when type post.trip
   has_one :trip, through: :chapter
-  # delegate :trip, to: :chapter
-
 
 	validates :title,     presence: true
   validates :content,   presence: true
