@@ -12,9 +12,7 @@ class PostsController < ApplicationController
 		@chapter = Chapter.find(params[:chapter_id])
 		@post = @chapter.posts.new(post_params)
 		if @post.save
-       params[:post_attachments]['post_image'].each do |a|
-       	  @post_attachment = @post.post_attachments.create!(:postimage => a, :post_id => @post.id)
-       end
+      save_images
 			flash[:success] = "Your post has been created successfully"
 			redirect_to trip_chapter_path(@post.trip, @post.chapter)
 		else
@@ -31,9 +29,7 @@ class PostsController < ApplicationController
 
 	def update
 		if @post.update(post_params)
-			 params[:post_attachments]['post_image'].each do |a|
-       	  @post_attachment = @post.post_attachments.create!(:postimage => a, :post_id => @post.id)
-       	end
+			save_images
 			flash[:success] = "Your post has been updated successfully"
 			redirect_to trip_chapter_path(@post.trip, @post.chapter)
 		else
@@ -49,6 +45,13 @@ class PostsController < ApplicationController
 	end
 
 private
+
+	def save_images
+		params[:post_attachments]['post_image'].each do |a|
+   	  @post_attachment = @post.post_attachments.create!(:postimage => a, :post_id => @post.id)
+    end
+	end
+
 
 	def set_post
 		@post = Post.find(params[:id])
