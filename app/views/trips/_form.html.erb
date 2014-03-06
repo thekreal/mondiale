@@ -1,4 +1,4 @@
-<div class="form">
+<div class="form" id="trip-form">
 <%= form_for @trip, html: { class: "form-container" } do |f| %>
 
   <legend class="form-title"><%= title %></legend>
@@ -6,16 +6,10 @@
   <%= render 'alerts/error_message', object: @trip %>
 
   <div class="form-field">
-    <%= f.label :title, class: "form-label" %>
     <div class="form-control">
-      <%= f.text_field :title, class: "form-input" %>
-    </div>
-  </div>
-
-  <div class="form-field">
-    <%= f.label :description, class: "form-label" %>
-    <div class="form-control">
-      <%= f.text_area :description, class: "form-input" %>
+      <%= f.text_field :title, class: "form-input", placeholder: "Trip Title" %>
+      <%= f.text_area :description, class: "form-input",
+          placeholder: "Give your trip a description (markdown)" %>
     </div>
   </div>
 
