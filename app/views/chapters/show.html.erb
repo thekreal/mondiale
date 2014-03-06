@@ -5,7 +5,7 @@
 <p> <%= link_to "create a new post", new_trip_chapter_post_path(@trip, @chapter) %> </p>
 <% end %>
 
-<h2>Chapter <%= @chapter.id %>: <%= @chapter.title %></h2>
+<h1>Chapter <%= @chapter.id %>: <%= @chapter.title %></h1>
 <p><%= @chapter.description %></p>
 <br>
 <div id="map-canvas" style="width: 400px; height: 400px;" data-latitude="<%= @chapter.posts[0].latitude %>" data-longitude="<%= @chapter.posts[0].longitude %>">
