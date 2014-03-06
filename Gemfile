@@ -16,7 +16,7 @@ gem "mini_magick", "~> 3.7.0"
 #gem 'sqlite3'
 
 #12 factor for deployment
-gem 'rails_12factor'
+gem 'rails_12factor',  group: :production
 
 # Use postgresql as the database for Active Record
 gem 'pg'
