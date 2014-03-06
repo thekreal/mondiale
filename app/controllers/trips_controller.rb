@@ -3,7 +3,7 @@ class TripsController < ApplicationController
   before_action :set_trip, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:search] &&  params[:search] != ""
+    if params[:search] && !params[:search].empty?
       @trips = Post.near(params[:search], 1000).order("distance").map(&:trip).uniq
     else
       @trips = Trip.all
