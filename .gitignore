@@ -16,4 +16,5 @@
 /tmp
 
 # Ignore user content
-/public/uploads/*
+public/uploads/*
+config/application.yml
