@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 			flash[:success] = "Your post has been created successfully"
 			redirect_to trip_chapter_path(@post.trip, @post.chapter)
 		else
-			format.html { render action: 'new' }
+			render :new
 		end
 	end
 

@@ -18,4 +18,4 @@
 # Ignore user content
 /public/uploads/*
 
-config/application.yml
+/config/application.yml

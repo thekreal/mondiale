@@ -1,4 +1,9 @@
 <h1><%= @trip.title %></h1>
+
+<div id="map-canvas" style="width: 400px; height: 400px;">
+
+</div>
+
 <p><%= markdown(@trip.description) %></p>
 
 <% if @trip.user == current_user %>
