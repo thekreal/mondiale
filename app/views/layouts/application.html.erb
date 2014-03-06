@@ -16,10 +16,10 @@
 
   <%= render 'header/index' %>
 
-  <%= render 'alerts/flash_message' %>
-
-  <div class="content"><%= yield %></div>
-
+  <div class="content">
+    <%= render 'alerts/flash_message' %>
+    <%= yield %>
+  </div>
 
   <%= params %>
 
