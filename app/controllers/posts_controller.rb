@@ -47,9 +47,11 @@ class PostsController < ApplicationController
 private
 
 	def save_images
-		params[:post_attachments]['post_image'].each do |a|
-   	  @post_attachment = @post.post_attachments.create!(:postimage => a, :post_id => @post.id)
-    end
+		if params[:post_attachments]
+			params[:post_attachments]['postimage'].each do |a|
+	   	  @post_attachment = @post.post_attachments.create!(:postimage => a, :post_id => @post.id)
+    	end
+  	end
 	end
 
 

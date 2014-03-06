@@ -51,8 +51,8 @@
 <div class="form-field">
  <%= f.fields_for :post_attachments do |p| %>
      <div class="field">
-       <%= p.label :post_image %><br>
-       <%= p.file_field :post_image, :multiple => true, name: "post_attachments[post_image][]" %>
+       <%= p.label :postimage %><br>
+       <%= p.file_field :postimage, :multiple => true, name: "post_attachments[postimage][]" %>
      </div>
    <% end %>
  </div>
