@@ -46,8 +46,10 @@
 
   <% @post.post_attachments.each do |pic| %>
     <% if pic.id %>
-      <%= image_tag pic.postimage_url(:thumb), id: pic.id %>
+      <div id = <%= 'pic'+ pic.id.to_s %>>
+      <%= image_tag pic.postimage_url(:thumb) %>
       <%= link_to 'remove', delete_picture_path(:id => pic.id), {:method => "post", class: "del-pic", :remote => true}  %>
+      </div>
     <% end %>
     <br>
   <% end %>
