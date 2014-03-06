@@ -23,15 +23,11 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro|Nixie+One);
 @import 'layouts';
 @import 'form_template';
+@import 'forms/new_trip';
+
 /* Page Style */
 @import 'alerts';
-
-
-
 @import 'header';
-
 @import 'trips';
-@import 'trips/form';
-
 @import 'welcome';
 
