@@ -4,6 +4,11 @@ class ChaptersController < ApplicationController
   def show
     @posts = @chapter.posts
     @trip = @chapter.trip
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 	def new
