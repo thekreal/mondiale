@@ -5,14 +5,13 @@ class PostsController < ApplicationController
 		@chapter = Chapter.find(params[:chapter_id])
 		@post = @chapter.posts.new()
    	@post_attachment = @post.post_attachments.build
-
 	end
 
 	def create
 		@chapter = Chapter.find(params[:chapter_id])
 		@post = @chapter.posts.new(post_params)
 		if @post.save
-       params[:post_attachments]['post_image'].each do |a|
+       params[:post_attachments][:post_image].each do |a|
        	  @post_attachment = @post.post_attachments.create!(:postimage => a, :post_id => @post.id)
        end
 			flash[:success] = "Your post has been created successfully"
@@ -55,7 +54,7 @@ private
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :content, :date, :postimage, :location)
+		params.require(:post).permit(:title, :content, :date, :location, :post_attachments)
 	end
 
 end
