@@ -1,9 +1,7 @@
 function initialize() {
   var mapDiv = document.getElementById("map-canvas");
   var posts = $(mapDiv).data('post');
-  console.log(posts)
   var center = $(mapDiv).data('center');
-  console.log(center[0])
 
   var mapOptions = {
     center: new google.maps.LatLng(center[0], center[1]),
@@ -11,40 +9,36 @@ function initialize() {
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
-
   var map = new google.maps.Map(mapDiv, mapOptions);
 
+  $(posts).each(function() {
+    addMarker(this, map);
+  });
+
 }
+
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function addMarkers() {
-  var bounds = map.getBounds();
-  var southWest = bounds.getSouthWest();
-  var northEast = bounds.getNorthWest();
-  var lngSpan = northEast.lng() - southWest.lng();
-  var latSpan = northEast.lat() - southWest.lat();
-  for (var i = 0; i < 10; i++) {
-    var latLng = new google.maps.LatLng(southWest.lat() + latSpan * Math.random(),
-                                        northEast.lng() + lngSpan * Math.random());
-    var marker = new google.maps.Marker({
-      position: latLng,
-      map: map
-    })
-  }
+function addMarker(obj, map) {
+  var pos = new google.maps.LatLng(obj.latitude, obj.longitude);
+
+  var infoWindow = new google.maps.InfoWindow({
+    content: "<h1>" + obj.title + "</h1>" + "<p>" + obj.content + "</p>"
+  });
+
+  var marker = new google.maps.Marker({
+    position: pos,
+    map: map
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infoWindow.open(map, marker);
+  })
+
 }
 
 
-// function GoogleMap() {
-//   var url = "https://maps.googleapis.com/maps/api/js?",
-//       api_key = "key=AIzaSyD8krFfDfDAa2DxTzMgpWTTdbzoqTRsDKI",
-//       api_opts = [api_key, "libraries=geometry", "sensor=false"],
-//       access = url + api_opts.join('&');
 
-//   this.a = function() {
-//     return access;
-//   }
-
-//   this.generateMapCanvas = function() {
-
-//   }
-// }
+// google.maps.event.addListener(map, 'click', function() {
+//   alert('hi');
+// });
