@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
 	def create
 		@chapter = Chapter.find(params[:chapter_id])
+		cookies.permanent[:last_trip_viewed] = @chapter.trip.id
+		cookies.permanent[:last_chapter_viewed] = @chapter.id
 		@post = @chapter.posts.new(post_params)
 		if @post.save
       save_images

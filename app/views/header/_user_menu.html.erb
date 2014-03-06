@@ -1,16 +1,20 @@
 <ul class="nav-menu">
-  <li><%= link_to 'Post Your Trip', new_trip_path, class: "btn" %></li>
-  <li><%= link_to 'Discover Trips', trips_path, class: "btn" %></li>
+  <li><%= link_to 'Create trip', new_trip_path, class: "btn" %></li>
+  <li><%= link_to 'Discover trips', trips_path, class: "btn" %></li>
+<li>
 
+  <% if cookies.permanent[:last_chapter_viewed] && cookies.permanent[:last_trip_viewed] %>
+    <%= link_to 'Post to current chapter', new_trip_chapter_post_path(:trip_id => cookies.permanent[:last_trip_viewed], :chapter_id => cookies.permanent[:last_chapter_viewed]), class: "btn" %></li>
+  <% end %>
   <li>
     <%= link_to "#", class: "dropdown btn", data: { toggling: "user-dropdown" } do %>
       <%= current_user.name %>
       <%= image_tag current_user.gravatar(50), class: "gravatar" %>
     <% end %>
     <ul id="user-dropdown" class="dropdown-menu">
-      <li><%= link_to 'My Profile', current_user, class: "btn" %></li>
-      <li><%= link_to 'Edit Profile', edit_user_path(current_user), class: "btn" %></li>
-      <li><%= link_to 'Sign Out', :signout, class: "btn" %></li>
+      <li><%= link_to 'My profile', current_user, class: "btn" %></li>
+      <li><%= link_to 'Edit profile', edit_user_path(current_user), class: "btn" %></li>
+      <li><%= link_to 'Sign out', :signout, class: "btn" %></li>
     </ul>
   </li>
 
