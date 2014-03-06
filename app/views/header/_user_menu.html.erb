@@ -3,7 +3,7 @@
   <li><%= link_to 'Discover trips', trips_path, class: "btn" %></li>
 <li>
 
-  <% if cookies.permanent[:last_chapter_viewed] && cookies.permanent[:last_trip_viewed] %>
+  <% if current_user && cookies.permanent[:last_chapter_viewed] && cookies.permanent[:last_trip_viewed] %>
     <%= link_to 'Post to current chapter', new_trip_chapter_post_path(:trip_id => cookies.permanent[:last_trip_viewed], :chapter_id => cookies.permanent[:last_chapter_viewed]), class: "btn" %></li>
   <% end %>
   <li>
