@@ -36,10 +36,10 @@ $(window).scroll(function() {
 
 
     if ($(this).scrollTop() > 400) {
-        $( ".navbar" ).css('background', '#000000');
-    } else {
+        $( ".navbar" ).css( { backgroundColor: "rgba( 0, 0, 0, 0.8 )" } );
+    } else if ($(this).scrollTop() < 400) {
         console.log('there');
-        $( ".navbar" ).animate(  { backgroundColor: "rgba( 128, 128, 128, 1 )" });
+        $( ".navbar" ).css(  { backgroundColor: "rgba( 80, 80, 80, 0.4 )" });
     }
 	});
 
