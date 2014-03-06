@@ -19,4 +19,18 @@
 $(document).ready(function() {
   flashAlertEffect();
   dropdownListBtn();
+
+
+	$('.del-pic').on('click',function(e){
+
+	e.preventDefault();
+	myUrl = $(this).attr('href');
+	$.ajax({
+		url: myUrl,
+		type: 'POST'
+	});
+
+});
+
+
 });

@@ -1,13 +1,14 @@
 Mondiale::Application.routes.draw do
 
 	resources :posts, except: [:show, :index]
-  resources :post_attachments
+
   resources :trips do
   	resources :chapters do
       resources :posts, except: [:show, :index]
       end
     end
 
+  post 'delete_picture' =>      'post_attachments#destroy', as: :delete_picture
   get 'signup'          =>      'users#new',                as: :signup
   resources :users
 

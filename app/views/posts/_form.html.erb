@@ -37,11 +37,24 @@
 <div class="form-field">
  <%= f.fields_for :post_attachments do |p| %>
      <div class="field">
-       <%= p.label :post_image %><br>
-       <%= p.file_field :post_image, multiple: true, name: "post_attachments[post_image][]" %>
+
+       <%= p.label :postimage %><br>
+       <%= p.file_field :postimage, :multiple => true, name: "post_attachments[postimage][]" %>
+
      </div>
    <% end %>
  </div>
+
+
+  <% @post.post_attachments.each do |pic| %>
+    <% if pic.id %>
+      <div id = <%= 'pic'+ pic.id.to_s %>>
+      <%= image_tag pic.postimage_url(:thumb) %>
+      <%= link_to 'remove', delete_picture_path(:id => pic.id), {:method => "post", class: "del-pic", :remote => true}  %>
+      </div>
+    <% end %>
+    <br>
+  <% end %>
 
   <div class="form-field">
     <div class="form-label"></div>
