@@ -1,7 +1,6 @@
 <h1><%= @trip.title %></h1>
 
 <div id="map-canvas" data-objects="<%= @trip.posts.to_json %>" data-center-point="<%= center_of_all_locations(@trip.posts).to_json %>">
-
 </div>
 
 <p><%= markdown(@trip.description) %></p>

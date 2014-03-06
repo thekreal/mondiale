@@ -1,0 +1,33 @@
+from new:
+
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EtYRV7VLRqhEdvC3S0r9c0lodhcrqGXF58T1+sr0hrg=", "post"=>{"title"=>"Something with pictures", "date"=>"2014-03-22", "location"=>"sedona, az", "longitude"=>"", "latitude"=>"", "content"=>"what does the opst params look like"}, "post_attachments"=>{"post_image"=>[#<ActionDispatch::Http::UploadedFile:0x007fc4bac3a3d0 @tempfile=#<Tempfile:/var/folders/qv/qvpkb6nj4p9bj2rzrcqw3xf40000gn/T/RackMultipart20140305-17646-1ed4snn>, @original_filename="P1093201.JPG", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post_attachments[post_image][]\"; filename=\"P1093201.JPG\"\r\nContent-Type: image/jpeg\r\n">]}, "commit"=>"Post", "trip_id"=>"5", "chapter_id"=>"4"}
+
+
+  from edit:
+
+    Parameters: {"utf8"=>"✓", "authenticity_token"=>"EtYRV7VLRqhEdvC3S0r9c0lodhcrqGXF58T1+sr0hrg=", "post"=>{"title"=>"Something with pictures", "date"=>"2014-03-22", "location"=>"sedona, az", "longitude"=>"-111.760990", "latitude"=>"34.869740", "content"=>"what does the opst params look like", "post_attachments_attributes"=>{"0"=>{"id"=>"24"}}}, "commit"=>"Update", "trip_id"=>"5", "chapter_id"=>"4", "id"=>"40"}
+
+
+empty new
+
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EtYRV7VLRqhEdvC3S0r9c0lodhcrqGXF58T1+sr0hrg=", "post"=>{"title"=>"By air2", "date"=>"2014-03-13", "location"=>"sedona, az", "longitude"=>"", "latitude"=>"", "content"=>"loo"}, "commit"=>"Post", "trip_id"=>"5", "chapter_id"=>"4"}
+
+
+
+<%= link_to 'remove picture', remove_picture_path(:) %>
+
+
+
+
+  <p>
+    <label>My Avatar</label>
+    <%= image_tag(@user.avatar_url) if @user.avatar? %>
+    <%= f.file_field :postimage %>
+  </p>
+
+  <p>
+    <label>
+      <%= f.check_box :remove_postimage %>
+      Remove avatar
+    </label>
+  </p>

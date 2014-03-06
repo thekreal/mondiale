@@ -1,4 +1,8 @@
 #map-canvas {
+  display: block;
+  margin: 0 auto;
   width: 800px;
-  height: 400px;
+  height: 500px;
+  border: 10px solid $white;
+  box-shadow: 0 0 6px -3px rgba(60, 60, 60, 0.5);
 }

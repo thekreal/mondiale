@@ -1,5 +1,5 @@
 <div class="chapter">
-	<h3><%= link_to "#{chapter.title}", trip_chapter_path(@trip, chapter) %></h3>
+	<h3><%= link_to "#{chapter.title}", trip_chapter_path(@trip, chapter)%></h3>
 	<p><%= markdown(chapter.description) %></p>
 
 	<% if chapter.trip.user == current_user %>

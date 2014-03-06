@@ -11,19 +11,13 @@ function initialize() {
 
   var map = new google.maps.Map(mapDiv, mapOptions);
 
-  var LatLngList = [];
+  var bounds = new google.maps.LatLngBounds();
   $(objects).each(function() {
-    LatLngList.push(new google.maps.LatLng(this.latitude, this.longitude));
+    bounds.extend(new google.maps.LatLng(this.latitude, this.longitude));
     addMarker(this, map);
   });
-  var bounds = new google.maps.LatLngBounds();
-  for (var i = 0; i < LatLngList.length; i ++) {
-    bounds.extend(LatLngList[i]);
-  }
   map.fitBounds(bounds);
 }
-
-google.maps.event.addDomListener(window, 'load', initialize);
 
 function addMarker(obj, map) {
   var pos = setLatLng(obj.latitude, obj.longitude);
@@ -52,3 +46,5 @@ function addInfoWindow(obj) {
 function postSummary(obj) {
   return "<h1>" + obj.title + "</h1>" + "<p>" + obj.content + "</p>"
 };
+
+google.maps.event.addDomListener(window, 'load', initialize);

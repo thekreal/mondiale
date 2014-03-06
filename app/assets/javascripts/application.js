@@ -19,7 +19,7 @@
 $(document).ready(function() {
   flashAlertEffect();
   dropdownListBtn();
-});
+
 
 
 $('.del-pic').on('click',function(e){
@@ -31,5 +31,22 @@ $('.del-pic').on('click',function(e){
 		type: 'POST'
 	});
 
-});
+	});
 
+
+
+$(window).scroll(function() {
+
+
+    if ($(this).scrollTop() > 400) {
+        $( ".navbar" ).css( { backgroundColor: "rgba( 0, 0, 0, 0.8 )" } );
+    } else if ($(this).scrollTop() < 400) {
+        console.log('there');
+        $( ".navbar" ).css(  { backgroundColor: "rgba( 80, 80, 80, 0.4 )" });
+    }
+	});
+
+
+
+
+});

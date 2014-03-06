@@ -11,8 +11,14 @@
  */
 
 
+
+/* Reset all css styling */
+
+@import 'normalize';
+
 // CSS RESET
-@import 'css_reset';
+// @import 'css_reset';
+
 
 // THIRD PARTY PLUGINS
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro|Nixie+One);

@@ -8,6 +8,8 @@ class Trip < ActiveRecord::Base
                           uniqueness: true
   validates :description, presence: true
 
+  scope :most_recent, -> { order(created_at: :desc)}
+
   def start_date
     if self.posts.any?
     posts.first.date.to_date.to_formatted_s(:long)
