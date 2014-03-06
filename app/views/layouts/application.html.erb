@@ -3,6 +3,7 @@
 <head>
   <title><%= titler(yield(:page_title)) %></title>
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <script type="text/javascript" src=<%= google_api_access %>></script>
 
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
@@ -13,10 +14,10 @@
 
   <%= render 'header/index' %>
 
-  <%= render 'alerts/flash_message' %>
-
-  <div class="content"><%= yield %></div>
-
+  <div class="content">
+    <%= render 'alerts/flash_message' %>
+    <%= yield %>
+  </div>
 
   <%= params %>
 

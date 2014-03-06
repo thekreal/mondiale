@@ -11,28 +11,34 @@
  */
 
 
+
 /* Reset all css styling */
-// @import 'css_reset';
+
 @import 'normalize';
 
-/* All variables and colors */
+// CSS RESET
+// @import 'css_reset';
+
+
+// THIRD PARTY PLUGINS
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro|Nixie+One);
+
+// VARIABLES AND MIXIN LIBRARIES
 @import 'variables';
 @import 'libraries';
 
-/* General HTML style */
+// GENERAL STYLE
 @import 'general_style';
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro|Nixie+One);
 @import 'layouts';
+
+// FORMS
 @import 'form_template';
-/* Page Style */
+@import 'forms/new_trip';
+
+// PAGE STYLE
 @import 'alerts';
-
-
-
 @import 'header';
-
 @import 'trips';
-@import 'trips/form';
-
 @import 'welcome';
+@import 'google_map_canvas';
 

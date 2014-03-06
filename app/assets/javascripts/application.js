@@ -21,16 +21,18 @@ $(document).ready(function() {
   dropdownListBtn();
 
 
-	$('.del-pic').on('click',function(e){
+$('.del-pic').on('click',function(e){
+  e.preventDefault();
+  myUrl = $(this).att('href');
 
-	e.preventDefault();
-	myUrl = $(this).attr('href');
 	$.ajax({
 		url: myUrl,
 		type: 'POST'
 	});
 
-});
+	});
+
+
 
 $(window).scroll(function() {
 
@@ -42,5 +44,8 @@ $(window).scroll(function() {
         $( ".navbar" ).css(  { backgroundColor: "rgba( 80, 80, 80, 0.4 )" });
     }
 	});
+
+
+
 
 });
