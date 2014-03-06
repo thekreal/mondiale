@@ -28,20 +28,6 @@
   </div>
 
   <div class="form-field">
-    <%= f.label :longitude, class: "form-label" %>
-    <div class="form-control">
-      <%= f.text_field :longitude, class: "form-input" %>
-    </div>
-  </div>
-
-  <div class="form-field">
-    <%= f.label :latitude, class: "form-label" %>
-    <div class="form-control">
-      <%= f.text_field :latitude, class: "form-input" %>
-    </div>
-  </div>
-
-  <div class="form-field">
     <%= f.label :content, class: "form-label" %>
     <div class="form-control">
       <%= f.text_area :content, class: "form-input" %>
@@ -56,6 +42,15 @@
      </div>
    <% end %>
  </div>
+
+
+  <% @post.post_attachments.each do |pic| %>
+    <% if pic.id %>
+      <%= image_tag pic.postimage_url(:thumb), id: pic.id %>
+      <%= link_to 'remove', delete_picture_path(:id => pic.id), {:method => "post", class: "del-pic", :remote => true}  %>
+    <% end %>
+    <br>
+  <% end %>
 
   <div class="form-field">
     <div class="form-label"></div>
