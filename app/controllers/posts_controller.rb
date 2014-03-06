@@ -31,6 +31,9 @@ class PostsController < ApplicationController
 
 	def update
 		if @post.update(post_params)
+			 params[:post_attachments]['post_image'].each do |a|
+       	  @post_attachment = @post.post_attachments.create!(:postimage => a, :post_id => @post.id)
+       	end
 			flash[:success] = "Your post has been updated successfully"
 			redirect_to trip_chapter_path(@post.trip, @post.chapter)
 		else
