@@ -18,6 +18,9 @@ class TripsController < ApplicationController
 
   def show
     @chapters = @trip.chapters
+    if @trip.coverphoto
+      @cover = PostAttachment.find(@trip.coverphoto)
+    end
   end
 
   def new
@@ -32,6 +35,16 @@ class TripsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def set_photo
+    set_trip
+  end
+
+  def set_photo_save
+    set_trip
+    @trip.coverphoto = params[:pid]
+    @trip.save
   end
 
   def edit

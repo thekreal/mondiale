@@ -1,0 +1,10 @@
+<% @trip.posts.each do |po| %>
+	<% po.post_attachments.each do |pic| %>
+	  <% if pic.id %>
+	    <div id = <%= 'pic'+ pic.id.to_s %>>
+	    <%= image_tag pic.postimage_url(:thumb) %>
+	    <%= link_to 'set as trip cover', set_trip_cover_path(:pid => pic.id, :id => @trip.id), {:method => "post", class: "sel-pic", :remote => true}  %>
+	    </div>
+	  <% end %>
+	<% end %>
+<% end %>
