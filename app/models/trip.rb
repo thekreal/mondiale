@@ -38,4 +38,8 @@ class Trip < ActiveRecord::Base
       except: :postimage )
   end
 
+  def self.highest_rated
+    self.order("cached_votes_total DESC")
+  end
+
 end
