@@ -11,7 +11,6 @@ function addMarker(obj, map) {
     position: pos,
     map: map
   });
-
   google.maps.event.addListener(marker, 'click', function() {
     infoWindow.open(map, marker);
   })
@@ -33,14 +32,19 @@ function mapOptions(centerPos) {
   }
 }
 
-function setPolyline(map, path) {
-  new google.maps.Polyline({
+function setPolyline(map, path, type) {
+  type = type || google.maps.SymbolPath.FORWARD_CLOSED_ARROW;
+  var line = new google.maps.Polyline({
     path: path,
     geodesic: true,
-    strokeColor: '#EE8E8E',
+    strokeColor: '#EE8F8F',
     strokeOpacity: 1.0,
-    strokeWeight: 2
-  }).setMap(map);
+    strokeWeight: 2,
+    icons: [{
+      icon: { path: type }
+    }],
+    map: map
+  });
 };
 
 function setBound(map, path) {
@@ -51,7 +55,37 @@ function setBound(map, path) {
   map.fitBounds(bounds);
 };
 
+function mapStyle() {
+  return [
+    {
+      stylers: [
+        { hue: '#82ff6b' },
+        { visibility: 'simplified' }
+      ]
+    },
+    {
+      elementType: 'labels',
+      stylers: [
+        { visibility: 'on' }
+      ]
+    },
+    {
+      featureType: 'water',
+      stylers: [
+        { color: '#EEEEEE' }
+      ]
+    },
+    {
+      featureType: 'road',
+      stylers: [
+        { color: '#444444'}
+      ]
+    }
+  ];
+}
+
 function initialize() {
+
   var mapDiv = document.getElementById("map-canvas");
   var objects = $(mapDiv).data('objects');
   var centerPos = $(mapDiv).data('centerPoint');
@@ -65,7 +99,10 @@ function initialize() {
   });
   setPolyline(map, collectionOfPath);
   setBound(map, collectionOfPath);
-
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+$(document).ready(function() {
+  if ($('#map-canvas').length) {
+    google.maps.event.addDomListener(window, 'load', initialize);
+  }
+});
