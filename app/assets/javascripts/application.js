@@ -20,8 +20,6 @@ $(document).ready(function() {
   flashAlertEffect();
   dropdownListBtn();
 
-
-
 $('.del-pic').on('click',function(e){
   e.preventDefault();
   myUrl = $(this).att('href');
@@ -33,20 +31,7 @@ $('.del-pic').on('click',function(e){
 
 	});
 
-$('.sel-cov').on('click',function(e){
-  e.preventDefault();
-  myUrl = $(this).att('href');
-
-  $.ajax({
-    url: myUrl,
-    type: 'POST'
-  });
-
-  });
-
-
 $(window).scroll(function() {
-
 
     if ($(this).scrollTop() > 300) {
         $( ".navbar" ).css( { backgroundColor: "rgba( 0, 0, 0, 0.8 )" } );
@@ -54,8 +39,5 @@ $(window).scroll(function() {
         $( ".navbar" ).css(  { backgroundColor: "rgba( 80, 80, 80, 0.4 )" });
     }
 	});
-
-
-
 
 });

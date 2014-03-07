@@ -9,10 +9,7 @@ class TripsController < ApplicationController
       @trips = Trip.all
     end
 
-    respond_to do |format|
-      format.html
-      format.js
-    end
+
 
   end
 
@@ -21,6 +18,12 @@ class TripsController < ApplicationController
     if @trip.coverphoto
       @cover = PostAttachment.find(@trip.coverphoto)
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   def new
@@ -39,12 +42,16 @@ class TripsController < ApplicationController
 
   def set_photo
     set_trip
+    respond_to do |format|
+      format.js   # show_rec_horses.js.erb
+    end
   end
 
   def set_photo_save
     set_trip
     @trip.coverphoto = params[:pid]
     if @trip.save
+      flash[:success] = "Cover photo set"
       redirect_to @trip
     end
   end

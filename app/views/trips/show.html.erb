@@ -3,17 +3,24 @@
 <div id="map-canvas" data-objects="<%= @trip.posts.to_json %>" data-center-point="<%= center_of_all_locations(@trip.posts).to_json %>">
 </div>
 
-<%= image_tag @cover.postimage_url(:big) %>
+<% if @cover %>
+	<%= image_tag @cover.postimage_url(:big) %>
+<% end %>
 
 <p><%= markdown(@trip.description) %></p>
 
 <% if @trip.user == current_user %>
 <ul>
-<li><%= link_to "Set trip cover photo", set_trip_cover_path(:id => @trip.id) %></li>
+<li><%= link_to "Set trip cover photo", set_trip_cover_path(:id => @trip.id), :class => 'sel-cov', remote: true %></li>
 <li><%= link_to "Edit this trip", edit_trip_path %></li>
 <li><%= link_to "Remove this trip", @trip, method: :delete %></li>
 </ul>
 <% end %>
+
+<div id="set-cov">
+
+
+</div>
 
 <h2>Chapters</h2>
 
