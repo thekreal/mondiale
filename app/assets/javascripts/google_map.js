@@ -34,7 +34,32 @@ function GoogleMap() {
   };
 
   function infoWindowContent(obj) {
-    return "<h1>HI</h1>";
+    var wrapper = $('<div>');
+
+    var num_of_images = obj.post_attachments.length;
+    if (num_of_images > 0) {
+      image = $('<img>').attr({
+        class: 'photo',
+        src: obj.post_attachments[Math.floor(Math.random() * num_of_images)].postimage.thumb.url
+      });
+      wrapper.append(image);
+    }
+
+    var title = $('<h2>').addClass('title').text(obj.title);
+    wrapper.append(title);
+
+    var content = $('<p>').addClass('content').text(obj.content);
+    wrapper.append(content);
+
+    var link = $('<a>').attr({
+      class: 'link',
+      href: obj.trip_id + "/chapters/" + obj.chapter_id
+    }).text("link");
+    wrapper.append(link);
+
+
+
+    return wrapper.html();
   };
 
   function addMarker(obj) {
@@ -74,7 +99,7 @@ function GoogleMap() {
 
   function mapOptions() {
     return {
-      zoom: 8,
+      zoom: 10,
       center: gLatLng(centerPos[0], centerPos[1]),
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
