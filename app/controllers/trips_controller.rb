@@ -22,7 +22,11 @@ class TripsController < ApplicationController
 
   def vote
     @trip.liked_by(current_user)
-    redirect_to @trip
+
+    respond_to do |format|
+      format.html {redirect_to @trip}
+      format.js
+    end
   end
 
   def new
