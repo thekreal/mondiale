@@ -1,0 +1,39 @@
+
+
+#trip-cover {
+  position: relative;
+
+  #trip-cover-pic {
+  	border: 2px solid black;
+  	width: 100%;
+  }
+
+  #map-canvas {
+  	position: absolute!important;
+  	right: 20px;
+  	top: 40px;
+  	height: 40%;
+  	width: 40%;
+  }
+
+}
+
+#trip-content {
+
+}
+
+// .trip-content{
+// 	position: relative;
+// }
+
+// #trip-cover-pic {
+// 	z-index: 9;
+// 	position: absolute;
+// }
+
+.chapters{
+background-color: red;
+
+
+}
+
