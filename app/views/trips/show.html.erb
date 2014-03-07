@@ -1,7 +1,19 @@
 <h1><%= @trip.title %></h1>
+
+<div class="upvote-div">
+
+<% if current_user.voted_for? @trip  %>
+	<p> You have upvoted this trip</p>
+
+<% else %>
+
 <button class="upvote-button">
 	<%= link_to "Upvote this Trip", vote_trip_path(@trip), method: :post, remote: true %>
 </button>
+
+<% end %>
+
+</div>
 
 <p class='upvote-count'><%= @trip.votes.count %> people have upvoted this trip</p>
 
