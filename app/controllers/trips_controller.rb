@@ -44,7 +44,9 @@ class TripsController < ApplicationController
   def set_photo_save
     set_trip
     @trip.coverphoto = params[:pid]
-    @trip.save
+    if @trip.save
+      redirect_to @trip
+    end
   end
 
   def edit
