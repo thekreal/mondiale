@@ -9,7 +9,7 @@
 <p><%= @chapter.description %></p>
 <br>
 
-<div id="map-canvas" data-objects="<%= @chapter.posts.to_json %>" data-center-point="<%= center_of_all_locations(@trip.posts).to_json %>">
+<div id="map-canvas" data-objects="<%= posts_in_json(@chapter.posts) %>" data-center-pos="<%= center_of_all_locations(@trip.posts).to_json %>">
 </div>
 
 <div class="post-list">
