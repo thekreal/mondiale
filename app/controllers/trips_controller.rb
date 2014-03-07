@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :ensure_logged_in, only: [:new, :edit, :destroy]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :vote]
 
   def index
     if params[:search] && !params[:search].empty?
@@ -21,6 +21,20 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.js
+    end
+
+  end
+
+  def vote
+
+    if params[:unvote]
+      @trip.unliked_by(current_user)
+    else
+      @trip.liked_by(current_user)
+    end
+    respond_to do |format|
+      format.html {redirect_to @trip}
       format.js
     end
 

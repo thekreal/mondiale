@@ -31,13 +31,28 @@ $('.del-pic').on('click',function(e){
 
 	});
 
-$(window).scroll(function() {
+  if ($('#map-canvas').length) {
+    var map = new GoogleMap();
+  }
 
-    if ($(this).scrollTop() > 300) {
+  $('.del-pic').on('click', function(e) {
+    e.preventDefault();
+    myUrl = $(this).att('href');
+
+    $.ajax({
+      url: myUrl,
+      type: 'POST'
+    });
+
+  });
+
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 200) {
         $( ".navbar" ).css( { backgroundColor: "rgba( 0, 0, 0, 0.8 )" } );
-    } else if ($(this).scrollTop() < 300) {
+      }
+    else if ($(this).scrollTop() < 200) {
         $( ".navbar" ).css(  { backgroundColor: "rgba( 80, 80, 80, 0.4 )" });
     }
-	});
+  });
 
 });

@@ -1,5 +1,7 @@
 class Trip < ActiveRecord::Base
 
+  acts_as_votable
+
 	belongs_to :user
 	has_many :chapters, dependent: :delete_all
 	has_many :posts, through: :chapters
@@ -28,6 +30,16 @@ class Trip < ActiveRecord::Base
 
   def number_of_chapters
     chapters.count
+  end
+
+  def posts_in_json
+    posts.to_json(
+      include: { post_attachments: {} },
+      except: :postimage )
+  end
+
+  def self.highest_rated
+    self.order("cached_votes_total DESC")
   end
 
 end

@@ -9,15 +9,8 @@
 <p><%= @chapter.description %></p>
 <br>
 
-<% if @chapter.posts[0] %>
-	<div id="map-canvas" style="width: 400px; height: 400px;" data-latitude="<%= @chapter.posts[0].latitude %>" data-longitude="<%= @chapter.posts[0].longitude %>">
-	</div>
-
-
-	<%= @chapter.posts[0].latitude %>
-	<%= link_to "show map", trip_chapter_path(@chapter.trip, @chapter), remote: true %>
-
-<% end %>
+<div id="map-canvas" data-objects="<%= @chapter.posts.to_json %>" data-center-point="<%= center_of_all_locations(@trip.posts).to_json %>">
+</div>
 
 <div class="post-list">
 

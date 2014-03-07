@@ -1,50 +1,101 @@
-function initialize() {
-  var mapDiv = document.getElementById("map-canvas");
-  var objects = $(mapDiv).data('objects');
-  var center = $(mapDiv).data('centerPoint');
+function GoogleMap() {
 
-  var mapOptions = {
-    center: new google.maps.LatLng(center[0], center[1]),
-    zoom: 8,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+  /* VARIABLES */
+  var apiUrl = "https://maps.googleapis.com/maps/api/js?",
+
+      aptOpts = {
+        key: "AIzaSyD8krFfDfDAa2DxTzMgpWTTdbzoqTRsDKI",
+        libraries: "geometry",
+        sensor: true
+      };
+
+      mapCanvas = document.getElementById('map-canvas'),
+      objects = $(mapCanvas).data('objects'),
+      centerPos = $(mapCanvas).data('centerPos'),
+
+      collectionOfPath = [];
+
+      map = "";
+
+  function insertScript() {
+    $('<script>')
+      .attr({ type: 'text/javascript', src: apiUrl + $.param(aptOpts) })
+      .appendTo('body');
   };
 
-  var map = new google.maps.Map(mapDiv, mapOptions);
+  function gLatLng(lat, lng) {
+    return new google.maps.LatLng(lat, lng);
+  };
 
-  var bounds = new google.maps.LatLngBounds();
-  $(objects).each(function() {
-    bounds.extend(new google.maps.LatLng(this.latitude, this.longitude));
-    addMarker(this, map);
-  });
-  map.fitBounds(bounds);
-}
+  function addInfoWindow(obj) {
+    return new google.maps.InfoWindow({
+      content: infoWindowContent(obj)
+    });
+  };
 
-function addMarker(obj, map) {
-  var pos = setLatLng(obj.latitude, obj.longitude);
-  var infoWindow = addInfoWindow(obj);
-  var marker = new google.maps.Marker({
-    position: pos,
-    map: map
-  });
+  function infoWindowContent(obj) {
+    return "<h1>HI</h1>";
+  };
 
-  google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.open(map, marker);
-  })
+  function addMarker(obj) {
+    var pos = gLatLng(obj.latitude, obj.longitude),
+        infoWindow = addInfoWindow(obj),
+        marker = new google.maps.Marker({
+          position: pos,
+          map: map
+        });
+    google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.open(map, marker);
+    });
+  };
 
-}
+  function addPolyline(type) {
+    type = type || google.maps.SymbolPath.FORWARD_CLOSED_ARROW;
+    var line = new google.maps.Polyline({
+      path: collectionOfPath,
+      geodesic: true,
+      strokeColor: "#EE8F8F",
+      strokeOpacity: 1.0,
+      strokeWeight: 3,
+      icons: [{
+        icon: { path: type }
+      }],
+      map: map
+    });
+  };
 
-function setLatLng(lat, lng) {
-  return new google.maps.LatLng(lat, lng);
+  function setBound() {
+    var bounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < collectionOfPath.length; i++) {
+      bounds.extend(collectionOfPath[i]);
+    }
+    map.fitBounds(bounds);
+  };
+
+  function mapOptions() {
+    return {
+      zoom: 8,
+      center: gLatLng(centerPos[0], centerPos[1]),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+  };
+
+  function initialize() {
+    map = new google.maps.Map(mapCanvas, mapOptions());
+    $(objects).each(function() {
+      collectionOfPath.push(gLatLng(this.latitude, this.longitude));
+      addMarker(this);
+    });
+    addPolyline();
+    setBound();
+  };
+
+  function run() {
+    google.maps.event.addDomListener(window, 'load', initialize);
+  };
+
+  initialize();
+  run();
 };
 
-function addInfoWindow(obj) {
-  return new google.maps.InfoWindow({
-    content: postSummary(obj)
-  });
-};
 
-function postSummary(obj) {
-  return "<h1>" + obj.title + "</h1>" + "<p>" + obj.content + "</p>"
-};
-
-google.maps.event.addDomListener(window, 'load', initialize);

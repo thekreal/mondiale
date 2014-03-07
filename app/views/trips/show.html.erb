@@ -1,6 +1,26 @@
 <h1><%= @trip.title %></h1>
 
-<div id="map-canvas" data-objects="<%= @trip.posts.to_json %>" data-center-point="<%= center_of_all_locations(@trip.posts).to_json %>">
+<div class="upvote-div">
+
+<% if current_user.voted_for? @trip  %>
+
+	<button class="upvote-button" data-vote-status="downvote">
+		<%= link_to "DownVote this Trip", vote_trip_path(@trip, unvote: 1), method: :post, remote: true %>
+	</button>
+
+<% else %>
+
+	<button class="upvote-button" data-vote-status="upvote">
+		<%= link_to "Upvote this Trip", vote_trip_path(@trip), method: :post, remote: true %>
+	</button>
+
+<% end %>
+
+</div>
+
+<p class='upvote-count'><%= @trip.votes.count %> people have upvoted this trip</p>
+
+<div id="map-canvas" data-objects="<%= @trip.posts_in_json %>" data-center-pos="<%= center_of_all_locations(@trip.posts).to_json %>">
 </div>
 
 <% if @cover %>
