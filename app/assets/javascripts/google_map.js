@@ -1,3 +1,24 @@
+function GoogleMap() {
+  var apiUrl = "https://maps.googleapis.com/maps/api/js?",
+      aptOpts = {
+        key: "AIzaSyD8krFfDfDAa2DxTzMgpWTTdbzoqTRsDKI",
+        libraries: "geometry",
+        sensor: true
+      };
+
+
+  this.insertScript = function() {
+    $('<script>')
+      .attr({ type: 'text/javascript', src: apiUrl + $.param(aptOpts) })
+      .appendTo('body');
+  };
+
+  this.addInfoWindow = function() {
+
+  }
+
+}
+
 function addInfoWindow(obj) {
   return new google.maps.InfoWindow({
     content: postSummary(obj)
@@ -17,7 +38,10 @@ function addMarker(obj, map) {
 };
 
 function postSummary(obj) {
-  return "<h1>" + obj.title + "</h1>" + "<p>" + obj.content + "</p>"
+  console.log("<image class='thumbnail' src='" + obj.post_attachments[0].postimage.thumb.url + "'>")
+  return  "<div class='post-summary'>" +
+          "<h1>" + obj.title + "</h1>" +
+          "<img class='thumbnail' src='" + obj.post_attachments[0].postimage.thumb.url + "'>"
 };
 
 function setLatLng(lat, lng) {
@@ -39,7 +63,7 @@ function setPolyline(map, path, type) {
     geodesic: true,
     strokeColor: '#EE8F8F',
     strokeOpacity: 1.0,
-    strokeWeight: 2,
+    strokeWeight: 3,
     icons: [{
       icon: { path: type }
     }],
@@ -54,35 +78,6 @@ function setBound(map, path) {
   }
   map.fitBounds(bounds);
 };
-
-function mapStyle() {
-  return [
-    {
-      stylers: [
-        { hue: '#82ff6b' },
-        { visibility: 'simplified' }
-      ]
-    },
-    {
-      elementType: 'labels',
-      stylers: [
-        { visibility: 'on' }
-      ]
-    },
-    {
-      featureType: 'water',
-      stylers: [
-        { color: '#EEEEEE' }
-      ]
-    },
-    {
-      featureType: 'road',
-      stylers: [
-        { color: '#444444'}
-      ]
-    }
-  ];
-}
 
 function initialize() {
 
