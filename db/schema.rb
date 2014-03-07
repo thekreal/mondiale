@@ -11,22 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307020649) do
+ActiveRecord::Schema.define(version: 20140307201946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authentications", force: true do |t|
-    t.integer  "user_id",    null: false
-    t.string   "provider",   null: false
-    t.string   "uid",        null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "chapters", force: true do |t|
     t.string   "title"
-    t.integer  "upvote_score"
     t.integer  "trip_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,7 +50,11 @@ ActiveRecord::Schema.define(version: 20140307020649) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "coverphoto"
+    t.integer  "cached_votes_total", default: 0
   end
+
+  add_index "trips", ["cached_votes_total"], name: "index_trips_on_cached_votes_total", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name",                         null: false

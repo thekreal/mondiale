@@ -9,6 +9,16 @@ class TripsController < ApplicationController
       @trips = Trip.all
     end
 
+
+
+  end
+
+  def show
+    @chapters = @trip.chapters
+    if @trip.coverphoto
+      @cover = PostAttachment.find(@trip.coverphoto)
+    end
+
     respond_to do |format|
       format.html
       format.js
@@ -16,17 +26,18 @@ class TripsController < ApplicationController
 
   end
 
-  def show
-    @chapters = @trip.chapters
-  end
-
   def vote
-    @trip.liked_by(current_user)
 
+    if params[:unvote]
+      @trip.unliked_by(current_user)
+    else
+      @trip.liked_by(current_user)
+    end
     respond_to do |format|
       format.html {redirect_to @trip}
       format.js
     end
+
   end
 
   def new
@@ -40,6 +51,22 @@ class TripsController < ApplicationController
       redirect_to @trip
     else
       render :new
+    end
+  end
+
+  def set_photo
+    set_trip
+    respond_to do |format|
+      format.js   # show_rec_horses.js.erb
+    end
+  end
+
+  def set_photo_save
+    set_trip
+    @trip.coverphoto = params[:pid]
+    if @trip.save
+      flash[:success] = "Cover photo set"
+      redirect_to @trip
     end
   end
 

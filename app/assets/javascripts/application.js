@@ -20,6 +20,17 @@ $(document).ready(function() {
   flashAlertEffect();
   dropdownListBtn();
 
+$('.del-pic').on('click',function(e){
+  e.preventDefault();
+  myUrl = $(this).att('href');
+
+	$.ajax({
+		url: myUrl,
+		type: 'POST'
+	});
+
+	});
+
   if ($('#map-canvas').length) {
     var map = new GoogleMap();
   }
@@ -36,17 +47,12 @@ $(document).ready(function() {
   });
 
   $(window).scroll(function() {
-    if ($(this).scrollTop() > 400) {
+    if ($(this).scrollTop() > 200) {
         $( ".navbar" ).css( { backgroundColor: "rgba( 0, 0, 0, 0.8 )" } );
-    } else if ($(this).scrollTop() < 400) {
+      }
+    else if ($(this).scrollTop() < 200) {
         $( ".navbar" ).css(  { backgroundColor: "rgba( 80, 80, 80, 0.4 )" });
     }
   });
 
 });
-
-
-
-
-
-

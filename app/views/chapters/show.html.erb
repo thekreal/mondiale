@@ -8,6 +8,7 @@
 <h1>Chapter <%= @chapter.id %>: <%= @chapter.title %></h1>
 <p><%= @chapter.description %></p>
 <br>
+
 <div id="map-canvas" data-objects="<%= @chapter.posts.to_json %>" data-center-point="<%= center_of_all_locations(@trip.posts).to_json %>">
 </div>
 

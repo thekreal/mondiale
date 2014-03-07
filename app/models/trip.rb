@@ -32,4 +32,8 @@ class Trip < ActiveRecord::Base
     chapters.count
   end
 
+  def self.highest_rated
+    self.order("cached_votes_total DESC")
+  end
+
 end

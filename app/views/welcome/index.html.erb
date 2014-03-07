@@ -14,7 +14,16 @@
 
 <div class="featured-trips">
   <h2 class="title">Featured</h2>
-  <h3>Recently Added Trips</h3>
-  <%= render @recent_trips %>
+
+  <div class="recent-trips"></div>
+    <h3>Recently Added Trips</h3>
+    <%= render @recent_trips %>
+  </div>
+
+  <div class="top-rated-trips">
+    <h3>Top Rated Trips</h3>
+    <%= render @top_rated_trips %>
+  </div>
+
 
 </div>

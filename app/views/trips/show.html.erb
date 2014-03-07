@@ -1,21 +1,46 @@
 <h1><%= @trip.title %></h1>
-<button class="upvote-button">
-	<%= link_to "Upvote this Trip", vote_trip_path(@trip), method: :post, remote: true %>
-</button>
+
+<div class="upvote-div">
+
+<% if current_user.voted_for? @trip  %>
+
+	<button class="upvote-button" data-vote-status="downvote">
+		<%= link_to "DownVote this Trip", vote_trip_path(@trip, unvote: 1), method: :post, remote: true %>
+	</button>
+
+<% else %>
+
+	<button class="upvote-button" data-vote-status="upvote">
+		<%= link_to "Upvote this Trip", vote_trip_path(@trip), method: :post, remote: true %>
+	</button>
+
+<% end %>
+
+</div>
 
 <p class='upvote-count'><%= @trip.votes.count %> people have upvoted this trip</p>
 
 <div id="map-canvas" data-objects="<%= posts_in_json(@trip.posts) %>" data-center-pos="<%= center_of_all_locations(@trip.posts).to_json %>">
 </div>
 
+<% if @cover %>
+	<%= image_tag @cover.postimage_url(:big) %>
+<% end %>
+
 <p><%= markdown(@trip.description) %></p>
 
 <% if @trip.user == current_user %>
 <ul>
+<li><%= link_to "Set trip cover photo", set_trip_cover_path(:id => @trip.id), :class => 'sel-cov', remote: true %></li>
 <li><%= link_to "Edit this trip", edit_trip_path %></li>
 <li><%= link_to "Remove this trip", @trip, method: :delete %></li>
 </ul>
 <% end %>
+
+<div id="set-cov">
+
+
+</div>
 
 <h2>Chapters</h2>
 

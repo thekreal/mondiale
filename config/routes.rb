@@ -9,6 +9,9 @@ Mondiale::Application.routes.draw do
       end
     end
 
+  get 'set_trip_cover/:id'  =>  'trips#set_photo',        as: :set_trip_cover
+  post 'set_trip_cover/:id' =>  'trips#set_photo_save',   as: :set_trip_cover_save
+
   post 'delete_picture' =>      'post_attachments#destroy', as: :delete_picture
   get 'signup'          =>      'users#new',                as: :signup
   resources :users
