@@ -20,33 +20,33 @@ $(document).ready(function() {
   flashAlertEffect();
   dropdownListBtn();
 
+  if ($('#map-canvas').length) {
+    var map = new GoogleMap();
+  }
 
+  $('.del-pic').on('click', function(e) {
+    e.preventDefault();
+    myUrl = $(this).att('href');
 
-$('.del-pic').on('click',function(e){
-  e.preventDefault();
-  myUrl = $(this).att('href');
+    $.ajax({
+      url: myUrl,
+      type: 'POST'
+    });
 
-	$.ajax({
-		url: myUrl,
-		type: 'POST'
-	});
+  });
 
-	});
-
-
-
-$(window).scroll(function() {
-
-
+  $(window).scroll(function() {
     if ($(this).scrollTop() > 400) {
         $( ".navbar" ).css( { backgroundColor: "rgba( 0, 0, 0, 0.8 )" } );
     } else if ($(this).scrollTop() < 400) {
-        console.log('there');
         $( ".navbar" ).css(  { backgroundColor: "rgba( 80, 80, 80, 0.4 )" });
     }
-	});
-
-
-
+  });
 
 });
+
+
+
+
+
+

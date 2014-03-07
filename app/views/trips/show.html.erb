@@ -17,7 +17,7 @@
 
 <p class='upvote-count'><%= @trip.votes.count %> people have upvoted this trip</p>
 
-<div id="map-canvas" data-objects="<%= @trip.posts.to_json %>" data-center-point="<%= center_of_all_locations(@trip.posts).to_json %>">
+<div id="map-canvas" data-objects="<%= @trip.posts_in_json %>" data-center-pos="<%= center_of_all_locations(@trip.posts).to_json %>">
 </div>
 
 <p><%= markdown(@trip.description) %></p>

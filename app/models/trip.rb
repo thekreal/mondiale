@@ -32,4 +32,10 @@ class Trip < ActiveRecord::Base
     chapters.count
   end
 
+  def posts_in_json
+    posts.to_json(
+      include: { post_attachments: {} },
+      except: :postimage )
+  end
+
 end
