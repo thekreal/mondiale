@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @trips = @user.trips
+    @upvoted_trips = @user.find_voted_items
   end
 
   def new
