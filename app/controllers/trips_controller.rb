@@ -21,12 +21,17 @@ class TripsController < ApplicationController
   end
 
   def vote
-    @trip.liked_by(current_user)
 
+    if params[:unvote]
+      @trip.unliked_by(current_user)
+    else
+      @trip.liked_by(current_user)
+    end
     respond_to do |format|
       format.html {redirect_to @trip}
       format.js
     end
+
   end
 
   def new

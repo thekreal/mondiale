@@ -1,2 +1,11 @@
+var voteStatus = $('.upvote-button').data('vote-status')
+
 $(".upvote-count").text(<%= @trip.votes.count %> + " people have upvoted this trip")
+
+
+if (voteStatus === "upvote"){
 $(".upvote-div").text("You have upvoted this trip")
+}
+else {
+$(".upvote-div").text("You are no longer upvoting this trip")
+};
