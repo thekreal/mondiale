@@ -95,9 +95,4 @@ function initialize() {
   setPolyline(map, collectionOfPath);
   setBound(map, collectionOfPath);
 }
-
-$(document).ready(function() {
-  if ($('#map-canvas').length) {
-    google.maps.event.addDomListener(window, 'load', initialize);
-  }
-});
+google.maps.event.addDomListener(window, 'load', initialize);
