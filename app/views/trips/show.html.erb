@@ -1,4 +1,9 @@
 <h1><%= @trip.title %></h1>
+<button class="upvote-button">
+	<%= link_to "Upvote this Trip", vote_trip_path(@trip), method: :post, remote: true %>
+</button>
+
+<p class='upvote-count'><%= @trip.votes.count %> people have upvoted this trip</p>
 
 <div id="map-canvas" data-objects="<%= @trip.posts_in_json %>" data-center-point="<%= center_of_all_locations(@trip.posts).to_json %>">
 </div>
