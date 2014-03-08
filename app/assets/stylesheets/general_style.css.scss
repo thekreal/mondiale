@@ -20,14 +20,15 @@ h4 {
 	color: gray;
 }
 
+
 p {
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
 a {
-	@extend p;
+		font-family: 'Source Sans Pro', sans-serif;
 }
 
 li {
-	@extend p;
+	font-family: 'Source Sans Pro', sans-serif;
 }

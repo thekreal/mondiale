@@ -1,0 +1,48 @@
+
+
+#trip-cover {
+  position: relative;
+
+  #trip-cover-pic {
+  	width: 100%;
+  }
+
+  #map-canvas {
+  	position: absolute!important;
+  	right: 20px;
+  	top: 40px;
+  	height: 40%;
+  	width: 40%;
+  }
+
+  .trip-title {
+    position: absolute;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    text-shadow: 0 -1px 1px rgba(60, 60, 60, 0.7);
+    font-size: 120px;
+    font-weight: bold;
+    top: 40%;
+    left: 7%;
+  }
+
+}
+
+#trip-content {
+
+}
+
+// .trip-content{
+// 	position: relative;
+// }
+
+// #trip-cover-pic {
+// 	z-index: 9;
+// 	position: absolute;
+// }
+
+.chapters{
+margin: 5%;
+
+}
+

@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20140307201946) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "coverphoto"
     t.integer  "cached_votes_total", default: 0
+    t.integer  "coverphoto"
   end
 
   add_index "trips", ["cached_votes_total"], name: "index_trips_on_cached_votes_total", using: :btree
