@@ -5,7 +5,7 @@ Mondiale::Application.routes.draw do
   resources :trips do
     member { post :vote }
   	resources :chapters do
-      resources :posts, except: [:show, :index]
+      resources :posts, except: [:index, :show]
       end
     end
 

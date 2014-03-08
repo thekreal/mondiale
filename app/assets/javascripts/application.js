@@ -17,42 +17,22 @@
 
 // Initializer
 $(document).ready(function() {
+
+  // Bind navbar background color effect
+  navbarBackground();
+
+  // Bind flash alerts
   flashAlertEffect();
+
+  // bind dropdown list buttons
   dropdownListBtn();
 
-$('.del-pic').on('click',function(e){
-  e.preventDefault();
-  myUrl = $(this).att('href');
+  // bind delete photo Button
+  deletePictureBtn();
 
-	$.ajax({
-		url: myUrl,
-		type: 'POST'
-	});
-
-	});
-
+  // generate google map
   if ($('#map-canvas').length) {
     var map = new GoogleMap();
   }
-
-  $('.del-pic').on('click', function(e) {
-    e.preventDefault();
-    myUrl = $(this).att('href');
-
-    $.ajax({
-      url: myUrl,
-      type: 'POST'
-    });
-
-  });
-
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 200) {
-        $( ".navbar" ).css( { backgroundColor: "rgba( 0, 0, 0, 0.8 )" } );
-      }
-    else if ($(this).scrollTop() < 200) {
-        $( ".navbar" ).css(  { backgroundColor: "rgba( 80, 80, 80, 0.4 )" });
-    }
-  });
 
 });

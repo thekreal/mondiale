@@ -1,3 +1,16 @@
+function flashAlertEffect() {
+  var alerts = $("[class*='alert']");
+
+  if (alerts.length) {
+    // slide down to show the message
+    alertToggle(alerts);
+
+    // when clicked on close button, slide up
+    alertCloseBtn(alerts)
+  }
+}
+
+
 function insertAlert(element) {
   element.insertAfter('.navbar')
 }
@@ -13,17 +26,4 @@ function alertCloseBtn(alerts) {
       $(this).remove();
     })
   })
-}
-
-function flashAlertEffect() {
-  var alerts = $("[class*='alert']");
-
-  if (alerts.length) {
-    // slide down to show the message
-    alertToggle(alerts);
-
-    // when clicked on close button, slide up
-    alertCloseBtn(alerts)
-
-  }
 }

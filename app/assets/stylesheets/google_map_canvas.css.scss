@@ -1,38 +1,42 @@
 #map-canvas {
-	position: absolute;
+  position: absolute;
+  top:40%;
+  right:9%;
+  z-index: 9;
   width: 640px;
   height: 480px;
   border: 5px solid $white;
   box-shadow: 0 0 6px -3px rgba(60, 60, 60, 0.5);
-  z-index: 9;
-  right:9%;
-  top:40%;
 }
 
-
 .post-summary {
-  width: 200px;
+  margin-top: 20px;
+  margin: 0px 0px 0px 20px;
+  width: 160px;
 
   .title {
     margin-bottom: -50px;
     font-weight: 800;
-    font-size: 2em;
+    font-size: 1.5em;
   }
   .content {
     display: block;
-    box-shadow: inset 0px 0px 6px -4px rgba(60, 60, 60, 0.2);
     padding: 5px;
-    height: 5em;
+    height: 3em;
+    box-shadow: inset 0px 0px 6px -4px rgba(60, 60, 60, 0.2);
   }
   .photo {
-    margin-bottom: -20px;
-    width: 200px;
+    display: block;
+    margin: 0 auto;
+    width: 160px;
+    box-shadow: 0 0 6px -4px rgba(60, 60, 60, 0.75);
   }
 
   .link {
+    float: right;
     color: $blue - 100;
     text-decoration: none;
-    float: right;
+    margin-bottom: 10px;
   }
 
 }
