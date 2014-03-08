@@ -1,10 +1,9 @@
 <div class = "trip" >
 
-	<h2><%= link_to trip.title, trip_path(trip) %></h2>
-	<p>Created by: <%= trip.user.name %></p>
-	<p><%= trip.number_of_chapters %> chapters</p>
+	<h2 class="partial-trip-title"><%= link_to trip.title, trip_path(trip) %></h2>
+	<div class="author">Created by: <%= trip.user.name %></div>
+	<p class="dates"><%= trip.start_date %> to <%= trip.end_date %></p>
+	<p class="number-of-chapters"><%= trip.number_of_chapters %> chapters</p>
 	<p class="markdown"><%= markdown(trip.description) %></p>
-
-	<p>From <%= trip.start_date %> to <%= trip.end_date %></p>
 
 </div>
