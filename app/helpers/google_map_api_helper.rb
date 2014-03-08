@@ -16,4 +16,21 @@ module GoogleMapApiHelper
     Geocoder::Calculations.geographic_center(ary);
   end
 
+  def posts_in_json(posts)
+    posts.to_json(
+      methods: [:trip_id],
+      include: [
+        post_attachments: {
+          except: [:id, :created_at, :updated_at],
+          include: [
+            postimage: {
+              except: [:created_at, :updated_at]
+            }
+          ]
+        }
+      ],
+      except: [:postimage, :created_at, :updated_at]
+    )
+  end
+
 end
