@@ -23,7 +23,6 @@ class PostsController < ApplicationController
 		@chapter = Chapter.find(params[:chapter_id])
     @post = Post.find(params[:id])
     @post_attachment = @post.post_attachments.build
-
 	end
 
 	def update
@@ -52,7 +51,6 @@ private
     	end
   	end
 	end
-
 
 	def set_post
 		@post = Post.find(params[:id])
