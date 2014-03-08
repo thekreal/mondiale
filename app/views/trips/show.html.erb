@@ -1,6 +1,7 @@
-<h1><%= @trip.title %></h1>
+
 
 <div id="trip-cover">
+	<div class="trip-title"><%= @trip.title %></div>
 	<% if @cover %>
 		<%= image_tag @cover.postimage_url(:cover), :id => 'trip-cover-pic' %>
 	<% end %>
