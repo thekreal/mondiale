@@ -1,4 +1,7 @@
 class Post < ActiveRecord::Base
+
+  acts_as_votable
+
   mount_uploader :postimage, PostImageUploader
 
 	belongs_to :chapter
