@@ -1,0 +1,5 @@
+<% if params[:favourites] %>
+	$('.display-trips').html("<%= j render @user.find_voted_items %>")
+<% else %>
+	$('.display-trips').html("<%= j render @trips %>")
+<% end %>

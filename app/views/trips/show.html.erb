@@ -4,6 +4,8 @@
 	<div class="trip-title"><%= @trip.title %></div>
 	<% if @cover %>
 		<%= image_tag @cover.postimage_url(:cover), :id => 'trip-cover-pic' %>
+		<% else %>
+		<%= image_tag 'default_cover.jpg' %>
 	<% end %>
 
 	<div id="map-canvas" data-objects="<%= posts_in_json(@trip.posts) %>">
@@ -15,18 +17,20 @@
 <p><%= markdown(@trip.description) %></p>
 	<div class="upvote-div">
 
-	<% if current_user.voted_for? @trip  %>
 
-		<button class="upvote-button" data-vote-status="downvote">
-			<%= link_to "DownVote this Trip", vote_trip_path(@trip, unvote: 1), method: :post, remote: true %>
-		</button>
+	<% if logged_in? %>
+		<% if current_user.voted_for? @trip  %>
 
-	<% else %>
+			<button class="upvote-button" data-vote-status="downvote">
+				<%= link_to "Add This Trip to Favourites", vote_trip_path(@trip, unvote: 1), method: :post, remote: true %>
+			</button>
 
-		<button class="upvote-button" data-vote-status="upvote">
-			<%= link_to "Upvote this Trip", vote_trip_path(@trip), method: :post, remote: true %>
-		</button>
+		<% else %>
 
+			<button class="upvote-button" data-vote-status="upvote">
+				<%= link_to "Remove This Trip From Favourites", vote_trip_path(@trip), method: :post, remote: true %>
+			</button>
+		<% end %>
 	<% end %>
 
 	</div>
