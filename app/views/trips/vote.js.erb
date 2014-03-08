@@ -4,8 +4,8 @@ $(".upvote-count").text(<%= @trip.votes.count %> + " people have upvoted this tr
 
 
 if (voteStatus === "upvote"){
-$(".upvote-div").text("You have upvoted this trip")
+$(".upvote-div").text("You have added this trip to your favourites")
 }
 else {
-$(".upvote-div").text("You are no longer upvoting this trip")
+$(".upvote-div").text("You have removed this trip from favourites")
 };

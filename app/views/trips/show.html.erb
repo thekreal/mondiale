@@ -22,14 +22,15 @@
 		<% if current_user.voted_for? @trip  %>
 
 			<button class="upvote-button" data-vote-status="downvote">
-				<%= link_to "Add This Trip to Favourites", vote_trip_path(@trip, unvote: 1), method: :post, remote: true %>
+				<%= link_to "Remove This Trip From Favourites", vote_trip_path(@trip, unvote: 1), method: :post, remote: true %>
 			</button>
 
 		<% else %>
 
 			<button class="upvote-button" data-vote-status="upvote">
-				<%= link_to "Remove This Trip From Favourites", vote_trip_path(@trip), method: :post, remote: true %>
+				<%= link_to "Add This Trip to Favourites", vote_trip_path(@trip), method: :post, remote: true %>
 			</button>
+
 		<% end %>
 	<% end %>
 
