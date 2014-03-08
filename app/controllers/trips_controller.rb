@@ -8,9 +8,6 @@ class TripsController < ApplicationController
     else
       @trips = Trip.all
     end
-
-
-
   end
 
   def show
