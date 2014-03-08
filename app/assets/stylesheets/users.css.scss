@@ -7,7 +7,7 @@
 
 .users-trips{
 
-	width: 66%;
+	width: 75%;
 	float: left;
 	margin-top: 2em;
 
@@ -22,11 +22,18 @@
       background: rgba(80, 80, 80, 0.2);
       width: 50%;
       display: inline;
+      a:link{
+      	text-decoration: none;
+      	color: $white;
+      }
+      a:visited{
+      	color: $white;
+      }
   }
 }
 
 .user{
-	width: 33%;
+	width: 25%;
 	float: left;
 
 }
