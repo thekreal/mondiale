@@ -7,15 +7,16 @@ function GoogleMap() {
         key: "AIzaSyD8krFfDfDAa2DxTzMgpWTTdbzoqTRsDKI",
         libraries: "geometry",
         sensor: true
-      };
+      },
 
       mapCanvas = document.getElementById('map-canvas'),
       objects = $(mapCanvas).data('objects'),
       centerPos = $(mapCanvas).data('centerPos'),
 
-      collectionOfPath = [];
-
+      collectionOfPath = [],
+      markers = [],
       map = "";
+
 
   function insertScript() {
     $('<script>')
@@ -23,7 +24,9 @@ function GoogleMap() {
       .appendTo('body');
   };
 
-  function gLatLng(lat, lng) {
+  function gLatLng(lat, lng, noise) {
+    lat = (Math.round(lat * 10000000) / 10000000) + noise;
+    lng = (Math.round(lng * 10000000) / 10000000) + noise;
     return new google.maps.LatLng(lat, lng);
   };
 
@@ -34,7 +37,7 @@ function GoogleMap() {
   };
 
   function infoWindowContent(obj) {
-    var wrapper = $('<div>');
+    var wrapper = $('<div>').addClass('post-summary');
 
     var num_of_images = obj.post_attachments.length;
     if (num_of_images > 0) {
@@ -57,14 +60,13 @@ function GoogleMap() {
     }).text("link");
     wrapper.append(link);
 
+    var outterWrapper = $('<div>').append(wrapper)
 
-
-    return wrapper.html();
+    return outterWrapper.html();
   };
 
-  function addMarker(obj) {
-    var pos = gLatLng(obj.latitude, obj.longitude),
-        infoWindow = addInfoWindow(obj),
+  function addMarker(obj, pos) {
+    var infoWindow = addInfoWindow(obj),
         marker = new google.maps.Marker({
           position: pos,
           map: map
@@ -72,6 +74,7 @@ function GoogleMap() {
     google.maps.event.addListener(marker, 'click', function() {
       infoWindow.open(map, marker);
     });
+    markers.push(marker);
   };
 
   function addPolyline(type) {
@@ -107,9 +110,12 @@ function GoogleMap() {
 
   function initialize() {
     map = new google.maps.Map(mapCanvas, mapOptions());
+
     $(objects).each(function() {
-      collectionOfPath.push(gLatLng(this.latitude, this.longitude));
-      addMarker(this);
+      var noise = Math.random() / 100;
+      var pos = gLatLng(this.latitude, this.longitude, noise);
+      collectionOfPath.push(pos);
+      addMarker(this, pos);
     });
     addPolyline();
     setBound();
