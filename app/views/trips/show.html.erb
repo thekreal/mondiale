@@ -6,8 +6,8 @@
 		<%= image_tag @cover.postimage_url(:cover), :id => 'trip-cover-pic' %>
 	<% end %>
 
-	<div id="map-canvas" data-objects="<%= @trip.posts_in_json %>" data-center-pos="<%= center_of_all_locations(@trip.posts).to_json %>">
-	</div>
+	<div id="map-canvas" data-objects="<%= posts_in_json(@trip.posts) %>" data-center-pos="<%= center_of_all_locations(@trip.posts).to_json %>">
+</div>
 
 </div>
 
