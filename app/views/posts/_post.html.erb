@@ -12,17 +12,17 @@
 				<% end %>
 			</ul>
 
-<div class="upvote-div">
+<div id="upvote-div-<%= post.id %>">
 	<% if logged_in? %>
 		<% if current_user.voted_for? post  %>
 
-			<button class="upvote-button" data-vote-status="downvote">
+			<button class="upvote-button-<%= post.id %>" data-vote-status="downvote">
 				<%= link_to "Remove This Post From Favourites", vote_trip_chapter_post_path(@trip, @chapter, post, unvote: 1), method: :post, remote: true %>
 			</button>
 
 		<% else %>
 
-			<button class="upvote-button" data-vote-status="upvote">
+			<button class="upvote-button-<%= post.id %>" data-vote-status="upvote">
 				<%= link_to "Add This Post to Favourites", vote_trip_chapter_post_path(@trip, @chapter, post), method: :post, remote: true %>
 			</button>
 
@@ -31,4 +31,4 @@
 
 </div>
 
-	<p class='upvote-count'><%= post.votes.count %> people have favourited this post</p>
+	<p class='upvote-count-<%= post.id %>'><%= post.votes.count %> people have favourited this post</p>
