@@ -19,7 +19,7 @@
 $(document).ready(function() {
   $(document).foundation();
 
-  setWelcomePageHeight();
+  welcomePage();
 
   // offcanvas menu
   sidebar();
