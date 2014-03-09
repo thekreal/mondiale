@@ -39,22 +39,6 @@
 
 	<div class="post">
 
-		<% @posts.each do |p| %>
-
-			<h4><%= p.title %></h4>
-			<ul>
-				<li><%= markdown(p.content) %></li>
-
-				<% p.post_attachments.each do |pic| %>
-		  		<%= image_tag pic.postimage_url(:big) %>
-				<% end %>
-
-				<% if p.trip.user == current_user %>
-				<li><%= link_to "Edit this post", edit_trip_chapter_post_path(p.trip, p.chapter, p) %></li>
-				<li><%= link_to "Delete This Post", trip_chapter_post_path(p.trip, p.chapter, p), method: :delete %></li>
-				<% end %>
-			</ul>
-			<% end %>
-	</div>
+		<%= render @posts %>
 
 </div>

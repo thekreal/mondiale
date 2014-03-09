@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	before_action :set_post, only: [:edit, :update, :destroy]
+	before_action :set_post, only: [:edit, :update, :destroy, :vote]
 
 	def new
 		@chapter = Chapter.find(params[:chapter_id])
@@ -24,6 +24,20 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_attachment = @post.post_attachments.build
 	end
+
+	def vote
+
+    if params[:unvote]
+      @post.unliked_by(current_user)
+    else
+      @post.liked_by(current_user)
+    end
+    respond_to do |format|
+      format.html {redirect_to @trip}
+      format.js
+    end
+
+  end
 
 	def update
 		if @post.update(post_params)

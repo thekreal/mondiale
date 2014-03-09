@@ -1,0 +1,11 @@
+var voteStatus = $('.upvote-button').data('vote-status')
+
+$(".upvote-count").text(<%= @post.votes.count %> + " people have favourited this trip")
+
+
+if (voteStatus === "upvote"){
+$(".upvote-div").text("You have added this post to your favourites")
+}
+else {
+$(".upvote-div").text("You have removed this post from favourites")
+};
