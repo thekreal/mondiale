@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309183148) do
+ActiveRecord::Schema.define(version: 20140309194100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20140309183148) do
     t.datetime "updated_at"
     t.integer  "coverphoto"
     t.integer  "cached_votes_total", default: 0
-    t.integer  "inspiration_type"
+    t.string   "inspiration_type"
     t.integer  "inspiration_id"
   end
 

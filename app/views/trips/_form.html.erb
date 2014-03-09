@@ -20,7 +20,8 @@
     <% current_user.find_voted_items.each do |i| %>
       <%= f.label :inspiration_id, i.title, :value => i.id %>
       <%= f.radio_button :inspiration_id, i.id %>
-      <%= f.hidden_field :inspiration_type, :value => 1 %>
+      <%= f.hidden_field :inspiration_type, :value => i.class %>
+
     <% end %>
 
   </div>
