@@ -14,6 +14,15 @@
           placeholder: "Give your trip a description (markdown)" %>
   </div>
 
+  <div class="wishlist-items">
+    <h3>Inspirations</h3>
+
+    <% current_user.find_voted_items.each do |i| %>
+      <%= i.title %>
+    <% end %>
+
+  </div>
+
   <div class="form-field">
     <%= f.submit submit, class: "form-btn" %>
     <%= link_to "Back", :back, class: "form-btn" %>
