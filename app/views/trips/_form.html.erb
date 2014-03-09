@@ -18,10 +18,10 @@
     <h3>Inspirations</h3>
 
     <% current_user.find_voted_items.each do |i| %>
-      <%= f.label :inspiration_id, i.title, :value => i.id %>
       <%= f.radio_button :inspiration_id, i.id %>
+      <%= f.label :inspiration_id, i.title, :value => i.id %>
       <%= f.hidden_field :inspiration_type, :value => i.class %>
-
+        </br>
     <% end %>
 
   </div>
