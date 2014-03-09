@@ -54,7 +54,7 @@ class TripsController < ApplicationController
   def set_photo
     set_trip
     respond_to do |format|
-      format.js   # show_rec_horses.js.erb
+      format.js
     end
   end
 
@@ -92,7 +92,7 @@ private
   end
 
   def trip_params
-    params.require(:trip).permit(:title, :description, :location_text, :longitude, :latitude)
+    params.require(:trip).permit(:title, :description, :location_text, :longitude, :latitude, :inspiration_id, :inspiration_type)
   end
 
 end
