@@ -1,13 +1,16 @@
 function welcomePage() {
   var welcomePage = $('#welcome');
   if (welcomePage.length) {
+    var windowHeight = $(window).height() < 500 ? 500 : $(window).height();
+    var backgroundImage = $('#welcome #background-image');
+    var blurCover = $('#welcome #background-image #blur');
 
-    welcomePage.height($(window).height());
+    welcomePage.height(windowHeight);
 
-    beforeScrollPos = 0;
     $(window).scroll(function() {
-      var afterScrollPos = $(this).scrollTop();
-      $('#blur').css({ opacity: (afterScrollPos / $(window).height()) });
+      var pos = $(this).scrollTop();
+      blurCover.css({ opacity: (pos / windowHeight) });
+      backgroundImage.css('top',(0-(pos*.25))+'px');
     })
 
   }

@@ -2,52 +2,53 @@
   position: relative;
   z-index: 0;
   margin: 0px auto;
+  padding: 200px 70px;
   width: 100%;
 
   #background-image {
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
-    padding: 200px 70px;
-    width: 100%;
-    height: 100%;
-    background: image-url('landing03.jpg') no-repeat center -3em fixed;
-    -webkit-background-size: cover;
-       -moz-background-size: cover;
-         -o-background-size: cover;
-  }
-  #blur {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: -200px -70px;
     z-index: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 255, 255, 1);
-    opacity: 0;
+    background: image-url('landing03.jpg') center center scroll;
+    -webkit-background-size: cover;
+       -moz-background-size: cover;
+         -o-background-size: cover;
+
+    #blur {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 1);
+      opacity: 0;
+    }
+  }
+
+  .title, .tag, .search-bar {
+    position: relative;
+    z-index: 5;
   }
 
   .title {
-    z-index: 10;
+    margin-bottom: -20px;
+    margin-left: -5px;
     color: $white;
     text-shadow: 0 -1px 1px rgba(60, 60, 60, 0.5);
     font-weight: bold;
     font-size: 5em;
     font-family: 'Open Sans', sans-serif;
-    margin-bottom: -20px;
-    margin-left: -5px;
   }
   .tag {
-    z-index: 10;
-    color: $white;
     margin-bottom: 10px;
+    color: $white;
     font-size: 2em;
   }
   .search-bar {
-    z-index: 10;
-    position: relative;
     min-width: 500px;
     max-width: 45%;
 
@@ -57,11 +58,11 @@
     }
     .fa-search {
       position: absolute;
-      right: 15px;
       top: 10px;
-      font-size: 1.2em;
+      right: 15px;
       color: $black + 100;
       text-shadow: 0 0 2px rgba(40, 40, 40, 0.5);
+      font-size: 1.2em;
     }
   }
 }
