@@ -6,7 +6,7 @@
 
 		<div class="users-trips">
 			<div class="selector"><%= link_to 'Your Trips', @user, class: "btn", remote: true %></div>
-			<div class="selector"><%= link_to 'Your Favourite Trips', user_path(@user, favourites: true), class: "btn", remote: true %></div>
+			<div class="selector"><%= link_to 'Your Favourites', user_path(@user, favourites: "trip"), class: "btn", remote: true %></div>
 			<div class="display-trips">
 				<%= render @trips %>
 			</div>

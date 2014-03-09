@@ -1,20 +1,34 @@
-<div class="post">
-	<h4><%= post.title %></h4>
-	<ul>
+			<h4><%= post.title %></h4>
+			<ul>
+				<li><%= markdown(post.content) %></li>
 
-		<li><%= post.content %></li>
+				<% post.post_attachments.each do |pic| %>
+		  		<%= image_tag pic.postimage_url(:big) %>
+				<% end %>
 
-		<% @post_attachments.each do |p| %>
-  		<%= image_tag p.postimage_url %>
+				<% if post.trip.user == current_user %>
+				<li><%= link_to "Edit this post", edit_trip_chapter_post_path(post.trip, post.chapter, post) %></li>
+				<li><%= link_to "Delete This Post", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete %></li>
+				<% end %>
+			</ul>
+
+<div id="upvote-div-<%= post.id %>">
+	<% if logged_in? %>
+		<% if current_user.voted_for? post  %>
+
+			<button class="upvote-button-<%= post.id %>" data-vote-status="downvote">
+				<%= link_to "Remove This Post From Favourites", vote_trip_chapter_post_path(post.chapter.trip, post.chapter, post, unvote: 1), method: :post, remote: true %>
+			</button>
+
+		<% else %>
+
+			<button class="upvote-button-<%= post.id %>" data-vote-status="upvote">
+				<%= link_to "Add This Post to Favourites", vote_trip_chapter_post_path(post.chapter.trip, post.chapter, post), method: :post, remote: true %>
+			</button>
+
 		<% end %>
+	<% end %>
 
-
-		<li><%= markdown(post.content) %></li>
-
-		<% if post.trip.user == current_user %>
-			<li><%= link_to "Edit this post", edit_trip_chapter_post_path(post.trip, post.chapter, post) %></li>
-			<li><%= link_to "Delete This Post", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete %></li>
-		<% end %>
-
-	</ul>
 </div>
+
+	<p class='upvote-count-<%= post.id %>'><%= post.votes.count %> people have favourited this post</p>
