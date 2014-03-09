@@ -5,7 +5,7 @@
 <p> <%= link_to "create a new post", new_trip_chapter_post_path(@trip, @chapter) %> </p>
 <% end %>
 
-<h1>Chapter <%= @chapter.id %>: <%= @chapter.title %></h1>
+<h1>Chapter <%= @trip.chapters.index(@chapter) + 1 %>: <%= @chapter.title %></h1>
 <p><%= @chapter.description %></p>
 <br>
 
