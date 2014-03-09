@@ -5,11 +5,12 @@
 
 .sidebar {
   position: fixed;
+  display: block;
   width: 240px;
   height: 100%;
 }
 
 .content {
-  position: absolute;
+  position: relative;
   width: 100%;
 }

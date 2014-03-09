@@ -19,14 +19,10 @@
 $(document).ready(function() {
   $(document).foundation();
 
+  setWelcomePageHeight();
+
   // offcanvas menu
   sidebar();
-
-  // Bind flash alerts
-  // flashAlertEffect();
-
-  // bind dropdown list buttons
-  // dropdownListBtn();
 
   // bind delete photo Button
   deletePictureBtn();
@@ -35,5 +31,11 @@ $(document).ready(function() {
   if ($('#map-canvas').length) {
     var map = new GoogleMap();
   }
+
+  // Bind flash alerts
+  // flashAlertEffect();
+
+  // bind dropdown list buttons
+  // dropdownListBtn();
 
 });

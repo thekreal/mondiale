@@ -1,35 +1,45 @@
-function Sidebar() {
+function sidebar() {
   var sidebar = $('.sidebar'),
       content = $('.content'),
       sidebarToggle = $('.sidebar-toggle');
       sidebarWidth = sidebar.width();
 
-  function sidebarHidden() {
-    return sidebar.offset().left === - sidebarWidth ? true : false;
-  }
+  function currentlyHidden() {
+    return content.offset().left > 0 ? false: true
+  };
+  function direction() {
+    return currentlyHidden() ? '240px' : '0px';
+  };
+  function slideAnimate() {
+    content.add(sidebarToggle).animate({
+      left: direction()
+    }, {
+      duration: 800,
+      easing: 'easeOutCirc',
+      queue: false,
+      done: function() {
+        bindContent();
+      }
+    });
 
-  function bindBtn(element, action) {
-    element.click(function() {
-      $(this).unbind('click');
-      slideLeft();
-      action;
+  };
+  function onClick(btn, unbind) {
+    unbind = unbind || false
+    btn.on('click', function(e) {
+      e.preventDefault();
+      slideAnimate();
+      if (unbind === true) {
+        $(this).unbind('click');
+      }
     })
   }
-
-  function slideLeft(object, position, action) {
-    object.animate({
-      left: position
-    }, 1200, 'easeInOutCubic', function() {
-      action;
-    });
+  function bindContent() {
+    if (!currentlyHidden()) {
+      onClick(content, true);
+    };
+  };
+  function initialize() {
+    onClick(sidebarToggle);
   }
-
-
-  if (sidebarHidden()) {
-    bindBtn(
-      sidebarToggle,
-      slideLeft(sidebar.add(content), '+=240px')
-    )
-  }
-
+  initialize();
 }
