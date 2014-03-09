@@ -1,83 +1,83 @@
-.jumbo {
-  position: relative;
-  height: 600px;
+// .jumbo {
+//   position: relative;
+//   height: 600px;
+//   z-index: 0;
+//   .background {
+//     width: 100%;
+//     height: 100%;
 
-  .background {
-    width: 100%;
-    height: 100%;
+//     background: image-url('landing03.jpg') no-repeat center center fixed;
+//     -webkit-background-size: cover;
+//     -moz-background-size: cover;
+//     -o-background-size: cover;
+//   }
 
-    background: image-url('landing03.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-  }
+//  .welcome-text {
+//     position: absolute;
+//     font-family: 'Source Sans Pro', sans-serif;
+//     color: white;
+//     text-shadow: 0 -1px 1px rgba(60, 60, 60, 0.7);
+//     font-size: 40px;
+//     font-weight: bold;
+//     top: 40%;
+//     left: 7%;
+//   }
 
- .welcome-text {
-    position: absolute;
-    font-family: 'Source Sans Pro', sans-serif;
-    color: white;
-    text-shadow: 0 -1px 1px rgba(60, 60, 60, 0.7);
-    font-size: 40px;
-    font-weight: bold;
-    top: 40%;
-    left: 7%;
-  }
-
-  .search-bar {
-    position: absolute;
-    top: 50%;
-    left: 7%;
-    padding: 15px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 6px -3px rgba(60, 60, 60, 0.7);
-    input[type=text] {
-      padding: 10px;
-      width: 300px;
-      outline: none;
-      border: 0px solid $black + 100;
-      border-radius: 5px;
-      box-shadow: inset 2px 2px 6px -4px rgba(60, 60, 60, 0.7);
-      font-size: 0.8em;
-    }
-    .fa-search {
-      position: absolute;
-      top: 27px;
-      right: 25px;
-      color: rgba(80, 80, 80, 0.7);
-    }
-  }
-}
+//   .search-bar {
+//     position: absolute;
+//     top: 50%;
+//     left: 7%;
+//     padding: 15px;
+//     border-radius: 10px;
+//     background: rgba(255, 255, 255, 0.9);
+//     box-shadow: 0 0 6px -3px rgba(60, 60, 60, 0.7);
+//     input[type=text] {
+//       padding: 10px;
+//       width: 300px;
+//       outline: none;
+//       border: 0px solid $black + 100;
+//       border-radius: 5px;
+//       box-shadow: inset 2px 2px 6px -4px rgba(60, 60, 60, 0.7);
+//       font-size: 0.8em;
+//     }
+//     .fa-search {
+//       position: absolute;
+//       top: 27px;
+//       right: 25px;
+//       color: rgba(80, 80, 80, 0.7);
+//     }
+//   }
+// }
 
 
-.featured-trips {
-  position: relative;
-  width: 100%;
-  height: 800px;
-  h2.title {
-    color: $black;
-    font-weight: 800;
-    font-size: 2em;
-    text-align: center;
-  }
-  h3 {
-    font-size: 1.75em;
-  }
-}
+// .featured-trips {
+//   position: relative;
+//   width: 100%;
+//   height: 800px;
+//   h2.title {
+//     color: $black;
+//     font-weight: 800;
+//     font-size: 2em;
+//     text-align: center;
+//   }
+//   h3 {
+//     font-size: 1.75em;
+//   }
+// }
 
-.recent-trips{
-  margin-top: -3em;
-  padding: 30px;
-  position: relative;
-  float: left;
-  width: 50%;
-}
+// .recent-trips{
+//   margin-top: -3em;
+//   padding: 30px;
+//   position: relative;
+//   float: left;
+//   width: 50%;
+// }
 
-.top-rated-trips{
-  margin-top: -3em;
-  float: left;
-  padding: 30px;
-  position: relative;
-  width: 50%;
-}
+// .top-rated-trips{
+//   margin-top: -3em;
+//   float: left;
+//   padding: 30px;
+//   position: relative;
+//   width: 50%;
+// }
 

@@ -17,15 +17,16 @@
 
 // Initializer
 $(document).ready(function() {
+  $(document).foundation();
 
-  // Bind navbar background color effect
-  navbarBackground();
+  // offcanvas menu
+  sidebar();
 
   // Bind flash alerts
-  flashAlertEffect();
+  // flashAlertEffect();
 
   // bind dropdown list buttons
-  dropdownListBtn();
+  // dropdownListBtn();
 
   // bind delete photo Button
   deletePictureBtn();
