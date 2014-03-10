@@ -16,10 +16,12 @@
 <div class="trip-content">
 <p><%= markdown(@trip.description) %></p>
 
-<% if @inspiration %>
-<div id="inspiration">
-Inspired by <%= @inspiration.title %>
-</div>
+<% if @trip.inspiration_id != nil %>
+
+	<div class="inspirations">
+		<p>This trip was inspired by <%= link_to  @inspiration.title, @inspiration %></p>
+	</div>
+
 <% end %>
 
 <div class="upvote-div">

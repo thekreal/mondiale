@@ -12,8 +12,11 @@ class TripsController < ApplicationController
 
   def show
     @chapters = @trip.chapters
+
     @chapter = Chapter.new( :trip_id => @trip.id )
     # @inspiration = @trip.inspiration_type.constantize.find(@trip.inspiration_id)
+
+    @inspiration = @trip.inspiration
 
     if @trip.coverphoto
       @cover = PostAttachment.find(@trip.coverphoto)
