@@ -1,15 +1,21 @@
 <div id="welcome" class="jumbo">
-  <div class="background"></div>
 
-  <div class="welcome-text">
-  	Mondiale helps you tell your travel story.</div>
+  <div id="background-image">
+    <div id="blur"></div>
+  </div>
 
+  <h1 class="title"><%= site_name %></h1>
+  <div class="tag">
+    Plan a trip and tell your travel story.
+  </div>
   <div class="search-bar">
     <%= form_tag trips_path, method: :get, id: "search" do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Type In a Location" %>
-  <% end %>
+    <%= text_field_tag :search, params[:search],
+        placeholder: "Type In a Location" %>
+    <% end %>
     <span class="fa fa-search"></span>
   </div>
+
 </div>
 
 <div class="featured-trips">

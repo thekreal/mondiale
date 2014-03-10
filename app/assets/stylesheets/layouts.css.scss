@@ -1,18 +1,17 @@
-// SITE LAYOUT
+.sidebar, .content {
+  top: 0px;
+  display: inline-block;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0px;
+  display: block;
+  width: 240px;
+  height: 100%;
+}
 
 .content {
-  margin-top: $header-height;
-}
-
-.navbar {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 10;
+  position: absolute;
   width: 100%;
-  height: $header-height;
-}
-
-.form {
-  border: 1px solid transparent;
 }

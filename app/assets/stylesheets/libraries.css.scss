@@ -1,5 +1,7 @@
 @mixin animation($property: all, $duration: 0.5s, $time-function: ease-in-out) {
   -webkit-transition: $property $duration $time-function;
+     -moz-transition: $property $duration $time-function;
+       -o-transition: $property $duration $time-function;
           transition: $property $duration $time-function;
 }
 

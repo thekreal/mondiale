@@ -17,15 +17,12 @@
 
 // Initializer
 $(document).ready(function() {
+  $(document).foundation();
 
-  // Bind navbar background color effect
-  navbarBackground();
+  welcomePage();
 
-  // Bind flash alerts
-  flashAlertEffect();
-
-  // bind dropdown list buttons
-  dropdownListBtn();
+  // offcanvas menu
+  sidebar();
 
   // bind delete photo Button
   deletePictureBtn();
@@ -34,5 +31,11 @@ $(document).ready(function() {
   if ($('#map-canvas').length) {
     var map = new GoogleMap();
   }
+
+  // Bind flash alerts
+  // flashAlertEffect();
+
+  // bind dropdown list buttons
+  // dropdownListBtn();
 
 });

@@ -10,15 +10,9 @@
  *
  */
 
-
-
 /* Reset all css styling */
-
-@import 'normalize';
-
-// CSS RESET
-// @import 'css_reset';
-
+@import 'third_parties/normalize';
+@import 'third_parties/foundation.min';
 
 // THIRD PARTY PLUGINS
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro|Nixie+One);
@@ -31,15 +25,19 @@
 @import 'general_style';
 @import 'layouts';
 
-// FORMS
-@import 'form_template';
-@import 'forms/new_trip';
+@import 'sidebar';
+@import 'welcome';
+
+@import 'google_map_canvas';
 
 // PAGE STYLE
-@import 'alerts';
-@import 'header';
-@import 'trips';
-@import 'welcome';
-@import 'google_map_canvas';
-@import 'users'
+// @import 'alerts';
 
+// @import 'trips';
+
+
+// @import 'users';
+
+// // FORMS
+// @import 'form_template';
+// @import 'forms/new_trip';

@@ -46,7 +46,7 @@ Inspired by <%= @inspiration.title %>
 	<ul>
 		<li><%= link_to "Set trip cover photo", set_trip_cover_path(:id => @trip.id), :class => 'sel-cov', remote: true %></li>
 		<li><%= link_to "Edit this trip", edit_trip_path %></li>
-		<li><%= link_to "Remove this trip", @trip, method: :delete %></li>
+		<li><%= link_to "Remove this trip", @trip, method: :delete, confirm: "Are you sure you want to delete this trip?" %></li>
 	</ul>
 	<% end %>
 	</div>
