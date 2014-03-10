@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
 
@@ -31,6 +32,8 @@ $(document).ready(function() {
   if ($('#map-canvas').length) {
     var map = new GoogleMap();
   }
+
+  $('#chapters-list').sortable();
 
   // Bind flash alerts
   // flashAlertEffect();
