@@ -10,6 +10,8 @@ class PostsController < ApplicationController
 	def create
 		@chapter = Chapter.find(params[:chapter_id])
 		@post = @chapter.posts.new(post_params)
+		@post.inspiration_type = params[:post][:inspirationinfo].split(' ')[0]
+    @post.inspiration_id = params[:post][:inspirationinfo].split(' ')[1]
 		if @post.save
       save_images
 			flash[:success] = "Your post has been created successfully"
@@ -71,7 +73,7 @@ private
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :content, :date, :location, :post_attachments, :inspiration_id, :inspiration_type)
+		params.require(:post).permit(:title, :content, :date, :location, :inspirationinfo, :post_attachments, :inspiration_id, :inspiration_type)
 	end
 
 end

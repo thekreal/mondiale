@@ -1,4 +1,5 @@
 class Chapter < ActiveRecord::Base
+	attr_accessor :inspirationinfo
   acts_as_votable
 
   belongs_to :trip

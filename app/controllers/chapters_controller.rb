@@ -17,6 +17,9 @@ class ChaptersController < ApplicationController
 	def create
 		@trip = Trip.find(params[:trip_id])
 		@chapter = @trip.chapters.new(chapter_params)
+    @chapter.inspiration_type = params[:chapter][:inspirationinfo].split(' ')[0]
+    @chapter.inspiration_id = params[:chapter][:inspirationinfo].split(' ')[1]
+
 		if @trip.save
       flash[:success] = "Your chapter has been created successfully"
       redirect_to [@chapter.trip, @chapter]
@@ -65,7 +68,7 @@ private
   end
 
   def chapter_params
-  	params.require(:chapter).permit(:title, :description, :inspiration_id, :inspiration_type)
+  	params.require(:chapter).permit(:title, :description, :inspirationinfo, :inspiration_id, :inspiration_type)
   end
 
 end
