@@ -1,0 +1,11 @@
+<%= @user.find_voted_items.each do |vi| %>
+	<ul>
+		<li><%= vi.class %>: <%= vi.title %></li>
+		<% if Trip.find_by inspiration_id: vi.id %>
+			<p>This favourite inspired the following trips:</p>
+				<% Trip.where("inspiration_id = ?", vi.id).each do |i| %>
+				<%=  i.title %>
+				<% end %>
+		<% end %>
+	</ul>
+<% end %>
