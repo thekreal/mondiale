@@ -12,6 +12,14 @@
 				<% end %>
 			</ul>
 
+<% if post.inspiration_id != nil %>
+
+	<div class="inspirations">
+		<p>This trip was inspired by <%= link_to  @inspiration.title, @inspiration %></p>
+	</div>
+
+<% end %>
+
 <div id="upvote-div-<%= post.id %>">
 	<% if logged_in? %>
 		<% if current_user.voted_for? post  %>

@@ -12,6 +12,14 @@
 <div id="map-canvas" data-objects="<%= posts_in_json(@chapter.posts) %>" data-center-pos="<%= center_of_all_locations(@trip.posts).to_json %>">
 </div>
 
+<% if @chapter.inspiration_id != nil %>
+
+	<div class="inspirations">
+		<p>This trip was inspired by <%= link_to  @inspiration.title, @inspiration %></p>
+	</div>
+
+<% end %>
+
 <div class="upvote-div">
 
 
