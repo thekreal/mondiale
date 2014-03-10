@@ -15,18 +15,20 @@
 
 <div class="trip-content">
 <p><%= markdown(@trip.description) %></p>
-	<div class="upvote-div">
 
+<% if @inspiration %>
+<div id="inspiration">
+Inspired by <%= @inspiration.title %>
+</div>
+<% end %>
 
+<div class="upvote-div">
 	<% if logged_in? %>
 		<% if current_user.voted_for? @trip  %>
-
 			<button class="upvote-button" data-vote-status="downvote">
 				<%= link_to "Remove This Trip From Favourites", vote_trip_path(@trip, unvote: 1), method: :post, remote: true %>
 			</button>
-
 		<% else %>
-
 			<button class="upvote-button" data-vote-status="upvote">
 				<%= link_to "Add This Trip to Favourites", vote_trip_path(@trip), method: :post, remote: true %>
 			</button>
@@ -52,16 +54,19 @@
 	<div id="set-cov">
 	</div>
 
-	<div class="chapters">
 	<h2>Chapters</h2>
 
 		<% if @trip.user == current_user %>
 		<ul>
-			<li><%= link_to "Create a new chapter", new_trip_chapter_path(@trip) %></li>
+			<li><%= link_to "Create a new chapter", new_trip_chapter_path(@trip), :class => 'new-chapter', remote: true %></li>
 		</ul>
+
+		<div id="new-chapter-form">
+
+		</div>
+
 		<% end %>
-
-		<%= render @chapters %>
-
+	<div class="chapters">
+	<%= render @chapters %>
 	</div>
 </div>

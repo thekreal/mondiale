@@ -1,5 +1,5 @@
 <div class="form">
-<%= form_for [@chapter.trip, @chapter], html: {class: "form-container"} do |f| %>
+<%= form_for [@chapter.trip, @chapter], remote: true, html: {class: "form-container"} do |f| %>
 
 <%= render 'alerts/error_message', object: @chapter %>
 
@@ -20,7 +20,7 @@
   <div class="form-field">
     <div class="form-label"></div>
     <div class="form-control">
-      <%= f.submit submit, class: "form-btn" %>
+      <%= f.submit class: "form-btn"%>
     </div>
   </div>
 

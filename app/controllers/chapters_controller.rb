@@ -11,18 +11,31 @@ class ChaptersController < ApplicationController
 
 	def new
 		@trip = Trip.find(params[:trip_id])
-		@chapter = @trip.chapters.new
+    @chapter = Chapter.new( :trip_id => @trip.id )
+
+    respond_to do |format|
+      format.html #if ajax is disabled
+      format.js #for remote true ajax calls
+    end
+
 	end
 
 	def create
 		@trip = Trip.find(params[:trip_id])
-		@chapter = @trip.chapters.new(chapter_params)
-		if @trip.save
-      flash[:success] = "Your chapter has been created successfully"
-      redirect_to [@chapter.trip, @chapter]
-    else
-      render :new
+    @chapter = @trip.chapters.new(chapter_params)
+    respond_to do |format|
+      if @chapter.save
+        format.html do
+          flash[:success] = "Your chapter has been created successfully"
+          @chapter = @trip.chapters.new(chapter_params)
+        end
+        format.js
+      else
+        format.html {render :new}
+        format.js
+      end
     end
+
 	end
 
   def vote

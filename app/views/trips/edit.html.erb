@@ -1,3 +1,18 @@
-<% provide :page_title, "Edit Trip" %>
+<% provide :page_title, "Edit trip" %>
 
+<div id="trip-edit">
 <%= render 'form', title: yield(:page_title), submit: "Update" %>
+</div>
+
+
+<div id="chapter-edit">
+
+	<% 	@trip.chapters.each do |c| %>
+		<%= c.title %>
+	<% end %>
+
+	<div id="post-edit">
+
+	</div>
+
+</div>
