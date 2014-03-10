@@ -65,7 +65,7 @@ private
   end
 
   def chapter_params
-  	params.require(:chapter).permit(:title, :description)
+  	params.require(:chapter).permit(:title, :description, :inspiration_id, :inspiration_type)
   end
 
 end

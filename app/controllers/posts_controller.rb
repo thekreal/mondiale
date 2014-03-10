@@ -71,7 +71,7 @@ private
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :content, :date, :location, :post_attachments)
+		params.require(:post).permit(:title, :content, :date, :location, :post_attachments, :inspiration_id, :inspiration_type)
 	end
 
 end

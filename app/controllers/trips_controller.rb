@@ -93,7 +93,7 @@ private
   end
 
   def trip_params
-    params.require(:trip).permit(:title, :description, :location_text, :longitude, :latitude, :inspiration_id, :inspiration_type)
+    params.require(:trip).permit(:title, :description, :inspiration_id, :inspiration_type)
   end
 
 end
