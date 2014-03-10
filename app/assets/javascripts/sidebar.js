@@ -39,6 +39,9 @@ function sidebar() {
   };
   function initialize() {
     onClick(sidebarToggle);
-  }
+    if (!currentlyHidden()) {
+      bindContent();
+    }
+  };
   initialize();
-}
+};

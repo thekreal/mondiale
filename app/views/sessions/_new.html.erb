@@ -1,9 +1,5 @@
-<% provide :page_title, "Sign In" %>
-
-<div class="signin-form">
+<div id="signin" class="form">
 <%= form_for :session, url: sessions_path, html: { class: "form-container" } do |f|%>
-
-  <legend class="form-title"><%= yield(:page_title) %></legend>
 
   <div class="form-field">
     <%= f.label :email, for: "sesison_email", class: "form-label" %>

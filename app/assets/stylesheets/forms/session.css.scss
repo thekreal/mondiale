@@ -1,0 +1,12 @@
+#signin,
+#signup {
+  @include form;
+  position: fixed;
+  z-index: 101;
+  margin: 60px auto;
+  padding-bottom: 10px;
+  min-width: 600px;
+  max-width: 600px;
+  background: $white;
+}
+

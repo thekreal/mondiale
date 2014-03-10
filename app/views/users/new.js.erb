@@ -1,0 +1,13 @@
+var signupForm = $('#signup.form')
+
+if (!signupForm.length) {
+  var blurBackground = addBlur('body');
+  signupForm = $('<%= j render "users/new" %>');
+  slideDownShow(signupForm);
+  clickToClose(blurBackground.add('.sidebar .btn, .close'), signupForm);
+}
+
+else {
+  slideUpRemove(signupForm);
+  removeBlur();
+}

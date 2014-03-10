@@ -19,6 +19,7 @@
 $(document).ready(function() {
   $(document).foundation();
 
+  setToWindowHeight($('.content'), $(window).height());
   welcomePage();
 
   // offcanvas menu
