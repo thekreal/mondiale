@@ -7,7 +7,7 @@ class PostsController < ApplicationController
    	@post_attachment = @post.post_attachments.build
 
    	respond_to do |format|
-      format.html {redirect_to @chapter}
+      format.html
       format.js
     end
 	end
