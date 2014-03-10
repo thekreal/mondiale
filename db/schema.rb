@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140309194100) do
+ActiveRecord::Schema.define(version: 20140310171717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20140309194100) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.string   "inspiration_type"
+    t.integer  "inspiration_id"
   end
 
   create_table "post_attachments", force: true do |t|
@@ -47,9 +49,11 @@ ActiveRecord::Schema.define(version: 20140309194100) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
-    t.decimal  "longitude",  precision: 9, scale: 6
-    t.decimal  "latitude",   precision: 9, scale: 6
+    t.decimal  "longitude",        precision: 9, scale: 6
+    t.decimal  "latitude",         precision: 9, scale: 6
     t.string   "postimage"
+    t.string   "inspiration_type"
+    t.integer  "inspiration_id"
   end
 
   create_table "trips", force: true do |t|
