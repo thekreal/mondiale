@@ -1,9 +1,6 @@
 <% provide :page_title, "Chapter" %>
 
 <p> <%= link_to "Back to #{@chapter.trip.title}", @chapter.trip %> </p>
-<% if @chapter.trip.user == current_user %>
-<p> <%= link_to "create a new post", new_trip_chapter_post_path(@trip, @chapter) %> </p>
-<% end %>
 
 <h1>Chapter <%= @trip.chapters.index(@chapter) + 1 %>: <%= @chapter.title %></h1>
 <p><%= @chapter.description %></p>
@@ -43,10 +40,15 @@
 
 	<p class='upvote-count-chapter'><%= @chapter.votes.count %> people have favourited this chapter</p>
 
-<div class="post-list">
 
-	<div class="post">
+	<% if @chapter.trip.user == current_user %>
+			<p> <%= link_to "create a new post", new_trip_chapter_post_path(@trip, @chapter), remote: true %> </p>
+	<% end %>
 
+	<div id="new-post-form">
+
+	</div>
+
+	<div class="posts">
 		<%= render @posts %>
-
-</div>
+	</div>
