@@ -22,4 +22,10 @@ class Post < ActiveRecord::Base
     trip.id
   end
 
+  def inspiration
+    if inspiration_id != nil
+    ActiveModel.const_get(inspiration_type).find(inspiration_id)
+    end
+  end
+
 end
