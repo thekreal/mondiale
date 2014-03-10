@@ -1,14 +1,14 @@
 function sidebar() {
-  var sidebar = $('.sidebar'),
+  var self = $('.sidebar'),
       content = $('.content'),
       sidebarToggle = $('.sidebar-toggle');
-      sidebarWidth = sidebar.width();
+      sidebarWidth = self.width();
 
   function currentlyHidden() {
     return content.offset().left > 0 ? false: true
   };
   function direction() {
-    return currentlyHidden() ? '240px' : '0px';
+    return currentlyHidden() ? 240 : 0;
   };
   function slideAnimate() {
     content.add(sidebarToggle).animate({
@@ -21,7 +21,6 @@ function sidebar() {
         bindContent();
       }
     });
-
   };
   function onClick(btn, unbind) {
     unbind = unbind || false

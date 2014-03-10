@@ -5,7 +5,8 @@ function welcomePage() {
     var backgroundImage = $('#welcome #background-image');
     var blurCover = $('#welcome #background-image #blur');
 
-    welcomePage.height(windowHeight);
+    welcomePage.add(backgroundImage).height(windowHeight);
+
 
     $(window).scroll(function() {
       var pos = $(this).scrollTop();

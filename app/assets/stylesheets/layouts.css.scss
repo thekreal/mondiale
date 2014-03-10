@@ -1,16 +1,17 @@
 .sidebar, .content {
-  display: inline-block;
   top: 0px;
+  display: inline-block;
 }
 
 .sidebar {
   position: fixed;
+  left: 0px;
   display: block;
   width: 240px;
   height: 100%;
 }
 
 .content {
-  position: relative;
+  position: absolute;
   width: 100%;
 }

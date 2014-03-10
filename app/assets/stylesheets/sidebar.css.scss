@@ -1,8 +1,6 @@
 .sidebar {
-  left: 0px;
-  z-index: 1;
   background: $white;
-
+  z-index: 0;
   .site-logo {
     display: block;
     margin-bottom: 10px;
@@ -23,7 +21,7 @@
   top: 0;
   left: 0;
   z-index: 100;
-  padding: 10px;
+  padding: 10px 15px 10px 10px;
   background: rgba(40, 40, 40, 0.75);
   color: rgba(255, 255, 255, 1);
   font-size: 3em;
@@ -35,8 +33,8 @@
 
 .content {
   @include animation(all, 1s, 'ease-in-out');
-  left: 0px;
-  z-index: 1;
   background: $white;
+  left: 0px;
+  z-index: 0;
   box-shadow: -3px 0px 6px -3px rgba(40, 40, 40, 0.5);
 }
