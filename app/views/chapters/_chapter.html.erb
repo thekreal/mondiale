@@ -5,7 +5,7 @@
 	<% if chapter.trip.user == current_user %>
 	<ul>
 		<li><%= link_to "Edit this chapter", edit_trip_chapter_path(chapter.trip, chapter) %></li>
-		<li><%= link_to "Delete this chapter", trip_chapter_path(chapter.trip, chapter), method: :delete, confirm: "Are you sure you want to delete this chapter?" %></li>
+		<li><%= link_to "Delete this chapter", trip_chapter_path(chapter.trip, chapter), method: :delete, confirm: "Are you sure you want to delete this chapter?", remote: true %></li>
 	</ul>
 	<% end %>
 

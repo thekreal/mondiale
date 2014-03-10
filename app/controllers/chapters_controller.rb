@@ -27,7 +27,7 @@ class ChaptersController < ApplicationController
       if @chapter.save
         format.html do
           flash[:success] = "Your chapter has been created successfully"
-          @chapter = @trip.chapters.new(chapter_params)
+          redirect_to @trip
         end
         format.js
       else
@@ -65,10 +65,22 @@ class ChaptersController < ApplicationController
   end
 
   def destroy
-    if @chapter.destroy
-      flash[:success] = "Your chapter has been deleted successfully"
-      redirect_to @chapter.trip
+     respond_to do |format|
+      if @chapter.destroy
+        @trip = Trip.find(params[:trip_id])
+        @chapters = @trip.chapters
+        format.html do
+          flash[:success] = "Your chapter has been deleted successfully"
+          redirect_to @chapter.trip
+        end
+        format.js
+      else
+        format.html {redirect_to @chapter.trip}
+        format.js
+      end
     end
+
+
   end
 
 private
