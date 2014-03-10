@@ -12,6 +12,7 @@ class TripsController < ApplicationController
 
   def show
     @chapters = @trip.chapters
+    @inspiration = @trip.inspiration
     if @trip.coverphoto
       @cover = PostAttachment.find(@trip.coverphoto)
     end

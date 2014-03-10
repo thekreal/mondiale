@@ -36,4 +36,18 @@ class Trip < ActiveRecord::Base
     self.order("cached_votes_total DESC")
   end
 
+  def inspiration
+    if inspiration_type == "Trip"
+      Trip.find(inspiration_id)
+    elsif inspiration_type == "Chapter"
+      Chapter.find(inspiration_id)
+    elsif inspiration_type == "Post"
+      Post.find(inspiration_id).chapter
+    end
+  end
 end
+
+
+
+
+
