@@ -11,16 +11,6 @@
 
   <div class="inspirations">
     <h3>Inspirations</h3>
-
-    <% if current_user %>
-      <% current_user.find_voted_items.each do |i| %>
-        <% if i %>
-        <%= f.radio_button :inspirationinfo, "#{i.class.to_s} #{i.id}" %>
-        <%= f.label :inspirationinfo, i.title %>
-          </br>
-        <% end %>
-      <% end %>
-    <% end %>
   </div>
 
   <div class="form-field">
