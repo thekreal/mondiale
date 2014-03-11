@@ -28,7 +28,7 @@
 	<% if logged_in? %>
 		<% if Inspiration.by_this?(current_user.id, @trip.id, @trip.class) %>
 			<button class="inspiration-button">
-				<%= link_to "Remove This as an Inspiration", inspiration_path(Inspiration.by_this(current_user.id, @trip.id, @trip.class)), method: :delete, remote: true %>
+				<%= link_to "Remove This as an Inspiration", inspiration_path(Inspiration.by_this(current_user.id, @trip.id, @trip.class)[0].id), method: :delete, remote: true %>
 			</button>
 		<% else %>
 			<button class="inspiration-button" >
