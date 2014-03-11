@@ -8,7 +8,7 @@
 
 				<% if post.trip.user == current_user %>
 				<li><%= link_to "Edit this post", edit_trip_chapter_post_path(post.trip, post.chapter, post), remote: true %></li>
-				<li><%= link_to "Delete This Post", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete, confirm: "Are you sure you want to delete this post?" %></li>
+				<li><%= link_to "Delete This Post", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete, confirm: "Are you sure you want to delete this post?", remote: true %></li>
 				<% end %>
 			</ul>
 			<div id="edit-post-form"></div>

@@ -72,11 +72,22 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
+		@chapter = Chapter.find(params[:chapter_id])
+		respond_to do |format|
 		if @post.destroy
-			flash[:success] = "Your post has been deleted successfully"
-			redirect_to trip_chapter_path(@post.trip, @post.chapter)
+			@posts = @chapter.posts
+			format.html do
+				flash[:success] = "Your post has been deleted successfully"
+				redirect_to trip_chapter_path(@post.trip, @post.chapter)
+			end
+			format.js {flash.now[:success] = "gone"}
+		else
+			format.html {render :show}
+			format.js
+		end
 		end
 	end
+
 
 private
 
