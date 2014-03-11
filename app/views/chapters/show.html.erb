@@ -15,7 +15,7 @@
 
 <% if logged_in? %>
 
-	<div id="inspiration-link">
+	<div class="inspiration-link">
 		<% if @chapter.already_inspired?(current_user.id) %>
 			<%= link_to 'I am no longer inspired', @chapter.already_inspired(current_user.id), method: :delete, remote: true %>
 		<% else %>

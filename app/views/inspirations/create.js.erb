@@ -1,6 +1,3 @@
 
 $(".inspirations-count").text(<%= @inspiration.number_of_inspired %> + " people have added this as an inspiration")
-
-var btn = $("#inspiration-btn-" + <%=@inspiration.id %>);
-
-btn.remove();
+$(".inspiration-link").text("you have added this as an inspiration");
