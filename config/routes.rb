@@ -4,6 +4,7 @@ Mondiale::Application.routes.draw do
 
   resources :trips do
     member { post :vote }
+    collection { post :sort_chapter_items }
   	resources :chapters do
       member { post :vote}
       resources :posts, except: [:index, :show] do
