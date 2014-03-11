@@ -35,6 +35,15 @@ class Trip < ActiveRecord::Base
     ActiveModel.const_get(inspiration_type).find(inspiration_id)
     end
   end
+
+  def already_inspired(user_id)
+    inspirations.find_by(user_id: user_id)
+  end
+
+  def already_inspired?(user_id)
+    already_inspired(user_id).is_a?(Inspiration)
+  end
+
 end
 
 
