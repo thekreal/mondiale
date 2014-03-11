@@ -38,20 +38,6 @@ class PostsController < ApplicationController
     @post_attachment = @post.post_attachments.build
 	end
 
-	def vote
-
-    if params[:unvote]
-      @post.unliked_by(current_user)
-    else
-      @post.liked_by(current_user)
-    end
-    respond_to do |format|
-      format.html {redirect_to @trip}
-      format.js
-    end
-
-  end
-
 	def update
 	@chapter = Chapter.find(params[:chapter_id])
 	@posts = @chapter.posts

@@ -40,20 +40,6 @@ class ChaptersController < ApplicationController
 
 	end
 
-  def vote
-
-    if params[:unvote]
-      @chapter.unliked_by(current_user)
-    else
-      @chapter.liked_by(current_user)
-    end
-    respond_to do |format|
-      format.html {redirect_to @trip}
-      format.js
-    end
-
-  end
-
   def edit
   end
 
