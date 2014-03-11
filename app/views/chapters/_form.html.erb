@@ -22,9 +22,11 @@
     <h3>Inspirations</h3>
 
     <% current_user.find_voted_items.each do |i| %>
+      <% if i %>
       <%= f.radio_button :inspirationinfo, "#{i.class.to_s} #{i.id}", id: "#{i.class.to_s} #{i.id}"  %>
       <%= f.label :inspirationinfo, i.title, for: "#{i.class.to_s} #{i.id}"  %>
         </br>
+      <% end %>
     <% end %>
 
   </div>

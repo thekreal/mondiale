@@ -1,4 +1,4 @@
-function GoogleMap() {
+function GoogleMap(obj) {
 
   /* VARIABLES */
   var apiUrl = "https://maps.googleapis.com/maps/api/js?",
@@ -10,31 +10,38 @@ function GoogleMap() {
         callback: 'initialize'
       },
 
-      mapCanvas = document.getElementById('map-canvas'),
+      mapCanvas = obj,
       objects = $(mapCanvas).data('objects'),
 
       collectionOfPath = [],
       markers = [],
       map = "";
 
-
-  function loadScript() {
-    var script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = apiUrl + $.param(apiOptions)
-    document.body.appendChild(script);
-  };
+      console.log(mapCanvas, objects)
+  function geolocation() {
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(p) {
+        var pos = gLatLng( p.coords.latitude, p.coords.longitude);
+        map.setCenter(pos);
+        map.setZoom(12);
+      }, function() { handleNoGeolocation(true); });
+    } else {
+      handleNoGeolocation(false);
+    }
+  }
 
   function noise(deg) {
+    deg = (Math.round(deg * 10000000) / 10000000);
     start = deg - 0.00800;
     return start + ( Math.random() * 0.01600 );
   }
 
-  function gLatLng(lat, lng) {
-    lat = (Math.round(lat * 10000000) / 10000000);
-    lng = (Math.round(lng * 10000000) / 10000000);
-    console.log(noise(lat), noise(lng))
-    return new google.maps.LatLng(noise(lat), noise(lng));
+  function gLatLng(lat, lng, noise_on) {
+    if (noise_on === true) {
+      lat = noise(lat);
+      lng = noise(lng);
+    }
+    return new google.maps.LatLng(lat, lng);
   };
 
   function addInfoWindow(obj) {
@@ -101,6 +108,7 @@ function GoogleMap() {
       strokeWeight: 2,
       map: map
     });
+    setBound();
   };
 
   function setBound() {
@@ -114,7 +122,7 @@ function GoogleMap() {
   function mapStyle() {
     return {
       id: 'custom_style',
-      customMapType: { name: 'Custom Style' },
+      customMapType: { name: 'MAP' },
       featureOpts: [{"featureType":"water","stylers":[{"visibility":"on"},{"color":"#b5cbe4"}]},{"featureType":"landscape","stylers":[{"color":"#efefef"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#83a5b0"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#bdcdd3"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e3eed3"}]},{"featureType":"administrative","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"road"},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{},{"featureType":"road","stylers":[{"lightness":20}]}]
     }
   }
@@ -124,7 +132,7 @@ function GoogleMap() {
       zoom: 4,
       mapTypeControl: true,
       mapTypeControlOptions: {
-        mapTypeIds: [google.maps.MapTypeId.ROADMAP, mapStyle().id],
+        mapTypeIds: [mapStyle().id],
         style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
         position: google.maps.ControlPosition.BOTTOM_CENTER
       },
@@ -140,21 +148,26 @@ function GoogleMap() {
     );
 
     map.mapTypes.set(mapStyle().id, customMapType);
-    console.log(objects.length)
+
     $(objects).each(function() {
       var pos = gLatLng(this.latitude, this.longitude);
       collectionOfPath.push(pos);
       addMarker(this, pos);
     });
-    addPolyline();
-    setBound();
+    if (objects.length > 0) {
+      addPolyline();
+
+    }
+    else {
+      geolocation();
+    }
+
   };
 
-  function run() {
-    google.maps.event.addDomListener(window, 'load', initialize);
-  };
+  return (function() {
+      google.maps.event.addDomListener(window, 'load', initialize);
+    })();
 
-  run();
 };
 
 

@@ -1,11 +1,10 @@
 #welcome {
   position: relative;
-  margin: 0px auto;
+  margin: -1px;
   padding: 200px 80px;
   width: 100%;
   height: 100%;
   border: 1px solid transparent;
-  margin: -1px;
 
   #background-image {
     position: absolute;
@@ -67,65 +66,13 @@
 }
 
 #featured-trips {
-  background: $white;
   padding: 80px;
+  background: $white;
 
   .title {
-    font-weight: 800;
     color: $black;
+    font-weight: 800;
     font-size: 3em;
   }
 
 }
-
-
-
-// .featured-trips {
-//   position: relative;
-//   width: 100%;
-//   height: 800px;
-//   h2.title {
-//     color: $black;
-//     font-weight: 800;
-//     font-size: 2em;
-//     text-align: center;
-//   }
-//   h3 {
-//     font-size: 1.75em;
-//   }
-// }
-
-
-// .recent-trips{
-//   margin-top: -3em;
-//   padding: 30px;
-//   position: relative;
-//   float: left;
-//   width: 50%;
-// }
-
-.featured-trips {
-  position: relative;
-  width: 100%;
-  height: 800px;
-  h2.title {
-    color: $black;
-    text-align: center;
-    font-weight: 800;
-    font-size: 2em;
-  }
-  h3 {
-    text-decoration: underline;
-    font-size: 1.75em;
-  }
-}
-
-
-// .top-rated-trips{
-//   margin-top: -3em;
-//   float: left;
-//   padding: 30px;
-//   position: relative;
-//   width: 50%;
-// }
-

@@ -26,6 +26,9 @@
     background: darken($color, 50%);
     color: $color;
   }
+  &:first-of-type {
+    margin-left: 0px;
+  }
 }
 
 @mixin btn-dark($color, $opacity) {
@@ -42,7 +45,7 @@
 
 a[class*='btn'] {
   top: 0px;
-  padding: 8px 15px 9px!important;
+  padding: 8px 15px 8px!important;
 }
 button[class*='btn'] { padding-bottom: 1px; }
 
@@ -57,11 +60,11 @@ button[class*='btn'] { padding-bottom: 1px; }
 }
 
 small.logo {
-  vertical-align: -10%;
-  font-size: 2.5em;
-  font-weight: 800;
-  background: $black;
-  color: $blue;
   margin-right: 10px;
   padding: 10px 15px;
+  background: $black;
+  color: $blue;
+  vertical-align: -10%;
+  font-weight: 800;
+  font-size: 2.5em;
 }

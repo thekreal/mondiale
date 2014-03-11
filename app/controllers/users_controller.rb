@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :my_trips, :edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   def show
     @trips = @user.trips
     @favourites = @user.find_voted_items
+  end
+
+  def my_trips
+    @trips = @user.trips
   end
 
   def new

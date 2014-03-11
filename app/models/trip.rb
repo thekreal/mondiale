@@ -1,7 +1,6 @@
 class Trip < ActiveRecord::Base
-  attr_accessor :inspirationinfo
+  attr_accessor :inspiration_info
   acts_as_votable
-
 
 	belongs_to :user
 	has_many :chapters, dependent: :delete_all
@@ -13,29 +12,22 @@ class Trip < ActiveRecord::Base
   validates :description, presence: true
 
   scope :most_recent, -> { order(created_at: :desc)}
+  scope :highest_rated, -> { order("cached_votes_total DESC") }
+
+  def trip_cover
+    return coverphoto.nil? ? 'default_cover.jpg' : coverphoto
+  end
 
   def start_date
-    if posts.any?
-    posts.first.date.to_date.to_formatted_s(:long)
-    else
-      ""
-    end
+    return posts.any? ? posts.first.date.to_date.to_formatted_s(:long) : ""
   end
 
   def end_date
-    if posts.any?
-    posts.last.date.to_date.to_formatted_s(:long)
-    else
-      ""
-    end
+    return posts.any? ? posts.last.date.to_date.to_formatted_s(:long) : ""
   end
 
   def number_of_chapters
     chapters.count
-  end
-
-  def self.highest_rated
-    self.order("cached_votes_total DESC")
   end
 
   def inspiration

@@ -12,13 +12,13 @@
     <%= link_to trips_path, class: 'btn' do %>
       <span class="fa fa-rocket"></span> Featured Trips
     <% end %>
-    <%= link_to '#', class: 'btn' do %>
+    <%= link_to my_trips_user_path(current_user), class: 'btn' do %>
       <span class="fa fa-plane"></span> My Trips
     <% end %>
     <%= link_to user_path(current_user, favourites: "trip"), class: "btn" do %>
     <span class="fa fa-road"></span> Inspirations
     <% end %>
-    <%= link_to '#', class: 'btn' do %>
+    <%= link_to new_trip_path, class: 'btn' do %>
       <span class="fa fa-plus-square"></span> Plan Trip
     <% end %>
   </li>
