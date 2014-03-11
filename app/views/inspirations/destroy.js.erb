@@ -1,2 +1,10 @@
-$(".inspirations-count").text(<%= ActiveModel.const_get(@inspiration.inspirable_type).find(@inspiration.inspirable_id).inspirations.count %> + " people have added this trip as an inspiration")
-$(".inspiration-link").text("You have removed this as an inspiration")
+<% if @inspiration.inspired_by.class == Post %>
+$("#post-inspiration-link-<%= @inspiration.inspired_by.id %>").text("you have removed this as an inspiration")
+$('#post-inspiration-count-<%= @inspiration.inspired_by.id %>').text(<%= @inspiration.number_of_inspired %> + "people have added this post as an inspiration")
+
+<% else %>
+
+$(".inspirations-count").text(<%= @inspiration.number_of_inspired %> + " people have added this as an inspiration")
+$(".inspiration-link").text("you have removed this as an inspiration");
+
+<% end %>
