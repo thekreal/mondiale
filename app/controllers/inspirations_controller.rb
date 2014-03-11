@@ -2,11 +2,7 @@ class InspirationsController < ApplicationController
 
 	def create
 		@inspiration = current_user.inspirations.new(inspiration_params)
-		respond_to do |format|
-		if @inspiration.save
-			format.js
-		end
-	 end
+		@inspiration.save
 	end
 
 end
