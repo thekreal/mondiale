@@ -1,28 +1,20 @@
-<div class="form" id="new-trip">
-
+<div id="trip" class="form">
 <%= form_for @trip, html: { class: "form-container" } do |f| %>
   <%= render 'alerts/error_message', object: @trip %>
 
-  <legend class="form-title"><%= title %></legend>
-
   <div class="form-field">
-    <%= f.text_field :title, class: "form-input", placeholder: "Trip Title" %>
-  </div>
-
-  <div class="form-field">
+    <legend class="form-title"><%= title %></legend>
+    <%= f.text_field :title, class: "form-input", placeholder: "Name Your Trip" %>
     <%= f.text_area :description, class: "form-input",
-          placeholder: "Give your trip a description (markdown)" %>
+          placeholder: "Click Me! Describe your trip a description (markdown)" %>
   </div>
 
-  <div class="wishlist-items">
+  <div class="inspirations">
     <h3>Inspirations</h3>
-
     <% current_user.find_voted_items.each do |i| %>
       <%= f.radio_button :inspirationinfo, "#{i.class.to_s} #{i.id}" %>
       <%= f.label :inspirationinfo, i.title %>
-        </br>
     <% end %>
-
   </div>
 
   <div class="form-field">

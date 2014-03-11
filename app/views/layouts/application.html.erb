@@ -12,14 +12,15 @@
 </head>
 <body>
 
-  <aside class="sidebar">
-    <%= render 'sidebar/index' %>
-  </aside>
-
-  <div class="content">
-    <a href="#" class="sidebar-toggle fa fa-globe"></a>
-    <%= render 'alerts/flash_message' %>
-    <%= yield %>
+  <div class="wrapper">
+    <aside class="sidebar">
+      <%= render 'sidebar/index' %>
+    </aside>
+    <div class="content">
+      <a href="#" class="sidebar-toggle fa fa-globe"></a>
+      <%= render 'alerts/flash_message' %>
+      <%= yield %>
+    </div>
   </div>
 
 

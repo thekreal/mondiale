@@ -31,15 +31,15 @@
 
 @import 'forms/template';
 @import 'forms/session';
-@import 'forms/user_form';
+@import 'forms/user';
+@import 'forms/trip';
 
 
 @import 'google_map_canvas';
 
 // PAGE STYLE
 @import 'alerts';
-
-// @import 'trips';
+@import 'trips';
 
 
 // @import 'users';

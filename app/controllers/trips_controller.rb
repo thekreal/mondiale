@@ -12,7 +12,7 @@ class TripsController < ApplicationController
 
   def show
     @chapters = @trip.chapters.order("position")
-    @chapter = Chapter.new( :trip_id => @trip.id )
+    @chapter = @trip.chapters.new( trip_id: @trip.id )
     @inspiration = @trip.inspiration
 
     if @trip.coverphoto
@@ -46,8 +46,10 @@ class TripsController < ApplicationController
 
   def create
     @trip = current_user.trips.new(trip_params)
-    @trip.inspiration_type = params[:trip][:inspirationinfo].split(' ')[0]
-    @trip.inspiration_id = params[:trip][:inspirationinfo].split(' ')[1]
+    if @inspiration_info = params[:trip][:inspiration_info]
+      @trip.inspiration_type = @inspiration_info.split(' ')[0]
+      @trip.inspiration_id = @inspiration_info.split(' ')[1]
+    end
     if @trip.save
       flash[:success] = "Your trip has been created successfully"
       redirect_to @trip
@@ -103,7 +105,7 @@ private
   end
 
   def trip_params
-    params.require(:trip).permit(:title, :description, :inspirationinfo, :inspiration_id, :inspiration_type)
+    params.require(:trip).permit(:title, :description, :inspiration_info, :inspiration_id, :inspiration_type)
   end
 
 end

@@ -20,7 +20,6 @@
 $(document).ready(function() {
   $(document).foundation();
 
-  setToWindowHeight($('.content'), $(window).height());
   welcomePage();
 
   // offcanvas menu
@@ -30,8 +29,11 @@ $(document).ready(function() {
   deletePictureBtn();
 
   // generate google map
-  if ($('#map-canvas').length) {
-    var map = new GoogleMap();
+  var maps = $('.cover-map');
+  if (maps.length) {
+    maps.each(function() {
+      var m = new GoogleMap(this);
+    })
   }
 
   $('#chapters-list').sortable({
@@ -54,6 +56,7 @@ $(document).ready(function() {
   // dropdownListBtn();
 
 
+  // Set user form to middle of the Y-axis
   if ($('#user.form').length) {
     setYtoM($('#user.form .form-container'));
   }
