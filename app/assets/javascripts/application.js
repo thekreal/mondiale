@@ -34,17 +34,21 @@ $(document).ready(function() {
     var map = new GoogleMap();
   }
 
-  $('#chapters-list').sortable({
-    axis: "y",
-    update: function(event,ui){
-      var data = $('#chapters-list').sortable('serialize');
-      $.ajax({
-        data: data,
-        url: "/trips/sort_chapter_items",
-        type: 'post'
-      })
-    }
-  });
+  $('#chapters-list').sortable(
+    {
+       axis: "y",
+       update: function(event, ui){
+            var data = $(this).sortable('serialize');
+
+            $.ajax({
+                data: data,
+                url: "/trips/sort_chapter_items",
+                type: 'POST'
+            });
+
+       }//end function argument
+    } //end argument
+  ); // end sortable
 
 
   // Bind flash alerts
@@ -55,7 +59,7 @@ $(document).ready(function() {
 
 
   if ($('#user.form').length) {
-    setYtoM($('#user.form .form-container'));
-  }
+    setYtoM($('#user.form .form-container'))
+      }
 
 });
