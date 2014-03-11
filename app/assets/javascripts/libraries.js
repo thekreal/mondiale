@@ -10,3 +10,12 @@ function setXtoM(obj) {
 function setYtoM(obj) {
   obj.offset({ top: ($(window).height() - obj.height()) / 2 })
 }
+
+function windowHeight(minHeight) {
+  return $(window).height() < minHeight ? minHeight : $(window).height();
+}
+
+function setHeight(obj, minHeight) {
+  minHeight = minHeight || -1
+  obj.outerHeight(windowHeight(minHeight));
+}

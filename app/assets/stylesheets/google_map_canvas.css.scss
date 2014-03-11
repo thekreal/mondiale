@@ -1,12 +1,10 @@
-#map-canvas {
+@mixin google-map($width: 320px, $height: $width) {
   position: absolute;
-  top:40%;
-  right:9%;
-  z-index: 9;
-  width: 640px;
-  height: 480px;
+  width: $width;
+  z-index: 10;
+  height: $height;
   border: 5px solid $white;
-  box-shadow: 0 0 6px -3px rgba(60, 60, 60, 0.5);
+  box-shadow: 0 0 6px -3px rgba(40, 40, 40, 0.5);
 }
 
 .post-summary {

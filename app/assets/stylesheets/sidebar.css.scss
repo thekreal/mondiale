@@ -1,15 +1,14 @@
-$initial-position: 240px;
+$initial-position: 0;
 $sidebar-width: 240px;
 $hover-blue: rgba(127, 180, 206, 1);
 
-body {
-  overflow-x: hidden;
+.wrapper {
+  width: 100%;
+  overflow: hidden;
 }
+
 .content {
-  @include animation(all, 1s, 'ease-in-out');
   left: $initial-position;
-  z-index: 0;
-  background: $white;
   box-shadow: -3px 0px 6px -3px rgba(40, 40, 40, 0.5);
 }
 
@@ -97,6 +96,7 @@ body {
     }
   }
   .information {
+    vertical-align: top;
     position: relative;
     display: inline-block;
     margin: 0px;
@@ -111,7 +111,7 @@ body {
         font-size: 1em;
         font-style: italic;
         &:hover {
-          color: rgba(255, 255, 255, 0.8);
+          color: rgba(40, 40, 40, 0.5);
         }
       }
     }

@@ -20,7 +20,6 @@
 $(document).ready(function() {
   $(document).foundation();
 
-  setToWindowHeight($('.content'), $(window).height());
   welcomePage();
 
   // offcanvas menu
@@ -30,21 +29,28 @@ $(document).ready(function() {
   deletePictureBtn();
 
   // generate google map
-  if ($('#map-canvas').length) {
-    var map = new GoogleMap();
+  var maps = $('.cover-map');
+  if (maps.length) {
+    maps.each(function() {
+      var m = new GoogleMap(this);
+    })
   }
 
-  $('#chapters-list').sortable({
-    axis: "y",
-    update: function(event,ui){
-      var data = $('#chapters-list').sortable('serialize');
-      $.ajax({
-        data: data,
-        url: "/trips/sort_chapter_items",
-        type: 'post'
-      })
-    }
-  });
+  $('#chapters-list').sortable(
+    {
+       axis: "y",
+       update: function(event, ui){
+            var data = $(this).sortable('serialize');
+
+            $.ajax({
+                data: data,
+                url: "/trips/sort_chapter_items",
+                type: 'POST'
+            });
+
+       }//end function argument
+    } //end argument
+  ); // end sortable
 
 
   // Bind flash alerts
@@ -54,8 +60,9 @@ $(document).ready(function() {
   // dropdownListBtn();
 
 
+  // Set user form to middle of the Y-axis
   if ($('#user.form').length) {
-    setYtoM($('#user.form .form-container'));
-  }
+    setYtoM($('#user.form .form-container'))
+      }
 
 });
