@@ -26,12 +26,12 @@
 
 <div class="inspiration-div">
 	<% if logged_in? %>
-		<% if current_user.voted_for? @trip  %>
-			<button class="inspiration-button" data-vote-status="downvote">
+		<% if !current_user.inspirations.where(inspirable_id: @trip, inspirable_type: @trip.class).empty? %>
+			<button class="inspiration-button">
 				<%= link_to "Remove This Trip as an Inspiration", vote_trip_path(@trip, unvote: 1), method: :post, remote: true %>
 			</button>
 		<% else %>
-			<button class="inspiration-button" data-vote-status="upvote">
+			<button class="inspiration-button" >
 				<%= link_to "Add This as an Inspiration", inspirations_path(inspiration: {inspirable_id: @trip, inspirable_type: @trip.class}), method: :post, remote: true %>
 			</button>
 
