@@ -1,2 +1,6 @@
-$(".inspirations-count").text(<%= ActiveModel.const_get(@inspiration.inspirable_type).find(@inspiration.inspirable_id).inspirations.count %> + " people have added this trip as an inspiration")
-$(".inspiration-div").text("You have added this as an inspiration")
+
+$(".inspirations-count").text(<%= @inspiration.number_of_inspired %> + " people have added this as an inspiration")
+
+var btn = $("#inspiration-btn-" + <%=@inspiration.id %>);
+
+btn.remove();
