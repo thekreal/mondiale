@@ -10,4 +10,12 @@ class Inspiration < ActiveRecord::Base
 		where(user_id: user_id, inspirable_id: obj_id, inspirable_type: obj_type).exists?
 	end
 
+	def inspired_by
+		return ActiveModel.const_get(inspirable_type).find(inspirable_id)
+	end
+
+	def number_of_inspired
+		inspired_by.inspirations.count
+	end
+
 end
