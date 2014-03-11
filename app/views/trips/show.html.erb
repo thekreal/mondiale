@@ -16,31 +16,21 @@
 <div class="trip-content">
 <p><%= markdown(@trip.description) %></p>
 
-<% if @trip.inspiration_id != nil %>
+<% if logged_in? %>
 
-	<div class="inspirations">
-		<p>This trip was inspired by <%= @inspiration.title %></p>
+	<div class="inspiration-link">
+		<% if @trip.already_inspired?(current_user.id) %>
+			<%= link_to 'I am no longer inspired', @trip.already_inspired(current_user.id), method: :delete, remote: true %>
+		<% else %>
+			<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @trip, inspirable_type: @trip.class}), method: :post, remote: true %>
+		<% end %>
 	</div>
 
 <% end %>
 
-<div class="inspiration-div">
-	<% if logged_in? %>
-		<% if Inspiration.by_this?(current_user.id, @trip.id, @trip.class) %>
-			<button class="inspiration-button">
-				<%= link_to "Remove This as an Inspiration", inspiration_path(Inspiration.by_this(current_user.id, @trip.id, @trip.class)[0].id), method: :delete, remote: true %>
-			</button>
-		<% else %>
-			<button class="inspiration-button" >
-				<%= link_to "Add This as an Inspiration", inspirations_path(inspiration: {inspirable_id: @trip, inspirable_type: @trip.class}), method: :post, remote: true %>
-			</button>
-
-		<% end %>
-	<% end %>s
-
+	<div class='inspirations-count'>
+		<%= @trip.inspirations.count %> people have added this as an inspiration
 	</div>
-
-	<p class='inspirations-count'><%= @trip.inspirations.count %> people have added this trip as an inspiration</p>
 
 
 	<div class="trip-crud">
