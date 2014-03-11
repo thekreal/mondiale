@@ -14,7 +14,7 @@ function slideDownShow(obj) {
     })
     .appendTo('body')
     .animate({
-      top: 100,
+      top: 60,
     }, 800, 'easeOutCirc')
 }
 
@@ -25,7 +25,6 @@ function clickToClose(click_obj, remove_obj) {
     removeBlur();
   })
 }
-
 
 function addBlur(isnertTo) {
   return $('<div>')

@@ -1,8 +1,6 @@
-<div id="signup" class="form">
+<div id="user" class="form">
 <%= form_for @user, html: { class: "form-container" } do |f| %>
   <legend class="form-title"><%= title %></legend>
-
-  <%= render 'alerts/error_message', object: @user %>
 
   <div class="form-field">
     <%= f.label :name, for: "user_name", class: "form-label" %>
@@ -33,7 +31,7 @@
   </div>
 
   <div class="form-field">
-    <%= f.label "Confirmation", for: "user_password", class: "form-label" %>
+    <%= f.label "Confirmation", for: "user_password_confirmation", class: "form-label" %>
     <div class="form-control">
       <%= f.password_field :password_confirmation, class: "form-input" %>
     </div>
@@ -42,7 +40,8 @@
   <div class="form-field">
     <div class="form-label"></div>
     <div class="form-control">
-      <%= f.submit submit, class: "form-btn" %>
+      <%= f.submit class: "form-btn" %>
+      <%= link_to 'Close', '#', class: "form-btn close" %>
     </div>
   </div>
 

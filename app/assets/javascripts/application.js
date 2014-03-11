@@ -34,9 +34,14 @@ $(document).ready(function() {
   }
 
   // Bind flash alerts
-  // flashAlertEffect();
+  flashAlertEffect();
 
   // bind dropdown list buttons
   // dropdownListBtn();
+
+
+  if ($('#user-signup.form').length) {
+    setYtoM($('#user-signup.form .form-container'));
+  }
 
 });

@@ -1,5 +1,7 @@
 <div id="signin" class="form">
-<%= form_for :session, url: sessions_path, html: { class: "form-container" } do |f|%>
+<%= form_for :session, url: sessions_path, remote: true, html: { class: "form-container" } do |f|%>
+
+  <legend class="form-title">Sign In</legend>
 
   <div class="form-field">
     <%= f.label :email, for: "sesison_email", class: "form-label" %>

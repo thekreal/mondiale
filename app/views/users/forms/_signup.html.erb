@@ -1,0 +1,37 @@
+<div id="user-signup" class="form">
+<%= form_for @user, html: { class: "form-container" } do |f| %>
+
+  <legend class="form-title">
+  <small class="fa fa-globe logo"></small> SignUp Account
+  </legend>
+
+  <%= render 'alerts/error_message', object: @user %>
+
+  <div class="form-field">
+    <%= f.text_field :name, class: "form-input", placeholder: "Name" %>
+  </div>
+
+  <div class="form-field">
+    <%= f.email_field :email, class: "form-input", placeholder: "Email" %>
+  </div>
+
+  <div class="form-field">
+    <%= f.text_area :bio, class: "form-input", placeholder: "Bio" %>
+  </div>
+
+  <div class="form-field">
+    <%= f.password_field :password, class: "form-input", placeholder: "Password (6 to 32 characters)" %>
+  </div>
+
+  <div class="form-field">
+    <%= f.password_field :password_confirmation, class: "form-input", placeholder: "Password Confirmation" %>
+  </div>
+
+  <div class="form-field">
+    <%= f.submit class: "form-btn" %>
+    <%= link_to 'Back', :back, class: "form-btn" %>
+  </div>
+
+
+<% end %>
+</div>

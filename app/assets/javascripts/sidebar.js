@@ -45,3 +45,15 @@ function sidebar() {
   };
   initialize();
 };
+
+
+function sidebarToggleBackground() {
+  var toggle = $('.sidebar-toggle');
+  $(window).scroll(function() {
+    var pos = $(this).scrollTop();
+    toggle.css({
+      background: 'rgba(60, 60, 60, ' + (pos / $(window).height()) + ')'
+    })
+  })
+
+}

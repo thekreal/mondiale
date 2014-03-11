@@ -1,13 +1,5 @@
-var signinForm = $('#signin.form')
-
-if (!signinForm.length) {
-  var blurBackground = addBlur('body');
-  signinForm = $('<%= j render "sessions/new" %>');
-  slideDownShow(signinForm);
-  clickToClose(blurBackground.add('.sidebar .btn, .close'), signinForm);
-}
-
-else {
-  slideUpRemove(signinForm);
-  removeBlur();
-}
+var signinForm = $('#signin.form');
+var blurBackground = addBlur('body');
+signinForm = $('<%= j render "sessions/new" %>');
+slideDownShow(signinForm);
+clickToClose(blurBackground.add('.close'), signinForm);

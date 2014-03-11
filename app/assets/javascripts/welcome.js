@@ -7,12 +7,13 @@ function welcomePage() {
 
     setToWindowHeight(welcomePage.add(backgroundImage));
     setToWindowHeight($('#featured-trips'), windowHeight());
+    sidebarToggleBackground();
 
     $(window).scroll(function() {
       var pos = $(this).scrollTop();
       blurCover.css({ opacity: (pos / windowHeight()) });
-      backgroundImage.css('top',(0-(pos*.5))+'px');
-      welcomePage.css('top',(0+(pos*.5))+'px');
+      backgroundImage.css('top',(0-(pos*.50))+'px');
+      welcomePage.css('top',(0+(pos*.25))+'px');
     })
   }
 }
