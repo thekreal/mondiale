@@ -1,8 +1,6 @@
 <div class="form">
 
-<%= form_for [@post.trip, @post.chapter, @post], html: { multipart: true, class: "form-container" }  do |f| %>
-
-  <legend class="form-title"><%= title %></legend>
+<%= form_for [@post.trip, @post.chapter, @post], remote: true, html: { multipart: true, class: "form-container" }  do |f| %>
 
   <%= render 'alerts/error_message', object: @post %>
 
@@ -34,6 +32,17 @@
     </div>
   </div>
 
+  <div class="wishlist-items">
+    <h3>Inspirations</h3>
+
+    <% current_user.find_voted_items.each do |i| %>
+      <%= f.radio_button :inspirationinfo, "#{i.class.to_s} #{i.id}" %>
+      <%= f.label :inspirationinfo, i.title %>
+        </br>
+    <% end %>
+
+  </div>
+
 <div class="form-field">
  <%= f.fields_for :post_attachments do |p| %>
      <div class="field">
@@ -59,7 +68,7 @@
   <div class="form-field">
     <div class="form-label"></div>
     <div class="form-control">
-      <%= f.submit submit, class: "form-btn" %>
+      <%= f.submit class: "form-btn" %>
     </div>
   </div>
 

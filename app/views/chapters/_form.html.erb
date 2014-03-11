@@ -1,5 +1,6 @@
 <div class="form">
-<%= form_for [@chapter.trip, @chapter], html: {class: "form-container"} do |f| %>
+<h2>Form</h2>
+<%= form_for [@chapter.trip, @chapter], remote: true, html: {class: "form-container"} do |f| %>
 
 <%= render 'alerts/error_message', object: @chapter %>
 
@@ -17,10 +18,22 @@
     </div>
   </div>
 
+  <div class="wishlist-items">
+    <h3>Inspirations</h3>
+
+    <% current_user.find_voted_items.each do |i| %>
+      <%= f.radio_button :inspirationinfo, "#{i.class.to_s} #{i.id}", id: "#{i.class.to_s} #{i.id}"  %>
+      <%= f.label :inspirationinfo, i.title, for: "#{i.class.to_s} #{i.id}"  %>
+        </br>
+    <% end %>
+
+  </div>
+
   <div class="form-field">
     <div class="form-label"></div>
     <div class="form-control">
-      <%= f.submit submit, class: "form-btn" %>
+
+      <%= f.submit class: "form-btn"%>
     </div>
   </div>
 

@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-
+  attr_accessor :inspirationinfo
   acts_as_votable
 
   mount_uploader :postimage, PostImageUploader
@@ -20,6 +20,12 @@ class Post < ActiveRecord::Base
 
   def trip_id
     trip.id
+  end
+
+  def inspiration
+    if inspiration_id != nil
+    ActiveModel.const_get(inspiration_type).find(inspiration_id)
+    end
   end
 
 end

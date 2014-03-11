@@ -3,20 +3,33 @@ class PostsController < ApplicationController
 
 	def new
 		@chapter = Chapter.find(params[:chapter_id])
-		@post = @chapter.posts.new()
+		@post = Post.new( chapter_id: @chapter.id )
    	@post_attachment = @post.post_attachments.build
+
+   	respond_to do |format|
+      format.html
+      format.js
+    end
 	end
 
 	def create
 		@chapter = Chapter.find(params[:chapter_id])
 		@post = @chapter.posts.new(post_params)
+		@post.inspiration_type = params[:post][:inspirationinfo].split(' ')[0]
+    @post.inspiration_id = params[:post][:inspirationinfo].split(' ')[1]
+			respond_to do |format|
 		if @post.save
-      save_images
+			save_images
+			format.html do
 			flash[:success] = "Your post has been created successfully"
 			redirect_to trip_chapter_path(@post.trip, @post.chapter)
+			end
+			format.js
 		else
-			render :new
+			format.html {render :new}
+			format.js
 		end
+	 end
 	end
 
 	def edit
@@ -71,7 +84,7 @@ private
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :content, :date, :location, :post_attachments)
+		params.require(:post).permit(:title, :content, :date, :location, :inspirationinfo, :post_attachments, :inspiration_id, :inspiration_type)
 	end
 
 end

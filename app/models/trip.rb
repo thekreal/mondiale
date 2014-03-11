@@ -1,6 +1,7 @@
 class Trip < ActiveRecord::Base
-
+  attr_accessor :inspirationinfo
   acts_as_votable
+
 
 	belongs_to :user
 	has_many :chapters, dependent: :delete_all
@@ -37,12 +38,8 @@ class Trip < ActiveRecord::Base
   end
 
   def inspiration
-    if inspiration_type == "Trip"
-      Trip.find(inspiration_id)
-    elsif inspiration_type == "Chapter"
-      Chapter.find(inspiration_id)
-    elsif inspiration_type == "Post"
-      Post.find(inspiration_id).chapter
+    if inspiration_id != nil
+    ActiveModel.const_get(inspiration_type).find(inspiration_id)
     end
   end
 end

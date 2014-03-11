@@ -11,18 +11,33 @@ class ChaptersController < ApplicationController
 
 	def new
 		@trip = Trip.find(params[:trip_id])
-		@chapter = @trip.chapters.new
+    @chapter = Chapter.new( :trip_id => @trip.id )
+
+    respond_to do |format|
+      format.html #if ajax is disabled
+      format.js #for remote true ajax calls
+    end
+
 	end
 
 	def create
 		@trip = Trip.find(params[:trip_id])
 		@chapter = @trip.chapters.new(chapter_params)
-		if @trip.save
-      flash[:success] = "Your chapter has been created successfully"
-      redirect_to [@chapter.trip, @chapter]
-    else
-      render :new
+    @chapter.inspiration_type = params[:chapter][:inspirationinfo].split(' ')[0]
+    @chapter.inspiration_id = params[:chapter][:inspirationinfo].split(' ')[1]
+    respond_to do |format|
+      if @chapter.save
+        format.html do
+          flash[:success] = "Your chapter has been created successfully"
+          redirect_to @trip
+        end
+        format.js
+      else
+        format.html {render :new}
+        format.js
+      end
     end
+
 	end
 
   def vote
@@ -52,10 +67,22 @@ class ChaptersController < ApplicationController
   end
 
   def destroy
-    if @chapter.destroy
-      flash[:success] = "Your chapter has been deleted successfully"
-      redirect_to @chapter.trip
+     respond_to do |format|
+      if @chapter.destroy
+        @trip = Trip.find(params[:trip_id])
+        @chapters = @trip.chapters
+        format.html do
+          flash[:success] = "Your chapter has been deleted successfully"
+          redirect_to @chapter.trip
+        end
+        format.js
+      else
+        format.html {redirect_to @chapter.trip}
+        format.js
+      end
     end
+
+
   end
 
 private
@@ -65,7 +92,7 @@ private
   end
 
   def chapter_params
-  	params.require(:chapter).permit(:title, :description)
+  	params.require(:chapter).permit(:title, :description, :inspirationinfo, :inspiration_id, :inspiration_type)
   end
 
 end

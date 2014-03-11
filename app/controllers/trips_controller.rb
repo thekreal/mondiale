@@ -11,8 +11,10 @@ class TripsController < ApplicationController
   end
 
   def show
-    @chapters = @trip.chapters
+    @chapters = @trip.chapters.order("position")
+    @chapter = Chapter.new( :trip_id => @trip.id )
     @inspiration = @trip.inspiration
+
     if @trip.coverphoto
       @cover = PostAttachment.find(@trip.coverphoto)
     end
@@ -44,6 +46,8 @@ class TripsController < ApplicationController
 
   def create
     @trip = current_user.trips.new(trip_params)
+    @trip.inspiration_type = params[:trip][:inspirationinfo].split(' ')[0]
+    @trip.inspiration_id = params[:trip][:inspirationinfo].split(' ')[1]
     if @trip.save
       flash[:success] = "Your trip has been created successfully"
       redirect_to @trip
@@ -86,6 +90,12 @@ class TripsController < ApplicationController
     redirect_to trips_path
   end
 
+  def sort_chapter_items
+    params[:chapter].each_with_index do |id, index|
+      Chapter.update_all({position: index+1}, {id: id})
+    end
+  end
+
 private
 
   def set_trip
@@ -93,7 +103,7 @@ private
   end
 
   def trip_params
-    params.require(:trip).permit(:title, :description, :location_text, :longitude, :latitude, :inspiration_id, :inspiration_type)
+    params.require(:trip).permit(:title, :description, :inspirationinfo, :inspiration_id, :inspiration_type)
   end
 
 end
