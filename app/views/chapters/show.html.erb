@@ -17,28 +17,23 @@
 
 <% end %>
 
-<div class="upvote-div">
-
-
+<div class="inspiration-div">
 	<% if logged_in? %>
-		<% if current_user.voted_for? @chapter  %>
-
-			<button class="upvote-button" data-vote-status="downvote">
-				<%= link_to "Remove This Chapter From Favourites", vote_trip_chapter_path(@trip, @chapter, unvote: 1), method: :post, remote: true %>
+		<% if Inspiration.by_this?(current_user.id, @chapter.id, @chapter.class) %>
+			<button class="inspiration-button">
+				<%= link_to "Remove This as an Inspiration", inspiration_path(Inspiration.by_this(current_user.id, @chapter.id, @chapter.class)[0].id), method: :delete, remote: true %>
 			</button>
-
 		<% else %>
-
-			<button class="upvote-button" data-vote-status="upvote">
-				<%= link_to "Add This Chapter to Favourites", vote_trip_chapter_path(@trip, @chapter), method: :post, remote: true %>
+			<button class="inspiration-button" >
+				<%= link_to "Add This as an Inspiration", inspirations_path(inspiration: {inspirable_id: @chapter, inspirable_type: @chapter.class}), method: :post, remote: true %>
 			</button>
 
 		<% end %>
-	<% end %>
+	<% end %>s
 
 	</div>
 
-	<p class='upvote-count-chapter'><%= @chapter.votes.count %> people have favourited this chapter</p>
+	<p class='inspirations-count'><%= @chapter.inspirations.count %> people have added this trip as an inspiration</p>
 
 
 	<% if @chapter.trip.user == current_user %>
