@@ -1,6 +1,4 @@
 class Post < ActiveRecord::Base
-  attr_accessor :inspirationinfo
-  acts_as_votable
 
   mount_uploader :postimage, PostImageUploader
 

@@ -1,11 +1,9 @@
 class Chapter < ActiveRecord::Base
-	attr_accessor :inspirationinfo
 
   belongs_to :trip
   has_many :posts, dependent: :delete_all
   has_many :inspirations, as: :inspirable
 
-  acts_as_votable
   acts_as_list scope: :trip
 
 

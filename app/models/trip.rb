@@ -1,6 +1,4 @@
 class Trip < ActiveRecord::Base
-  attr_accessor :inspiration_info
-  acts_as_votable
 
 	belongs_to :user
 	has_many :chapters, dependent: :delete_all
