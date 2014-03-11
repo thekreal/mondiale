@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311234033) do
+ActiveRecord::Schema.define(version: 20140311234611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20140311234033) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
-    t.string   "inspiration_type"
     t.integer  "inspiration_id"
     t.integer  "position"
   end
@@ -56,10 +55,9 @@ ActiveRecord::Schema.define(version: 20140311234033) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
-    t.decimal  "longitude",        precision: 9, scale: 6
-    t.decimal  "latitude",         precision: 9, scale: 6
+    t.decimal  "longitude",      precision: 9, scale: 6
+    t.decimal  "latitude",       precision: 9, scale: 6
     t.string   "postimage"
-    t.string   "inspiration_type"
     t.integer  "inspiration_id"
   end
 
@@ -71,7 +69,6 @@ ActiveRecord::Schema.define(version: 20140311234033) do
     t.datetime "updated_at"
     t.integer  "cached_votes_total", default: 0
     t.integer  "coverphoto"
-    t.string   "inspiration_type"
     t.integer  "inspiration_id"
   end
 
