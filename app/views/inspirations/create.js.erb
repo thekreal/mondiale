@@ -1,1 +1,2 @@
-
+$(".inspirations-count").text(<%= ActiveModel.const_get(@inspiration.inspirable_type).find(@inspiration.inspirable_id).inspirations.count %> + " people have added this trip as an inspiration")
+$(".inspiration-div").text("You have added this as an inspiration")

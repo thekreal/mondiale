@@ -24,23 +24,23 @@
 
 <% end %>
 
-<div class="upvote-div">
+<div class="inspiration-div">
 	<% if logged_in? %>
 		<% if current_user.voted_for? @trip  %>
-			<button class="upvote-button" data-vote-status="downvote">
-				<%= link_to "Remove This Trip From Favourites", vote_trip_path(@trip, unvote: 1), method: :post, remote: true %>
+			<button class="inspiration-button" data-vote-status="downvote">
+				<%= link_to "Remove This Trip as an Inspiration", vote_trip_path(@trip, unvote: 1), method: :post, remote: true %>
 			</button>
 		<% else %>
-			<button class="upvote-button" data-vote-status="upvote">
-				<%= link_to "Add This Trip to Favourites", vote_trip_path(@trip), method: :post, remote: true %>
+			<button class="inspiration-button" data-vote-status="upvote">
+				<%= link_to "Add This as an Inspiration", inspirations_path(inspiration: {inspirable_id: @trip, inspirable_type: @trip.class}), method: :post, remote: true %>
 			</button>
 
 		<% end %>
-	<% end %>
+	<% end %>s
 
 	</div>
 
-	<p class='upvote-count'><%= @trip.votes.count %> people have upvoted this trip</p>
+	<p class='inspirations-count'><%= @trip.inspirations.count %> people have added this trip as an inspiration</p>
 
 
 	<div class="trip-crud">
