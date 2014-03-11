@@ -11,11 +11,8 @@ class TripsController < ApplicationController
   end
 
   def show
-    @chapters = @trip.chapters
-
+    @chapters = @trip.chapters.order("position")
     @chapter = Chapter.new( :trip_id => @trip.id )
-    # @inspiration = @trip.inspiration_type.constantize.find(@trip.inspiration_id)
-
     @inspiration = @trip.inspiration
 
     if @trip.coverphoto
@@ -91,6 +88,12 @@ class TripsController < ApplicationController
     @trip.destroy
     flash[:success] = "Your trip has been removed successfully"
     redirect_to trips_path
+  end
+
+  def sort_chapter_items
+    params[:chapter].each_with_index do |id, index|
+      Chapter.update_all({position: index+1}, {id: id})
+    end
   end
 
 private

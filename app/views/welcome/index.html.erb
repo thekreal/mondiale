@@ -1,10 +1,8 @@
 <div id="welcome" class="jumbo">
-
-  <div id="background-image">
-    <div id="blur"></div>
-  </div>
-
-  <h1 class="title"><%= site_name %></h1>
+  <div id="background-image"><div id="blur"></div></div>
+  <h1 class="title">
+    <%= site_name %>
+  </h1>
   <div class="tag">
     Plan a trip and tell your travel story.
   </div>
@@ -15,10 +13,9 @@
     <% end %>
     <span class="fa fa-search"></span>
   </div>
-
 </div>
 
-<div class="featured-trips">
+<div id="featured-trips">
   <h2 class="title">Featured Trips</h2>
 
   <div class="recent-trips">
@@ -30,6 +27,4 @@
     <h3>Top Rated Trips</h3>
     <%= render @top_rated_trips %>
   </div>
-
-
 </div>

@@ -1,0 +1,6 @@
+var updateUserForm = $('#user.form')
+var blurBackground = addBlur('body');
+updateUserForm = $('<%= j render "users/form", title: "Update Profile" %>');
+slideDownShow(updateUserForm);
+clickToClose(blurBackground.add('.close'), updateUserForm);
+

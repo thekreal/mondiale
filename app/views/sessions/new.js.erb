@@ -1,24 +1,5 @@
-if (!$('.signin-form').length) {
-  var blurBackground = addBlur('body');
-  var signinForm = $('<%= j render "sessions/new" %>');
-
-  signinForm
-  .css({
-    right: - $(this).width(),
-    top: 60
-  })
-  .insertAfter('.navbar')
-  .animate({
-    right: '15px'
-  }, 400, 'easeInOutQuad');
-
-  blurBackground.add('.nav-menu .btn').add('.close').click(function(e) {
-    e.preventDefault;
-    removeSigninForm();
-    removeBlur();
-  });
-}
-else {
-  removeSigninForm();
-  removeBlur();
-}
+var signinForm = $('#signin.form');
+var blurBackground = addBlur('body');
+signinForm = $('<%= j render "sessions/new" %>');
+slideDownShow(signinForm);
+clickToClose(blurBackground.add('.close'), signinForm);

@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      login(params[:user][:email], params[:user][:password])
       flash[:success] = "Account has been successfully created"
       auto_login(@user)
       redirect_to @user
@@ -30,6 +31,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      login(params[:user][:email], params[:user][:password])
       flash[:success] = "Account has been successfully updated"
       redirect_to @user
     else

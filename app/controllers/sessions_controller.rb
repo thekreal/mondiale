@@ -8,9 +8,11 @@ class SessionsController < ApplicationController
       if user = login(params[:session][:email], params[:session][:password], params[:session][:remember])
         flash[:success] = "You are now logged in"
         format.html { redirect_back_or_to(user) }
+        format.js {}
       else
         flash.now[:danger] = "Invalid email / password combination"
         format.html { render :new }
+        format.js {}
       end
     end
   end

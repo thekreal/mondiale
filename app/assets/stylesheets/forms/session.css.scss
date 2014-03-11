@@ -1,0 +1,15 @@
+#signin {
+  @include form;
+  min-width: 600px;
+  max-width: 800px;
+  background: $white;
+}
+
+#signin {
+  position: fixed;
+  z-index: 99;
+  padding-bottom: 10px;
+  .form-title {
+    background: $blue - 50;
+  }
+}

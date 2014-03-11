@@ -1,5 +1,5 @@
-<div class="chapter">
-	<h3><%= link_to "#{chapter.title}", trip_chapter_path(:trip_id => chapter.trip.id, :id => chapter.id )%></h3>
+<li id="chapter_<%= chapter.id %>">
+	<h3>Chapter <%= chapter.position %>: <%= link_to "#{chapter.title}", trip_chapter_path(:trip_id => chapter.trip.id, :id => chapter.id )%></h3>
 	<p><%= markdown(chapter.description) %></p>
 
 	<% if chapter.trip.user == current_user %>
@@ -9,4 +9,4 @@
 	</ul>
 	<% end %>
 
-</div>
+</li>
