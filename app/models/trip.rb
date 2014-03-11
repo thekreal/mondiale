@@ -14,7 +14,7 @@ class Trip < ActiveRecord::Base
   scope :most_recent, -> { order(created_at: :desc)}
 
   def start_date
-    if self.posts.any?
+    if posts.any?
     posts.first.date.to_date.to_formatted_s(:long)
     else
       ""
@@ -22,7 +22,7 @@ class Trip < ActiveRecord::Base
   end
 
   def end_date
-    if self.posts.any?
+    if posts.any?
     posts.last.date.to_date.to_formatted_s(:long)
     else
       ""

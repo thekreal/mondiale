@@ -6,7 +6,7 @@ class TripsController < ApplicationController
     if params[:search] && !params[:search].empty?
       @trips = Post.near(params[:search], 1000).order("distance").map(&:trip).uniq
     else
-      @trips = Trip.all
+      @trips = Trip.all.order(created_at: :desc)
     end
   end
 

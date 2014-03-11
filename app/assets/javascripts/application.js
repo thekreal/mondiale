@@ -54,8 +54,8 @@ $(document).ready(function() {
   // dropdownListBtn();
 
 
-  if ($('#user-signup.form').length) {
-    setYtoM($('#user-signup.form .form-container'));
+  if ($('#user.form').length) {
+    setYtoM($('#user.form .form-container'));
   }
 
 });

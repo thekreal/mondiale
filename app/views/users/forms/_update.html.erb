@@ -1,6 +1,8 @@
 <div id="user" class="form">
 <%= form_for @user, html: { class: "form-container" } do |f| %>
-  <legend class="form-title"><%= title %></legend>
+  <legend class="form-title">
+    <small class="fa fa-globe logo"></small> Update Profile
+  </legend>
 
   <div class="form-field">
     <%= f.label :name, for: "user_name", class: "form-label" %>

@@ -1,6 +1,6 @@
 $initial-position: 240px;
 $sidebar-width: 240px;
-$hover-blue: $blue - 50;
+$hover-blue: rgba(127, 180, 206, 1);
 
 body {
   overflow-x: hidden;
@@ -78,12 +78,12 @@ body {
 }
 
 .sidebar-profile {
-  $profile-width: 240px;
-  background: rgba(117, 199, 196, 1);
-  box-shadow: 0 -2px 6px -2px rgba(40, 40, 40, 0.5);
+  $profile-width: 210px;
+  background: $white;
+  box-shadow: inset 0 1px 6px -4px rgba(40, 40, 40, 0.5);
   position: relative;
-  margin: 0px;
-  padding: 15px;
+  margin: 15px auto;
+  padding: 30px 15px;
   width: $profile-width;
 
   .profile-link {
@@ -119,12 +119,14 @@ body {
 }
 
 ul.menu > li > a {
+  @include animation(all, 0.2s, ease-in-out);
+  color: $white;
+  text-decoration: none;
+  font-size: 0.9em;
+  &:hover {
+    background: $hover-blue;
     color: $white;
-    text-decoration: none;
-    &:hover {
-      background: $hover-blue;
-      color: $white;
-    }
   }
+}
 
 
