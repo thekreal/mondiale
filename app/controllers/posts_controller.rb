@@ -53,13 +53,22 @@ class PostsController < ApplicationController
   end
 
 	def update
+	@chapter = Chapter.find(params[:chapter_id])
+	@posts = @chapter.posts
+
+	respond_to do |format|
 		if @post.update(post_params)
 			save_images
-			flash[:success] = "Your post has been updated successfully"
-			redirect_to trip_chapter_path(@post.trip, @post.chapter)
+			format.html do
+				flash[:success] = "Your post has been updated successfully"
+				redirect_to trip_chapter_path(@post.trip, @post.chapter)
+			end
+			format.js
 		else
-			render :edit
+			format.html {render :edit}
+			format.js
 		end
+	end
 	end
 
 	def destroy
