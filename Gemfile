@@ -43,7 +43,7 @@ gem "jquery-rails", "~> 2.3.0"
 gem 'jbuilder', '~> 1.2'
 
 gem 'sorcery'
-
+gem 'acts_as_list'
 gem 'geocoder'
 
 gem 'redcarpet'

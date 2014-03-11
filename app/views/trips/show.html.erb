@@ -67,10 +67,9 @@
 
 		</div>
 
-<%= sort_chapter_items_trips_path(:sort => @trip.id) %>
 		<% end %>
 	<div class="chapters">
-		<ul id = "chapters-list" data-update-url: "<%= sort_chapter_items_trips_path(:sort => @trip.id) %>" >
+		<ul id = "chapters-list">
 			<%= render @chapters %>
 		</ul>
 	</div>
