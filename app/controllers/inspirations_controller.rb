@@ -5,6 +5,11 @@ class InspirationsController < ApplicationController
 		@inspiration.save
 	end
 
+	def destroy
+		@inspiration = Inspiration.find(params[:id])
+		@inspiration.destroy
+	end
+
 end
 
 private
