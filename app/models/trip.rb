@@ -6,6 +6,7 @@ class Trip < ActiveRecord::Base
 	belongs_to :user
 	has_many :chapters, dependent: :delete_all
 	has_many :posts, through: :chapters
+  has_many :inspirations, as: :inspirable
 
   validates :title,       presence: true,
                           uniqueness: true

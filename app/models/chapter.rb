@@ -5,6 +5,7 @@ class Chapter < ActiveRecord::Base
 
   belongs_to :trip
   has_many :posts, dependent: :delete_all
+  has_many :inspirations, as: :inspirable
 
 	validates :title, presence: true
 

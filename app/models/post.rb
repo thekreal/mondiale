@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
 	belongs_to :chapter
 
 	has_many :post_attachments, dependent: :delete_all
+  has_many :inspirations, as: :inspirable
  	accepts_nested_attributes_for :post_attachments
 
   has_one :trip, through: :chapter
