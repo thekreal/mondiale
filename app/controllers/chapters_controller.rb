@@ -58,11 +58,20 @@ class ChaptersController < ApplicationController
   end
 
   def update
-    if @chapter.update(chapter_params)
-      flash[:success] = "Your chapter has been updated successfully"
-      redirect_to [@chapter.trip, @chapter]
-    else
-      render :edit
+    @trip = Trip.find(params[:trip_id])
+    @chapters = @trip.chapters.order("position")
+    respond_to do |format|
+
+      if @chapter.update(chapter_params)
+        format.html do
+          flash[:success] = "Your chapter has been updated successfully"
+          redirect_to [@chapter.trip, @chapter]
+        end
+        format.js
+      else
+        format.html {render :edit}
+        format.js
+      end
     end
   end
 
