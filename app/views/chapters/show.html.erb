@@ -1,44 +1,40 @@
 <% provide :page_title, "Chapter" %>
 
-<p> <%= link_to "Back to #{@chapter.trip.title}", @chapter.trip %> </p>
+	<div class ="back-to-trip-link">
+		<%= link_to "Back to #{@chapter.trip.title}", @chapter.trip %>
+	</div>
 
-<h1>Chapter <%= @trip.chapters.index(@chapter) + 1 %>: <%= @chapter.title %></h1>
-<p><%= @chapter.description %></p>
-<br>
+	<div class="chapter-info">
+			<h1>Chapter <%= @trip.chapters.index(@chapter) + 1 %>: <%= @chapter.title %></h1>
+			<p><%= @chapter.description %></p>
+			<br>
+	</div>
 
-<div id="map-canvas" data-objects="<%= posts_in_json(@chapter.posts) %>" data-center-pos="<%= center_of_all_locations(@trip.posts).to_json %>">
-</div>
+	<div id="map-canvas" data-objects="<%= posts_in_json(@chapter.posts) %>" data-center-pos="<%= center_of_all_locations(@trip.posts).to_json %>">
+	</div>
 
-<% if @chapter.inspiration_id != nil %>
+<% if logged_in? %>
 
-	<div class="inspirations">
-		<p>This Chapter was inspired by <%= @chapter.inspiration.title %><p>
+	<div id="inspiration-link">
+		<% if @chapter.already_inspired?(current_user.id) %>
+			<%= link_to 'I am no longer inspired', @chapter.already_inspired(current_user.id), method: :delete, remote: true %>
+		<% else %>
+			<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @chapter, inspirable_type: @chapter.class}), method: :post, remote: true %>
+		<% end %>
 	</div>
 
 <% end %>
 
-<div class="inspiration-div">
-	<% if logged_in? %>
-		<% if Inspiration.by_this?(current_user.id, @chapter.id, @chapter.class) %>
-			<button class="inspiration-button">
-				<%= link_to "Remove This as an Inspiration", inspiration_path(Inspiration.by_this(current_user.id, @chapter.id, @chapter.class)[0].id), method: :delete, remote: true %>
-			</button>
-		<% else %>
-			<button class="inspiration-button" >
-				<%= link_to "Add This as an Inspiration", inspirations_path(inspiration: {inspirable_id: @chapter, inspirable_type: @chapter.class}), method: :post, remote: true %>
-			</button>
-
-		<% end %>
-	<% end %>
-
+	<div class='inspirations-count'>
+		<%= @chapter.inspirations.count %> people have added this trip as an inspiration
 	</div>
 
-	<p class='inspirations-count'><%= @chapter.inspirations.count %> people have added this trip as an inspiration</p>
 
-
-	<% if @chapter.trip.user == current_user %>
-			<p> <%= link_to "create a new post", new_trip_chapter_post_path(@trip, @chapter), remote: true %> </p>
-	<% end %>
+<% if @chapter.trip.user == current_user %>
+	<div class="new-post-link">
+		<%= link_to "create a new post", new_trip_chapter_post_path(@trip, @chapter), remote: true %>
+	</div>
+<% end %>
 
 	<div id="new-post-form">
 
