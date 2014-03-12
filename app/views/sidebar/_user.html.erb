@@ -1,11 +1,5 @@
 <div class="sidebar-profile">
-  <%= link_to image_tag(current_user.gravatar(60), class: 'gravatar'), current_user, class: 'profile-link' %>
-  <ul class="information">
-    <li>
-      <%= link_to current_user.name, edit_user_path(current_user), class: "link" %>
-    </li>
-  </ul>
-
+  <%= link_to current_user.name, edit_user_path(current_user), class: 'profile-link' %>
 </div>
 <ul class="menu">
   <li>
