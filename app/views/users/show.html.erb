@@ -1,4 +1,15 @@
+<div class="user">
+	<%= render @user %>
+</div>
+
+<div class="users-trips">
+	<% @trips.each do |t| %>
+  	<%= render 'templates/my_trip', t: t %>
+	<% end %>
+</div>
+
 <div class="user-feed">
+
 
 </div>
 
