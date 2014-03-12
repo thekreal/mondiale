@@ -1,11 +1,24 @@
-<div class="trips">
-  <%= form_tag trips_path, method: :get, remote: true, id: "search-from" do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search a location", class: "search-field" %>
-  <% end %>
-  <legend class="title">Trips</legend>
-  <div class="trips-index">
-    <% @trips.each do |t| %>
-     <%= render "templates/trip_summary", trip: t %>
-    <% end %>
-  </div>
+<div class = "row" class="trips">
+
+	<div class="large-10 large-offset-1 columns">
+		<%= form_tag trips_path, method: :get, remote: true, id: "search-from" do %>
+		<%= text_field_tag :search, params[:search], placeholder: "Search a location", class: "search-field" %>
+		<% end %>
+
+	</div>
+
+</div>
+
+<div class = "row">
+
+	<div class="large-10 large-offset-1 columns">
+
+		<legend class="title">Popular trips</legend>
+		<div class="trips-index">
+			<% @trips.each do |t| %>
+			<%= render "templates/trip_summary", trip: t %>
+			<% end %>
+		</div>
+	</div>
+
 </div>
