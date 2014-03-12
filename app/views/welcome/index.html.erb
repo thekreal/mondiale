@@ -4,12 +4,12 @@
     <%= site_name %>
   </h1>
   <div class="tag">
-    Plan a trip and tell your travel story.
+    Tell your travel story.
   </div>
   <div class="search-bar">
     <%= form_tag trips_path, method: :get, id: "search" do %>
     <%= text_field_tag :search, params[:search],
-        placeholder: "Type In a Location" %>
+        placeholder: "Show me stories from ..." %>
     <% end %>
     <span class="fa fa-search"></span>
   </div>
