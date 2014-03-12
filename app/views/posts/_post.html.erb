@@ -1,3 +1,4 @@
+<div class="post">
 			<h4><%= post.title %></h4>
 			<ul>
 				<li><%= markdown(post.content) %></li>
@@ -13,31 +14,21 @@
 			</ul>
 			<div id="edit-post-form"></div>
 
-<% if post.inspiration_id != nil %>
+<% if logged_in? %>
 
-	<div class="inspirations">
-		<p>This Post was inspired by <%= post.inspiration.title %></p>
+	<div id="post-inspiration-link-<%= post.id %>">
+		<% if post.already_inspired?(current_user.id) %>
+			<%= link_to 'I am no longer inspired', post.already_inspired(current_user.id), method: :delete, remote: true %>
+		<% else %>
+			<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: post, inspirable_type: post.class}), method: :post, remote: true %>
+		<% end %>
 	</div>
 
 <% end %>
 
-<div id="upvote-div-<%= post.id %>">
-	<% if logged_in? %>
-		<% if current_user.voted_for? post  %>
 
-			<button class="upvote-button-<%= post.id %>" data-vote-status="downvote">
-				<%= link_to "Remove This Post From Favourites", vote_trip_chapter_post_path(post.chapter.trip, post.chapter, post, unvote: 1), method: :post, remote: true %>
-			</button>
-
-		<% else %>
-
-			<button class="upvote-button-<%= post.id %>" data-vote-status="upvote">
-				<%= link_to "Add This Post to Favourites", vote_trip_chapter_post_path(post.chapter.trip, post.chapter, post), method: :post, remote: true %>
-			</button>
-
-		<% end %>
-	<% end %>
+	<div id='post-inspiration-count-<%= post.id %>'>
+		<%= post.inspirations.count %> people have added this post as an inspiration
+	</div>
 
 </div>
-
-	<p class='upvote-count-<%= post.id %>'><%= post.votes.count %> people have favourited this post</p>

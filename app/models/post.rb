@@ -1,12 +1,11 @@
 class Post < ActiveRecord::Base
-  attr_accessor :inspirationinfo
-  acts_as_votable
 
   mount_uploader :postimage, PostImageUploader
 
 	belongs_to :chapter
 
 	has_many :post_attachments, dependent: :delete_all
+  has_many :inspirations, as: :inspirable
  	accepts_nested_attributes_for :post_attachments
 
   has_one :trip, through: :chapter
@@ -27,5 +26,14 @@ class Post < ActiveRecord::Base
     ActiveModel.const_get(inspiration_type).find(inspiration_id)
     end
   end
+
+  def already_inspired(user_id)
+    inspirations.find_by(user_id: user_id)
+  end
+
+  def already_inspired?(user_id)
+    already_inspired(user_id).is_a?(Inspiration)
+  end
+
 
 end

@@ -1,10 +1,9 @@
 class Trip < ActiveRecord::Base
-  attr_accessor :inspiration_info
-  acts_as_votable
 
 	belongs_to :user
 	has_many :chapters, dependent: :delete_all
 	has_many :posts, through: :chapters
+  has_many :inspirations, as: :inspirable
 
   validates :title,       presence: true,
                           uniqueness: true
@@ -35,7 +34,13 @@ class Trip < ActiveRecord::Base
     end
   end
 
+  def already_inspired(user_id)
+    inspirations.find_by(user_id: user_id)
+  end
 
+  def already_inspired?(user_id)
+    already_inspired(user_id).is_a?(Inspiration)
+  end
 
 end
 

@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
-  acts_as_voter
 
   has_many :trips, dependent: :delete_all
+  has_many :inspirations
 
   #  Callbacks and Validations
   before_save { email.downcase! }

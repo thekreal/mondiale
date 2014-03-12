@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140310233828) do
+ActiveRecord::Schema.define(version: 20140311234611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,14 @@ ActiveRecord::Schema.define(version: 20140310233828) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
-    t.string   "inspiration_type"
     t.integer  "inspiration_id"
     t.integer  "position"
+  end
+
+  create_table "inspirations", force: true do |t|
+    t.integer "user_id"
+    t.integer "inspirable_id"
+    t.string  "inspirable_type"
   end
 
   create_table "post_attachments", force: true do |t|
@@ -50,10 +55,9 @@ ActiveRecord::Schema.define(version: 20140310233828) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "location"
-    t.decimal  "longitude",        precision: 9, scale: 6
-    t.decimal  "latitude",         precision: 9, scale: 6
+    t.decimal  "longitude",      precision: 9, scale: 6
+    t.decimal  "latitude",       precision: 9, scale: 6
     t.string   "postimage"
-    t.string   "inspiration_type"
     t.integer  "inspiration_id"
   end
 
@@ -65,7 +69,6 @@ ActiveRecord::Schema.define(version: 20140310233828) do
     t.datetime "updated_at"
     t.integer  "cached_votes_total", default: 0
     t.integer  "coverphoto"
-    t.string   "inspiration_type"
     t.integer  "inspiration_id"
   end
 
@@ -85,20 +88,5 @@ ActiveRecord::Schema.define(version: 20140310233828) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
-
-  create_table "votes", force: true do |t|
-    t.integer  "votable_id"
-    t.string   "votable_type"
-    t.integer  "voter_id"
-    t.string   "voter_type"
-    t.boolean  "vote_flag"
-    t.string   "vote_scope"
-    t.integer  "vote_weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
-  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
 end
