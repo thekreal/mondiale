@@ -1,4 +1,5 @@
-.my_trip {
+.summary {
+  position: relative;
 
   .cover-photo {
     display: block;
@@ -7,7 +8,7 @@
     border: 15px solid rgba(255, 255, 255, 1);
   }
 
-  .trip-summary {
+  .information {
     position: absolute;
     top: 30px;
     left: 30px;
@@ -30,7 +31,7 @@
     font-size: 0.8em;
   }
   .cover-map {
-    @include google-map(40%, calc(100% - 60px));
+    @include google-map(40%, 40%);
     position: absolute;
     right: 30px;
     bottom: 30px;

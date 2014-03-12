@@ -1,2 +1,5 @@
-$('#new-chapter-form').html('<%=j render partial: 'chapters/form' %>')
-$('#new-chapter-form').css('background', 'AliceBlue')
+var form = $('#chapter.form');
+var blurBackground = addBlur('body');
+form = $('<%= j render "chapters/form", title: "New Chapter", submit: "Create" %>');
+slideDownShow(form);
+clickToClose(blurBackground.add('.close'), form);
