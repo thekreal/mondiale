@@ -1,7 +1,7 @@
 <div id="chapter" class="form">
 <%= form_for [@chapter.trip, @chapter], remote: true, html: { class: "form-container" } do |f| %>
 
-  <%= render 'alerts/error_message', object: @trip %>
+  <%= render 'alerts/error_message', object: @chapter %>
 
   <div class="form-field">
     <legend class="form-title"><%= title %></legend>
