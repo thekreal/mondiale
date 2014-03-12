@@ -5,7 +5,7 @@
 </div>
 
 <div class="trips-index">
-	<%= render @trips %>
+  <% @trips.each do |t| %>
+	 <%= render "templates/trip_summary", trip: t %>
+  <% end %>
 </div>
-
-<%= params %>
