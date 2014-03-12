@@ -10,12 +10,4 @@ class Chapter < ActiveRecord::Base
 
 	validates :title, presence: true
 
-  def cover_photo
-    if post_attachments.any?
-      post_attachments[rand(post_attachments.size)].postimage_url
-    else
-      'bridge.jpg'
-    end
-  end
-
 end

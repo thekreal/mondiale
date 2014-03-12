@@ -14,10 +14,6 @@ class Trip < ActiveRecord::Base
 
   scope :most_recent, -> { order(created_at: :desc)}
 
-  def cover_photo
-    return post_attachments.any? ? post_attachments.find(coverphoto).postimage_url : 'bridge.jpg'
-  end
-
   def number_of_chapters
     chapters.count
   end
@@ -29,8 +25,3 @@ class Trip < ActiveRecord::Base
   end
 
 end
-
-
-
-
-
