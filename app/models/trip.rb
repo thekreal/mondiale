@@ -13,8 +13,8 @@ class Trip < ActiveRecord::Base
   scope :most_recent, -> { order(created_at: :desc)}
   scope :highest_rated, -> { order("cached_votes_total DESC") }
 
-  def trip_cover
-    return coverphoto.nil? ? 'default_cover.jpg' : coverphoto
+  def cover_photo
+    return coverphoto.nil? ? 'default_cover_01.jpg' : coverphoto
   end
 
   def start_date
@@ -34,6 +34,9 @@ class Trip < ActiveRecord::Base
     ActiveModel.const_get(inspiration_type).find(inspiration_id)
     end
   end
+
+
+
 end
 
 

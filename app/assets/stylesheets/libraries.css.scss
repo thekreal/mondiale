@@ -49,6 +49,12 @@ a[class*='btn'] {
 }
 button[class*='btn'] { padding-bottom: 1px; }
 
+@mixin border($color: $white, $width: 1px) {
+  border: $width solid $color;
+}
+
+
+
 .blur-background {
   position: fixed;
   top: 0px;

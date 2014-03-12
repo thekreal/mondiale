@@ -17,7 +17,6 @@ function GoogleMap(obj) {
       markers = [],
       map = "";
 
-      console.log(mapCanvas, objects)
   function geolocation() {
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(p) {
@@ -45,12 +44,11 @@ function GoogleMap(obj) {
   };
 
   function addInfoWindow(obj) {
-    return new google.maps.InfoWindow({
-      content: infoWindowContent(obj)
-    });
+    return new google.maps.InfoWindow({ content: infoWindowContent(obj) });
   };
 
   function infoWindowContent(obj) {
+
     var wrapper = $('<div>').addClass('post-summary');
 
     var title = $('<h2>').addClass('title').text(obj.title);
@@ -61,7 +59,7 @@ function GoogleMap(obj) {
 
     var link = $('<a>').attr({
       class: 'link',
-      href: obj.trip_id + "/chapters/" + obj.chapter_id
+      href: "/trips/" + obj.trip_id + "/chapters/" + obj.chapter_id
     }).text("link");
     wrapper.append(link);
 
@@ -74,8 +72,7 @@ function GoogleMap(obj) {
       wrapper.append(image);
     }
 
-    var outterWrapper = $('<div>').append(wrapper)
-
+    var outterWrapper = $('<div>').append(wrapper);
     return outterWrapper.html();
   };
 
@@ -84,16 +81,22 @@ function GoogleMap(obj) {
       url: '/assets/map-marker-red.png',
       size: new google.maps.Size(32, 32)
     };
-
+    var infoWindow = addInfoWindow(obj);
     var marker = new google.maps.Marker({
           position: pos,
           map: map,
           icon: icon,
           zIndex: 5
         });
+
+    console.log(infoWindow)
     google.maps.event.addListener(marker, 'click', function() {
       map.setCenter(marker.getPosition())
-      addInfoWindow(obj).open(map, marker);
+
+      infoWindow.open(map, marker);
+      google.maps.event.addListener(map, 'click', function() {
+        infoWindow.close();
+      })
     });
     markers.push(marker);
   };
@@ -146,17 +149,14 @@ function GoogleMap(obj) {
     var customMapType = new google.maps.StyledMapType(
       mapStyle().featureOpts, mapStyle().customMapType
     );
-
     map.mapTypes.set(mapStyle().id, customMapType);
-
-    $(objects).each(function() {
-      var pos = gLatLng(this.latitude, this.longitude);
-      collectionOfPath.push(pos);
-      addMarker(this, pos);
-    });
     if (objects.length > 0) {
+      $(objects).each(function() {
+        var pos = gLatLng(this.latitude, this.longitude);
+        collectionOfPath.push(pos);
+        addMarker(this, pos);
+      });
       addPolyline();
-
     }
     else {
       geolocation();
