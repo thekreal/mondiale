@@ -2,8 +2,8 @@ class ChaptersController < ApplicationController
   before_action :set_chapter, only: [:show, :edit, :update, :destroy, :vote]
 
   def show
+    @trip = Trip.find(params[:trip_id])
     @posts = @chapter.posts
-    @trip = @chapter.trip
 
     cookies.permanent[:last_trip_viewed] = @chapter.trip.id
     cookies.permanent[:last_chapter_viewed] = @chapter.id
