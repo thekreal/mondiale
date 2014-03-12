@@ -34,7 +34,11 @@
 
 	<div class="chapters">
 		<% @trip.chapters.each do |c| %>
-			<%= render 'templates/chapter_summary', chapter: c %>
+		<div class="row">
+				<div class="columns large-10 large-offset-1">
+					<%= render 'templates/chapter_summary', chapter: c %>
+				</div>
+		</div>
 		<% end %>
 	</div>
 </div>
