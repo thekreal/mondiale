@@ -10,7 +10,6 @@ class Trip < ActiveRecord::Base
   validates :description, presence: true
 
   scope :most_recent, -> { order(created_at: :desc)}
-  scope :highest_rated, -> { order("cached_votes_total DESC") }
 
   def cover_photo
     return coverphoto.nil? ? 'bridge.jpg' : coverphoto

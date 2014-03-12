@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @trips = @user.trips
-    @favourites = @user.find_voted_items
+    @inspirations = @user.inspiration_models
   end
 
   def my_trips
