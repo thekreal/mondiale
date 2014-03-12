@@ -51,10 +51,10 @@
     height: 500px;
     .set-cov-btn {
       position: absolute;
-      right: 0px;
       top: 0px;
-      font-size: 1.5em;
+      right: 0px;
       color: rgba(120, 120, 120, 0.75);
+      font-size: 1.5em;
       &:hover { color: $blue - 50; }
     }
   }
@@ -123,5 +123,31 @@
   }
 }
 
+.trips {
+
+  legend.title {
+    position: relative;
+    top: -17px;
+    margin: 0px;
+    padding-left: 80px;
+    color: $blue - 50;
+    font-weight: 800;
+    font-size: 4em;
+  }
+  .search-field {
+    position: relative;
+    top: -10px;
+    z-index: 95;
+    float: right;
+    margin: 15px 15px;
+    min-width: 200px;
+    width: 20%;
+    outline: none;
+
+    &:hover, &:focus, &:active {
+      box-shadow: none;
+    }
+  }
+}
 
 
