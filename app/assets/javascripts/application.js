@@ -63,6 +63,12 @@ $(document).ready(function() {
   // Set user form to middle of the Y-axis
   if ($('#user.form').length) {
     setYtoM($('#user.form .form-container'))
-      }
+  }
+
+  // Set trips to full-page height
+  var trip = $('.trip')
+  if (trip.length) {
+
+  }
 
 });

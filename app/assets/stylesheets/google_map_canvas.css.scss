@@ -1,40 +1,31 @@
 @mixin google-map($width: 320px, $height: $width) {
   position: absolute;
   width: $width;
-  z-index: 10;
   height: $height;
   border: 5px solid $white;
   box-shadow: 0 0 6px -3px rgba(40, 40, 40, 0.5);
+
+  .post-summary {
+    position: relative;
+    min-width: 200px;
+
+    .title {
+      position: relative;
+      font-weight: 800;
+      font-size: 24px;
+      font-family: 'Open Sans';
+    }
+    .content {
+      position: relative;
+      background: transparent;
+      box-shadow: none;
+      font-size: 12px;
+    }
+    .link {
+      position: relative;
+      display: block;
+      float: right;
+    }
+  }
 }
 
-.post-summary {
-  margin-top: 20px;
-  margin: 0px 0px 0px 20px;
-  width: 160px;
-
-  .title {
-    margin-bottom: -50px;
-    font-weight: 800;
-    font-size: 1.5em;
-  }
-  .content {
-    display: block;
-    padding: 5px;
-    height: 3em;
-    box-shadow: inset 0px 0px 6px -4px rgba(60, 60, 60, 0.2);
-  }
-  .photo {
-    display: block;
-    margin: 0 auto;
-    width: 160px;
-    box-shadow: 0 0 6px -4px rgba(60, 60, 60, 0.75);
-  }
-
-  .link {
-    float: right;
-    color: $blue - 100;
-    text-decoration: none;
-    margin-bottom: 10px;
-  }
-
-}

@@ -15,7 +15,8 @@ function windowHeight(minHeight) {
   return $(window).height() < minHeight ? minHeight : $(window).height();
 }
 
-function setHeight(obj, minHeight) {
+function setHeight(obj, minHeight, offset) {
   minHeight = minHeight || -1
-  obj.outerHeight(windowHeight(minHeight));
+  offset = offset || 0
+  obj.outerHeight(windowHeight(minHeight) - offset);
 }
