@@ -6,36 +6,27 @@
 	<div class="header">
 
 		<% if logged_in? %>
-		<div class="trip-control">
+		<div class="chapter-control">
 			<ul>
-				<li><%= link_to '', new_trip_chapter_path(@trip), class: "fa fa-plus-square", remote: true %></li>
+				<li><%= link_to '', new_trip_chapter_post_path(@trip, @chapter), class: "fa fa-plus-square", remote: true %></li>
 				<li></li>
-				<li><%= link_to "", edit_trip_path, class: "fa fa-edit" %></li>
-				<li><%= link_to "", @trip, confirm: "Are you sure you want to delete this trip?", method: :delete, remote: true, class: "fa fa-times" %></li>
+				<li><%= link_to "", edit_trip_chapter_path(@trip, @chapter), class: "fa fa-edit" %></li>
+				<li><%= link_to "", [@trip, @chapter], confirm: "Are you sure you want to delete this chapter?", method: :delete, remote: true, class: "fa fa-times" %></li>
 			</ul>
 		</div>
 		<% end %>
 
-		<h1 class="title"><%= @trip.title %></h1>
-		<small class="trip-date"><%= trip_date(@trip) %></small>
-		<p class="trip-owner">by <%= link_to @trip.user.name, @trip.user %></p>
+		<h1 class="title"><%= @chapter.title %></h1>
+		<small class="date"><%= trip_date(@chapter) %></small>
+		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
 	</div>
 	<div class="cover-map" data-objects="<%= posts_in_json(@trip.posts) %>"></div>
 
 </div>
 
 
-<div class="trip-content row">
+<div class="chapter-content row">
 
-	<div class="description columns large-10 large-offset-1">
-		<small class="label">Description</small>
-		<%= simple_format(@trip.description, sanitize: true) %>
-	</div>
 
-	<div class="chapters">
-		<% @trip.chapters.each do |c| %>
-			<%= render 'templates/chapter_summary', chapter: c %>
-		<% end %>
-	</div>
 </div>
 
