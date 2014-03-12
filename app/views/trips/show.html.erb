@@ -8,7 +8,7 @@
 				<li><%= link_to '', new_trip_chapter_path(@trip), class: "fa fa-plus-square", remote: true, title: "Add chapter to trip" %></li>
 				<li><%= link_to '', new_cover_trip_path(id: @trip.id), remote: true, class: "fa fa-camera", title: "Set trip cover photo" %></li>
 				<li><%= link_to "", edit_trip_path, class: "fa fa-edit", title: "Edit trip" %></li>
-				<li><%= link_to "", @trip, confirm: "Are you sure you want to delete this trip?", method: :delete, remote: true, class: "fa fa-times", title: "Delete trip" %></li>
+				<li><%= link_to "", @trip, confirm: "Are you sure you want to delete this trip?", method: :delete, class: "fa fa-times", title: "Delete trip" %></li>
 			</ul>
 		</div>
 		<% end %>
