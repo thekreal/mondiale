@@ -1,18 +1,28 @@
+<div class="inpiration-list-links">
+
+</div>
+
 <div class="inspiration-list">
 
 	<div class="inspiration-trips">
 		<h1>Trips You Found Inspiring</h1>
-			<%= render @trips %>
+			<% @trips.each do |trip| %>
+	  	<%= render 'templates/trip_summary', trip: trip%>
+			<% end %>
 	</div>
 
 	<div class="inspiration-chapters">
 		<h1>Chapters You Found Inspiring</h1>
-				<%= render @chapters %>
+				<% @chapters.each do |chapter| %>
+	  		<%= render 'templates/chapter_summary', chapter: chapter %>
+				<% end %>
 	</div>
 
 	<div class="inspiration-posts">
 		<h1>Posts You Found Inspiring</h1>
-				<%= render @posts %>
+				<% @posts.each do |post| %>
+	  		<%= render 'templates/post_summary', post: post %>
+				<% end %>
 	</div>
 
 
