@@ -1,4 +1,5 @@
 class Trip < ActiveRecord::Base
+  include Common
 
 	belongs_to :user
 	has_many :chapters, dependent: :delete_all
@@ -17,14 +18,6 @@ class Trip < ActiveRecord::Base
     return post_attachments.any? ? post_attachments.find(coverphoto).postimage_url : 'bridge.jpg'
   end
 
-  def start_date
-    return posts.any? ? posts.first.date.to_date.to_formatted_s(:long) : ""
-  end
-
-  def end_date
-    return posts.any? ? posts.last.date.to_date.to_formatted_s(:long) : ""
-  end
-
   def number_of_chapters
     chapters.count
   end
@@ -33,14 +26,6 @@ class Trip < ActiveRecord::Base
     if inspiration_id != nil
     ActiveModel.const_get(inspiration_type).find(inspiration_id)
     end
-  end
-
-  def already_inspired(user_id)
-    inspirations.find_by(user_id: user_id)
-  end
-
-  def already_inspired?(user_id)
-    already_inspired(user_id).is_a?(Inspiration)
   end
 
 end
