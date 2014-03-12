@@ -1,9 +1,9 @@
 <div class="summary">
   <div class="information">
-    <h1 class="title"><%= link_to t.title, t, class: "link" %></h1>
-    <div class="date"><%= trip_date(t) %></div>
+    <h1 class="title"><%= link_to trip.title, trip, class: "link" %></h1>
+    <div class="date"><%= trip_date(trip) %></div>
   </div>
-  <div class="cover-photo" data-image-url="<%= image_url(t.cover_photo) %>"></div>
-  <div class="cover-map" data-objects="<%= posts_in_json(t.posts) %>"></div>
+  <div class="cover-photo" data-image-url="<%= image_url(trip.cover_photo) %>"></div>
+  <div class="cover-map" data-objects="<%= posts_in_json(trip.posts) %>"></div>
 
 </div>
