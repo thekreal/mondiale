@@ -35,5 +35,4 @@ class Post < ActiveRecord::Base
     already_inspired(user_id).is_a?(Inspiration)
   end
 
-
 end

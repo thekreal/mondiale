@@ -12,7 +12,7 @@ class Trip < ActiveRecord::Base
   scope :most_recent, -> { order(created_at: :desc)}
 
   def cover_photo
-    return coverphoto.nil? ? 'default_cover_01.jpg' : coverphoto
+    return coverphoto.nil? ? 'bridge.jpg' : coverphoto
   end
 
   def start_date

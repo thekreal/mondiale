@@ -89,7 +89,6 @@ function GoogleMap(obj) {
           zIndex: 5
         });
 
-    console.log(infoWindow)
     google.maps.event.addListener(marker, 'click', function() {
       map.setCenter(marker.getPosition())
 

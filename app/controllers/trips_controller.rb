@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :ensure_logged_in, only: [:new, :edit, :destroy]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :vote, :new_cover, :create_cover]
 
   def index
     if params[:search] && !params[:search].empty?
@@ -39,21 +39,33 @@ class TripsController < ApplicationController
     end
   end
 
-  def set_photo
-    set_trip
-    respond_to do |format|
-      format.js
-    end
+  def new_cover
+    respond_to :js
   end
 
-  def set_photo_save
-    set_trip
+  def create_cover
     @trip.coverphoto = params[:pid]
     if @trip.save
-      flash[:success] = "Cover photo set"
+      flash[:success] = "Trip Cover has being successfully set"
       redirect_to @trip
     end
   end
+
+  # def set_photo
+  #   set_trip
+  #   respond_to do |format|
+  #     format.js
+  #   end
+  # end
+
+  # def set_photo_save
+  #   set_trip
+  #   @trip.coverphoto = params[:pid]
+  #   if @trip.save
+  #     flash[:success] = "Cover photo set"
+  #     redirect_to @trip
+  #   end
+  # end
 
   def edit
   end

@@ -18,12 +18,15 @@
 
 // Initializer
 $(document).ready(function() {
+
+  // Foundation Initialize
   $(document).foundation();
 
+  // Initialize Welcome Page JavaScript
   welcomePage();
-
-  // offcanvas menu
+  // Initialize Offcanvas menu
   sidebar();
+
 
   // bind delete photo Button
   deletePictureBtn();
@@ -31,9 +34,7 @@ $(document).ready(function() {
   // generate google map
   var maps = $('.cover-map');
   if (maps.length) {
-    maps.each(function() {
-      var m = new GoogleMap(this);
-    })
+    maps.each(function() { var m = new GoogleMap(this) })
   }
 
   $('#chapters-list').sortable(
@@ -56,19 +57,13 @@ $(document).ready(function() {
   // Bind flash alerts
   flashAlertEffect();
 
-  // bind dropdown list buttons
-  // dropdownListBtn();
-
 
   // Set user form to middle of the Y-axis
   if ($('#user.form').length) {
     setYtoM($('#user.form .form-container'))
   }
 
-  // Set trips to full-page height
-  var trip = $('.trip')
-  if (trip.length) {
-
-  }
+  // Set trip cover photo
+  myTrip();
 
 });

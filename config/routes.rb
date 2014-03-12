@@ -3,15 +3,21 @@ Mondiale::Application.routes.draw do
 	resources :posts, except: [:show, :index]
 
   resources :trips do
-    collection { post :sort_chapter_items }
+    member do
+      get   :new_cover,      as: :new_cover
+      post  :create_cover,   as: :create_cover
+    end
+    collection {
+      post  :sort_chapter_items
+    }
   	resources :chapters do
       resources :posts, except: [:index, :show] do
       end
     end
   end
 
-  get 'set_trip_cover/:id'  =>  'trips#set_photo',        as: :set_trip_cover
-  post 'set_trip_cover/:id' =>  'trips#set_photo_save',   as: :set_trip_cover_save
+  # get 'set_trip_cover/:id'  =>  'trips#set_photo',        as: :set_trip_cover
+  # post 'set_trip_cover/:id' =>  'trips#set_photo_save',   as: :set_trip_cover_save
 
   post 'delete_picture' =>      'post_attachments#destroy', as: :delete_picture
   get 'signup'          =>      'users#new',                as: :signup
