@@ -34,8 +34,11 @@
 
 	<div class="chapters">
 		<% @trip.chapters.each do |c| %>
+
 			<%= render 'templates/chapter_summary', c: c %>
+
 		<% end %>
+
 	</div>
 </div>
 
