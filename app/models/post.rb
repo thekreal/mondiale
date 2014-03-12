@@ -35,4 +35,12 @@ class Post < ActiveRecord::Base
     already_inspired(user_id).is_a?(Inspiration)
   end
 
+  def random_cover
+    if post_attachments.any?
+      post_attachments[rand(post_attachments.size - 1)].postimage_url
+    else
+      'bridge.jpg'
+    end
+  end
+
 end
