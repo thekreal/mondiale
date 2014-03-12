@@ -1,5 +1,7 @@
 <div class="inpiration-list-links">
-
+		<%= link_to "Trips You Found Inspiring", inspiration_list_user_path(@user, type: "Trip"), remote: true%>
+		<%= link_to "Chapters You Found Inspiring", inspiration_list_user_path(@user, type: "Chapter"), remote: true%>
+		<%= link_to "Posts You Found Inspiring", inspiration_list_user_path(@user, type: "Post"), remote: true%>
 </div>
 
 <div class="inspiration-list">
@@ -11,14 +13,14 @@
 			<% end %>
 	</div>
 
-	<div class="inspiration-chapters">
+	<div class="inspiration-chapters hidden-inspirations">
 		<h1>Chapters You Found Inspiring</h1>
 				<% @chapters.each do |chapter| %>
 	  		<%= render 'templates/chapter_summary', chapter: chapter %>
 				<% end %>
 	</div>
 
-	<div class="inspiration-posts">
+	<div class="inspiration-posts hidden-inspirations">
 		<h1>Posts You Found Inspiring</h1>
 				<% @posts.each do |post| %>
 	  		<%= render 'templates/post_summary', post: post %>
