@@ -17,4 +17,12 @@ module Common
     return posts.any? ? posts.last.date.to_date.to_formatted_s(:long) : ""
   end
 
+  def cover_photo
+    if post_attachments.any?
+      post_attachments[rand(post_attachments.size)].postimage_url
+    else
+      'bridge.jpg'
+    end
+  end
+
 end
