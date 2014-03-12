@@ -13,7 +13,7 @@ class Trip < ActiveRecord::Base
   scope :highest_rated, -> { order("cached_votes_total DESC") }
 
   def cover_photo
-    return coverphoto.nil? ? 'default_cover_01.jpg' : coverphoto
+    return coverphoto.nil? ? 'bridge.jpg' : coverphoto
   end
 
   def start_date

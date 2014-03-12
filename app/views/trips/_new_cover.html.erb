@@ -1,0 +1,11 @@
+<small class="label">Select Your Cover Photo</small>
+<% if @trip.posts.post_images.any? %>
+  <% @trip.posts.post_attachments.each do |pic| %>
+    <div class="thumbnail" id="post-photo-<%= pic.id %>">
+      <%= link_to set_trip_cover_path(id: @trip.id, pid: pic.id), method: :post, class: "set-cover-photo-link" do %>
+        <%= image_tag pic.postimage_url(:thumb) %>
+      <% end %>
+
+    </div>
+  <% end %>
+<% end %>
