@@ -1,1 +1,21 @@
-$('<%= j render "trips/new_cover" %>').insertAfter($('.trip'));
+var animateDuration = 1000;
+var tripCoverPhotos = $('.trip-cover-photos')
+if (tripCoverPhotos.length) {
+  tripCoverPhotos.slideUp(
+    animateDuration,
+    'easeOutCubic',
+    function(){
+      $(this).remove();
+  })
+}
+else {
+  $('<%= j render "trips/new_cover" %>')
+    .hide()
+    .insertAfter($('.trip'))
+    .slideDown(
+      animateDuration,
+      'easeOutCubic',
+      function() {
+
+    });
+}

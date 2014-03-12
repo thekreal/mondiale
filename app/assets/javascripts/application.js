@@ -64,6 +64,6 @@ $(document).ready(function() {
   }
 
   // Set trip cover photo
-  myTrip();
+  trips();
 
 });

@@ -23,9 +23,9 @@
       list-style-type: none;
       li a {
         display: block;
-        text-align: center;
-        width: 30px;
         padding: 5px;
+        width: 30px;
+        text-align: center;
         font-size: 1em;
       }
     }
@@ -46,8 +46,17 @@
   .trip-owner a {
     font-size: 0.9em;
   }
-  .trip-cover-photo {
+  .cover-photo {
     width: 100%;
+    height: 500px;
+    .set-cov-btn {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      font-size: 1.5em;
+      color: rgba(120, 120, 120, 0.75);
+      &:hover { color: $blue - 50; }
+    }
   }
 
   .cover-map {
@@ -76,8 +85,42 @@
   }
 }
 
-.trip-content {
+.trip-cover-photos {
+  width: 100%;
+  height: 180px;
+  background: $black;
+  box-shadow: inset 0 0 6px -3px rgba(40, 40, 40, 0.7);
+  .label {
+    top: -1px;
+  }
+  .thumbnails {
+    height: 100%;
+    list-style-type: none;
+    li {
+      display: inline-block;
+      margin-left: 0px;
+      border: 1px solid $white;
+    }
+    .thumbnail {
+      @include animation();
+      margin: 10px;
 
+      &:hover {
+
+        box-shadow: 0 0 6px -1px $yellow;
+      }
+    }
+    .thumbnail-image {
+      @include animation();
+      width: 240px;
+      height: 120px;
+      &:hover {
+        box-shadow: 0 0 6px -2px rgba(40, 40, 40, 0.7);
+        -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+      }
+    }
+  }
 }
 
 

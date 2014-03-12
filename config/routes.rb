@@ -4,8 +4,8 @@ Mondiale::Application.routes.draw do
 
   resources :trips do
     member do
-      get   :new_cover,      as: :new_cover
-      post  :create_cover,   as: :create_cover
+      get   :new_cover
+      post  :create_cover
     end
     collection {
       post  :sort_chapter_items
