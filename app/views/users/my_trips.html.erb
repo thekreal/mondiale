@@ -1,5 +1,5 @@
 <% provide :page_title, "My Trips" %>
 
 <% @trips.each do |t| %>
-  <%= render 'templates/my_trip', t: t %>
+  <%= render 'templates/trip_summary', trip: t %>
 <% end %>

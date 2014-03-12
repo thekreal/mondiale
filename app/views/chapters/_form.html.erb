@@ -1,24 +1,16 @@
-<div class="form">
-<h2>Form</h2>
-<%= form_for [@chapter.trip, @chapter], remote: true, html: {class: "form-container"} do |f| %>
+<div id="chapter" class="form">
+<%= form_for [@chapter.trip, @chapter], remote: true, html: { class: "form-container" } do |f| %>
 
-<%= render 'alerts/error_message', object: @chapter %>
-
-  <div class="form-field">
-    <%= f.label :title, class: "form-label" %>
-    <div class="form-control">
-      <%= f.text_field :title, class: "form-input" %>
-    </div>
-  </div>
+  <%= render 'alerts/error_message', object: @trip %>
 
   <div class="form-field">
-    <%= f.label :description, class: "form-label" %>
-    <div class="form-control">
-      <%= f.text_area :description, class: "form-input" %>
-    </div>
+    <legend class="form-title"><%= title %></legend>
+    <%= f.text_field :title, class: "form-input", placeholder: "Trip name" %>
+    <%= f.text_area :description, class: "form-input",
+          placeholder: "Trip summary" %>
   </div>
 
-  <div class="wishlist-items">
+  <div class="inspirations">
     <h3>Inspirations</h3>
       <% current_user.inspirations.each do |inspiration| %>
         <%= f.radio_button :inspiration_id, inspiration.id %>
@@ -27,11 +19,8 @@
   </div>
 
   <div class="form-field">
-    <div class="form-label"></div>
-    <div class="form-control">
-
-      <%= f.submit class: "form-btn"%>
-    </div>
+    <%= f.submit submit, class: "form-btn" %>
+    <%= link_to "Back", :back, class: "form-btn close" %>
   </div>
 
 <% end %>
