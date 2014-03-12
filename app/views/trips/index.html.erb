@@ -2,7 +2,7 @@
 
 	<div class="large-10 large-offset-1 columns">
 		<%= form_tag trips_path, method: :get, remote: true, id: "search-from" do %>
-		<%= text_field_tag :search, params[:search], placeholder: "Search a location", class: "search-field" %>
+		<%= text_field_tag :search, params[:search], placeholder: "Show me trips from ...", class: "search-field" %>
 		<% end %>
 
 	</div>
