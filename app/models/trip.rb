@@ -14,7 +14,11 @@ class Trip < ActiveRecord::Base
   scope :most_recent, -> { order(created_at: :desc)}
 
   def cover_photo
-    return post_attachments.any? ? post_attachments.find(coverphoto).postimage_url : 'bridge.jpg'
+    if post_attachments.any?
+      post_attachments[rand(post_attachments.size)].postimage_url
+    else
+      'bridge.jpg'
+    end
   end
 
   def start_date

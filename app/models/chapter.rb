@@ -20,7 +20,7 @@ class Chapter < ActiveRecord::Base
 
   def cover_photo
     if post_attachments.any?
-      post_attachments[rand(post_attachments.size - 1)].postimage_url
+      post_attachments[rand(post_attachments.size)].postimage_url
     else
       'bridge.jpg'
     end
