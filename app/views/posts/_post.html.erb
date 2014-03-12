@@ -5,6 +5,16 @@
 				<%= post.inspirations.count %> people have added this post as an inspiration
 			</div>
 
+			<% if logged_in? %>
+
+				<div id="post-inspiration-link-<%= post.id %>">
+					<% if post.already_inspired?(current_user.id) %>
+						<%= link_to 'I am no longer inspired', post.already_inspired(current_user.id), method: :delete, remote: true %>
+					<% else %>
+						<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: post, inspirable_type: post.class}), method: :post, remote: true %>
+					<% end %>
+				</div>
+			<% end %>
 			<p>
 				<% if post.trip.user == current_user %>
 					<%= link_to "", edit_trip_chapter_post_path(post.trip, post.chapter, post), class: "fa fa-edit", remote: true %>
@@ -17,18 +27,4 @@
 				<% post.post_attachments.each do |pic| %>
 		  		<%= image_tag pic.postimage_url(:big) %>
 				<% end %>
-
-<% if logged_in? %>
-
-	<div id="post-inspiration-link-<%= post.id %>">
-		<% if post.already_inspired?(current_user.id) %>
-			<%= link_to 'I am no longer inspired', post.already_inspired(current_user.id), method: :delete, remote: true %>
-		<% else %>
-			<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: post, inspirable_type: post.class}), method: :post, remote: true %>
-		<% end %>
-	</div>
-
-<% end %>
-
-
 </div>
