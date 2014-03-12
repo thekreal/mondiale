@@ -23,6 +23,7 @@ Mondiale::Application.routes.draw do
   get 'signup'          =>      'users#new',                as: :signup
   resources :users do
     member { get 'my_trips' }
+    member { get 'inspiration_list'}
   end
 
   get 'signin'          =>      'sessions#new',             as: :signin
