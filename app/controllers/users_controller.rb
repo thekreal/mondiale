@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :my_trips, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :my_trips, :edit, :update, :destroy, :inspiration_list]
 
   def index
     @users = User.all
@@ -12,6 +12,13 @@ class UsersController < ApplicationController
 
   def my_trips
     @trips = @user.trips
+  end
+
+  def inspiration_list
+    @trips = @user.inspiration_models("Trip")
+    @chapters = @user.inspiration_models("Chapter")
+    @posts = @user.inspiration_models("Post")
+
   end
 
   def new
