@@ -11,25 +11,6 @@
 	float: left;
 	margin-top: 2em;
 
-	.selector{
-		@include btn($black, 16px, 0.75);
-      top: -21px;
-      padding-top: 20px;
-      padding-right: 15px;
-      padding-bottom: -20px;
-      padding-left: 15px;
-      height: $header-height;
-      background: rgba(80, 80, 80, 0.2);
-      width: 50%;
-      display: inline;
-      a:link{
-      	text-decoration: none;
-      	color: $white;
-      }
-      a:visited{
-      	color: $white;
-      }
-  }
 }
 
 .user{
