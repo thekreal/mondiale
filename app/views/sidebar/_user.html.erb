@@ -1,31 +1,30 @@
 <div class="sidebar-profile">
-  <%= link_to image_tag(current_user.gravatar(60), class: 'gravatar'), current_user, class: 'profile-link' %>
-  <ul class="information">
-    <li>
-      <%= link_to current_user.name, edit_user_path(current_user), class: "link" %>
-    </li>
-  </ul>
-
+  <%= link_to current_user.name, edit_user_path(current_user), class: 'profile-link' %>
 </div>
 <ul class="menu">
   <li>
-    <%= link_to trips_path, class: 'btn' do %>
-      <span class="fa fa-rocket"></span> Featured Trips
-    <% end %>
-    <%= link_to my_trips_user_path(current_user), class: 'btn' do %>
-      <span class="fa fa-plane"></span> My Trips
-    <% end %>
-    <%= link_to user_path(current_user, favourites: "trip"), class: "btn" do %>
-    <span class="fa fa-road"></span> Inspirations
-    <% end %>
     <%= link_to new_trip_path, class: 'btn' do %>
-      <span class="fa fa-plus-square"></span> Plan Trip
+      <span class="fa fa-plus-square"></span> Create a trip story
+    <% end %>
+
+    <%= link_to my_trips_user_path(current_user), class: 'btn' do %>
+      <span class="fa fa-plane"></span> My trip stories
+    <% end %>
+
+    <%= link_to user_path(current_user, favourites: "trip"), class: "btn" do %>
+    <span class="fa fa-heart"></span> Inspiration list
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to trips_path, class: 'btn' do %>
+      <span class="fa fa-rocket"></span> Popular trips
     <% end %>
   </li>
 
   <li>
     <%= link_to :signout, class: "btn" do %>
-    <span class="fa fa-sign-out"></span> SignOut
+    <span class="fa fa-sign-out"></span> Sign out
     <% end %>
   </li>
 </ul>
