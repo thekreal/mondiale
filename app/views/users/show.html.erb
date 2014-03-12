@@ -4,8 +4,8 @@
 
 <div class="users-trips">
 	<h1>Your Trips</h1>
-		<% @trips.each do |t| %>
-	  <%= render 'templates/trip_summary', trip: t %>
+		<% @trips.each do |trip| %>
+	  <%= render 'templates/trip_summary', trip: trip %>
 		<% end %>
 </div>
 
