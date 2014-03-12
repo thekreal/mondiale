@@ -34,15 +34,13 @@
 		<%= markdown(post.content) %>
 	</div>
 
-	</div>
-
 	<div class="large-2 columns"></div>
 </div>
 
-<div class = "row" class="post" >
-
-
+<div class = "row">
+	<div class="large-12 columns">
 		<% post.post_attachments.each do |pic| %>
 		  		<%= image_tag pic.postimage_url(:big) %>
 				<% end %>
+	</div>
 </div>
