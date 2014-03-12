@@ -1,7 +1,7 @@
 <div class="summary">
   <div class="information">
-    <h1 class="title"><%= link_to chapter.title, chapter, class: "link" %></h1>
-    <div class="date"><%= trip_date(chapter) %></div>
+    <h1 class="title"><%= link_to post.title, chapter, class: "link" %></h1>
+    <div class="date"><%= trip_date(post) %></div>
   </div>
   <div class="cover-photo" data-image-url="<%= image_url(post.cover_photo) %>"></div>
   <div class="cover-map" data-objects="<%= posts_in_json(post) %>"></div>
