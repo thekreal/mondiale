@@ -26,4 +26,12 @@ class Chapter < ActiveRecord::Base
     end
   end
 
+  def start_date
+    return posts.any? ? posts.first.date.to_date.to_formatted_s(:long) : ""
+  end
+
+  def end_date
+    return posts.any? ? posts.last.date.to_date.to_formatted_s(:long) : ""
+  end
+
 end
