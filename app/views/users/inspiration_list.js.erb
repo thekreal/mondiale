@@ -1,0 +1,14 @@
+
+<% if params[:type] == "Trip" %>
+		$(".inspiration-chapters").addClass('hidden-inspirations')
+		$(".inspiration-posts").addClass('hidden-inspirations')
+		$(".inspiration-trips").removeClass('hidden-inspirations')
+<% elsif params[:type] == "Chapter" %>
+		$(".inspiration-trips").addClass('hidden-inspirations')
+		$(".inspiration-posts").addClass('hidden-inspirations')
+		$(".inspiration-chapters").removeClass('hidden-inspirations')
+<% elsif params[:type] == "Post" %>
+		$(".inspiration-trips").addClass('hidden-inspirations')
+		$(".inspiration-chapters").addClass('hidden-inspirations')
+		$(".inspiration-posts").removeClass('hidden-inspirations')
+<% end %>
