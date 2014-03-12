@@ -15,7 +15,10 @@ class UsersController < ApplicationController
   end
 
   def inspiration_list
-    @trips = @user.inspiration_models
+    @trips = @user.inspiration_models("Trip")
+    @chapters = @user.inspiration_models("Chapter")
+    @posts = @user.inspiration_models("Post")
+
   end
 
   def new
