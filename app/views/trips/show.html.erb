@@ -18,7 +18,7 @@
 
 		<h1 class="title"><%= @trip.title %></h1>
 		<small class="trip-date"><%= trip_date(@trip) %></small>
-		<p class="trip-owner">by <%= link_to @trip.user.name, @trip.user %></p>
+		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
 	</div>
 	<div class="cover-map" data-objects="<%= posts_in_json(@trip.posts) %>"></div>
 

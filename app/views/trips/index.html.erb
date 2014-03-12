@@ -1,11 +1,11 @@
-<div class="search-bar"></div>
-	<%= form_tag trips_path, method: :get, remote: true, id: "search-from" do %>
-	    <%= text_field_tag :search, params[:search], placeholder: "Type In a Location" %>
-	  <% end %>
+<div class="trips">
+  <%= form_tag trips_path, method: :get, remote: true, id: "search-from" do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search a location", class: "search-field" %>
+  <% end %>
+  <legend class="title">Trips</legend>
+  <div class="trips-index">
+    <% @trips.each do |t| %>
+     <%= render "templates/trip_summary", trip: t %>
+    <% end %>
+  </div>
 </div>
-
-<div class="trips-index">
-	<%= render @trips %>
-</div>
-
-<%= params %>
