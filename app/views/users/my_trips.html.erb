@@ -1,5 +1,20 @@
-<% provide :page_title, "My Trips" %>
+<% provide :page_title, "My trips" %>
 
-<% @trips.each do |t| %>
-  <%= render 'templates/trip_summary', trip: t %>
-<% end %>
+
+<div class="row trip-content">
+	<div class="large-10 large-offset-1 columns">
+		<h1>My trips</h1>
+	</div>
+</div>
+
+
+<div class="row trip-content">
+
+	<div class="large-10 large-offset-1 columns">
+
+	<% @trips.each do |t| %>
+  	<%= render 'templates/trip_summary', trip: t %>
+	<% end %>
+</div>
+
+</div>
