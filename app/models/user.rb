@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     return "https://secure.gravatar.com/avatar/#{Digest::MD5::hexdigest(email)}?s=#{size}"
   end
 
+  def inspiration_models
+    inspirations.map(&:inspired_by)
+  end
+
 private
 
   def updating_profile
