@@ -3,9 +3,10 @@
 </div>
 
 <div class="users-trips">
-	<% @trips.each do |t| %>
-  <%= render 'templates/my_trip', t: t %>
-	<% end %>
+	<h1>Your Trips</h1>
+		<% @trips.each do |t| %>
+	  <%= render 'templates/my_trip', t: t %>
+		<% end %>
 </div>
 
 <div class="user-feed">
