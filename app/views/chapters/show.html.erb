@@ -1,4 +1,4 @@
-<% provide :page_title, "Chapter" %>
+<% provide :page_title, "Chapter #{@chapter.position} - #{@chapter.title}"  %>
 
 	<div class ="back-to-trip-link">
 		<%= link_to "Back to #{@chapter.trip.title}", @chapter.trip %>
