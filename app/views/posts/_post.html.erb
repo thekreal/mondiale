@@ -1,13 +1,16 @@
 <div class = "row" class="post" >
-			<h4><%= post.title %></h4>
+	<div class="large-2 columns">
 
-			<div id='post-inspiration-count-<%= post.id %>'>
+			<div class="post-title">
+				<%= post.title %>
+
+			<div id = "pi" id='post-inspiration-count-<%= post.id %>'>
 				<%= post.inspirations.count %> people have added this post as an inspiration
 			</div>
 
 			<% if logged_in? %>
 
-				<div id="post-inspiration-link-<%= post.id %>">
+				<div id = "pi" id="post-inspiration-link-<%= post.id %>">
 					<% if post.already_inspired?(current_user.id) %>
 						<%= link_to 'I am no longer inspired', post.already_inspired(current_user.id), method: :delete, remote: true %>
 					<% else %>
@@ -15,16 +18,31 @@
 					<% end %>
 				</div>
 			<% end %>
-			<p>
-				<% if post.trip.user == current_user %>
+
+			<% if post.trip.user == current_user %>
+				<div class="trip-control">
 					<%= link_to "", edit_trip_chapter_post_path(post.trip, post.chapter, post), class: "fa fa-edit", remote: true %>
 					<%= link_to "", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete, confirm: "Are you sure you want to delete this post?", class: "fa fa-times", title: "Delete post", remote: true %>
+				</div>
 				<% end %>
-			</p>
-			<div id="edit-post-form"></div>
+			</div>
 
-			<p><%= markdown(post.content) %></p>
-				<% post.post_attachments.each do |pic| %>
+	</div>
+
+	<div class="large-8 columns">
+		<div id="edit-post-form"></div>
+		<%= markdown(post.content) %>
+	</div>
+
+	</div>
+
+	<div class="large-2 columns"></div>
+</div>
+
+<div class = "row" class="post" >
+
+
+		<% post.post_attachments.each do |pic| %>
 		  		<%= image_tag pic.postimage_url(:big) %>
 				<% end %>
 </div>
