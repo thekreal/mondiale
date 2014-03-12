@@ -1,11 +1,16 @@
-<h1>Select cover photo.</h1>
-<% @trip.posts.each do |po| %>
-	<% po.post_attachments.each do |pic| %>
-	  <% if pic.id %>
-	    <div id = <%= 'pic'+ pic.id.to_s %>>
-	    <%= image_tag pic.postimage_url(:thumb) %>
-	    <%= link_to 'set as trip cover', set_trip_cover_path(:pid => pic.id, :id => @trip.id), {:method => "post", class: "sel-pic"}  %>
-	    </div>
-	  <% end %>
-	<% end %>
+<div class="trip-cover-photos">
+<small class="label">Select Your Cover Photo</small>
+<% if @trip.post_attachments.any? %>
+  <ul class="thumbnails">
+  <% @trip.post_attachments.each do |pic| %>
+    <li class="thumbnail" id="post-photo-<%= pic.id %>">
+
+      <%= link_to create_cover_trip_path(id: @trip.id, pid: pic.id), method: :post, class: "set-cover-photo-link" do %>
+        <%= image_tag pic.postimage_url(:thumb), class: "thumbnail-image" %>
+      <% end %>
+
+    </li>
+  <% end %>
+  </ul>
 <% end %>
+</div>

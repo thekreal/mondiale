@@ -3,6 +3,8 @@ class Trip < ActiveRecord::Base
 	belongs_to :user
 	has_many :chapters, dependent: :delete_all
 	has_many :posts, through: :chapters
+  has_many :post_attachments, through: :posts
+
   has_many :inspirations, as: :inspirable
 
   validates :title,       presence: true,
@@ -12,7 +14,7 @@ class Trip < ActiveRecord::Base
   scope :most_recent, -> { order(created_at: :desc)}
 
   def cover_photo
-    return coverphoto.nil? ? 'bridge.jpg' : coverphoto
+    return post_attachments.any? ? post_attachments.find(coverphoto).postimage_url : 'bridge.jpg'
   end
 
   def start_date

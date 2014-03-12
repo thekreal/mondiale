@@ -51,22 +51,6 @@ class TripsController < ApplicationController
     end
   end
 
-  # def set_photo
-  #   set_trip
-  #   respond_to do |format|
-  #     format.js
-  #   end
-  # end
-
-  # def set_photo_save
-  #   set_trip
-  #   @trip.coverphoto = params[:pid]
-  #   if @trip.save
-  #     flash[:success] = "Cover photo set"
-  #     redirect_to @trip
-  #   end
-  # end
-
   def edit
   end
 
