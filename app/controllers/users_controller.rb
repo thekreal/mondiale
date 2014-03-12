@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @trips = @user.trips
+    @inspirations = @user.inspiration_models
   end
 
   def my_trips
