@@ -1,2 +1,5 @@
-$('#new-post-form').html('<%= j render partial: 'posts/form' %>')
-$('#new-post-form').css('background', 'AliceBlue')
+var form = $('#post.form-float');
+var blurBackground = addBlur('body');
+form = $('<%= j render "posts/form", title: "New Post", submit: "Create" %>');
+slideDownShow(form);
+clickToClose(blurBackground.add('.close'), form);
