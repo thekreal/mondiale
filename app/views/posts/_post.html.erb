@@ -45,5 +45,5 @@
 
 <% inspiration = inspiration_find(post) %>
 <% if inspiration %>
-	<%= link_to inspiration.title, trip_chapter_path(inspiration.trip, inspiration.chapter) %>
+	<p>inspired by<%= link_to inspiration.title, trip_chapter_path(inspiration.trip, inspiration.chapter) %></p>
 <% end %>
