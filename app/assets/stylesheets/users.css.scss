@@ -1,22 +1,22 @@
-.user-profile{
-	position: relative;
-	width: 100%;
-	margin-top: 5em;
+// .user-profile{
+// 	position: relative;
+// 	// width: 100%;
+// 	margin-top: 5em;
 
-}
+// }
 
 .users-trips{
-
-	width: 80%;
-	float: left;
-	margin-top: 2em;
-
+	// width: 80%;
+	// float: left;
+	// margin-top: 2em;
+	.page-title{
+		margin-left: 1.5em;
+	}
 }
 
 .user{
-	width: 20%;
-	float: left;
-      padding: 2em;
+	// float: left;
+  // padding: 2em;
 }
 
 .username {
@@ -25,12 +25,13 @@
 }
 
 .gravatar {
-      margin-left: 1.5em;
+      margin-bottom: 1em;
 }
 
 .userbio{
   	font-family: 'Lusitana', serif;
   	font-size: 1.5em;
+
 }
 
 .hidden-inspirations{
@@ -38,13 +39,12 @@
 }
 
 .inspiration-tab{
-	color: black;
-	font-weight: bold;
-	border-style: solid;
-	margin-left: 0.5em;
+	@include btn-light($blue,1);
+	display: inline-block;
 }
 
-.inspiration-list-links{
-	margin-left: 5em;
-	margin-top: 1em;
+.tab-row {
+
+	height: 30px;
+	margin-bottom: 10px;
 }
