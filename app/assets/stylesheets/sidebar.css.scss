@@ -80,12 +80,13 @@ $hover-blue: rgba(127, 180, 206, 1);
   position: relative;
   margin: 15px auto;
   padding: 30px 15px;
+  height: 80px;
   width: $profile-width;
 
   .profile-link {
     display: inline-block;
     font-size: 2.2em;
-    width: 60px;
+    width: 210px;
     height: 60px;
     border-radius: 5px;
     box-shadow: rgba(40, 40, 40, 0.5);
