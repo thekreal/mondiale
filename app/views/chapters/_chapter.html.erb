@@ -1,14 +1,8 @@
-<li id="chapter_<%= chapter.id %>">
-	<h3>Chapter <%= chapter.position %>: <%= link_to "#{chapter.title}", trip_chapter_path(:trip_id => chapter.trip.id, :id => chapter.id )%></h3>
-	<p><%= markdown(chapter.description) %></p>
-
-	<% if chapter.trip.user == current_user %>
-	<ul>
-		<li><%= link_to "Edit this chapter", edit_trip_chapter_path(chapter.trip, chapter), remote: true %></li>
-		<li><%= link_to "Delete this chapter", trip_chapter_path(chapter.trip, chapter), method: :delete, confirm: "Are you sure you want to delete this chapter?", remote: true %></li>
-	</ul>
-		<div id="edit-chapter-form">
-		</div>
-	<% end %>
-
-</li>
+<div class="summary">
+  <div class="information">
+    <h1 class="title"><%= link_to "#{chapter.position} - #{chapter.title}", [chapter.trip, chapter], class: "link" %></h1>
+    <div class="date"><%= trip_date(chapter) %></div>
+  </div>
+  <div class="cover-photo" data-image-url="<%= image_url(chapter.cover_photo) %>"></div>
+  <div class="cover-map" data-objects="<%= posts_in_json(chapter.posts) %>"></div>
+</div>

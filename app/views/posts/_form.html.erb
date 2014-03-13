@@ -1,8 +1,6 @@
 <div id="post" class="form-float">
-<%= form_for [@post.trip, @post.chapter, @post],  html: { multipart: true, class: "form-container" }  do |f| %>
+<%= form_for [@post.trip, @post.chapter, @post], remote: true, html: { multipart: true, class: "form-container" }  do |f| %>
   <legend class="form-title"><%= title %></legend>
-
-  <%= render 'alerts/error_message', object: @post %>
 
   <div class="form-section">
     <div class="form-field">
@@ -28,7 +26,6 @@
         <% end %>
       <% end %>
     </div>
-
 
     <div class="form-field">
       <%= f.fields_for :post_attachments do |p| %>

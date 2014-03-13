@@ -1,2 +1,13 @@
-$('#new-post-form').empty();
-$('<%= j render @post %>').appendTo($('.posts'));
+<% if @post.errors.any? %>
+  var alert = $('<%= j render "alerts/error_message", object: @post %>')
+    .insertAfter('.form-title')
+  alertCloseBtn(alert)
+<% else %>
+  var form = $('#post.form-float');
+  slideUpRemove(form);
+  removeBlur();
+
+  var newPost = $('<%= j render @post %>');
+  newPost.appendTo('.chapter-content');
+<% end %>
+
