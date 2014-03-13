@@ -15,7 +15,7 @@
 		</div>
 		<% end %>
 
-		<h1 class="title"><%= @chapter.title %></h1>
+		<h1 class="title"><%= @chapter.position %> - <%= @chapter.title %></h1>
 		<small class="date"><%= trip_date(@chapter) %></small>
 		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
 	</div>
