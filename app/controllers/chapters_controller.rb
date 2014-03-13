@@ -4,7 +4,7 @@ class ChaptersController < ApplicationController
   def show
     @trip = Trip.find(params[:trip_id])
     @posts = @chapter.posts
-    @inspiration = @inspiration = inspiration_find(@chapter)
+    @inspired_by = inspiration_find(@chapter)
 
     cookies.permanent[:last_trip_viewed] = @chapter.trip.id
     cookies.permanent[:last_chapter_viewed] = @chapter.id

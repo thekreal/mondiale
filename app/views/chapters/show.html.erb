@@ -1,6 +1,6 @@
 <div class="chapter">
 	<div class="cover-photo" data-image-url="<%= image_url(@chapter.cover_photo )%>">
-	</div>
+</div>
 
 	<div class="header">
 
@@ -24,6 +24,18 @@
 	<% end %>
 
 </div>
+
+<% if logged_in? %>
+	<div class="inspiration-link">
+			<% if !@chapter.already_inspired?(current_user.id) %>
+					<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @chapter, inspirable_type: @chapter.class}), method: :post, remote: true %>
+			<% end %>
+	</div>
+<% end %>
+
+	<div class='inspiration-count'>
+		<%= @chapter.inspirations.count %> people have added this post as an inspiration
+	</div>
 
 <% if @inspiration %>
 	<%= link_to @inspiration.title, trip_chapter_path(@inspiration.trip, @inspiration) %>

@@ -13,7 +13,7 @@ class TripsController < ApplicationController
   def show
     @chapters = @trip.chapters.order("position")
     @chapter = Chapter.new( trip_id: @trip.id )
-    @inspiration = inspiration_find(@trip)
+    @inspired_by = inspiration_find(@trip)
 
     if @trip.coverphoto
       @cover = PostAttachment.find(@trip.coverphoto)
