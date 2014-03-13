@@ -10,7 +10,7 @@
 			<ul>
 				<li><%= link_to '', new_trip_chapter_path(@trip), class: "fa fa-plus-square", remote: true %></li>
 				<li></li>
-				<li><%= link_to "", edit_trip_path, class: "fa fa-edit" %></li>
+				<li><%= link_to "", edit_trip_path, class: "fa fa-edit", remote: true %></li>
 				<li><%= link_to "", @trip, confirm: "Are you sure you want to delete this trip?", method: :delete, remote: true, class: "fa fa-times" %></li>
 			</ul>
 		</div>

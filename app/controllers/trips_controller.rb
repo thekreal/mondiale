@@ -28,15 +28,25 @@ class TripsController < ApplicationController
 
   def new
     @trip = current_user.trips.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
     @trip = current_user.trips.new(trip_params)
-    if @trip.save
-      flash[:success] = "Your trip has been created successfully"
-      redirect_to @trip
-    else
-      render :new
+    respond_to do |format|
+      if @trip.save
+        format.html do
+          flash[:success] = "Your trip has been created successfully"
+          redirect_to @trip
+        end
+        format.js { trip_path(@trip) }
+      else
+        format.html { render :new }
+        format.js {}
+      end
     end
   end
 

@@ -1,0 +1,4 @@
+<% if @trip.errors.any? %>
+  post_fail($('<%= j render "alerts/error_message", object: @trip %>'))
+<% end %>
+
