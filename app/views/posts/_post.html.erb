@@ -4,20 +4,18 @@
 			<div class="post-title">
 				<%= post.title %>
 
-			<div id = "pi" id='post-inspiration-count-<%= post.id %>'>
-				<%= post.inspirations.count %> people have added this post as an inspiration
-			</div>
-
 			<% if logged_in? %>
 
-				<div id = "pi" id="post-inspiration-link-<%= post.id %>">
-					<% if post.already_inspired?(current_user.id) %>
-						<%= link_to 'I am no longer inspired', post.already_inspired(current_user.id), method: :delete, remote: true %>
-					<% else %>
+				<div class = "pi" id="post-inspiration-link-<%= post.id %>">
+					<% if !post.already_inspired?(current_user.id) %>
 						<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: post, inspirable_type: post.class}), method: :post, remote: true %>
 					<% end %>
 				</div>
 			<% end %>
+
+			<div class = "pi" id='post-inspiration-count-<%= post.id %>'>
+				<%= post.inspirations.count %> people have added this post as an inspiration
+			</div>
 
 			<% if post.trip.user == current_user %>
 				<div class="trip-control">
