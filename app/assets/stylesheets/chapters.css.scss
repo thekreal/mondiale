@@ -72,5 +72,20 @@
     bottom: 30px;
 
   }
+}
 
+.chapter-content {
+  margin-top: 60px;
+  .description {
+    position: relative;
+    padding: 15px;
+    border: 1px solid rgba(235, 235, 235, 1);
+    text-align: left;
+    font-size: 1.5em;
+    .label {
+      position: absolute;
+      top: -21px;
+      background: $black;
+    }
+  }
 }

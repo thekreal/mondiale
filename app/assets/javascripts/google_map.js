@@ -155,7 +155,14 @@ function GoogleMap(obj) {
         collectionOfPath.push(pos);
         addMarker(this, pos);
       });
-      addPolyline();
+      if (objects.length == 1) {
+        map.setCenter(collectionOfPath[0]);
+        map.setZoom(12);
+      }
+      else {
+        addPolyline();
+      }
+
     }
     else {
       geolocation();

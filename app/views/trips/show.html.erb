@@ -36,18 +36,18 @@
 
 	<% if logged_in? && @trip.user != current_user%>
 	<div class="inspiration-link">
-			<% if !@trip.already_inspired?(current_user.id) %>
-					<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @trip, inspirable_type: @trip.class}), method: :post, remote: true %>
-			<% end %>
+		<% if !@trip.already_inspired?(current_user.id) %>
+			<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @trip, inspirable_type: @trip.class}), method: :post, remote: true %>
+		<% end %>
 	</div>
-<% end %>
+	<% end %>
 
 	<div class='inspirations-count'>
 		<%= @trip.inspirations.count %> people have added this post as an inspiration
 	</div>
 
 	<% if @inspired_by %>
-		<%= link_to @inspired_by.title, @inspired_by%>
+		<%= link_to @inspired_by.title, @inspired_by %>
 	<% end %>
 
 	<div class="chapters">
