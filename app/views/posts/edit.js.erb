@@ -1,2 +1,5 @@
-$('#edit-post-form').html('<%=j render partial: 'posts/form' %>')
-$('#edit-post-form').css('background', 'AliceBlue')
+var form = $('#post.form-float');
+var blurBackground = addBlur('body');
+form = $('<%= j render "posts/form", title: "Update Post", submit: "Update" %>');
+slideDownShow(form);
+clickToClose(blurBackground.add('.close'), form);

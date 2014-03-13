@@ -4,9 +4,9 @@
 
   <div class="form-section">
     <div class="form-field">
-      <%= f.text_field :title, class: "form-input", placeholder: "Trip name" %>
+      <%= f.text_field :title, class: "form-input", placeholder: "Post title" %>
       <%= f.text_area :content, class: "form-input",
-            placeholder: "Your Trip Experience (You can use markdown)" %>
+            placeholder: "Post content (Markdown)" %>
     </div>
 
     <div class="form-field">
@@ -17,11 +17,9 @@
     <div class="form-field">
       <% @post.post_attachments.each do |pic| %>
         <% if pic.id %>
-          <div id="pic<%= pic.id %>">
-            <%= link_to delete_picture_path(id: pic.id), method: :post, class: "del-pic", remote: true do %>
-              <%= image_tag pic.postimage_url(:thumb) %>
-              <p>Click to remove</p>
-            <% end %>
+          <div id="pic<%= pic.id %>" class="post-image">
+            <%= image_tag pic.postimage_url(:thumb), class: "image" %>
+            <%= link_to 'Click to remove', delete_picture_path(id: pic.id), method: :post, class: "del-pic", remote: true %>
           </div>
         <% end %>
       <% end %>
@@ -29,9 +27,9 @@
 
     <div class="form-field">
       <%= f.fields_for :post_attachments do |p| %>
-      <div class="attachment">
-        <%= p.file_field :postimage, :multiple => true, name: "post_attachments[postimage][]" %>
-      </div>
+      <% if p.object.id.nil? %>
+        <%= p.file_field :postimage, multiple: true, name: "post_attachments[postimage][]" %>
+        <% end %>
       <% end %>
    </div>
 

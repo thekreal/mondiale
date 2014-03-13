@@ -1,8 +1,8 @@
 @mixin post-form() {
   @include form-template();
   #post_location {
-    top: 1px;
     position: relative;
+    top: 1px;
     display: inline-block;
     width: 39%;
     border: 1px solid rgba(235, 235, 235, 1);
@@ -24,5 +24,35 @@
   .form-container {
     margin: 0px;
     width: 100%;
+  }
+  #post_location, select {
+    font-size: 12px;
+    padding: 2px 5px;
+    height: 20px;
+  }
+  #post_location {
+    position: relative;
+    top: 0px;
+  }
+  .post-image {
+    float: left;
+    width: 120px;
+    text-align: center;
+    margin-bottom: 10px;
+    .image {
+      margin: 0px auto;
+      height: 80px;
+      display: block;
+    }
+    .del-pic {
+      display: block;
+      color: $blue;
+      font-size: 0.8em;
+    }
+  }
+  input[type=file] {
+    font-size: 12px;
+    position: relative;
+    display: inline-block;
   }
 }

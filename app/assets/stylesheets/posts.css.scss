@@ -1,0 +1,21 @@
+.post {
+  position: relative;
+  margin-bottom: 40px;
+
+  .control {
+    float: right;
+    top: 10px;
+    position: relative;
+    a {
+      padding: 5px 0px;
+      color: $blue;
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+}
+
+.post:first-of-type {
+  margin-top: 60px;
+}

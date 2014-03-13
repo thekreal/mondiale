@@ -1,2 +1,11 @@
-$('#edit-post-form').empty();
-$('.posts').html('<%= j render @posts %>')
+<% if @post.errors.any? %>
+  post_fail($('<%= j render "alerts/error_message", object: @post %>'))
+<% else %>
+  var form = $('#post.form-float');
+  slideUpRemove(form);
+  removeBlur();
+
+  $('#post-' + <%= @post.id %>).replaceWith('<%= j render @post %>');
+
+<% end %>
+
