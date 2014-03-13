@@ -1,12 +1,18 @@
-<div id="trip" class="form">
-<%= form_for @trip, html: { class: "form-container" } do |f| %>
+<div id="trip" class="form-float">
+<%= form_for @trip, remote: true, html: { class: "form-container" } do |f| %>
+  <legend class="form-title"><%= title %></legend>
   <%= render 'alerts/error_message', object: @trip %>
 
-  <div class="form-field">
-    <legend class="form-title"><%= title %></legend>
-    <%= f.text_field :title, class: "form-input", placeholder: "Trip name" %>
-    <%= f.text_area :description, class: "form-input",
-          placeholder: "Trip summary" %>
+  <div class="form-section">
+    <div class="form-field">
+      <%= f.text_field :title, class: "form-input", placeholder: "Trip name" %>
+      <%= f.text_area :description, class: "form-input",
+            placeholder: "Trip summary" %>
+    </div>
+    <div class="form-field">
+      <%= f.submit submit, class: "form-btn" %>
+      <%= link_to "Back", :back, class: "form-btn" %>
+    </div>
   </div>
 
   <div class="inspirations">
@@ -21,11 +27,5 @@
       </ul>
   </div>
 
-  <div class="form-field">
-    <%= f.submit submit, class: "form-btn" %>
-    <%= link_to "Back", :back, class: "form-btn" %>
-  </div>
-
 <% end %>
 </div>
-<%= params %>
