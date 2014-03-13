@@ -4,20 +4,20 @@
   border: 1px solid $white - 10;
   background: $white - 10;
 
-  .form-section {
-    vertical-align: top;
-    position: relative;
-    display: inline-block;
-    width: 69%;
-  }
   .form-container {
     position: relative;
-    margin: 40px auto;
+    margin: 20px auto;
     padding: 40px 40px;
     width: 100%;
     border-radius: 2px;
     background: $white;
     box-shadow: 0 0 6px -3px rgba(40, 40, 40, 0.5);
+  }
+  .form-section {
+    vertical-align: top;
+    position: relative;
+    display: inline-block;
+    width: 69%;
   }
   .form-title {
     margin-bottom: 1em;
@@ -32,19 +32,28 @@
     vertical-align: top;
   }
   .form-input {
+    border: 1px solid;
     outline: none;
     border: none;
     border-bottom: 1px solid rgba(235, 235, 235, 1);
     box-shadow: none;
   }
-  textarea#post_content {
-    height: 20em;
+  textarea {
+    height: 15em;
     border: 1px solid rgba(235, 235, 235, 1);
     border: none;
     resize: vertical;
   }
+  #post_location {
+    top: 1px;
+    position: relative;
+    display: inline-block;
+    width: 39%;
+    border: 1px solid rgba(235, 235, 235, 1);
+  }
   select {
-    width: 32.9%;
+    display: inline-block;
+    width: 19%;
   }
   .form-btn {
     @include btn-light(rgba(127, 180, 206, 1), 1);

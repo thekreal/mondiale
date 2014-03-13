@@ -8,32 +8,31 @@
     <div class="form-field">
       <%= f.text_field :title, class: "form-input", placeholder: "Trip name" %>
       <%= f.text_area :content, class: "form-input",
-            placeholder: "Your Trip Experience" %>
+            placeholder: "Your Trip Experience (You can use markdown)" %>
     </div>
 
     <div class="form-field">
       <%= f.text_field :location, class: "form-input", placeholder: "Location" %>
-      <%= f.date_select :date, class: 'form-label data-select' %>
+      <%= f.date_select :date, class: 'form-label' %>
     </div>
 
     <div class="form-field">
       <% @post.post_attachments.each do |pic| %>
         <% if pic.id %>
-          <div id = <%= 'pic'+ pic.id.to_s %>>
-          <%= image_tag pic.postimage_url(:thumb) %>
-          <%= link_to 'remove', delete_picture_path(:id => pic.id), {:method => "post", class: "del-pic", :remote => true}  %>
+          <div id="pic<%= pic.id %>">
+            <%= link_to delete_picture_path(id: pic.id), method: :post, class: "del-pic", remote: true do %>
+              <%= image_tag pic.postimage_url(:thumb) %>
+              <p>Click to remove</p>
+            <% end %>
           </div>
         <% end %>
-        <br>
       <% end %>
     </div>
+
 
     <div class="form-field">
       <%= f.fields_for :post_attachments do |p| %>
       <div class="attachment">
-        <%= image_tag(p.object.postimage_url) if p.object.postimage? %>
-        <%= p.hidden_field :postimage_cache %>
-        <%= p.label :postimage %><br>
         <%= p.file_field :postimage, :multiple => true, name: "post_attachments[postimage][]" %>
       </div>
       <% end %>
