@@ -1,8 +1,11 @@
 
-	<h1 class="username"><%= user.name %></h1>
-	<%= image_tag user.gravatar(120), class: "gravatar" %>
+<%= image_tag user.gravatar(120), class: "gravatar" %>
+<h2><%= user.name %></h2>
 
-	<p class="userbio">
-		<%= user.email %>
-		<br><%= user.bio %>
-	</p>
+
+<p class="userbio">
+	<%= user.email %></p>
+
+<p class="userbio">
+	<%= user.bio %>
+</p>
