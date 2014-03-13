@@ -11,10 +11,14 @@
 
   <div class="inspirations">
     <h3>Inspirations</h3>
+    <ul>
       <% current_user.inspirations.each do |inspiration| %>
+        <li class="radio-button">
         <%= f.radio_button :inspiration_id, inspiration.id %>
         <%= f.label :inspiration_id, inspiration.inspired_by.title %>
+        </li>
         <% end %>
+      </ul>
   </div>
 
   <div class="form-field">
@@ -24,3 +28,4 @@
 
 <% end %>
 </div>
+<%= params %>
