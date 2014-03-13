@@ -18,12 +18,10 @@ class TripsController < ApplicationController
     if @trip.coverphoto
       @cover = PostAttachment.find(@trip.coverphoto)
     end
-
     respond_to do |format|
       format.html
       format.js
     end
-
   end
 
   def new
@@ -66,11 +64,17 @@ class TripsController < ApplicationController
   end
 
   def update
-    if @trip.update(trip_params)
-      flash[:success] = "Your trip has been updated successfully"
-      redirect_to @trip
-    else
-      render :edit
+    respond_to do |format|
+      if @trip.update(trip_params)
+        format.html {
+          flash[:success] = "Your trip has been updated successfully"
+          redirect_to @trip
+        }
+        format.js
+      else
+        format.html { render :edit }
+        format.js
+      end
     end
   end
 
