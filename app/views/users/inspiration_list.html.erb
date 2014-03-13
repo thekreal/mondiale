@@ -1,3 +1,5 @@
+<h1 class = "page-title"> Your List of inspirations</h1>
+
 <div class="inspiration-list-links">
 		<%= link_to "Trips You Found Inspiring", inspiration_list_user_path(@user, type: "Trip"), class: "inspiration-tab", remote: true%>
 		<%= link_to "Chapters You Found Inspiring", inspiration_list_user_path(@user, type: "Chapter"), class: "inspiration-tab", remote: true%>
@@ -7,7 +9,7 @@
 <div class="inspiration-list">
 
 	<div class="inspiration-trips">
-		<h1 class = "page-title">Trips You Found Inspiring</h1>
+		<h1>Trips You Found Inspiring</h1>
 			<% @trips.each do |trip| %>
 	  	<%= render 'templates/trip_summary', trip: trip%>
 			<% end %>
