@@ -21,8 +21,6 @@
 
 
 
-
-
 // VARIABLES AND MIXIN LIBRARIES
 @import 'variables';
 @import 'libraries';
@@ -34,9 +32,12 @@
 @import 'sidebar';
 @import 'welcome';
 
-@import 'forms/template';
+// FORMS
 @import 'forms/session';
 @import 'forms/user';
+
+// FORMS
+@import 'forms/templates';
 @import 'forms/trip';
 @import 'forms/chapter';
 @import 'forms/post';
@@ -52,6 +53,3 @@
 @import 'summary';
 @import 'post_detail';
 
-// // FORMS
-// @import 'form_template';
-// @import 'forms/new_trip';

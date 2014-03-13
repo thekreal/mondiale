@@ -19,7 +19,9 @@
 		<small class="date"><%= trip_date(@chapter) %></small>
 		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
 	</div>
-	<div class="cover-map" data-objects="<%= posts_in_json(@trip.posts) %>"></div>
+	<% if @chapter.posts.any? %>
+		<div class="cover-map" data-objects="<%= posts_in_json(@chapter.posts) %>"></div>
+	<% end %>
 
 </div>
 

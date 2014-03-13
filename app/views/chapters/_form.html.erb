@@ -1,13 +1,19 @@
 <div id="chapter" class="form-float">
 <%= form_for [@chapter.trip, @chapter], remote: true, html: { class: "form-container" } do |f| %>
 
+  <legend class="form-title"><%= title %></legend>
   <%= render 'alerts/error_message', object: @chapter %>
 
-  <div class="form-field">
-    <legend class="form-title"><%= title %></legend>
-    <%= f.text_field :title, class: "form-input", placeholder: "Trip name" %>
-    <%= f.text_area :description, class: "form-input",
-          placeholder: "Trip summary" %>
+  <div class="form-section">
+    <div class="form-field">
+      <%= f.text_field :title, class: "form-input", placeholder: "Trip name" %>
+      <%= f.text_area :description, class: "form-input",
+            placeholder: "Trip summary" %>
+    </div>
+    <div class="form-field">
+      <%= f.submit submit, class: "form-btn" %>
+      <%= link_to "Close", '#', class: "form-btn close" %>
+    </div>
   </div>
 
   <div class="inspirations">
@@ -20,11 +26,6 @@
         </li>
         <% end %>
       </ul>
-  </div>
-
-  <div class="form-field">
-    <%= f.submit submit, class: "form-btn" %>
-    <%= link_to "Close", '#', class: "form-btn close" %>
   </div>
 
 <% end %>
