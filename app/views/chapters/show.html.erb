@@ -25,6 +25,10 @@
 
 </div>
 
+<% if @inspiration %>
+	<%= link_to @inspiration.title, trip_chapter_path(@inspiration.trip, @inspiration) %>
+<% end %>
+
 <div class="chapter-content">
 	<%= render @posts %>
 </div>

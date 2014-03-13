@@ -13,6 +13,7 @@ class TripsController < ApplicationController
   def show
     @chapters = @trip.chapters.order("position")
     @chapter = Chapter.new( trip_id: @trip.id )
+    @inspiration = inspiration_find(@trip)
 
     if @trip.coverphoto
       @cover = PostAttachment.find(@trip.coverphoto)
@@ -82,7 +83,7 @@ private
   end
 
   def trip_params
-    params.require(:trip).permit(:title, :description, :inspiration_id, :inspiration_type)
+    params.require(:trip).permit(:title, :description, :inspiration_id)
   end
 
 end
