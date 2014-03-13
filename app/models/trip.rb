@@ -24,4 +24,8 @@ class Trip < ActiveRecord::Base
     end
   end
 
+  def self.most_inspiring
+    all(include: :inspirations).sort_by { |u| -u.inspirations.size }
+  end
+
 end
