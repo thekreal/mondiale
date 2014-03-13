@@ -25,12 +25,8 @@ $hover-blue: rgba(127, 180, 206, 1);
     color: $white;
     text-shadow: 0 0 2px rgba(40, 40, 40, 0.1);
     font-weight: 300;
-    font-style: italic;
     font-size: 3em;
-    font-family: 'Lato';
-    &:first-letter {
-
-    }
+    font-family: 'Lusitana';
     &:hover {
       background: $hover-blue - 50;
     }
@@ -46,6 +42,7 @@ $hover-blue: rgba(127, 180, 206, 1);
     @include btn-dark($black, 1);
     padding: 15px;
     border: none;
+    font-family: 'Open Sans';
     text-align: left;
     &:hover {
       border: none;
