@@ -8,13 +8,11 @@
 </div>
 
 
-<div class="row trip-content">
+<div class=" trip-content">
 
-	<div class="large-10 large-offset-1 columns">
-
-	<% @trips.each do |t| %>
+  <% @trips.each do |t| %>
   	<%= render 'templates/trip_summary', trip: t %>
-	<% end %>
-</div>
+  <% end %>
+
 
 </div>
