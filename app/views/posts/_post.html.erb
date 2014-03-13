@@ -44,3 +44,8 @@
 				<% end %>
 	</div>
 </div>
+
+<% if post.inspiration_id %>
+<% inspiration = Inspiration.find(post.inspiration_id).inspired_by %>
+	<%= link_to inspiration.title, trip_chapter_path(inspiration.trip, inspiration.chapter) %>
+<% end %>
