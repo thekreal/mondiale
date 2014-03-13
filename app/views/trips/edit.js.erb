@@ -1,0 +1,5 @@
+var form = $('#trip.form-float');
+var blurBackground = addBlur('body');
+form = $('<%= j render "trips/form", title: "Update Trip", submit: "Update" %>');
+slideDownShow(form);
+clickToClose(blurBackground.add('.close'), form);
