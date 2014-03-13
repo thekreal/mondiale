@@ -37,8 +37,8 @@
 		<%= @chapter.inspirations.count %> people have added this Chapter as an inspiration
 	</div>
 
-<% if @inspiration %>
-	<%= link_to @inspiration.title, trip_chapter_path(@inspiration.trip, @inspiration) %>
+<% if @inspired_by %>
+	<%= link_to @inspired_by.title, trip_chapter_path(@inspired_by.trip, @inspired_by) %>
 <% end %>
 
 <div class="chapter-content">
