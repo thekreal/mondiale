@@ -1,69 +1,59 @@
-<div class="form">
-
-<%= form_for [@post.trip, @post.chapter, @post], remote: true, html: { multipart: true, class: "form-container" }  do |f| %>
+<div id="post" class="form-float">
+<%= form_for [@post.trip, @post.chapter, @post],  html: { multipart: true, class: "form-container" }  do |f| %>
+  <legend class="form-title"><%= title %></legend>
 
   <%= render 'alerts/error_message', object: @post %>
 
-  <div class="form-field">
-    <%= f.label :title, class: "form-label" %>
-    <div class="form-control">
-      <%= f.text_field :title, class: "form-input" %>
+  <div class="form-section">
+    <div class="form-field">
+      <%= f.text_field :title, class: "form-input", placeholder: "Trip name" %>
+      <%= f.text_area :content, class: "form-input",
+            placeholder: "Your Trip Experience" %>
     </div>
-  </div>
 
-   <div class="form-field">
-    <%= f.label :date, class: "form-label" %>
-    <div class="form-control">
-      <%= f.date_field :date, class: "form-input" %>
+    <div class="form-field">
+      <%= f.text_field :location, class: "form-input", placeholder: "Location" %>
+      <%= f.date_select :date, class: 'form-label data-select' %>
     </div>
-  </div>
 
-  <div class="form-field">
-    <%= f.label :location, class: "form-label" %>
-    <div class="form-control">
-      <%= f.text_field :location, class: "form-input" %>
+    <div class="form-field">
+      <% @post.post_attachments.each do |pic| %>
+        <% if pic.id %>
+          <div id = <%= 'pic'+ pic.id.to_s %>>
+          <%= image_tag pic.postimage_url(:thumb) %>
+          <%= link_to 'remove', delete_picture_path(:id => pic.id), {:method => "post", class: "del-pic", :remote => true}  %>
+          </div>
+        <% end %>
+        <br>
+      <% end %>
     </div>
-  </div>
 
-  <div class="form-field">
-    <%= f.label :content, class: "form-label" %>
-    <div class="form-control">
-      <%= f.text_area :content, class: "form-input" %>
+    <div class="form-field">
+      <%= f.fields_for :post_attachments do |p| %>
+      <div class="attachment">
+        <%= image_tag(p.object.postimage_url) if p.object.postimage? %>
+        <%= p.hidden_field :postimage_cache %>
+        <%= p.label :postimage %><br>
+        <%= p.file_field :postimage, :multiple => true, name: "post_attachments[postimage][]" %>
+      </div>
+      <% end %>
+   </div>
+
+    <div class="form-field">
+      <%= f.submit submit, class: "form-btn" %>
+      <%= link_to "Close", '#', class: "form-btn close" %>
     </div>
-  </div>
-
-  <div class="wishlist-items">
-    <h3>Inspirations</h3>
-  </div>
-
-<div class="form-field">
- <%= f.fields_for :post_attachments do |p| %>
-     <div class="field">
-
-       <%= p.label :postimage %><br>
-       <%= p.file_field :postimage, :multiple => true, name: "post_attachments[postimage][]" %>
-
-     </div>
-   <% end %>
  </div>
 
-
-  <% @post.post_attachments.each do |pic| %>
-    <% if pic.id %>
-      <div id = <%= 'pic'+ pic.id.to_s %>>
-      <%= image_tag pic.postimage_url(:thumb) %>
-      <%= link_to 'remove', delete_picture_path(:id => pic.id), {:method => "post", class: "del-pic", :remote => true}  %>
-      </div>
-    <% end %>
-    <br>
-  <% end %>
-
-  <div class="form-field">
-    <div class="form-label"></div>
-    <div class="form-control">
-      <%= f.submit class: "form-btn" %>
-    </div>
+  <div class="inspirations">
+    <h3>Inspirations</h3>
+      <% current_user.inspirations.each do |inspiration| %>
+        <%= f.radio_button :inspiration_id, inspiration.id %>
+        <%= f.label :inspiration_id, inspiration.inspired_by.title %>
+        <% end %>
   </div>
+
+
 
 <% end %>
 </div>
