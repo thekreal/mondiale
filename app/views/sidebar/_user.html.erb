@@ -1,5 +1,7 @@
 <div class="sidebar-profile">
-  <%= link_to current_user.name, edit_user_path(current_user), class: 'profile-link' %>
+  <%= link_to current_user.name, user_path(current_user), class: 'profile-link' %>
+  <br>
+  <%= link_to "Edit account", edit_user_path(current_user), class: 'profile-link' %>
 </div>
 <ul class="menu">
   <li>

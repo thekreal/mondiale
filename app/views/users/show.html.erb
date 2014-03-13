@@ -1,16 +1,22 @@
-<div class="user">
-	<%= render @user %>
+<div class="row">
+
+	<div class="large-1 large-offset-1 columns">
+
+		<div class="user">
+			<%= render @user %>
+		</div>
+
+	</div>
+
+	<div class="large-9 columns">
+
+		<div class="users-trips">
+			<h1 class = "page-title">Your Trips</h1>
+			<% @trips.each do |trip| %>
+			<%= render 'templates/trip_summary', trip: trip %>
+			<% end %>
+		</div>
+
+	</div>
+
 </div>
-
-<div class="users-trips">
-	<h1>Your Trips</h1>
-		<% @trips.each do |trip| %>
-	  <%= render 'templates/trip_summary', trip: trip %>
-		<% end %>
-</div>
-
-<div class="user-feed">
-
-
-</div>
-
