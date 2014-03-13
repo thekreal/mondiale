@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def inspiration_find(obj)
+  	if obj.inspiration_id
+    Inspiration.find(obj.inspiration_id).inspired_by
+  	end
+  end
+
 end
