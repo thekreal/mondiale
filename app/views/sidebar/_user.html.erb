@@ -1,7 +1,5 @@
 <div class="sidebar-profile">
   <%= link_to current_user.name, user_path(current_user), class: 'profile-link' %>
-  <br>
-  <%= link_to "Edit account", edit_user_path(current_user), class: 'profile-link' %>
 </div>
 <ul class="menu">
   <li>
@@ -19,8 +17,22 @@
   </li>
 
   <li>
+    &nbsp
+  </li>
+
+  <li>
     <%= link_to trips_path, class: 'btn' do %>
       <span class="fa fa-rocket"></span> Popular trips
+    <% end %>
+  </li>
+
+  <li>
+    &nbsp
+  </li>
+
+  <li>
+    <%= link_to edit_user_path(current_user), class: 'btn' do %>
+      <span class="fa fa-edit"></span> Edit account
     <% end %>
   </li>
 
