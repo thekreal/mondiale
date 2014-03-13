@@ -1,4 +1,4 @@
-<div class="trip">
+<div class="cover-page">
 	<div class="cover-photo" data-image-url="<%= image_url(@trip.cover_photo )%>">
 		<%= link_to '', new_cover_trip_path(id: @trip.id), remote: true, class: "fa fa-camera set-cov-btn" %>
 	</div>
@@ -6,7 +6,7 @@
 	<div class="header">
 
 		<% if logged_in? %>
-		<div class="trip-control">
+		<div class="control">
 			<ul>
 				<li><%= link_to '', new_trip_chapter_path(@trip), class: "fa fa-plus-square", remote: true %></li>
 				<li></li>
@@ -17,7 +17,7 @@
 		<% end %>
 
 		<h1 class="title"><%= @trip.title %></h1>
-		<small class="trip-date"><%= trip_date(@trip) %></small>
+		<small class="date"><%= trip_date(@trip) %></small>
 		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
 	</div>
 
@@ -27,7 +27,7 @@
 </div>
 
 
-<div class="trip-content row">
+<div class="page-content row">
 
 	<div class="description columns large-10 large-offset-1">
 		<small class="label">Description</small>
@@ -50,7 +50,7 @@
 		<%= link_to @inspired_by.title, @inspired_by %>
 	<% end %>
 
-	<div class="chapters">
+	<div class="chapters" id="chapters-list">
 		<% @trip.chapters.each do |c| %>
 		<div class="row">
 				<div class="columns large-10 large-offset-1">

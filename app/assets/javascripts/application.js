@@ -62,10 +62,4 @@ $(document).ready(function() {
   ); // end sortable
 
 
-
-
-
-
-
-
 });

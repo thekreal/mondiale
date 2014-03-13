@@ -1,11 +1,11 @@
-<div class="chapter">
+<div class="cover-page">
 	<div class="cover-photo" data-image-url="<%= image_url(@chapter.cover_photo )%>">
-</div>
+	</div>
 
 	<div class="header">
 
 		<% if logged_in? %>
-		<div class="chapter-control">
+		<div class="control">
 			<ul>
 				<li><%= link_to '', new_trip_chapter_post_path(@trip, @chapter), class: "fa fa-plus-square", remote: true %></li>
 				<li></li>
@@ -25,7 +25,7 @@
 
 </div>
 
-<div class="chapter-content row">
+<div class="page-content row">
 	<div class="description columns large-10 large-offset-1">
 		<small class="label">Description</small>
 		<%= simple_format(@trip.description, sanitize: true) %>
