@@ -1,2 +1,17 @@
-$('#edit-chapter-form').empty();
-$('#chapters-list').html('<%= j render @chapters %>')
+<% if @chapter.errors.any? %>
+  post_fail($('<%= j render "alerts/error_message", object: @chapter %>'))
+<% else %>
+  var form = $('#chapter.form-float');
+  slideUpRemove(form);
+  removeBlur();
+
+  $('h1.title').html('<%= @chapter.title %>')
+  var description = $('.description');
+  var label = description.children('small.label');
+  description
+  .empty()
+  .append(label)
+  .append('<%= j simple_format(@chapter.description, sanitize: true) %>')
+
+<% end %>
+

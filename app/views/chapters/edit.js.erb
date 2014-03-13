@@ -1,5 +1,5 @@
 var form = $('#chapter.form-float');
 var blurBackground = addBlur('body');
-form = $('<%= j render "chapter/form", title: "Update Chapter", submit: "Update" %>');
+form = $('<%= j render "chapters/form", title: "Update Chapter", submit: "Update" %>');
 slideDownShow(form);
 clickToClose(blurBackground.add('.close'), form);
