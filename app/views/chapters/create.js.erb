@@ -1,16 +1,6 @@
-$('#new-chapter-form').empty();
-$('<%= j render @chapter %>').appendTo($('.chapters'));
-
 <% if @chapter.errors.any? %>
-  var alert = $('<%= j render "alerts/error_message", object: @chapter %>')
-    .insertAfter('.form-title');
-  alertCloseBtn(alert)
+  post_fail($('<%= j render "alerts/error_message", object: @chapter %>'))
 <% else %>
-  var form = $('#chapter.form-float');
-  slideUpRemove(form);
-  removeBlur();
-
-  var newPost = $('<%= j render @chapter %>');
-  newPost.appendTo('.chapter-content');
+  post_success($('<%= j render @chapter %>'),'chapter', 'trip')
 <% end %>
 

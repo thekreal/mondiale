@@ -1,13 +1,6 @@
 <% if @post.errors.any? %>
-  var alert = $('<%= j render "alerts/error_message", object: @post %>')
-    .insertAfter('.form-title')
-  alertCloseBtn(alert)
+  post_fail($('<%= j render "alerts/error_message", object: @post %>'))
 <% else %>
-  var form = $('#post.form-float');
-  slideUpRemove(form);
-  removeBlur();
-
-  var newPost = $('<%= j render @post %>');
-  newPost.appendTo('.chapter-content');
+  post_success($('<%= j render @post %>'),'post', 'chapter')
 <% end %>
 

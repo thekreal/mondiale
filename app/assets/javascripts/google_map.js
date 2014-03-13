@@ -169,4 +169,14 @@ function GoogleMap(obj) {
 
 };
 
+function initializeMap() {
+  var maps = $('.cover-map');
+  if (maps.length) {
+    maps.each(function() {
+      if ($(this).data('objects').length != 0)
+        var m = new GoogleMap(this)
+    })
+  }
+}
+
 
