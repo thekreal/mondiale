@@ -4,7 +4,7 @@
 			<div class="post-title">
 				<%= post.title %>
 
-			<% if logged_in? %>
+			<% if logged_in? && post.trip.user != current_user %>
 
 				<div class = "pi" id="post-inspiration-link-<%= post.id %>">
 					<% if !post.already_inspired?(current_user.id) %>
