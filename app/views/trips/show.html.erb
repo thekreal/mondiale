@@ -34,6 +34,22 @@
 		<%= simple_format(@trip.description, sanitize: true) %>
 	</div>
 
+	<% if logged_in? %>
+	<div class="inspiration-link">
+			<% if !@trip.already_inspired?(current_user.id) %>
+					<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @trip, inspirable_type: @trip.class}), method: :post, remote: true %>
+			<% end %>
+	</div>
+<% end %>
+
+	<div class='inspirations-count'>
+		<%= @trip.inspirations.count %> people have added this post as an inspiration
+	</div>
+
+	<% if @inspired_by %>
+		<%= link_to @inspired_by.title, @inspired_by%>
+	<% end %>
+
 	<div class="chapters">
 		<% @trip.chapters.each do |c| %>
 		<div class="row">
@@ -45,6 +61,3 @@
 	</div>
 </div>
 
-<% if @inspiration %>
-		<%= link_to @inspiration.title, @inspiration%>
-<% end %>
