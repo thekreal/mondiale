@@ -1,29 +1,42 @@
-<h1 class = "page-title"> Your List of inspirations</h1>
+<div class="row">
 
-<div class="inspiration-list-links">
-		<%= link_to "Trips You Found Inspiring", inspiration_list_user_path(@user, type: "Trip"), class: "inspiration-tab", remote: true%>
-		<%= link_to "Chapters You Found Inspiring", inspiration_list_user_path(@user, type: "Chapter"), class: "inspiration-tab", remote: true%>
-		<%= link_to "Posts You Found Inspiring", inspiration_list_user_path(@user, type: "Post"), class: "inspiration-tab", remote: true%>
+	<div class="large-12 large-offset-1 columns">
+		<h1 class = "page-title"> List of inspirations</h1>
+	</div>
+
 </div>
 
-<div class="inspiration-list">
-
-	<div class="inspiration-trips">
-		<h1>Trips You Found Inspiring</h1>
-	  	<%= render @trips %>
+<div class="tab-row">
+	<div class="large-12 large-offset-1 columns">
+		<div class="inspiration-list-links">
+			<%= link_to "Your trip inspirations", inspiration_list_user_path(@user, type: "Trip"), class: "inspiration-tab", remote: true%>
+			<%= link_to "Your chapter inspirations", inspiration_list_user_path(@user, type: "Chapter"), class: "inspiration-tab", remote: true%>
+			<%= link_to "Your post inspirations", inspiration_list_user_path(@user, type: "Post"), class: "inspiration-tab", remote: true%>
+		</div>
 	</div>
+</div>
 
-	<div class="inspiration-chapters hidden-inspirations">
-		<h1>Chapters You Found Inspiring</h1>
-	  		<%= render @chapters %>
+<div class="tab-row inspiration-list">
+
+	<div class="large-10 large-offset-1 columns">
+
+		<div class="inspiration-trips">
+			<h1>Your trip inspirations</h1>
+			<%= render @trips %>
+		</div>
+
+		<div class="inspiration-chapters hidden-inspirations">
+			<h1>Your chapter inspirations</h1>
+			<%= render @chapters %>
+		</div>
+
+		<div class="inspiration-posts hidden-inspirations">
+			<h1>Your post inspirations</h1>
+			<% @posts.each do |post| %>
+			<%= render 'templates/post_summary', post: post %>
+			<% end %>
+		</div>
+
 	</div>
-
-	<div class="inspiration-posts hidden-inspirations">
-		<h1>Posts You Found Inspiring</h1>
-				<% @posts.each do |post| %>
-	  		<%= render 'templates/post_summary', post: post %>
-				<% end %>
-	</div>
-
 
 </div>
