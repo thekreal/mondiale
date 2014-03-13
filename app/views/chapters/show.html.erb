@@ -25,13 +25,15 @@
 
 </div>
 
+
+<% if logged_in? && @chapter.trip.user != current_user %>
+
 <div class="chapter-content row">
 	<div class="description columns large-10 large-offset-1">
 		<small class="label">Description</small>
 		<%= simple_format(@trip.description, sanitize: true) %>
 	</div>
 
-	<% if logged_in? %>
 	<div class="inspiration-link">
 		<% if !@chapter.already_inspired?(current_user.id) %>
 			<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @chapter, inspirable_type: @chapter.class}), method: :post, remote: true %>
@@ -44,7 +46,7 @@
 	</div>
 
 	<% if @inspired_by %>
-		<%= link_to @inspired_by.title, [@inspired_by.trip, @inspired_by] %>
+		<p>inspired by<%= link_to @inspired_by.title, [@inspired_by.trip, @inspired_by] %></p>
 	<% end %>
 
 	<div class="posts">
