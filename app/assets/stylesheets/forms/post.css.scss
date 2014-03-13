@@ -1,15 +1,20 @@
-@mixin chapter-form {
+@mixin post-form {
   z-index: 99;
   position: fixed;
   border: 1px solid $white - 10;
   background: $white - 10;
 
+  .form-section {
+    vertical-align: top;
+    position: relative;
+    display: inline-block;
+    width: 69%;
+  }
   .form-container {
     position: relative;
     margin: 40px auto;
     padding: 40px 40px;
-
-    width: 70%;
+    width: 100%;
     border-radius: 2px;
     background: $white;
     box-shadow: 0 0 6px -3px rgba(40, 40, 40, 0.5);
@@ -23,7 +28,7 @@
   }
   .form-field {
     display: inline-block;
-    width: 70%;
+    width: 100%;
     vertical-align: top;
   }
   .form-input {
@@ -32,11 +37,14 @@
     border-bottom: 1px solid rgba(235, 235, 235, 1);
     box-shadow: none;
   }
-  textarea#chapter_description {
+  textarea#post_content {
     height: 20em;
     border: 1px solid rgba(235, 235, 235, 1);
     border: none;
     resize: vertical;
+  }
+  select {
+    width: 32.9%;
   }
   .form-btn {
     @include btn-light(rgba(127, 180, 206, 1), 1);
@@ -49,14 +57,12 @@
     }
   }
   .inspirations {
-    position: absolute;
-    top: 0px;
+    position: relative;
     display: inline-block;
-    padding: 40px 15px;
-    width: 29%;
+    padding: 3px 15px;
+    width: 30%;
     height: 100%;
     h3 {
-      margin-top: 70px;
       padding-bottom: 8px;
       border-bottom: 1px solid rgba(235, 235, 235, 1);
       text-align: center;
@@ -67,12 +73,12 @@
   }
 }
 
-#chapter.form {
-  @include chapter-form();
+#post.form {
+  @include post-form();
   width: 100%;
 }
-#chapter.form-float {
-  @include chapter-form();
+#post.form-float {
+  @include post-form();
   width: 80%;
   .form-container {
     margin: 0px;

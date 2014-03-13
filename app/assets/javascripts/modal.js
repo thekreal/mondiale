@@ -1,21 +1,21 @@
 function slideUpRemove(obj) {
   obj.animate({
     top: - $(this).height()
-  }, 600, 'easeOutCirc', function() {
+  }, 800, 'easeOutCubic', function() {
     $(this).remove();
   });
 }
 
 function slideDownShow(obj) {
   obj
+    .appendTo('body')
     .css({
       top: - $(window).height(),
-      left: ($(window).width() - 500) / 2
+      left: ($(window).width() - obj.width()) / 2
     })
-    .appendTo('body')
     .animate({
-      top: 100,
-    }, 800, 'easeOutCirc')
+      top: 30,
+    }, 1000, 'easeOutCubic')
 }
 
 function clickToClose(click_obj, remove_obj) {
