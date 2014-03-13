@@ -3,7 +3,11 @@ function post_success(obj, obj_name, target) {
   slideUpRemove(form);
   removeBlur();
 
-  obj.appendTo('.' + target + '-content');
+  var outerWrap = $('<div class="row">')
+  var innerWrap = $('<div class="columns large-10 large-offset-1">')
+  innerWrap.append(obj);
+  outerWrap.append(innerWrap);
+  outerWrap.appendTo('.' + target + '-content');
 
   coverPhoto();
   initializeMap();
