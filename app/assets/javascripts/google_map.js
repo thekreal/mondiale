@@ -171,8 +171,8 @@ function GoogleMap(obj) {
   };
 
   return (function() {
-      google.maps.event.addDomListener(window, 'load', initialize);
-    })();
+    google.maps.event.addDomListener(window, 'load', initialize);
+  })();
 
 };
 
@@ -180,10 +180,9 @@ function initializeMap() {
   var maps = $('.cover-map');
   if (maps.length) {
     maps.each(function() {
-      if ($(this).data('objects').length != 0)
-        var m = new GoogleMap(this)
+      var m = new GoogleMap(this);
+      console.log(m);
     })
   }
 }
-
 

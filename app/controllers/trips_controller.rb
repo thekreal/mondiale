@@ -8,6 +8,10 @@ class TripsController < ApplicationController
     else
       @trips = Trip.most_inspiring
     end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

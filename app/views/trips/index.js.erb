@@ -1,5 +1,5 @@
 <% if params[:search] %>
-	$('.trips-index').html("<%= j render @trips %>")
+  $('.trips-index').html($("<%= j render @trips %>"));
   coverPhoto();
   initializeMap();
 <% end %>
