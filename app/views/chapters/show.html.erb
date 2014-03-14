@@ -57,7 +57,7 @@
 	<div class="large-4 large-offset-1 columns description">
 		<small class="description-label label">Chapter</small>
 		<div class="inspirations-count label">
-			<%= @chapter.inspirations.count %> <div class="fa fa-heart"></div>
+			<span class="inspiration-number"><%= @chapter.inspirations.count %></span><div class="fa fa-heart"></div>
 		</div>
 		<%= simple_format(@chapter.description, sanitize: true) %>
 	</div>
