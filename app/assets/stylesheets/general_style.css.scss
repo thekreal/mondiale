@@ -21,7 +21,15 @@ p, a {
 }
 
 .page-title{
-
 	font-family: 'Open Sans', sans-serif;
     font-size: 4em;
+}
+
+.chapter-nav
+{
+  a{
+  font-size: 1.5em;
+  margin-right: 10px;
+  margin-left: 10px;
+  }
 }
