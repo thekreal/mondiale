@@ -83,8 +83,11 @@
 
 
 <div class="row chapter-nav">
-  <div class="small-6 large-centered columns">
-		<p><%= link_to "Back to trip" , trip_path(@trip) %></p>
+  <div class="large-12 columns">
+  	<p>&nbsp</p>
+		<p>
+			<%= link_to "Back to trip" , trip_path(@trip) %>
+		</p>
 		<p>
 		<% if @prev_chapter %>
 		<%= link_to "Previous chapter", trip_chapter_path(id: @prev_chapter.id) %>
