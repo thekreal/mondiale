@@ -92,6 +92,13 @@ class TripsController < ApplicationController
     params[:chapter].each_with_index do |id, index|
       Chapter.update_all({position: index+1}, {id: id})
     end
+
+
+    respond_to do |format|
+      format.js {head :ok, :content_type => 'text/html'}
+    end
+
+
   end
 
 private
