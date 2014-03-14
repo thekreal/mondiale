@@ -5,7 +5,7 @@
 
   <legend class="form-title">Sign In</legend>
 
-  <div class="form-field">
+  <div class="form-field top">
     <%= f.text_field :email, class: "form-input", placeholder: "Your email here" %>
   </div>
 
@@ -20,7 +20,7 @@
 
   <div class="form-field">
     <%= f.submit "Sign In", class: "form-btn" %>
-    <%= link_to "Back", '#', class: "form-btn close" %>
+    <%= link_to "Close", '#', class: "form-btn close" %>
   </div>
 
 <% end %>

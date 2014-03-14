@@ -2,22 +2,5 @@
   window.location = "<%= user_path(current_user) %>"
 
 <% else %>
-  var error = $('[class*="alert-danger"]');
-  if (error.length) { alert.remove(); }
-  error = $('<%= j render "alerts/flash_message" %>');
-  var target = $('legend.form-title'),
-      closeBtn = error.children('.close');
-
-  error
-    .hide()
-    .insertAfter(target)
-    .slideDown(600, function() {
-
-    });
-  closeBtn.on('click', function() {
-    $(this).parent().slideUp(600, function() {
-      $(this).remove();
-    })
-  })
-
+  post_fail($('<%= j render "alerts/flash_message" %>'))
 <% end %>

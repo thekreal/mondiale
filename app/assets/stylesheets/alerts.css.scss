@@ -30,4 +30,7 @@
 .alert-info { @include alert($blue); }
 .alert-success { @include alert($green); }
 .alert-warning { @include alert($yellow); }
-.alert-danger { @include alert($red); }
+.alert-danger {
+  @include alert($red);
+  margin-left: 0px;
+}

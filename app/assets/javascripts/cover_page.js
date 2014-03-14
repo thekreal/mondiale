@@ -1,7 +1,13 @@
 function coverPage() {
-  var map = $('.cover-map');
-  if (map.length) {
-    var m = new GoogleMap(map)
-    map.addClass('large-6 columns');
+  var map = $('.cover-map'),
+      description = $('.description');
+
+  if (map.height() > description.height()) {
+    description.outerHeight(map.height());
   }
+  else {
+    map.outerHeight(description.height());
+  }
+
+
 }

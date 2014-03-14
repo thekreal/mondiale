@@ -35,11 +35,14 @@ $(document).ready(function() {
   deletePictureBtn();
 
   // Set user form to middle of the Y-axis
-  if ($('#user.form').length) {
+  var userForm = $('#user.form');
+  if (userForm.length) {
+    setHeight(userForm);
     setYtoM($('#user.form .form-container'))
   }
 
   // Set trip cover photo
+  coverPage();
   coverPhoto();
 
   // generate google map
