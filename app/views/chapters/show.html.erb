@@ -5,7 +5,7 @@
 	<div class="row">
 	<div class="header large-10 large-offset-1 columns end">
 
-		<% if logged_in? %>
+		<% if @chapter.user == current_user %>
 		<div class="control">
 			<ul>
 				<li><%= link_to '', new_trip_chapter_post_path(@trip, @chapter), class: "fa fa-plus-square", remote: true %></li>

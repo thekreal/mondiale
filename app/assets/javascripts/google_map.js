@@ -170,18 +170,18 @@ function GoogleMap(obj) {
 
   };
 
-  return (function() {
-    google.maps.event.addDomListener(window, 'load', initialize);
-  })();
-
+  google.maps.event.addDomListener(window, 'load', initialize());
 };
 
-function initializeMap() {
+function mapInitializer(obj) {
+  return new GoogleMap(obj)
+}
+
+function loadMaps() {
   var maps = $('.cover-map');
   if (maps.length) {
     maps.each(function() {
-      var m = new GoogleMap(this);
-      console.log(m);
+      mapInitializer(this)
     })
   }
 }

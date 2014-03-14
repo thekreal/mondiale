@@ -1,0 +1,4 @@
+<% objects.each do |object| %>
+  <% name = object.class.to_s.downcase %>
+  <%= render "templates/#{name}_result", name.to_sym => object %>
+<% end %>

@@ -1,5 +1,10 @@
-<% if params[:search] %>
+<% if params[:search] && params[:from] == "welcome" %>
+  $('.trips-index').html($("<%= j render 'templates/search_results', objects: @trips %>"));
+  coverPhoto();
+  loadMaps();
+  searchResult();
+<% elsif params[:search] %>
   $('.trips-index').html($("<%= j render @trips %>"));
   coverPhoto();
-  initializeMap();
+  loadMaps();
 <% end %>

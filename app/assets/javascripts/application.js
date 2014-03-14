@@ -46,8 +46,7 @@ $(document).ready(function() {
   coverPhoto();
 
   // generate google map
-  initializeMap();
-
+  loadMaps();
 
   $('#chapters-list').sortable(
     {
