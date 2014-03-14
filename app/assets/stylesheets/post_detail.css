@@ -18,6 +18,7 @@
 
 .post-title{
 	color: gray;
+	font-family: 'Open Sans';
 }
 
 
@@ -26,7 +27,7 @@
 }
 
 #pi {
-
+	display: block;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
