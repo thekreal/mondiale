@@ -15,4 +15,12 @@
       }
     }
   }
+  .fa.fa-heart {
+    font-size: 0.9em;
+    color: $white;
+  }
+  .inspired {
+    color: $red;
+    text-shadow: 0 0 2px rgba(40, 40, 40, 0.5);
+  }
 }

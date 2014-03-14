@@ -2,5 +2,8 @@
   window.location = "<%= user_path(current_user) %>"
 
 <% else %>
-  post_fail($('<%= j render "alerts/flash_message" %>'))
+  $('[class*="alert"]').remove();
+  var obj = $('<%= j render "alerts/flash_message" %>');
+  obj.insertBefore('.form-title');
+  alertCloseBtn(obj);
 <% end %>

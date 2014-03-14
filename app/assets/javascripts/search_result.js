@@ -21,14 +21,17 @@ function smoothScroll(object, delay) {
   $('html, body').stop().delay(delay).animate({
     'scrollTop': object.offset().top
   }, 1200, function() {
-    window.location.hash = object;
+    window.location.hash = "";
   })
 }
 
 function smoothScrollHash(delay) {
   var target = $(window.location.hash);
-  $('html, body').delay(1000).stop().animate({
-    'scrollTop': target.offset().top
-  }, 1200, function() {
-  })
+  if (target.length) {
+    $('html, body').delay(1000).stop().animate({
+      'scrollTop': target.offset().top
+    }, 1200, function() {
+      window.location.hash = "";
+    })
+  }
 }
