@@ -3,8 +3,8 @@
 		<%= link_to '', new_cover_trip_path(id: @trip.id), remote: true, class: "fa fa-camera set-cov-btn" %>
 	</div>
 
-	<div class="header">
-
+	<div class="row">
+	<div class="header large-10 large-offset-1 columns end">
 		<% if logged_in? %>
 		<div class="control">
 			<ul>
@@ -19,20 +19,29 @@
 		<h1 class="title"><%= @trip.title %></h1>
 		<small class="date"><%= trip_date(@trip) %></small>
 		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
+
+	</div>
 	</div>
 
-	<% if @trip.posts.any? %>
-		<div class="cover-map" data-objects="<%= posts_in_json(@trip.posts) %>"></div>
-	<% end %>
 </div>
 
+<div class="page-content">
 
-<div class="page-content row">
-
-	<div class="description columns large-10 large-offset-1">
-		<small class="label">Description</small>
+	<div class="row">
+	<div class="large-4 large-offset-1 columns description">
+		<small class="description-label label">Trip</small>
+		<div class="inspirations-count label">
+			<%= @trip.inspirations.count %> <div class="fa fa-heart"></div>
+		</div>
 		<%= simple_format(@trip.description, sanitize: true) %>
 	</div>
+
+	<div class="large-6 columns end googleMap">
+		<div class="cover-map" data-objects="<%= posts_in_json(@trip.posts) %>"></div>
+	</div>
+	</div>
+
+
 
 	<% if logged_in? && @trip.user != current_user%>
 	<div class="inspiration-link">
@@ -41,10 +50,6 @@
 		<% end %>
 	</div>
 	<% end %>
-
-	<div class='inspirations-count'>
-		<%= @trip.inspirations.count %> people have added this trip as an inspiration
-	</div>
 
 	<% if @inspired_by %>
 		<p>inspired by <%= link_to @inspired_by.title, @inspired_by %></p>

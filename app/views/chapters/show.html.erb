@@ -46,21 +46,18 @@
 <div class="page-content">
 
 	<div class="row">
-
-		<div class="large-4 large-offset-1 columns description">
-			<small class="description-label label">Chapter</small>
-			<div class="inspirations-count label">
-				<%= @chapter.inspirations.count %> <div class="fa fa-heart"></div>
-			</div>
-			<%= simple_format(@trip.description, sanitize: true) %>
+	<div class="large-4 large-offset-1 columns description">
+		<small class="description-label label">Chapter</small>
+		<div class="inspirations-count label">
+			<%= @chapter.inspirations.count %> <div class="fa fa-heart"></div>
 		</div>
-
-		<div class="large-6 columns end googleMap">
-			<div class="cover-map" data-objects="<%= posts_in_json(@chapter.posts) %>"></div>
-		</div>
-
+		<%= simple_format(@chapter.description, sanitize: true) %>
 	</div>
 
+	<div class="large-6 columns end googleMap">
+		<div class="cover-map" data-objects="<%= posts_in_json(@chapter.posts) %>"></div>
+	</div>
+	</div>
 
 </div>
 
@@ -68,11 +65,7 @@
 	<p>inspired by<%= link_to @inspired_by.title, [@inspired_by.trip, @inspired_by] %></p>
 	<% end %>
 
-	<div class="posts">
-		<% @chapter.posts.each do |p| %>
-		<%= render p %>
-		<% end %>
-	</div>
+
 
 
 
