@@ -3,6 +3,7 @@
   coverPhoto();
   loadMaps();
   searchResult();
+  smoothScroll($('.search-result'), 600);
 <% elsif params[:search] %>
   $('.trips-index').html($("<%= j render @trips %>"));
   coverPhoto();
