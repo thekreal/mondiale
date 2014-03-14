@@ -17,47 +17,57 @@
   }
   .header {
     position: absolute;
-    padding: 15px 30px;
-    bottom: 15px;
     right: 15px;
-    width: 80%;
+    bottom: 15px;
     z-index: 2;
-    height: 40%;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 6px -3px rgba(40, 40, 40, 0.5);
+    padding: 15px 30px;
+    width: 80%;
+    height: 60%;
+    background: rgba(40, 40, 40, 0.5);
+    color: $white;
     text-align: right;
 
+    text-shadow: 0 0 3px rgba(40, 40, 40, 0.5);
     .cover-map {
-      z-index: 3;
-      @include google-map(40%, 100%);
+      @include google-map(40%, 90%);
       position: absolute;
       top: 15px;
       left: 15px;
+      z-index: 3;
     }
   }
   .title {
     margin-top: 0px;
     margin-bottom: -5px;
+    color: $white;
     font-size: 4em;
     font-family: 'Open Sans', sans-serif;
   }
 
   .date {
-    color: $black + 50;
+    color: $white - 20;
     font-size: 0.9em;
   }
 
   .author {
+    color: $white;
     font-size: 0.9em;
     font-family: 'Open Sans', sans-serif;
-    a { font-family: 'Open Sans', sans-serif; }
+    a {
+      color: $white;
+      font-family: 'Open Sans', sans-serif;
+    }
   }
 
   .inspired-by-link{
     margin-top: -1.5em;
+    color: $white;
     font-size: 0.9em;
     font-family: 'Open Sans', sans-serif;
-    a { font-family: 'Open Sans', sans-serif; }
+    a {
+      color: $white;
+      font-family: 'Open Sans', sans-serif;
+    }
   }
 
 }
