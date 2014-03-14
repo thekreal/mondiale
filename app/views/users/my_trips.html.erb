@@ -9,10 +9,5 @@
 
 
 <div class=" trip-content">
-
-  <% @trips.each do |t| %>
-  	<%= render 'templates/trip_summary', trip: t %>
-  <% end %>
-
-
+  	<%= render @trips %>
 </div>
