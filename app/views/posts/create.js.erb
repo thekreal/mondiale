@@ -1,6 +1,6 @@
 <% if @post.errors.any? %>
   post_fail($('<%= j render "alerts/error_message", object: @post %>'))
 <% else %>
-  post_success($('<%= j render @post %>'),'post', 'chapter')
+  post_success($('<%= j render @post %>'),'post', '.posts')
 <% end %>
 

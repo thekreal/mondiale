@@ -4,6 +4,7 @@
 
   <!-- require primary attribute -->
   <div class="cover-photo" data-image-url="<%= image_url(primary_object.cover_photo )%>">
+
     <%= link_to '', new_cover_trip_path(id: @trip.id), remote: true, class: "fa fa-camera set-cov-btn" %>
   </div>
 
