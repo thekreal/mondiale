@@ -1,5 +1,5 @@
 <% if params[:search] && params[:from] == "welcome" %>
-  $('.trips-index').html($("<%= j render 'templates/search_results', objects: @trips %>"));
+  $('.trips-index').html($("<%= j render 'templates/search_results', objects: @trips.select { |t| !t.nil? } %>"));
   coverPhoto();
   loadMaps();
   searchResult();
