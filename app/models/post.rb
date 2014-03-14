@@ -44,4 +44,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def find_inspiration_by(obj)
+    type_id = (obj.class.to_s.downcase << "_id").to_sym
+    inspirations.find_by(type_id => obj.id)
+  end
+
+
 end

@@ -7,7 +7,7 @@
     position: absolute;
     bottom: 100px;
     z-index: 2;
-    height: 130px;
+    height: 150px;
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 6px -3px rgba(40, 40, 40, 0.5);
     text-align: right;
@@ -44,6 +44,13 @@
   }
 
   .author {
+    font-size: 0.9em;
+    font-family: 'Open Sans', sans-serif;
+    a { font-family: 'Open Sans', sans-serif; }
+  }
+
+  .inspired-by-link{
+    margin-top: -1.5em;
     font-size: 0.9em;
     font-family: 'Open Sans', sans-serif;
     a { font-family: 'Open Sans', sans-serif; }
