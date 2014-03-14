@@ -8,9 +8,11 @@
   $('h1.title').html('<%= @trip.title %>')
   var description = $('.description');
   var label = description.children('small.label');
+  var inspirationCount = description.children('div.inspirations-count')
   description
   .empty()
   .append(label)
+  .append(inspirationCount)
   .append('<%= j simple_format(@trip.description, sanitize: true) %>')
 
 <% end %>
