@@ -3,29 +3,29 @@
 	</div>
 
 	<div class="row">
-	<div class="header large-10 large-offset-1 columns end">
+		<div class="header large-10 large-offset-1 columns end">
 
-		<% if @chapter.user == current_user %>
-		<div class="control">
-			<ul>
-				<li><%= link_to '', new_trip_chapter_post_path(@trip, @chapter), class: "fa fa-plus-square", remote: true %></li>
-				<li></li>
-				<li><%= link_to "", edit_trip_chapter_path(@trip, @chapter), class: "fa fa-edit", remote: true %></li>
-				<li><%= link_to "", [@trip, @chapter], confirm: "Are you sure you want to delete this chapter?", method: :delete, class: "fa fa-times" %></li>
-			</ul>
-		</div>
-		<% end %>
-
-		<h1 class="title"><%= @chapter.position %> - <%= @chapter.title %></h1>
-		<small class="date"><%= trip_date(@chapter) %></small>
-		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
-		<p class="inspired-by-link">
-			<% if @inspired_by %>
-				Inspired by <%= link_to @inspired_by.title, [@inspired_by.trip, @inspired_by] %>
+			<% if @chapter.user == current_user %>
+			<div class="control">
+				<ul>
+					<li><%= link_to '', new_trip_chapter_post_path(@trip, @chapter), class: "fa fa-plus-square", remote: true %></li>
+					<li></li>
+					<li><%= link_to "", edit_trip_chapter_path(@trip, @chapter), class: "fa fa-edit", remote: true %></li>
+					<li><%= link_to "", [@trip, @chapter], confirm: "Are you sure you want to delete this chapter?", method: :delete, class: "fa fa-times" %></li>
+				</ul>
+			</div>
 			<% end %>
-		</p>
 
-	</div>
+			<h1 class="title"><%= @chapter.position %> - <%= @chapter.title %></h1>
+			<small class="date"><%= trip_date(@chapter) %></small>
+			<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
+			<p class="inspired-by-link">
+				<% if @inspired_by %>
+				Inspired by <%= link_to @inspired_by.title, [@inspired_by.trip, @inspired_by] %>
+				<% end %>
+			</p>
+
+		</div>
 	</div>
 
 </div>
@@ -33,50 +33,50 @@
 <div class="page-content">
 
 	<div class="row">
-	<div class="large-4 large-offset-1 columns description">
-		<small class="description-label label">Chapter</small>
+		<div class="large-4 large-offset-1 columns description">
+			<small class="description-label label">Chapter</small>
 
-		<!-- Inspiration Button Partial -->
-		<%= render 'inspirations/inspiration_btn', object: @chapter %>
+			<!-- Inspiration Button Partial -->
+			<%= render 'inspirations/inspiration_btn', object: @chapter %>
 
-		<%= simple_format(@chapter.description, sanitize: true) %>
-	</div>
+			<%= simple_format(@chapter.description, sanitize: true) %>
+		</div>
 
-	<div class="large-6 columns end googleMap">
-		<div class="cover-map" data-objects="<%= posts_in_json(@chapter.posts) %>"></div>
-	</div>
+		<div class="large-6 columns end googleMap">
+			<div class="cover-map" data-objects="<%= posts_in_json(@chapter.posts) %>"></div>
+		</div>
 	</div>
 
 </div>
 
 <div class="posts">
-  <% @chapter.posts.each do |p| %>
-    <%= render p %>
-  <% end %>
+	<% @chapter.posts.each do |p| %>
+	<%= render p %>
+	<% end %>
 </div>
 
 
 
 
 <div class="row chapter-nav">
-  <div class="large-12 columns">
-  	<p>&nbsp</p>
+	<div class="large-12 columns">
+		<p>&nbsp</p>
+
 		<p>
-			<%= link_to "Back to trip" , trip_path(@trip) %>
-		</p>
-		<p>
-		<% if @prev_chapter %>
-		<%= link_to "Previous chapter", trip_chapter_path(id: @prev_chapter.id) %>
-		<% else %>
+			<% if @prev_chapter %>
+			<%= link_to "Previous chapter", trip_chapter_path(id: @prev_chapter.id) %>
+			<% else %>
 			First chapter
-		<% end %>
-			|
-		<% if @next_chapter %>
-		<%= link_to "Next chapter" , trip_chapter_path(id: @next_chapter.id) %>
-		<% else %>
+			<% end %>
+
+			<%= link_to "Back to trip" , trip_path(@trip) %>
+
+			<% if @next_chapter %>
+			<%= link_to "Next chapter" , trip_chapter_path(id: @next_chapter.id) %>
+			<% else %>
 			Last chapter
-		<% end %>
+			<% end %>
 		</p>
+		<p class="fa fa-globe"></p>
 	</div>
 </div>
-
