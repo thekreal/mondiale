@@ -19,6 +19,11 @@
 		<h1 class="title"><%= @trip.title %></h1>
 		<small class="date"><%= trip_date(@trip) %></small>
 		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
+		<p class="inspired-by-link">
+			<% if @inspired_by %>
+				Inspired by <%= link_to @inspired_by.title, @inspired_by %>
+			<% end %>
+		</p>
 
 	</div>
 	</div>
@@ -40,10 +45,6 @@
 		<div class="cover-map" data-objects="<%= posts_in_json(@trip.posts) %>"></div>
 	</div>
 	</div>
-
-	<% if @inspired_by %>
-		<p>inspired by <%= link_to @inspired_by.title, @inspired_by %></p>
-	<% end %>
 
 	<div class="chapters" id="chapters-list">
 		<% @trip.chapters.each do |c| %>
