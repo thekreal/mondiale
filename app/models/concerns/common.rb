@@ -1,6 +1,11 @@
 module Common
   extend ActiveSupport::Concern
 
+  def find_inspiration_by(obj)
+    type_id = (obj.class.to_s.downcase << "_id").to_sym
+    inspirations.find_by(type_id => obj.id)
+  end
+
   def already_inspired(user_id)
     inspirations.find_by(user_id: user_id)
   end

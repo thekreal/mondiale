@@ -3,8 +3,19 @@ class ChaptersController < ApplicationController
 
   def show
     @trip = Trip.find(params[:trip_id])
+
     @posts = @chapter.posts
     @inspired_by = inspiration_find(@chapter)
+
+    @current_chapter_index = @chapter.position - 1
+
+    if @current_chapter_index > 0
+      @prev_chapter = @trip.chapters.order("position")[@current_chapter_index - 1]
+    end
+
+    if @current_chapter_index < @trip.chapters.order("position").size - 1
+      @next_chapter = @trip.chapters.order("position")[@current_chapter_index + 1]
+    end
 
     cookies.permanent[:last_trip_viewed] = @chapter.trip.id
     cookies.permanent[:last_chapter_viewed] = @chapter.id

@@ -11,6 +11,16 @@
 
 }
 
+.chapter-nav {
+	text-align: center;
+  background: $black;
+
+  .chnavbtn{
+		@include btn-dark($blue - 50,1);
+		display: inline-block;
+	}
+}
+
 .post-image{
 	display: inline-block;
 }

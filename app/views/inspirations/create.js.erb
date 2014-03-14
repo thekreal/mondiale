@@ -1,10 +1,13 @@
-<% if @inspiration.inspired_by.class == Post %>
-$("#post-inspiration-link-<%= @inspiration.inspired_by.id %>").text("you have added this as an inspiration")
-$('#post-inspiration-count-<%= @inspiration.inspired_by.id %>').text(<%= @inspiration.number_of_inspired %> + "people have added this post as an inspiration")
 
-<% else %>
 
-$(".inspirations-count").text(<%= @inspiration.number_of_inspired %> + " people have added this as an inspiration")
-$(".inspiration-link").text("you have added this as an inspiration");
 
-<% end %>
+// <% if @inspiration.inspired_by.class == Post %>
+// $("#post-inspiration-link-<%= @inspiration.inspired_by.id %>").text("you have added this as an inspiration")
+// $('#post-inspiration-count-<%= @inspiration.inspired_by.id %>').text(<%= @inspiration.number_of_inspired %> + "people have added this post as an inspiration")
+
+// <% else %>
+
+// $(".inspiration-number").text(<%= @inspiration.inspired_by.inspirations.count %>)
+// $(".inspiration-link").text("you have added this as an inspiration");
+
+// <% end %>

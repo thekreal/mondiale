@@ -16,7 +16,6 @@
 		</div>
 		<% end %>
 
-
 		<h1 class="title"><%= @chapter.position %> - <%= @chapter.title %></h1>
 		<small class="date"><%= trip_date(@chapter) %></small>
 		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
@@ -28,34 +27,17 @@
 
 <div class="page-content">
 
-	<div class = "">
-
-		<% if logged_in? && @chapter.trip.user != current_user %>
-		<div class="inspiration-link">
-			<% if !@chapter.already_inspired?(current_user.id) %>
-			<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @chapter, inspirable_type: @chapter.class}), method: :post, remote: true %>
-			<% end %>
-		</div>
-		<% end %>
-
-	</div>
-
-</div>
-
-
-<div class="page-content">
-
 	<div class="row">
 	<div class="large-4 large-offset-1 columns description">
 		<small class="description-label label">Chapter</small>
 		<div class="inspirations-count label">
-			<%= @chapter.inspirations.count %>
-
+			<span class="inspiration-number"><%= @chapter.inspirations.count %></span>
 			<% if !logged_in? || @chapter.trip.user != current_user %>
 				<div class="fa fa-heart"></div>
 			<% elsif logged_in? && @chapter.already_inspired?(current_user.id) %>
-
+				<%= destroy_inspiration_link %>
 			<% else %>
+				<%= create_inspiration_link %>
 			<% end %>
 		</div>
 		<%= simple_format(@chapter.description, sanitize: true) %>
@@ -81,4 +63,25 @@
 
 
 
+<div class="row chapter-nav">
+  <div class="large-12 columns">
+  	<p>&nbsp</p>
+		<p>
+			<%= link_to "Back to trip" , trip_path(@trip) %>
+		</p>
+		<p>
+		<% if @prev_chapter %>
+		<%= link_to "Previous chapter", trip_chapter_path(id: @prev_chapter.id) %>
+		<% else %>
+			First chapter
+		<% end %>
+			|
+		<% if @next_chapter %>
+		<%= link_to "Next chapter" , trip_chapter_path(id: @next_chapter.id) %>
+		<% else %>
+			Last chapter
+		<% end %>
+		</p>
+	</div>
+</div>
 

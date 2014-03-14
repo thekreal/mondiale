@@ -89,7 +89,10 @@
       width: $width;
       text-align: right;
       font-size: 1em;
-      .fa { font-size: 0.9em; }
+      .fa {
+        font-size: 0.9em;
+        color: $white;
+      }
     }
   }
 
