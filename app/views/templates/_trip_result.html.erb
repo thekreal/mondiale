@@ -1,7 +1,7 @@
 <div class="search-result" id="trip">
   <div class="cover-photo" data-image-url="<%= image_url(trip.cover_photo) %>"></div>
   <div class="header">
-    <h1 class="title"><%= trip.title %></h1>
+    <h1 class="title"><%= link_to trip.title, trip %></h1>
     <small class="date"><%= trip_date(trip) %></small>
     <p class="author">by <%= link_to trip.user.name, trip.user %></p>
     <p class="inspired-by-link">
