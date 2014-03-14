@@ -1,6 +1,6 @@
 <% if @chapter.errors.any? %>
   post_fail($('<%= j render "alerts/error_message", object: @chapter %>'))
 <% else %>
-  post_success($('<%= j render @chapter %>'),'chapter', 'trip')
+  post_success($('<%= j render @chapter %>'),'chapter', '.chapters')
 <% end %>
 
