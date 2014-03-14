@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   mount_uploader :postimage, PostImageUploader
 
 	belongs_to :chapter
+  has_one :user, through: :chapter
 
 	has_many :post_attachments, dependent: :delete_all
   has_many :inspirations, as: :inspirable

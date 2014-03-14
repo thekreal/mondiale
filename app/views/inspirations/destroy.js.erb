@@ -1,1 +1,5 @@
-alert('hi')
+var link = $('.page-inspiration');
+link.replaceWith('<%= j render "inspirations/create_link", obj: @inspiration.inspired_by %>');
+
+var inspirationCount = $('.page-inspirations-count .count');
+inspirationCount.html('<%= @inspiration.number_of_inspired %>')

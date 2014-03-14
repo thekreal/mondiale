@@ -1,0 +1,10 @@
+<div class="page-inspirations-count label">
+  <span class="count"><%= object.inspirations.count %></span>
+  <% if !logged_in? || object.user != current_user %>
+    <div class="fa fa-heart"></div>
+  <% elsif logged_in? && object.already_inspired?(current_user.id) %>
+    <%= destroy_inspiration_link(object) %>
+  <% else %>
+    <%= create_inspiration_link(object) %>
+  <% end %>
+</div>

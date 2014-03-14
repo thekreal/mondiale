@@ -30,16 +30,10 @@
 	<div class="row">
 	<div class="large-4 large-offset-1 columns description">
 		<small class="description-label label">Chapter</small>
-		<div class="inspirations-count label">
-			<span class="inspiration-number"><%= @chapter.inspirations.count %></span>
-			<% if !logged_in? || @chapter.trip.user != current_user %>
-				<div class="fa fa-heart"></div>
-			<% elsif logged_in? && @chapter.already_inspired?(current_user.id) %>
-				<%= destroy_inspiration_link %>
-			<% else %>
-				<%= create_inspiration_link %>
-			<% end %>
-		</div>
+
+		<!-- Inspiration Button Partial -->
+		<%= render 'inspirations/inspiration_btn', object: @chapter %>
+
 		<%= simple_format(@chapter.description, sanitize: true) %>
 	</div>
 
