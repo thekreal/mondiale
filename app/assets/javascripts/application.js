@@ -48,7 +48,6 @@ $(document).ready(function() {
   // generate google map
   loadMaps();
 
-
   $('#chapters-list').sortable(
     {
        axis: "y",

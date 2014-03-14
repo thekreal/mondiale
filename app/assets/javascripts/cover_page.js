@@ -1,5 +1,5 @@
 function coverPage() {
-  var map = $('.cover-map'),
+  var map = $('.googleMap .cover-map'),
       description = $('.description');
 
   if (map.height() > description.height()) {
