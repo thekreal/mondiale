@@ -1,58 +1,68 @@
-<div class="post" id="post-<%= post.id %>">
-	<!-- Header Row -->
-	<header class="row">
-	<div class="large-10 large-offset-1 columns">
+<div class="row">
 
-		<!-- Float Control -->
-		<% if post.trip.user == current_user %>
-			<div class="control">
-				<%= link_to "", edit_trip_chapter_post_path(post.trip, post.chapter, post), class: "fa fa-edit", remote: true %>
-				<%= link_to "", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete, confirm: "Are you sure you want to delete this post?", class: "fa fa-times", title: "Delete post", remote: true %>
-			</div>
-		<% end %>
+	<div class = "columns large-2">
 
-		<h2 class="title"><%= post.title %></h2>
+		<p class = "post-title"><%= post.title %></p>
 
 		<!-- Inspirations -->
 		<div class="inspiration">
 			<!-- Inspiration Part -->
 			<% if logged_in? && post.trip.user != current_user %>
-				<div class = "pi" id="post-inspiration-link-<%= post.id %>">
-					<% if !post.already_inspired?(current_user.id) %>
-						<%= link_to '', inspirations_path(inspiration: {inspirable_id: post, inspirable_type: post.class}), method: :post, remote: true, class: "fa fa-heart-o" %>
-					<% end %>
-				</div>
+			<div class = "pi" id="post-inspiration-link-<%= post.id %>">
+				<% if !post.already_inspired?(current_user.id) %>
+				<%= link_to '', inspirations_path(inspiration: {inspirable_id: post, inspirable_type: post.class}), method: :post, remote: true, class: "fa fa-heart-o" %>
+				<% end %>
+			</div>
 			<% end %>
 			<div class = "pi" id='post-inspiration-count-<%= post.id %>'>
 				<%= post.inspirations.count %> people have added this post as an inspiration
 			</div>
 		</div>
-	</div>
-	</header>
 
-	<div class="row">
-	<div class="post-content large-10 large-offset-1 columns">
-		<%= markdown(post.content) %>
-	</div>
+		<!-- Show inspired by -->
+		<% inspiration = inspiration_find(post) %>
+		<% if inspiration %>
+		<p>inspired by<%= link_to inspiration.title, trip_chapter_path(inspiration.trip, inspiration.chapter) %></p>
+		<% end %>
+
+
+
+
+
+
+
+		<!-- Float Control -->
+		<% if post.trip.user == current_user %>
+		<div class="control">
+			<%= link_to "", edit_trip_chapter_post_path(post.trip, post.chapter, post), class: "fa fa-edit", remote: true %>
+			<%= link_to "", trip_chapter_post_path(post.trip, post.chapter, post), method: :delete, confirm: "Are you sure you want to delete this post?", class: "fa fa-times", title: "Delete post", remote: true %>
+		</div>
+		<% end %>
+
+
+
 	</div>
 
-	<div class="row">
+	<div class="columns large-9">
+		<div class="post-text" id="post-<%= post.id %>">
+			<%= markdown(post.content) %>
+		</div>
+	</div>
+
+	<div class="colums large-1">&nbsp</div>
+
+</div>
+
+<div class="image-row">
 	<% if post.post_attachments.any? %>
-	<div class="images large-10 large-offset-1 columns">
+	<div class="post-image large-12 columns">
 		<% post.post_attachments.each do |pic| %>
-		  <%= image_tag pic.postimage_url(:big), class: "post-image" %>
+		<%= image_tag pic.postimage_url(:big), class: "post-image" %>
 		<% end %>
 	</div>
 	<% end %>
-	</div>
-
-	<div class="row">
-	<!-- Show inspired by -->
-	<% inspiration = inspiration_find(post) %>
-	<% if inspiration %>
-		<p>inspired by<%= link_to inspiration.title, trip_chapter_path(inspiration.trip, inspiration.chapter) %></p>
-	<% end %>
-	</div>
-
 </div>
+
+
+
 

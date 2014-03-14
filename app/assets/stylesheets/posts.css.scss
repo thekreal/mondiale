@@ -3,7 +3,8 @@
   margin-bottom: 40px;
 
   .control {
-    float: right;
+    margin-top: 5px;
+    display: block;
     top: 10px;
     position: relative;
     a {
@@ -14,8 +15,4 @@
       }
     }
   }
-}
-
-.post:first-of-type {
-  margin-top: 60px;
 }
