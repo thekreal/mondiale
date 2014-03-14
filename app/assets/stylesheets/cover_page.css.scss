@@ -63,19 +63,16 @@
     }
   }
 
-  .cover-map {
-    @include google-map(40%);
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
-  }
 }
 
 .page-content {
   margin-top: 60px;
+  position: relative;
+
   .description {
     position: relative;
     padding: 15px;
+    min-height: 200px;
     border: 1px solid rgba(235, 235, 235, 1);
     text-align: left;
     font-size: 1.5em;
@@ -85,5 +82,12 @@
       background: $black;
     }
   }
+  .cover-map {
+    @include google-map(100%);
+    position: relative;
+    height: 100%;
+    min-height: 200px;
+  }
 }
+
 

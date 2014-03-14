@@ -19,16 +19,22 @@
 		<small class="date"><%= trip_date(@chapter) %></small>
 		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
 	</div>
-	<% if @chapter.posts.any? %>
-		<div class="cover-map" data-objects="<%= posts_in_json(@chapter.posts) %>"></div>
-	<% end %>
 
 </div>
 
-<div class="page-content row">
-	<div class="description columns large-10 large-offset-1">
+<div class="page-content">
+
+	<div class="description large-6 columns">
 		<small class="label">Description</small>
 		<%= simple_format(@trip.description, sanitize: true) %>
+
+		<% if @chapter.posts.any? %>
+			<div class="cover-map" data-objects="<%= posts_in_json(@chapter.posts) %>"></div>
+		<% end %>
+	</div>
+
+
+
 	</div>
 
 	<% if logged_in? && @chapter.trip.user != current_user %>
