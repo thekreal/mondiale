@@ -5,7 +5,7 @@
 		<p class = "post-title"><%= post.title %></p>
 
 		<!-- Inspirations -->
-		<div class="inspiration">
+		<div class="post-title">
 			<!-- Inspiration Part -->
 			<% if logged_in? && post.trip.user != current_user %>
 			<div class = "pi" id="post-inspiration-link-<%= post.id %>">
