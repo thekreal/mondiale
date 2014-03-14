@@ -53,15 +53,17 @@
 
 </div>
 
+
+<% if post.post_attachments.any? %>
 <div class="image-row">
-	<% if post.post_attachments.any? %>
 	<div class="post-image large-12 columns">
 		<% post.post_attachments.each do |pic| %>
 		<%= image_tag pic.postimage_url(:big), class: "post-image" %>
 		<% end %>
 	</div>
-	<% end %>
 </div>
+<% end %>
+
 
 
 
