@@ -43,45 +43,49 @@ function GoogleMap(obj) {
     return new google.maps.LatLng(lat, lng);
   };
 
-  function addInfoWindow(obj) {
-    return new google.maps.InfoWindow({ content: infoWindowContent(obj) });
-  };
+  // function addInfoWindow(obj) {
+  //   return new google.maps.InfoWindow({ content: infoWindowContent(obj) });
+  // };
 
-  function infoWindowContent(obj) {
+  // function infoWindowContent(obj) {
 
-    var wrapper = $('<div>').addClass('post-summary');
+  //   var wrapper = $('<div>').addClass('post-summary');
 
-    var title = $('<h2>').addClass('title').text(obj.title);
-    wrapper.append(title);
+  //   var title = $('<h2>').addClass('title').text(obj.title);
+  //   wrapper.append(title);
 
-    var content = $('<p>').addClass('content').text(obj.content);
-    wrapper.append(content);
+  //   var content = $('<p>').addClass('content').text(obj.content);
+  //   wrapper.append(content);
 
-    var link = $('<a>').attr({
-      class: 'link',
-      href: "/trips/" + obj.trip_id + "/chapters/" + obj.chapter_id
-    }).text("link");
-    wrapper.append(link);
+  //   var link = $('<a>').attr({
+  //     class: 'link',
+  //     href: "/trips/" + obj.trip_id + "/chapters/" + obj.chapter_id
+  //   }).text("link");
+  //   wrapper.append(link);
 
-    var num_of_images = obj.post_attachments.length;
-    if (num_of_images > 0) {
-      image = $('<img>').attr({
-        class: 'photo',
-        src: obj.post_attachments[Math.floor(Math.random() * num_of_images)].postimage.thumb.url
-      });
-      wrapper.append(image);
-    }
+  //   var num_of_images = obj.post_attachments.length;
+  //   if (num_of_images > 0) {
+  //     image = $('<img>').attr({
+  //       class: 'photo',
+  //       src: obj.post_attachments[Math.floor(Math.random() * num_of_images)].postimage.thumb.url
+  //     });
+  //     wrapper.append(image);
+  //   }
 
-    var outterWrapper = $('<div>').append(wrapper);
-    return outterWrapper.html();
-  };
+  //   var outterWrapper = $('<div>').append(wrapper);
+  //   return outterWrapper.html();
+  // };
+
+  function redirect_to(obj) {
+    window.location = "/trips/" + obj.trip_id + "/chapters/" + obj.chapter_id + '#post-' + obj.id
+  }
 
   function addMarker(obj, pos) {
     var icon = {
       url: '/assets/map-marker-red.png',
       size: new google.maps.Size(32, 32)
     };
-    var infoWindow = addInfoWindow(obj);
+    // var infoWindow = addInfoWindow(obj);
     var marker = new google.maps.Marker({
           position: pos,
           map: map,
@@ -90,12 +94,13 @@ function GoogleMap(obj) {
         });
 
     google.maps.event.addListener(marker, 'click', function() {
-      map.setCenter(marker.getPosition())
+      redirect_to(obj);
 
-      infoWindow.open(map, marker);
-      google.maps.event.addListener(map, 'click', function() {
-        infoWindow.close();
-      })
+      // map.setCenter(marker.getPosition())
+      // infoWindow.open(map, marker);
+      // google.maps.event.addListener(map, 'click', function() {
+      //  infoWindow.close();
+      // })
     });
     markers.push(marker);
   };
