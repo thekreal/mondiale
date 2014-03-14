@@ -18,41 +18,62 @@
 		<h1 class="title"><%= @chapter.position %> - <%= @chapter.title %></h1>
 		<small class="date"><%= trip_date(@chapter) %></small>
 		<p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
+
+
+
 	</div>
+
+
+
 	<% if @chapter.posts.any? %>
-		<div class="cover-map" data-objects="<%= posts_in_json(@chapter.posts) %>"></div>
+	<div class="cover-map" data-objects="<%= posts_in_json(@chapter.posts) %>"></div>
 	<% end %>
 
 </div>
 
 <div class="page-content row">
-	<div class="description columns large-10 large-offset-1">
+
+	<div class = "columns large-10 large-offset-1">
+
+		<% if logged_in? && @chapter.trip.user != current_user %>
+		<div class="inspiration-link">
+			<% if !@chapter.already_inspired?(current_user.id) %>
+			<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @chapter, inspirable_type: @chapter.class}), method: :post, remote: true %>
+			<% end %>
+		</div>
+		<% end %>
+
+	</div>
+
+</div>
+
+
+<div class="row page-content">
+
+	<div class = "columns large-2" class='inspirations-count'>
+		<%= @chapter.inspirations.count %> people have added this chapter as an inspiration
+	</div>
+
+	<div class="columns large-9 description">
 		<small class="label">Description</small>
 		<%= simple_format(@trip.description, sanitize: true) %>
 	</div>
 
-	<% if logged_in? && @chapter.trip.user != current_user %>
-	<div class="inspiration-link">
-		<% if !@chapter.already_inspired?(current_user.id) %>
-			<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @chapter, inspirable_type: @chapter.class}), method: :post, remote: true %>
-		<% end %>
-	</div>
-	<% end %>
+	<div class="colums large-1">&nbsp</div>
 
-	<div class='inspirations-count'>
-		<%= @chapter.inspirations.count %> people have added this Chapter as an inspiration
-	</div>
+
+</div>
 
 	<% if @inspired_by %>
-		<p>inspired by<%= link_to @inspired_by.title, [@inspired_by.trip, @inspired_by] %></p>
+	<p>inspired by<%= link_to @inspired_by.title, [@inspired_by.trip, @inspired_by] %></p>
 	<% end %>
 
 	<div class="posts">
 		<% @chapter.posts.each do |p| %>
-			<%= render p %>
+		<%= render p %>
 		<% end %>
 	</div>
 
-</div>
+
 
 
