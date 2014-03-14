@@ -1,5 +1,6 @@
-var link = $('.page-inspiration');
+var link = $("#inspiration-<%= @inspiration.inspired_by.class.to_s.downcase %><%= @inspiration.inspired_by.id %>");
+console.log(link);
 link.replaceWith('<%= j render "inspirations/destroy_link", obj: @inspiration.inspired_by %>');
 
-var inspirationCount = $('.page-inspirations-count .count');
+var inspirationCount = $('.page-inspirations-count #count-<%= @inspiration.inspired_by.class.to_s.downcase %><%= @inspiration.inspired_by.id %>');
 inspirationCount.html('<%= @inspiration.number_of_inspired %>')

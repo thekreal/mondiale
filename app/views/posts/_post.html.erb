@@ -6,16 +6,8 @@
 
 		<!-- Inspirations -->
 		<div class="post-title">
-			<!-- Inspiration Part -->
-			<% if logged_in? && post.trip.user != current_user %>
-			<div class = "pi" id="post-inspiration-link-<%= post.id %>">
-				<% if !post.already_inspired?(current_user.id) %>
-				<%= link_to '', inspirations_path(inspiration: {inspirable_id: post, inspirable_type: post.class}), method: :post, remote: true, class: "fa fa-heart-o" %>
-				<% end %>
-			</div>
-			<% end %>
 			<div class = "pi" id='post-inspiration-count-<%= post.id %>'>
-				<%= post.inspirations.count %> people have added this post as an inspiration
+				<%= render 'inspirations/inspiration_btn', object: post %>
 			</div>
 		</div>
 
@@ -24,11 +16,6 @@
 		<% if inspiration %>
 		<p>inspired by<%= link_to inspiration.title, trip_chapter_path(inspiration.trip, inspiration.chapter) %></p>
 		<% end %>
-
-
-
-
-
 
 
 		<!-- Float Control -->
