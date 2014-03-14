@@ -1,0 +1,69 @@
+<!-- Primary Object -->
+
+<div class="cover-page">
+
+  <!-- require primary attribute -->
+  <div class="cover-photo" data-image-url="<%= image_url(primary_object.cover_photo )%>">
+    <%= link_to '', new_cover_trip_path(id: @trip.id), remote: true, class: "fa fa-camera set-cov-btn" %>
+  </div>
+
+  <div class="row">
+  <div class="header large-10 large-offset-1 columns end">
+    <% if logged_in? %>
+    <div class="control">
+      <ul>
+        <li><%= link_to '', new_trip_chapter_path(@trip), class: "fa fa-plus-square", remote: true %></li>
+        <li></li>
+        <li><%= link_to "", edit_trip_path, class: "fa fa-edit", remote: true %></li>
+        <li><%= link_to "", @trip, confirm: "Are you sure you want to delete this trip?", method: :delete, remote: true, class: "fa fa-times" %></li>
+      </ul>
+    </div>
+    <% end %>
+
+    <h1 class="title"><%= @trip.title %></h1>
+    <small class="date"><%= trip_date(@trip) %></small>
+    <p class="author">by <%= link_to @trip.user.name, @trip.user %></p>
+
+  </div>
+  </div>
+
+</div>
+
+<div class="page-content">
+
+  <div class="row">
+  <div class="large-4 large-offset-1 columns description">
+    <small class="description-label label">Trip</small>
+    <div class="inspirations-count label">
+      <%= @trip.inspirations.count %> <div class="fa fa-heart"></div>
+    </div>
+    <%= simple_format(@trip.description, sanitize: true) %>
+  </div>
+
+  <div class="large-6 columns end googleMap">
+    <div class="cover-map" data-objects="<%= posts_in_json(@trip.posts) %>"></div>
+  </div>
+  </div>
+
+</div>
+
+
+  <% if logged_in? && @trip.user != current_user%>
+  <div class="inspiration-link">
+    <% if !@trip.already_inspired?(current_user.id) %>
+      <%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @trip, inspirable_type: @trip.class}), method: :post, remote: true %>
+    <% end %>
+  </div>
+  <% end %>
+
+  <% if @inspired_by %>
+    <p>inspired by <%= link_to @inspired_by.title, @inspired_by %></p>
+  <% end %>
+
+  <div class="chapters" id="chapters-list">
+    <% @trip.chapters.each do |c| %>
+      <%= render c %>
+    <% end %>
+  </div>
+
+

@@ -65,6 +65,11 @@
 	<p>inspired by<%= link_to @inspired_by.title, [@inspired_by.trip, @inspired_by] %></p>
 	<% end %>
 
+<div class="posts">
+  <% @chapter.posts.each do |p| %>
+    <%= render p %>
+  <% end %>
+</div>
 
 
 
