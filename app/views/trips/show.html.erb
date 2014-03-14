@@ -41,16 +41,6 @@
 	</div>
 	</div>
 
-
-
-	<% if logged_in? && @trip.user != current_user%>
-	<div class="inspiration-link">
-		<% if !@trip.already_inspired?(current_user.id) %>
-			<%= link_to 'I feel inspired', inspirations_path(inspiration: {inspirable_id: @trip, inspirable_type: @trip.class}), method: :post, remote: true %>
-		<% end %>
-	</div>
-	<% end %>
-
 	<% if @inspired_by %>
 		<p>inspired by <%= link_to @inspired_by.title, @inspired_by %></p>
 	<% end %>
