@@ -1,3 +1,4 @@
+<div id="post-<%= post.id %>">
 <div class="row">
 
 	<div class = "columns large-2">
@@ -31,7 +32,7 @@
 	</div>
 
 	<div class="columns large-9">
-		<div class="post-text" id="post-<%= post.id %>">
+		<div class="post-text">
 			<%= markdown(post.content) %>
 		</div>
 	</div>
@@ -55,3 +56,4 @@
 
 
 
+</div>
