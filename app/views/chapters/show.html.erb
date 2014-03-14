@@ -49,7 +49,14 @@
 	<div class="large-4 large-offset-1 columns description">
 		<small class="description-label label">Chapter</small>
 		<div class="inspirations-count label">
-			<%= @chapter.inspirations.count %> <div class="fa fa-heart"></div>
+			<%= @chapter.inspirations.count %>
+
+			<% if !logged_in? || @chapter.trip.user != current_user %>
+				<div class="fa fa-heart"></div>
+			<% elsif logged_in? && @chapter.already_inspired?(current_user.id) %>
+
+			<% else %>
+			<% end %>
 		</div>
 		<%= simple_format(@chapter.description, sanitize: true) %>
 	</div>

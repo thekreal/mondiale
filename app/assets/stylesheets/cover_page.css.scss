@@ -81,9 +81,13 @@
       background: $black;
     }
     .inspirations-count {
+      $width: 60px;
       position: absolute;
-      left: -59px;
       top: 18px;
+      left: - $width;
+      display: block;
+      width: $width;
+      text-align: right;
       font-size: 1em;
       .fa { font-size: 0.9em; }
     }
