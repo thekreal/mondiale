@@ -12,9 +12,7 @@
 
 		<div class="users-trips">
 			<h1 class = "page-title">Your Trips</h1>
-			<% @trips.each do |trip| %>
-			<%= render 'templates/trip_summary', trip: trip %>
-			<% end %>
+			<%= render @trips %>
 		</div>
 
 	</div>
