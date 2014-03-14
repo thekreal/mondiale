@@ -1,14 +1,13 @@
 .row {
   min-width: 100%;
   margin-top: 50px;
-	margin-bottom: 25px;
 }
 
 .image-row {
   min-width: 100%;
 	text-align: center;
 	margin-bottom: 75px;
-	height: 500px;
+	height: 450px;
 
 }
 
