@@ -4,7 +4,7 @@ $('#post-inspiration-count-<%= @inspiration.inspired_by.id %>').text(<%= @inspir
 
 <% else %>
 
-$(".inspirations-count").text(<%= @inspiration.number_of_inspired %> + " people have added this as an inspiration")
+$(".inspiration-number").text(<%= @inspiration.inspired_by.inspirations.count %>)
 $(".inspiration-link").text("you have added this as an inspiration");
 
 <% end %>
