@@ -24,7 +24,11 @@
 	</div>
 	</div>
 
+
+
+
 </div>
+
 
 <div class="page-content">
 
@@ -43,22 +47,10 @@
 </div>
 
 
+
 <div class="page-content">
 
-<div class="row">
-	<div class="large-12 large-offset-4 columns">
-		<%= link_to "Back to trip" , trip_path(@trip) %><br>
 
-		<% if @prev_chapter %>
-		<%= link_to "Previous chapter", trip_chapter_path(id: @prev_chapter.id) %>
-		<% end %>
-
-		<% if @next_chapter %>
-		<%= link_to "Next chapter" , trip_chapter_path(id: @next_chapter.id) %>
-		<% end %>
-
-	</div>
-</div>
 
 
 	<div class="row">
@@ -90,4 +82,22 @@
 
 
 
+<div class="row chapter-nav">
+  <div class="small-6 large-centered columns">
+		<p><%= link_to "Back to trip" , trip_path(@trip) %></p>
+		<p>
+		<% if @prev_chapter %>
+		<%= link_to "Previous chapter", trip_chapter_path(id: @prev_chapter.id) %>
+		<% else %>
+			First chapter
+		<% end %>
+			|
+		<% if @next_chapter %>
+		<%= link_to "Next chapter" , trip_chapter_path(id: @next_chapter.id) %>
+		<% else %>
+			Last chapter
+		<% end %>
+		</p>
+	</div>
+</div>
 

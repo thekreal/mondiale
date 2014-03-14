@@ -11,6 +11,11 @@
 
 }
 
+.chapter-nav {
+	text-align: center;
+  background: $black;
+}
+
 .post-image{
 	display: inline-block;
 }
