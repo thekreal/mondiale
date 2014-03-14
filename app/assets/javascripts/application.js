@@ -64,5 +64,6 @@ $(document).ready(function() {
     } //end argument
   ); // end sortable
 
+  smoothScrollHash(500);
 });
 
