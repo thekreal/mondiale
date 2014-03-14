@@ -11,8 +11,8 @@
     <%= form_tag trips_path, method: :get, remote: true, id: "search" do %>
       <%= text_field_tag :search, params[:search],
           placeholder: "Show me stories from ..." %>
-      <span class="fa fa-search"></span>
     <% end %>
+    <span class="fa fa-search"></span>
 
   </div>
 </div>
