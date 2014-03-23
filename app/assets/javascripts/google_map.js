@@ -82,7 +82,7 @@ function GoogleMap(obj) {
 
   function addMarker(obj, pos) {
     var icon = {
-      url: '/assets/map-marker-red.png',
+      url: 'https://s3.amazonaws.com/mondiale/assets/map-marker-red.png',
       size: new google.maps.Size(32, 32)
     };
     // var infoWindow = addInfoWindow(obj);
