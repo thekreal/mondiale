@@ -14,9 +14,9 @@
 
 		<!-- Show inspired by -->
 		<% inspiration = inspiration_find(post) %>
-		<% if inspiration %>
-		<p>inspired by<%= link_to inspiration.title, trip_chapter_path(inspiration.trip, inspiration.chapter) %></p>
-		<% end %>
+			<% if inspiration %>
+				<p>inspired by<%= link_to inspiration.title, trip_chapter_path(inspiration.trip, inspiration.chapter) %></p>
+			<% end %>
 
 
 		<!-- Float Control -->
