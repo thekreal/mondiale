@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311234611) do
+ActiveRecord::Schema.define(version: 20140410003056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id",    null: false
+    t.string   "provider",   null: false
+    t.string   "uid",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "chapters", force: true do |t|
     t.string   "title"
@@ -30,6 +38,17 @@ ActiveRecord::Schema.define(version: 20140311234611) do
     t.integer "user_id"
     t.integer "inspirable_id"
     t.string  "inspirable_type"
+  end
+
+  create_table "plan_items", force: true do |t|
+    t.integer  "trip_plan_id"
+    t.string   "title"
+    t.datetime "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "location"
+    t.decimal  "longitude",    precision: 9, scale: 6
+    t.decimal  "latitude",     precision: 9, scale: 6
   end
 
   create_table "post_attachments", force: true do |t|
@@ -53,14 +72,22 @@ ActiveRecord::Schema.define(version: 20140311234611) do
     t.integer  "inspiration_id"
   end
 
+  create_table "trip_plans", force: true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "trips", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "coverphoto"
     t.integer  "cached_votes_total", default: 0
+    t.integer  "coverphoto"
     t.integer  "inspiration_id"
   end
 
