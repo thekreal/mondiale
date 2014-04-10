@@ -6,6 +6,9 @@ class TripPlansController < ApplicationController
 	def new
 	end
 
+	def show
+	end
+
 private
 
 	def trip_plan_params
