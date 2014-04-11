@@ -1,0 +1,19 @@
+<div id="trip" class="form-float">
+<%= form_for @trip_plan, remote: true, html: { class: "form-container" } do |f| %>
+  <legend class="form-title"><%= title %></legend>
+  <%= render 'alerts/error_message', object: @trip %>
+
+  <div class="form-section">
+    <div class="form-field">
+      <%= f.text_field :title, class: "form-input", placeholder: "Name of Planned Trip" %>
+      <%= f.text_area :description, class: "form-input",
+            placeholder: "Trip summary" %>
+    </div>
+    <div class="form-field">
+      <%= f.submit submit, class: "form-btn" %>
+      <%= link_to "Close", '#', class: "form-btn close" %>
+    </div>
+  </div>
+
+<% end %>
+</div>
