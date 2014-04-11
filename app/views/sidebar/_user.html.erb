@@ -7,13 +7,22 @@
       <span class="fa fa-plus-square"></span> Create a trip story
     <% end %>
 
+    <%= link_to new_trip_plan_path, class: 'btn' do %>
+      <span class="fa fa-plus-square"></span> Plan a trip
+      <% end %>
+
     <%= link_to my_trips_user_path(current_user), class: 'btn' do %>
       <span class="fa fa-plane"></span> My trip stories
+    <% end %>
+
+    <%= link_to my_trip_plans_user_path(current_user), class: 'btn' do %>
+      <span class="fa fa-plane"></span> My trip plans
     <% end %>
 
     <%= link_to inspiration_list_user_path(current_user), class: "btn" do %>
     <span class="fa fa-heart"></span> Inspiration list
     <% end %>
+
   </li>
 
   <li>
