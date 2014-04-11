@@ -1,7 +1,7 @@
 Mondiale::Application.routes.draw do
 
 	resources :posts, except: [:show, :index]
-  resources :trip_plans, only: [:show, :index, :new]
+  resources :trip_plans, only: [:show, :new]
 
   resources :trips do
     member do
@@ -25,6 +25,7 @@ Mondiale::Application.routes.draw do
   resources :users do
     member { get 'my_trips' }
     member { get 'inspiration_list'}
+    member { get 'my_trip_plans' }
   end
 
   get 'signin'          =>      'sessions#new',             as: :signin
