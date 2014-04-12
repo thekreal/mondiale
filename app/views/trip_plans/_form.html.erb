@@ -1,7 +1,7 @@
 <div id="trip" class="form-float">
-<%= form_for @trip_plan, remote: true, html: { class: "form-container" } do |f| %>
+<%= form_for @trip_plan do |f| %>
   <legend class="form-title"><%= title %></legend>
-  <%= render 'alerts/error_message', object: @trip %>
+  <%= render 'alerts/error_message', object: @trip_plan %>
 
   <div class="form-section">
     <div class="form-field">
