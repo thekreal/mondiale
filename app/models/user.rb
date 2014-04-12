@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :trips, dependent: :delete_all
   has_many :inspirations
+  has_many :trip_plans, dependent: :delete_all
 
   #  Callbacks and Validations
   before_save { email.downcase! }
