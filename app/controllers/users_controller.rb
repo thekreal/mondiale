@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :my_trips, :edit, :update, :destroy, :inspiration_list]
+  before_action :set_user, except: [:index, :new, :edit]
 
   def index
     @users = User.all
@@ -11,6 +11,10 @@ class UsersController < ApplicationController
 
   def my_trips
     @trips = @user.trips
+  end
+
+  def my_trip_plans
+    @trip_plans = @user.trip_plans
   end
 
   def inspiration_list
