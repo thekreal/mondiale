@@ -1,11 +1,11 @@
 <div id="trip" class="form-float">
-<%= form_for @trip_plan do |f| %>
+<%= form_for @trip_plan, html: { class: "form-container" } do |f| %>
   <legend class="form-title"><%= title %></legend>
   <%= render 'alerts/error_message', object: @trip_plan %>
 
   <div class="form-section">
     <div class="form-field">
-      <%= f.text_field :title, class: "form-input", placeholder: "Name of Planned Trip" %>
+      <%= f.text_field :title, class: "form-input", placeholder: "Trip name" %>
       <%= f.text_area :description, class: "form-input",
             placeholder: "Trip summary" %>
     </div>
