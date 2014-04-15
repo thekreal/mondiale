@@ -11,3 +11,24 @@
 		</div>
 	</div>
 </div>
+
+<div class="tab-row plan-content">
+
+	<div class="large-10 large-offset-1 columns">
+
+		<div class="plan-description">
+			<%= @trip_plan.description %>
+		</div>
+
+		<div class="plan-itinerary">
+			<h1>Itinerary</h1>
+			<%= render @plan_items %>
+		</div>
+
+		<div class="plan-add-new">
+			<h1>Add a new item to the itinerary</h1>
+		</div>
+
+	</div>
+
+</div>
