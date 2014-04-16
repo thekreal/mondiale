@@ -1,0 +1,13 @@
+<% if params[:tab] == "Description" %>
+		$(".plan-itinerary").addClass('hidden-tab')
+		$(".plan-add-new").addClass('hidden-tab')
+		$(".plan-description").removeClass('hidden-tab')
+<% elsif params[:tab] == "Itinerary" %>
+		$(".plan-description").addClass('hidden-tab')
+		$(".plan-add-new").addClass('hidden-tab')
+		$(".plan-itinerary").removeClass('hidden-tab')
+<% elsif params[:tab] == "Add" %>
+		$(".plan-description").addClass('hidden-tab')
+		$(".plan-itinerary").addClass('hidden-tab')
+		$(".plan-add-new").removeClass('hidden-tab')
+<% end %>
