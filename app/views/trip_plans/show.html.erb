@@ -22,6 +22,7 @@
 
 		<div class="plan-itinerary hidden-tab">
 			<h1>Your Itinerary</h1>
+			<%= link_to ' Add a new item to your itinerary', new_trip_plan_plan_item_path(@trip_plan), class: "fa fa-plus-square", remote: true %>
 			<%= render @plan_items %>
 		</div>
 

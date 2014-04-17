@@ -1,7 +1,9 @@
 Mondiale::Application.routes.draw do
 
 	resources :posts, except: [:show, :index]
-  resources :trip_plans, only: [:show, :new, :index, :create]
+  resources :trip_plans do
+    resources :plan_items
+    end
 
   resources :trips do
     member do

@@ -1,7 +1,8 @@
 class PlanItemsController < ApplicationController
 
 	def new
-
+		@trip_plan = TripPlan.find(params[:trip_plan_id])
+		@plan_item = PlanItem.new(trip_plan_id: @trip_plan)
 	end
 
 	def create
