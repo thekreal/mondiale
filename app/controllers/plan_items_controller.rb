@@ -6,7 +6,20 @@ class PlanItemsController < ApplicationController
 	end
 
 	def create
-
+		@trip_plan = TripPlan.find(params[:trip_plan_id])
+		@plan_item = @trip_plan.plan_items.new(plan_items_params)
+			respond_to do |format|
+				if @trip_plan.save
+					format.html do
+						flash[:success] = "Your post has been created successfully"
+						redirect_to @trip_plan
+					end
+					format.js
+				else
+					format.html {render :new}
+					format.js
+				end
+			end
 	end
 
 	def edit
