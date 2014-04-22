@@ -2,5 +2,23 @@
 <%= form_for [@trip_plan, @plan_item], html: { class: "form-container" }  do |f| %>
   <legend class="form-title"><%= title %></legend>
 
+	<div class="form-section">
+
+    <div class="form-field">
+      <%= f.text_field :title, class: "form-input", placeholder: "Plan item title" %>
+    </div>
+
+    <div class="form-field">
+      <%= f.text_field :location, class: "form-input", placeholder: "Location" %>
+      <%= f.date_select :date, class: 'form-label' %>
+    </div>
+
+    <div class="form-field">
+      <%= f.submit submit, class: "form-btn" %>
+      <%= link_to "Close", '#', class: "form-btn close" %>
+    </div>
+
+ </div>
+
 <% end %>
 </div>
