@@ -2,12 +2,15 @@
 	<h1 class="large-12 large-offset-1 columns"><%= @trip_plan.title %></h1>
 </div>
 
+<div class="googleMap">
+		<div class="cover-map" data-objects="<%= plan_items_in_json(@plan_items) %>"></div>
+</div>
+
 <div class="tab-row">
 	<div class="large-12 large-offset-1 columns">
 		<div >
 			<%= link_to "Description", trip_plan_path(@trip_plan, tab: "Description"), class: "inspiration-tab", remote: true%>
 			<%= link_to "Itinerary", trip_plan_path(@trip_plan, tab: "Itinerary"), class: "inspiration-tab", remote: true%>
-			<%= link_to "Add a new destination", trip_plan_path(@trip_plan, tab: "Add"), class: "inspiration-tab", remote: true%>
 		</div>
 	</div>
 </div>

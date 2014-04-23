@@ -33,4 +33,7 @@ module GoogleMapApiHelper
     )
   end
 
+  def plan_items_in_json(plan_items)
+    plan_items.to_json
+  end
 end
