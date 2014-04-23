@@ -32,6 +32,8 @@ class PlanItemsController < ApplicationController
 
 	def destroy
 		@trip_plan = TripPlan.find(params[:trip_plan_id])
+		@plan_item = PlanItem.find(params[:id])
+		@plan_items = @trip_plan.plan_items
 		respond_to do |format|
 			if @plan_item.destroy
 				format.html do
