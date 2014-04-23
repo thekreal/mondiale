@@ -31,7 +31,19 @@ class PlanItemsController < ApplicationController
 	end
 
 	def destroy
-
+		@trip_plan = TripPlan.find(params[:trip_plan_id])
+		respond_to do |format|
+			if @plan_item.destroy
+				format.html do
+					flash[:success] = "This itinerary item has been deleted successfully"
+					redirect_to @trip_plan
+				end
+				format.js
+			else
+				format.html
+				format.js
+			end
+		end
 	end
 
 private
