@@ -3,10 +3,13 @@
 </div>
 
 <div class="plan-item-date">
-<%= plan_item.date.strftime("%Y-%m-%d") %>
+	<%= plan_item.date.strftime("%Y-%m-%d") %>
+</div>
+
+<div class="plan-item-location">
+	<%= plan_item.location %>
 </div>
 
 
-<%= plan_item.location %>
-</br>
 <%= link_to "", trip_plan_plan_item_path(plan_item.trip_plan, plan_item), method: :delete, confirm: "Are you sure you want to delete this item", class: "fa fa-times", title: "Delete plan item", remote: true %>
+<%= link_to "", edit_trip_plan_plan_item_path(plan_item.trip_plan, plan_item), class: "fa fa-edit", remote: true %>
