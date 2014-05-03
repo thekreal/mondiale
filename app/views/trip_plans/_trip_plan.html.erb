@@ -1,6 +1,11 @@
 <div class="large-4 large-offset-1 columns ">
 	<h1 class="title"><%= link_to trip_plan.title, trip_plan, class: "link" %></h1>
 	<div class="date"><%=  %></div>
+
 	<% if trip_plan.plan_items.any? %>
-        <div class="cover-map" data-objects="<%= plan_items_in_json(trip_plan.plan_items) %>"></div>
+
+			<div class="trip-plan-partial-map">
+        <div class="googleMap cover-map" data-objects="<%= plan_items_in_json(trip_plan.plan_items) %>"></div>
+      </div>
+
   <% end %>
