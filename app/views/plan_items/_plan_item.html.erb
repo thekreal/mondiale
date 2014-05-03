@@ -1,15 +1,19 @@
-<div class="plan-item-title">
-	<%= plan_item.title %>
+<div id="plan-item-<%= plan_item.id %>">
+
+	<div class="plan-item-title">
+		<%= plan_item.title %>
+	</div>
+
+	<div class="plan-item-location">
+		<%= plan_item.location %>
+	</div>
+
+	<div class="plan-item-date">
+		<%= plan_item.date.strftime("%Y-%m-%d") %>
+	</div>
+
+
+	<%= link_to "", trip_plan_plan_item_path(plan_item.trip_plan, plan_item), method: :delete, confirm: "Are you sure you want to delete this item", class: "fa fa-times", title: "Delete plan item", remote: true %>
+	<%= link_to "", edit_trip_plan_plan_item_path(plan_item.trip_plan, plan_item), class: "fa fa-edit", remote: true %>
+
 </div>
-
-<div class="plan-item-date">
-	<%= plan_item.date.strftime("%Y-%m-%d") %>
-</div>
-
-<div class="plan-item-location">
-	<%= plan_item.location %>
-</div>
-
-
-<%= link_to "", trip_plan_plan_item_path(plan_item.trip_plan, plan_item), method: :delete, confirm: "Are you sure you want to delete this item", class: "fa fa-times", title: "Delete plan item", remote: true %>
-<%= link_to "", edit_trip_plan_plan_item_path(plan_item.trip_plan, plan_item), class: "fa fa-edit", remote: true %>

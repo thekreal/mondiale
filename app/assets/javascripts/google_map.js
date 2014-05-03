@@ -77,7 +77,9 @@ function GoogleMap(obj) {
   // };
 
   function redirect_to(obj) {
-    window.location = "/trips/" + obj.trip_id + "/chapters/" + obj.chapter_id + '#post-' + obj.id
+    if(obj.trip_id){
+      window.location = "/trips/" + obj.trip_id + "/chapters/" + obj.chapter_id + '#post-' + obj.id
+    }
   }
 
   function addMarker(obj, pos) {
