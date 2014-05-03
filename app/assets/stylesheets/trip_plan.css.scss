@@ -1,9 +1,29 @@
-.hidden-tab{
-	display: none;
+.map-container{
+	display: inline;
+	width: 100%;
+	margin-left: 10%;
+
+
+	.googleMap{
+		@include google-map(100%, 240px);
+	    position: relative;
+	    width:60%;
+	    margin-left: 10%;
+	}
+
+}
+.itinerary{
+	display: inline;
+	width: 30%;
+	margin-top: -270px;
 }
 
-.googleMap{
-	@include google-map(100%, 240px);
-    position: relative;
-    width:100%;
+.description{
+	display: inline;
 }
+
+.plan-title{
+	width: 100%;
+	margin-left: 10%
+}
+

@@ -1,27 +1,21 @@
 <div class="plan-title">
-	<h1 class="large-12 large-offset-1 columns"><%= @trip_plan.title %></h1>
+	<h1> <%= @trip_plan.title %></h1>
 </div>
 
-<div class="large-7 large-offset-1 columns">
+<div class="map-container">
 		<div class="googleMap cover-map" data-objects="<%= plan_items_in_json(@plan_items) %>"></div>
 </div>
 
 
-<div class="large-7 large-offset-1 columns">
+<div class="description large-7 large-offset-1 columns">
 		<%= @trip_plan.description %>
 </div>
 
-<div class="large-3 large-offset-9 columns">
+<div class="itinerary large-2 columns">
 			<h1>Your Itinerary</h1>
 				<%= link_to ' Add a new item to your itinerary', new_trip_plan_plan_item_path(@trip_plan), class: "fa fa-plus-square", remote: true %>
-				<div class="plan-items">
-					<%= render @plan_items %>
-	</div>
-
-		<div class="plan-add-new hidden-tab">
-			<h1>Add a new item to your itinerary</h1>
-		</div>
-
-	</div>
+			<div class="plan-items">
+				<%= render @plan_items %>
+			</div>
 
 </div>
