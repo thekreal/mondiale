@@ -1,0 +1,5 @@
+var form = $('#plan_item.form-float');
+var blurBackground = addBlur('body');
+form = $('<%= j render "plan_items/form", title: "Update Itinerary Item", submit: "Update" %>');
+slideDownShow(form);
+clickToClose(blurBackground.add('.close'), form);

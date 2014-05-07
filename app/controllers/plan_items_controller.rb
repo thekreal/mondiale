@@ -23,11 +23,27 @@ class PlanItemsController < ApplicationController
 	end
 
 	def edit
-
+		@trip_plan = TripPlan.find(params[:trip_plan_id])
+		@plan_item = PlanItem.find(params[:id])
 	end
 
 	def update
+		@trip_plan = TripPlan.find(params[:trip_plan_id])
+		@plan_items = @trip_plan.plan_items
+		@plan_item = PlanItem.find(params[:id])
 
+		respond_to do |format|
+			if @plan_item.update(plan_items_params)
+				format.html do
+					flash[:success] = "Your Itinerary Item has been updated successfully"
+					redirect_to @trip_plan
+				end
+				format.js
+			else
+				format.html {render :edit}
+				format.js
+			end
+		end
 	end
 
 	def destroy
