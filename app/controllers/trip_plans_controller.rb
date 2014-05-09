@@ -26,7 +26,7 @@ class TripPlansController < ApplicationController
 
 	def show
 		@trip_plan = TripPlan.find(params[:id])
-		@plan_items = @trip_plan.plan_items.sort
+		@plan_items = @trip_plan.plan_items.trip_order
 	end
 
 private
