@@ -9,7 +9,9 @@
 	</div>
 
 	<div class="plan-item-date">
-		<%= plan_item.date.strftime("%Y-%m-%d") %>
+		<% if plan_item.date %>
+			<%= plan_item.date.strftime("%Y-%m-%d") %>
+		<% end %>
 	</div>
 
 

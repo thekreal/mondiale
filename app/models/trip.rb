@@ -28,4 +28,10 @@ class Trip < ActiveRecord::Base
     all(include: :inspirations).sort_by { |u| -u.inspirations.size }
   end
 
+  def turn_into_trip_plan
+    trip_plan = TripPlan.new(title: "My Own " + self.title, description: self.description)
+    trip_plan.save
+    trip_plan.add_trip_inspiration(self)
+  end
+
 end
