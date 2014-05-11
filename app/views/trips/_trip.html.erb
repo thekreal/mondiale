@@ -11,9 +11,8 @@
       <% end %>
     </div>
   </div>
-  <% if params[:type] == 'Trip' %>
-        <div class="trip-plan-generation-links">
-          <%= link_to "Plan your own trip", new_trip_plan_path, class: "link" %>
-        </div>
+
+  <% if trip.user !current_user %>
+    <%= link_to "Plan your own trip", convert_trip_trip_path(trip), class: "link" %>
   <% end %>
 </div>

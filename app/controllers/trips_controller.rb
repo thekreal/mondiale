@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   before_action :ensure_logged_in, only: [:new, :edit, :destroy]
-  before_action :set_trip, only: [:show, :edit, :update, :destroy, :vote, :new_cover, :create_cover]
+  before_action :set_trip, only: [:show, :edit, :update, :destroy, :vote, :new_cover, :create_cover, :convert_trip]
 
   def index
     if params[:search] && !params[:search].empty?
@@ -86,6 +86,12 @@ class TripsController < ApplicationController
     @trip.destroy
     flash[:success] = "Your trip has been removed successfully"
     redirect_to trips_path
+  end
+
+  def convert_trip
+    @trip.turn_into_trip_plan(current_user)
+    @trip_plan = TripPlan.last
+    redirect_to @trip_plan
   end
 
   def sort_chapter_items

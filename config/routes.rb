@@ -9,6 +9,7 @@ Mondiale::Application.routes.draw do
     member do
       get   :new_cover
       post  :create_cover
+      get  :convert_trip
     end
     collection {
       post  :sort_chapter_items
@@ -34,6 +35,7 @@ Mondiale::Application.routes.draw do
   get 'signout'         =>      'sessions#destroy',         as: :signout
   resources :sessions, only: [:create]
   resources :inspirations, only: [:create, :destroy]
+
 
   root 'welcome#index'
 end
