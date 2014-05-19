@@ -12,7 +12,7 @@ class TripPlan < ActiveRecord::Base
 	def add_trip_inspiration(trip)
 		posts = trip.posts
 		posts.each do |post|
-			plan_item = self.plan_items.new(title: trip.title, location: post.location)
+			plan_item = self.plan_items.new(title: post.title, location: post.location)
 			plan_item.save
 		end
 	end
