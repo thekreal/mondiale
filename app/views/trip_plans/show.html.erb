@@ -2,6 +2,8 @@
 
 <div class="plan-title">
 	<h1> <%= @trip_plan.title %></h1>
+	<%= link_to "", edit_trip_plan_path, class: "fa fa-edit", remote: true %>
+	<%= link_to "", @trip_plan, confirm: "Are you sure you want to delete this trip plan?", method: :delete, class: "fa fa-times" %>
 </div>
 
 <div class="map-container">
