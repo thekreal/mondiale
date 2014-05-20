@@ -1,6 +1,6 @@
 class TripPlansController < ApplicationController
 
-	before_action :set_trip_plan, only: [:show, :destroy]
+	before_action :set_trip_plan, only: [:show, :destroy, :edit, :update]
 
 	def new
 		@trip_plan = current_user.trip_plans.new
@@ -36,6 +36,25 @@ class TripPlansController < ApplicationController
 		flash[:success] = "Your trip plan has been removed successfully"
 		redirect_to my_trip_plans_user_path(current_user)
 	end
+
+	def edit
+	end
+
+	def update
+		respond_to do |format|
+			if @trip_plan.update(trip_plan_params)
+				format.html {
+					flash[:success] = "Your trip plan has been updated successfully"
+					redirect_to @trip_plan
+				}
+				format.js
+			else
+				format.html { render :edit }
+				format.js
+			end
+		end
+	end
+
 
 private
 
