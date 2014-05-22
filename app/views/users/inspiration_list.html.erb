@@ -24,7 +24,9 @@
 
 		<div class="inspiration-trips">
 			<h1>Your trip inspirations</h1>
-			<%= render @trips %>
+			<% @trips.each do |trip| %>
+				<%= render 'templates/trip_inspiration', trip: trip %>
+			<% end %>
 		</div>
 
 		<div class="inspiration-chapters hidden-inspirations">
