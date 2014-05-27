@@ -3,7 +3,11 @@ Mondiale::Application.routes.draw do
 	resources :posts, except: [:show, :index]
   resources :trip_plans do
     resources :plan_items
+    member do
+      get :add_item
+      get :choose_trip_plan
     end
+  end
 
   resources :trips do
     member do

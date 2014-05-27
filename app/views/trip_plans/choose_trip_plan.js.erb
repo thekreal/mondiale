@@ -1,0 +1,5 @@
+var form = $('#trip_plan.form-float');
+var blurBackground = addBlur('body');
+form = $('<%= j render "trip_plans/choose_trip_plan" %>');
+slideDownShow(form);
+clickToClose(blurBackground.add('.close'), form);

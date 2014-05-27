@@ -1,0 +1,15 @@
+<div id="trip" class="form-float">
+	<% @trip_plans.each do |trip_plan| %>
+	<div class="form-field">
+		<h1 class="form-title">Select a Trip Plan</h1>
+			<div class="form-section">
+			<ul>
+        <li class="radio-button">
+        <%= radio_button_tag :trip_plan_id, trip_plan.id %>
+        <%= label_tag :trip_plan_id, trip_plan.title %>
+        </li>
+        <% end %>
+      </ul>
+      </div>
+	</div>
+</div>

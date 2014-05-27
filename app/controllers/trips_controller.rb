@@ -94,6 +94,9 @@ class TripsController < ApplicationController
     redirect_to @trip_plan
   end
 
+  def add_trip
+  end
+
   def sort_chapter_items
     params[:chapter].each_with_index do |id, index|
       Chapter.update_all({position: index+1}, {id: id})

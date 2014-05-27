@@ -12,6 +12,7 @@
     </div>
   </div>
 
-    <%= link_to "Plan your own trip", convert_trip_trip_path(trip), class: "link" %>
+    <div class="insp-link"><%= link_to "Plan your own trip", convert_trip_trip_path(trip), class: "link" %></div>
+    <div class="insp-link"><%= link_to "Add this trip to a plan", choose_trip_plan_trip_plan_path(type: trip, item: trip), remote: true %> </div>
 
 </div>

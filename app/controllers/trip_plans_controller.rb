@@ -55,6 +55,19 @@ class TripPlansController < ApplicationController
 		end
 	end
 
+	def choose_trip_plan
+		@trip_plans = current_user.trip_plans
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
+
+	def add_item
+		@trip_plan = TripPlan.find(params[:trip_plan_id])
+		@trip_plan.add_item()
+	end
+
 
 private
 

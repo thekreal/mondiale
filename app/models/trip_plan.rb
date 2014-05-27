@@ -9,6 +9,13 @@ class TripPlan < ActiveRecord::Base
 										 uniqueness: true
 	validates :description, presence: true
 
+	def add_item(type,item)
+		if type == "trip"
+			add_trip_inspiration(item)
+		end
+	end
+
+
 	def add_trip_inspiration(trip)
 		posts = trip.posts
 		posts.each do |post|
@@ -16,4 +23,5 @@ class TripPlan < ActiveRecord::Base
 			plan_item.save
 		end
 	end
+
 end

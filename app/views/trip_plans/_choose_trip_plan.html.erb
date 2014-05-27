@@ -1,0 +1,21 @@
+<div id="trip" class="form-float">
+	<% @trip_plans.each do |trip_plan| %>
+	<div class="form-section">
+		<h1 class="form-title">Select a Trip Plan</h1>
+			<div class="form-field">
+			<ul>
+        <li class="radio-button">
+        <%= radio_button_tag :trip_plan_id, trip_plan.id %>
+        <%= label_tag :trip_plan_id, trip_plan.title %>
+        </li>
+        <% end %>
+      </ul>
+
+      <div class="form-field">
+        <%= link_to "Add to this Trip Plan", add_item_trip_plan_path(type: params[:type], item: params[:item], trip_plan_id: :trip_plan_id), class: "form-btn close" %>
+        <%= link_to "Close", '#', class: "form-btn close" %>
+      </div>
+
+      </div>
+	</div>
+</div>
